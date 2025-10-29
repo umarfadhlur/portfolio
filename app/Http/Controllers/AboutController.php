@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Skill;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        // Ambil record pertama dari tabel abouts
         $about = About::first();
+        $skills = Skill::orderBy('start_year', 'asc')->get();
 
-        // Kirim data ke view 'sections.about'
-        return view('about', compact('about'));
+        return view('about', compact('about', 'skills'));
     }
 }

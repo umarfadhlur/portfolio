@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ResumeController;
 
 Route::get('/', function () {
     return view('index', [
@@ -11,8 +12,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/resume', [ResumeController::class, 'index'])->name('resume');
 
-Route::view('/resume', 'resume')->name('resume');
 Route::view('/services', 'services')->name('services');
 Route::view('/portfolio', 'portfolio')->name('portfolio');
 Route::view('/contact', 'contact')->name('contact');

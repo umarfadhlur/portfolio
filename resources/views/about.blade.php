@@ -5,8 +5,7 @@
 @section('body-class', 'about-page')
 
 @section('content')
-  @include('about.section-about')
-  @include('about.section-skill')
-  {{-- @include('about.section-stats')
-  @include('about.section-testimonials') --}}
+    <main class="main">
+        @include('about.section-about')
+    </main>
 @endsection
