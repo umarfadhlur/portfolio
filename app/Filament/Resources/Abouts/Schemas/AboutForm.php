@@ -7,6 +7,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\FileUpload\TemporaryUploadedFile;
 
 class AboutForm
 {
@@ -25,6 +26,13 @@ class AboutForm
                     ->directory('about')
                     ->acceptedFileTypes(['application/pdf'])
                     ->maxSize(2048)
+                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                        $slug = Str::slug($originalName);
+                        $ext = $file->getClientOriginalExtension();
+
+                        return $slug . '.' . $ext;
+                    })
                     ->nullable(),
                 // ->preserveFilenames(false)
                 // ->getUploadedFileNameForStorageUsing(
