@@ -20,7 +20,7 @@ class PortfolioPhotoResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Portfolio Photo';
+    protected static ?string $recordTitleAttribute = 'Portfolio Photos';
 
     public static function form(Schema $schema): Schema
     {

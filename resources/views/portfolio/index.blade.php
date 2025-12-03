@@ -5,75 +5,98 @@
 @section('body-class', 'portfolio-page')
 
 @section('content')
-    <main class="main">
+<main class="main">
 
-        <section id="portfolio" class="portfolio section">
+    <section id="projects" class="portfolio section">
 
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfolio</h2>
-                <p class="mt-2 text-muted">
-                    A curated selection of the best Flutter, Laravel, and ERP integration projects I’ve built.
-                </p>
+        <!-- Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <p><span class="description-title">Portfolio</span></p>
+        </div>
+
+        <div class="container">
+
+            <!-- Intro Text -->
+            <div class="mb-4" style="font-size:1.1rem;" data-aos="fade-up" data-aos-delay="120">
+                A curated selection of the best Flutter, Laravel, and ERP integration projects I’ve built.
             </div>
 
-            <div class="container" data-aos="fade-up">
+            <!-- Portfolio Filters -->
+            <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-                <!-- Filter Tabs -->
-                <div class="d-flex justify-content-center gap-3 mb-4">
-                    <a href="{{ url('/portfolio') }}"
-                        class="btn btn-sm {{ request('category') == null ? 'btn-dark' : 'btn-outline-dark' }}">
-                        All
-                    </a>
+                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active">All</li>
+                    <li data-filter=".filter-flutter">Flutter</li>
+                    <li data-filter=".filter-laravel">Laravel</li>
+                </ul>
 
-                    <a href="{{ url('/portfolio?category=flutter') }}"
-                        class="btn btn-sm {{ request('category') == 'flutter' ? 'btn-dark' : 'btn-outline-dark' }}">
-                        Flutter
-                    </a>
+                <!-- Portfolio Grid -->
+                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-                    <a href="{{ url('/portfolio?category=laravel') }}"
-                        class="btn btn-sm {{ request('category') == 'laravel' ? 'btn-dark' : 'btn-outline-dark' }}">
-                        Laravel
-                    </a>
-                </div>
+                    @forelse ($portfolios as $p)
 
-                <!-- Grid -->
-                <div class="row gy-4">
-                    @foreach ($projects as $p)
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        @php
+                            $photo = $p->photos->first();
+                            $image = $photo
+                                ? Storage::url($photo->image_path)
+                                : asset('assets/img/default.jpg');
 
-                            <a href="{{ url('/portfolio/' . $p->slug) }}" class="text-decoration-none text-dark">
-                                <div class="card border-0 shadow-sm h-100">
+                            // Convert tech stack safely
+                            $techs = $p->tech_stack;
+                            if (is_string($techs)) {
+                                $decoded = json_decode($techs, true);
+                                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                    $techs = $decoded;
+                                } else {
+                                    $techs = array_map('trim', explode(',', $techs));
+                                }
+                            }
 
-                                    @if ($p->photos->first())
-                                        <img src="{{ Storage::url($p->photos->first()->image_path) }}" class="card-img-top"
-                                            style="height: 220px; object-fit: cover;">
-                                    @endif
+                            $isFlutter = in_array('Flutter', $techs);
+                            $isLaravel = in_array('Laravel', $techs);
+                        @endphp
 
-                                    <div class="card-body">
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item
+                            {{ $isFlutter ? 'filter-flutter' : '' }}
+                            {{ $isLaravel ? 'filter-laravel' : '' }}">
 
-                                        <h5 class="fw-bold">{{ $p->portfolio_name }}</h5>
-
-                                        <p class="small text-muted">
-                                            {{ Str::limit($p->description, 120) }}
-                                        </p>
-
-                                        <div class="mt-2">
-                                            @foreach ($p->tech_stack as $tech)
-                                                <span class="badge bg-dark">{{ $tech }}</span>
-                                            @endforeach
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <a href="{{ route('portfolio.show', $p->slug) }}">
+                                <img src="{{ $image }}" class="img-fluid" alt="{{ $p->portfolio_name }}">
                             </a>
 
+                            <div class="portfolio-info">
+                                <h4>{{ $p->portfolio_name }}</h4>
+                                <p>{{ Str::limit($p->description, 100) }}</p>
+
+                                <!-- Preview -->
+                                <a href="{{ $image }}"
+                                   title="{{ $p->portfolio_name }}"
+                                   data-gallery="portfolio-gallery"
+                                   class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+
+                                <!-- Details -->
+                                <a href="{{ route('portfolio.show', $p->slug) }}"
+                                   title="Details"
+                                   class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+
                         </div>
-                    @endforeach
+
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted">No projects available at the moment.</p>
+                        </div>
+                    @endforelse
+
                 </div>
-
             </div>
+        </div>
 
-        </section>
+    </section>
 
-    </main>
+</main>
 @endsection

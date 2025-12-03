@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PortfolioController;
 
 Route::get('/', function () {
     return view('index', [
@@ -21,4 +22,7 @@ Route::post('/contact', [MessageController::class, 'submit'])->name('contact.sub
 
 // contoh tambahan:
 Route::view('/services', 'services')->name('services');
-Route::view('/portfolio', 'portfolio')->name('portfolio');
+// portfolio
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+

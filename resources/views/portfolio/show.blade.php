@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $project->portfolio_name)
+@section('title', $portfolio->portfolio_name)
 
 @section('body-class', 'portfolio-detail-page')
 
@@ -10,8 +10,9 @@
         <section id="portfolio-detail" class="section portfolio-detail">
 
             <div class="container section-title" data-aos="fade-up">
+
                 <!-- Breadcrumbs -->
-                <nav class="mb-4" aria-label="breadcrumb" data-aos="fade-up">
+                <nav class="mb-4" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ url('/') }}">Home</a>
@@ -20,29 +21,57 @@
                             <a href="{{ url('/portfolio') }}">Portfolio</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            {{ $project->portfolio_name }}
+                            {{ $portfolio->portfolio_name }}
                         </li>
                     </ol>
                 </nav>
 
-                <h2>{{ $project->portfolio_name }}</h2>
-                <p class="text-muted">{{ $project->description }}</p>
+                <h2 class="fw-bold">{{ $portfolio->portfolio_name }}</h2>
+                <p class="text-muted">{{ $portfolio->description }}</p>
             </div>
 
             <div class="container">
 
                 <!-- Cover Image -->
                 <div class="mb-4" data-aos="fade-up">
-                    @if ($project->photos->first())
-                        <img src="{{ Storage::url($project->photos->first()->image_path) }}"
-                            class="img-fluid rounded-3 shadow-sm" style="max-height: 400px; object-fit: cover; width:100%;">
+                    @if ($portfolio->photos->first())
+                        <img src="{{ Storage::url($portfolio->photos->first()->image_path) }}"
+                             class="img-fluid rounded-3 shadow-sm"
+                             style="max-height: 400px; object-fit: cover; width:100%;">
                     @endif
                 </div>
+
+                @php
+                    // SAFE CAST: Convert all fields into arrays
+
+                    function safeArray($value) {
+                        if (is_array($value)) {
+                            return $value;
+                        }
+
+                        if (is_string($value)) {
+                            // coba JSON decode
+                            $decoded = json_decode($value, true);
+                            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                return $decoded;
+                            }
+
+                            // fallback: explode by comma
+                            return array_filter(array_map('trim', explode(',', $value)));
+                        }
+
+                        return []; // fallback kosong
+                    }
+
+                    $techs = safeArray($portfolio->tech_stack);
+                    $roles = safeArray($portfolio->roles);
+                    $contributions = safeArray($portfolio->contributions);
+                @endphp
 
                 <!-- Tech Stack -->
                 <h3 class="fw-bold mt-4">Tech Stack</h3>
                 <div class="mb-3">
-                    @foreach ($project->tech_stack as $tech)
+                    @foreach ($techs as $tech)
                         <span class="badge bg-dark me-1">{{ $tech }}</span>
                     @endforeach
                 </div>
@@ -50,7 +79,7 @@
                 <!-- Roles -->
                 <h3 class="fw-bold mt-4">Roles</h3>
                 <ul>
-                    @foreach ($project->roles as $role)
+                    @foreach ($roles as $role)
                         <li>{{ $role }}</li>
                     @endforeach
                 </ul>
@@ -58,19 +87,20 @@
                 <!-- Contributions -->
                 <h3 class="fw-bold mt-4">Contributions</h3>
                 <ul>
-                    @foreach ($project->contributions as $c)
+                    @foreach ($contributions as $c)
                         <li>{{ $c }}</li>
                     @endforeach
                 </ul>
 
                 <!-- Gallery -->
-                @if ($project->photos->count() > 1)
+                @if ($portfolio->photos->count() > 1)
                     <h3 class="fw-bold mt-4">Gallery</h3>
                     <div class="row gy-3">
-                        @foreach ($project->photos->skip(1) as $photo)
+                        @foreach ($portfolio->photos->skip(1) as $photo)
                             <div class="col-md-4">
-                                <img src="{{ Storage::url($photo->image_path) }}" class="img-fluid rounded shadow-sm"
-                                    style="height: 200px; object-fit: cover;">
+                                <img src="{{ Storage::url($photo->image_path) }}"
+                                     class="img-fluid rounded shadow-sm"
+                                     style="height: 200px; object-fit: cover;">
                             </div>
                         @endforeach
                     </div>
