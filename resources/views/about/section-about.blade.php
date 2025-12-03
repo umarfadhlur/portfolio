@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="250">
                 <figure class="profile-figure text-center text-lg-end">
-                    <img src="{{ asset('assets/img/profile/profile-square-11.webp') }}" alt="Portrait"
+                    <img src="{{ asset('assets/img/profile/umarf.png') }}" alt="Portrait"
                         class="img-fluid profile-photo">
                 </figure>
             </div>

@@ -27,7 +27,7 @@
                 <div class="col-lg-6 order-1 order-lg-2">
                     <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
                         <div class="image-wrapper">
-                            <img src="{{ asset('assets/img/profile/profile-square-11.webp') }}"
+                            <img src="{{ asset('assets/img/profile/umarf.png') }}"
                                 alt="{{ $name ?? 'Profile' }}" class="img-fluid">
                         </div>
                     </div>

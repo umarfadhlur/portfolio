@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jangan lempar request ke /public kalau tujuannya /storage
+    RewriteCond %{REQUEST_URI} !^/storage
+
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
