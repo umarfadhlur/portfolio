@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,6 +12,11 @@ return new class extends Migration
     {
         Schema::create('portfolio_photos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('portfolio_id')->constrained('portfolios')->onDelete('cascade');
+            $table->string('image_path');
+            $table->string('caption')->nullable();
+            $table->boolean('is_cover')->default(false);
+            $table->integer('sort_order')->default(1);
             $table->timestamps();
         });
     }
