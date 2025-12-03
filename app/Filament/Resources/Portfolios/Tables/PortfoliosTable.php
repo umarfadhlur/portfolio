@@ -15,18 +15,20 @@ class PortfoliosTable
         return $table
             ->columns([
                 TextColumn::make('portfolio_name')
+                    ->label('Project Name')
                     ->searchable(),
+
                 TextColumn::make('created_at')
+                    ->label('Created')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
+                    ->label('Updated')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
             ])
             ->recordActions([
                 EditAction::make(),

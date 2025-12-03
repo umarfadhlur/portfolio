@@ -13,18 +13,30 @@ class PortfolioForm
         return $schema
             ->components([
                 TextInput::make('portfolio_name')
+                    ->label('Project Name')
                     ->required(),
+
                 Textarea::make('description')
-                    ->default(null)
+                    ->label('Short Description')
+                    ->rows(4)
                     ->columnSpanFull(),
+
                 Textarea::make('roles')
-                    ->default(null)
+                    ->label('Roles (JSON Array)')
+                    ->rows(3)
+                    ->helperText('Example: ["Flutter Developer", "API Integrator"]')
                     ->columnSpanFull(),
+
                 Textarea::make('contributions')
-                    ->default(null)
+                    ->label('Contributions (JSON Array)')
+                    ->rows(5)
+                    ->helperText('Example: ["Built app from scratch", "Integrated with API"]')
                     ->columnSpanFull(),
+
                 Textarea::make('tech_stack')
-                    ->default(null)
+                    ->label('Tech Stack (JSON Array)')
+                    ->rows(3)
+                    ->helperText('Example: ["Flutter", "Laravel", "REST API"]')
                     ->columnSpanFull(),
             ]);
     }
