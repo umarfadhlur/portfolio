@@ -9,29 +9,38 @@
 
     <section id="projects" class="portfolio section">
 
-        <!-- Title -->
+        <!-- Section Title (same style as Resume) -->
         <div class="container section-title" data-aos="fade-up">
-            <p><span class="description-title">Portfolio</span></p>
+            <h2>Portfolio</h2>
         </div>
 
         <div class="container">
 
             <!-- Intro Text -->
-            <div class="mb-4" style="font-size:1.1rem;" data-aos="fade-up" data-aos-delay="120">
-                A curated selection of the best Flutter, Laravel, and ERP integration projects I’ve built.
+            <div class="portfolio-intro-wrapper" data-aos="fade-up" data-aos-delay="120">
+                <p class="portfolio-intro-text">
+                    A curated selection of the best Flutter, PHP, and ERP integration projects I’ve built.
+                </p>
             </div>
+            
+            <br>
 
-            <!-- Portfolio Filters -->
+
+            <!-- Filters -->
             <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
                 <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">All</li>
                     <li data-filter=".filter-flutter">Flutter</li>
-                    <li data-filter=".filter-laravel">Laravel</li>
+                    <li data-filter=".filter-PHP">PHP</li>
                 </ul>
 
-                <!-- Portfolio Grid -->
-                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                <!-- Portfolio Cards Grid -->
+                <div class="row gy-4 isotope-container"
+                     data-aos="fade-up"
+                     data-aos-delay="200"
+                     style="justify-content: flex-start !important;">
+
 
                     @forelse ($portfolios as $p)
 
@@ -41,7 +50,7 @@
                                 ? Storage::url($photo->image_path)
                                 : asset('assets/img/default.jpg');
 
-                            // Convert tech stack safely
+                            // Tech stack safer
                             $techs = $p->tech_stack;
                             if (is_string($techs)) {
                                 $decoded = json_decode($techs, true);
@@ -53,35 +62,47 @@
                             }
 
                             $isFlutter = in_array('Flutter', $techs);
-                            $isLaravel = in_array('Laravel', $techs);
+                            $isPHP = in_array('PHP', $techs);
                         @endphp
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item
                             {{ $isFlutter ? 'filter-flutter' : '' }}
-                            {{ $isLaravel ? 'filter-laravel' : '' }}">
+                            {{ $isPHP ? 'filter-PHP' : '' }}">
 
-                            <a href="{{ route('portfolio.show', $p->slug) }}">
-                                <img src="{{ $image }}" class="img-fluid" alt="{{ $p->portfolio_name }}">
-                            </a>
+                            <!-- CARD STYLE aligned with Resume Typography -->
+                            <div class="card shadow-sm h-100 border-0 rounded-3 p-0"
+                                 style="transition: 0.3s;">
 
-                            <div class="portfolio-info">
-                                <h4>{{ $p->portfolio_name }}</h4>
-                                <p>{{ Str::limit($p->description, 100) }}</p>
-
-                                <!-- Preview -->
-                                <a href="{{ $image }}"
-                                   title="{{ $p->portfolio_name }}"
-                                   data-gallery="portfolio-gallery"
-                                   class="glightbox preview-link">
-                                    <i class="bi bi-zoom-in"></i>
+                                <!-- Photo -->
+                                <a href="{{ route('portfolio.show', $p->slug) }}">
+                                    <img src="{{ $image }}"
+                                        class="img-fluid rounded-top"
+                                        style="height: 200px; object-fit: cover;"
+                                        alt="{{ $p->portfolio_name }}">
                                 </a>
 
-                                <!-- Details -->
-                                <a href="{{ route('portfolio.show', $p->slug) }}"
-                                   title="Details"
-                                   class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
+                                <!-- Text Area -->
+                                <div class="p-3">
+
+                                    <h4 class="fw-bold mb-2">
+                                        {{ $p->portfolio_name }}
+                                    </h4>
+
+                                    <p class="text-muted small mb-2">
+                                        {{ Str::limit($p->description, 120) }}
+                                    </p>
+
+                                    <!-- Tech Stack -->
+                                    <div class="mt-2">
+                                        @foreach ($techs as $tech)
+                                            <span class="badge bg-dark me-1">
+                                                {{ $tech }}
+                                            </span>
+                                        @endforeach
+                                    </div>
+
+                                </div>
+
                             </div>
 
                         </div>

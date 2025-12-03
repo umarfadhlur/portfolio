@@ -2874,6 +2874,61 @@ section,
     color: #000;
 }
 
+/* Title style (same as Resume h2) */
+.portfolio-detail-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.3rem;
+    color: #ffffff; /* Make it readable on dark background */
+}
+
+/* Description immediately under title */
+.portfolio-detail-description {
+    font-size: 1.1rem;
+    color: #cfcfcf; /* LIGHT color so it’s visible */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Resume typography reused */
+.resume-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.resume-content ul li {
+    color: #dcdcdc;
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.resume-item {
+    margin-bottom: 35px;
+}
+
+/* Wrapper khusus untuk benar-benar center */
+.portfolio-intro-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* CENTER SECARA HORIZONTAL */
+    align-items: center;
+    text-align: center;      /* Pastikan teks juga center */
+}
+
+/* Style paragraf */
+.portfolio-intro-text {
+    font-size: 1.1rem;
+    color: #cfcfcf;
+    max-width: 750px;        /* Biar tidak terlalu lebar */
+    margin: 0 auto;          /* Tambahan safeguard */
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
 
 /*--------------------------------------------------------------
 # Starter Section Section
