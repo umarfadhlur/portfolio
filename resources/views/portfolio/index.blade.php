@@ -8,6 +8,40 @@
     <main class="main">
 
         <style>
+            /* -- NAVBAR FIX ------------------------------------------------------
+               Memaksa header/navbar berada di atas (fixed) dan memberi ruang
+               pada <main> agar konten tidak tertutup. Sesuaikan --header-h.
+            -------------------------------------------------------------------*/
+            :root {
+                --header-h: 72px;
+            }
+
+            header,
+            nav,
+            .navbar,
+            .site-header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9999 !important;
+                background: rgba(10, 15, 18, 0.92) !important;
+                /* semi-transparan agar tetap gelap */
+                backdrop-filter: blur(4px);
+            }
+
+            /* beri ruang pada main agar tidak tertutup navbar */
+            main.main {
+                padding-top: var(--header-h);
+            }
+
+            /* kecilkan margin top section-title jika ada */
+            .container.section-title {
+                margin-top: 6px !important;
+                padding-top: 18px;
+            }
+
+            /* stylistic / existing card rules (tetap ada) */
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
 
             /* Layout container */
@@ -16,7 +50,6 @@
                 flex-wrap: wrap !important;
                 justify-content: flex-start !important;
                 align-items: stretch;
-                /* pastikan item stretch ke tinggi sama */
                 gap: 1.5rem;
             }
 
@@ -69,12 +102,11 @@
                 color: #cfcfcf !important;
                 margin-bottom: .75rem;
                 flex: 1 1 auto;
-                /* excerpt fills the middle area */
             }
 
             /* Footer / badges row sticks at bottom */
             .card.portfolio-card .card-footer,
-            card .portfolio-badges {
+            .card .portfolio-badges {
                 margin-top: .75rem;
                 padding: .75rem 1rem;
                 background: transparent;
@@ -287,3 +319,4 @@
             }
         });
     </script>
+@endsection
