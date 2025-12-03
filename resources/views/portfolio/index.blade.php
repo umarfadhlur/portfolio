@@ -8,47 +8,111 @@
     <main class="main">
 
         <style>
-            /* Make sure isotope aligns left */
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+            /* Layout container */
             .isotope-container {
                 display: flex !important;
                 flex-wrap: wrap !important;
                 justify-content: flex-start !important;
+                align-items: stretch;
+                /* pastikan item stretch ke tinggi sama */
+                gap: 1.5rem;
             }
 
-            /* Dark cards aesthetic */
-            .portfolio-card {
+            /* Make each isotope item use full height and participate in flex layout */
+            .portfolio-item {
+                display: flex;
+                align-items: stretch;
+            }
+
+            /* Card - full height and column layout so footer stays bottom */
+            .card.portfolio-card {
                 background: #1d1f21 !important;
                 color: #fff !important;
                 border: 0 !important;
                 transition: 0.25s;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                /* biar flex memperlakukan semua kartu sama tinggi */
+                min-height: 320px;
+                overflow: hidden;
             }
 
+            /* Media / image area */
+            .card.portfolio-card .card-img-top,
+            .card.portfolio-card .portfolio-image {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                background: #2b2e30;
+                display: block;
+            }
+
+            /* Body grows to fill available space */
+            .card.portfolio-card .card-body {
+                flex: 1 1 auto;
+                padding: 1.1rem;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Title + excerpt layout */
+            .card.portfolio-card h4 {
+                color: #fff !important;
+                margin-bottom: .6rem;
+                line-height: 1.15;
+            }
+
+            .card.portfolio-card p {
+                color: #cfcfcf !important;
+                margin-bottom: .75rem;
+                flex: 1 1 auto;
+                /* excerpt fills the middle area */
+            }
+
+            /* Footer / badges row sticks at bottom */
+            .card.portfolio-card .card-footer,
+            card .portfolio-badges {
+                margin-top: .75rem;
+                padding: .75rem 1rem;
+                background: transparent;
+            }
+
+            /* Hover */
             .portfolio-card:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+                box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
             }
 
-            .portfolio-card h4 {
-                color: #fff !important;
-            }
-
-            .portfolio-card p {
-                color: #cfcfcf !important;
-            }
-
-            .portfolio-badge {
-                background: #2c2f33 !important;
-                color: #eee !important;
-                font-weight: 500;
-            }
-
-            /* Intro text center style */
+            /* Filters / intro */
             .portfolio-intro-text {
                 font-size: 1.15rem;
                 max-width: 700px;
                 margin: 0 auto;
-                color: #ddd;
+                color: #e6eef8;
                 text-align: center;
+            }
+
+            /* Section title: different font + brighter color */
+            .container.section-title h2 {
+                font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+                font-weight: 700;
+                color: #ffffff;
+                letter-spacing: 0.2px;
+            }
+
+            .container.section-title p {
+                color: #cfefff;
+            }
+
+            /* Breadcrumbs (if present in this view) */
+            .breadcrumb,
+            .breadcrumb a,
+            .breadcrumbs,
+            nav.breadcrumb {
+                color: #e6f7ff !important;
             }
         </style>
 
@@ -189,4 +253,37 @@
         </section>
 
     </main>
-@endsection
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // jika isotope tersedia: minta re-layout setelah semua gambar load
+            if (window.Isotope) {
+                const grid = document.querySelector('.isotope-container');
+                if (grid) {
+                    const iso = window.Isotope.data ? window.Isotope.data(grid) : null;
+                    // fallback: trigger a layout after images loaded
+                    const imgs = grid.querySelectorAll('img');
+                    let loaded = 0;
+                    if (imgs.length === 0) {
+                        iso && iso.layout();
+                    } else {
+                        imgs.forEach(img => {
+                            if (img.complete) {
+                                loaded++;
+                            } else {
+                                img.addEventListener('load', () => {
+                                    loaded++;
+                                    if (loaded === imgs.length) iso && iso.layout();
+                                });
+                                img.addEventListener('error', () => {
+                                    loaded++;
+                                    if (loaded === imgs.length) iso && iso.layout();
+                                });
+                            }
+                        });
+                        if (loaded === imgs.length) iso && iso.layout();
+                    }
+                }
+            }
+        });
+    </script>
