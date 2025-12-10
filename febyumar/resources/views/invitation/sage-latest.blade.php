@@ -76,9 +76,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 16px;
+            /* penting buat mobile */
             opacity: 0;
             visibility: hidden;
             transition: opacity .4s;
+            overflow-y: auto;
+            /* kalau masih kepanjangan bisa discroll */
         }
 
         #openingPopup.active {
@@ -87,26 +91,32 @@
         }
 
         .popup-box {
-            width: 88%;
-            max-width: 420px;
-            border-radius: 16px;
+            width: min(92vw, 420px);
+            max-height: calc(100vh - 32px);
+            /* selalu muat di tinggi layar */
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
+            margin: auto;
         }
 
         .popup-box img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* biar mengecil, bukan kepotong */
             display: block;
         }
 
         .popup-content {
             position: absolute;
-            bottom: 60px;
-            width: 100%;
+            left: 0;
+            right: 0;
+            bottom: 10%;
             text-align: center;
-            color: white;
-            background: linear-gradient(to top, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.05));
-            padding: 14px;
+            color: #fff;
+            padding: 12px 16px;
+            background: linear-gradient(to top, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
         }
 
         .popup-btn {
@@ -120,6 +130,30 @@
             max-width: 260px;
             cursor: pointer;
             margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 480px) {
+            .popup-box {
+                border-radius: 18px;
+            }
+
+            .popup-content {
+                bottom: 7%;
+                padding: 10px 12px;
+            }
+
+            .popup-btn {
+                width: 80%;
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-height: 640px) {
+            .popup-content {
+                bottom: 5%;
+            }
         }
 
         /* ================= MUSIC BUTTON ================= */
@@ -190,12 +224,10 @@
 
         .bride-content {
             flex-direction: column;
-            padding-top: 18%;
+            padding-top: 25%;
         }
 
-        .groom-content {
-            padding-top: 20%;
-        }
+        .groom-content {}
 
         [data-aos][data-aos].aos-animate {
             opacity: 1 !important;
@@ -215,7 +247,7 @@
     <!-- ================= POPUP ================= -->
     <div id="openingPopup">
         <div class="popup-box">
-            <img src="{{ asset('images/flower/popup.webp') }}">
+            <img src="{{ asset('images/flower/popup.webp') }}" alt="Opening Card">
             <div class="popup-content">
                 <p>Kepada Yth.</p>
                 <p class="popup-name">{{ $guestName ?? 'Tamu Undangan' }}</p>
@@ -228,7 +260,6 @@
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
     </audio>
-
     <div id="musicBtn">🔊</div>
 
     <div class="page-wrapper">
@@ -238,7 +269,7 @@
         <!-- VERSE -->
         <section class="verse-section">
             <div class="verse-bg">
-                <img src="{{ asset('images/img/verse-1-bg.webp') }}">
+                <img src="{{ asset('images/img/verse-1-bg.webp') }}" alt="">
             </div>
             <div class="verse-content">
                 <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
@@ -251,7 +282,7 @@
         <!-- BRIDE -->
         <section class="bride-section">
             <div class="bride-bg">
-                <img src="{{ asset('images/img/bride-bg.webp') }}">
+                <img src="{{ asset('images/img/bride-bg.webp') }}" alt="">
             </div>
 
             <div class="bride-content">
@@ -263,12 +294,10 @@
             </div>
         </section>
 
-        <div class="section-spacer"></div>
-
         <!-- GROOM -->
         <section class="groom-section">
             <div class="groom-bg">
-                <img src="{{ asset('images/img/groom-bg.webp') }}">
+                <img src="{{ asset('images/img/groom-bg.webp') }}" alt="">
             </div>
 
             <div class="groom-content">
@@ -286,14 +315,12 @@
         AOS.init({
             once: false,
             duration: 900,
-            easing: "ease-out"
+            easing: "ease-out",
         });
     </script>
 
     <script>
-        /* ============================================================
-           PRELOADER (menghitung semua gambar)
-        ============================================================ */
+        /* ============== PRELOADER ============== */
         document.body.style.overflow = "hidden";
 
         const preloader = document.getElementById("preloader");
@@ -306,12 +333,11 @@
 
         let loaded = 0;
         const imgs = document.images;
-        const total = imgs.length;
+        const total = imgs.length || 1;
 
         function updateLoader() {
             loaded++;
-            let percent = Math.floor((loaded / total) * 100);
-
+            const percent = Math.min(100, Math.floor((loaded / total) * 100));
             preloaderBar.style.width = percent + "%";
             preloaderPercent.textContent = percent + "%";
 
@@ -324,12 +350,14 @@
             }
         }
 
-        if (total === 0) updateLoader();
-        else [...imgs].forEach(i => i.complete ? updateLoader() : i.onload = updateLoader);
+        [...imgs].forEach(img => {
+            if (img.complete) updateLoader();
+            else img.addEventListener("load", updateLoader, {
+                once: true
+            });
+        });
 
-        /* ============================================================
-           POPUP BUKA UNDANGAN
-        ============================================================ */
+        /* ============== POPUP OPEN ============== */
         openBtn.addEventListener("click", () => {
             popup.classList.remove("active");
             document.body.style.overflow = "auto";
@@ -338,9 +366,7 @@
             bgmusic.play().catch(() => {});
         });
 
-        /* ============================================================
-           MUSIK AUTO PAUSE / RESUME
-        ============================================================ */
+        /* ============== MUSIC CONTROL ============== */
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
                 bgmusic.play();
@@ -359,7 +385,7 @@
                 }
             } else {
                 if (musicBtn.dataset.wasPlaying === "true") {
-                    bgmusic.play();
+                    bgmusic.play().catch(() => {});
                     musicBtn.textContent = "🔊";
                     musicBtn.dataset.wasPlaying = "false";
                 }
