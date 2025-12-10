@@ -239,52 +239,59 @@
             width: 100%;
         }
 
+        /* konten overlay seperti DateSection */
         .direction-content {
             position: absolute;
             inset: 0;
-            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 16%;
             pointer-events: none;
+            /* biar gambar tidak memblok tombol */
+            padding-top: 22%;
+            /* naik turunnya title */
         }
 
+        /* title besar */
         .direction-title {
-            width: 72%;
-            max-width: 340px;
-            margin-bottom: 14px;
+            height: 30%;
+            margin-bottom: 20px;
             opacity: 0;
         }
 
+        /* gambar UMN kecil sesuai permintaan (40%) */
         .umn-bdg-img,
         .umn-ads-img {
-            width: 40%;
-            max-width: 180px;
-            opacity: 0;
+            width: 70%;
+            /* max-width: 180px; */
             margin-top: 12px;
+            border-radius: 12px;
+            opacity: 0;
         }
 
+        /* button Open Map */
         .map-btn {
-            margin-top: 22px;
+            margin-top: 28px;
             background: #2F2E2C;
             color: #fff;
-            border: none;
-            border-radius: 30px;
             padding: 12px 22px;
+            border-radius: 30px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             font-size: .95rem;
             font-weight: 600;
-            cursor: pointer;
-            pointer-events: auto;
+            text-decoration: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+            pointer-events: auto;
+            /* penting */
         }
 
         .map-btn img {
             width: 20px;
+            height: 20px;
         }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -336,9 +343,9 @@
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
-                    data-aos-duration="500" data-aos-delay="200">
+                    data-aos-duration="1500" data-aos-delay="200">
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
-                    data-aos-duration="1000" data-aos-delay="900">
+                    data-aos-duration="2000" data-aos-delay="900">
             </div>
         </section>
 
@@ -384,7 +391,8 @@
         <!-- DIRECTION -->
         <section class="direction-section">
             <img src="{{ asset('images/img/venue-bg.webp') }}">
-            <div class="direction-content" data-aos="fade-up" data-aos-duration="1600">
+
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
 
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
 
@@ -392,15 +400,14 @@
 
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-ads-img">
 
-                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank">
-                    <button class="map-btn">
-                        <img src="{{ asset('images/img/location.webp') }}">
-                        Open Map Location
-                    </button>
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn">
+                    <img src="{{ asset('images/img/location.webp') }}">
+                    Open Map Location
                 </a>
 
             </div>
         </section>
+
 
     </div>
 
