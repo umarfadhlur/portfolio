@@ -207,11 +207,18 @@
 
         /* ================= DATE SECTION ================= */
 
+        /* SECTION */
         .date-section {
-            width: 100%;
             position: relative;
+            width: 100%;
         }
 
+        .date-section img {
+            width: 100%;
+            display: block;
+        }
+
+        /* KONTEN TENGAH */
         .date-content {
             position: absolute;
             inset: 0;
@@ -219,29 +226,28 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 20%;
-            /* adjust kalau perlu */
         }
 
+        /* date.webp */
         .date-img {
             width: 70%;
             max-width: 300px;
+            margin-top: 18%;
+            /* naik turun posisi tanggal */
+            margin-bottom: 20px;
+            /* SPASI ANTARA DATE DAN COUNTDOWN */
             opacity: 0;
         }
 
-        /* COUNTDOWN CARD */
+        /* CARD COUNTDOWN */
         .countdown-card {
-            margin-top: 18px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.9);
             padding: 14px 18px;
-            border-radius: 14px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-radius: 16px;
             width: 85%;
-            max-width: 300px;
+            max-width: 320px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            pointer-events: auto;
         }
 
         .countdown-header {
@@ -367,9 +373,12 @@
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
 
-            <div class="date-content" data-aos="fade-up" data-aos-duration="1500">
+            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
+
+                <!-- Gambar tanggal -->
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
+                <!-- Countdown -->
                 <div class="countdown-card">
                     <div class="countdown-header">Event</div>
                     <div class="countdown-icon">⊙</div>
@@ -406,6 +415,7 @@
                         <span>seconds</span>
                     </div>
                 </div>
+
             </div>
         </section>
 
