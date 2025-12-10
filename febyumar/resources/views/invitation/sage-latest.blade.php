@@ -11,39 +11,68 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
     <style>
+        /* ================= GLOBAL FIX ANTI-RUSAK ================= */
+        html,
         body {
             margin: 0;
-            overflow-x: hidden;
+            padding: 0;
+            width: 100vw;
+            max-width: 100vw;
+            overflow-x: hidden !important;
+            overscroll-behavior-x: none;
             background: #949a8f;
             font-family: "Poppins", sans-serif;
         }
 
+        * {
+            max-width: 100% !important;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ================= PAGE WRAPPER ================= */
         .page-wrapper {
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
+            overflow-x: hidden !important;
+            position: relative;
+        }
+
+        .section-spacer {
+            height: 40px;
+            width: 100%;
         }
 
         /* ================= PRELOADER ================= */
         #preloader {
             position: fixed;
             inset: 0;
+            width: 100vw;
+            height: 100vh;
             background: #7d8270;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 999999;
+            opacity: 1;
+            visibility: visible;
             transition: opacity .4s ease, visibility .4s ease;
+            overflow: hidden;
         }
 
         .preloader-icon {
             width: 120px;
-            opacity: .95;
+            height: auto;
         }
 
         .preloader-bar {
-            width: 70%;
+            width: 80vw;
             max-width: 300px;
             height: 10px;
             background: #ddd;
@@ -70,19 +99,20 @@
         #openingPopup {
             position: fixed;
             inset: 0;
+            width: 100vw;
+            height: 100vh;
             background: rgba(0, 0, 0, .55);
             backdrop-filter: blur(4px);
             z-index: 99999;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
-            /* penting buat mobile */
+            padding: 0;
+            margin: 0;
             opacity: 0;
             visibility: hidden;
-            transition: opacity .4s;
-            overflow-y: auto;
-            /* kalau masih kepanjangan bisa discroll */
+            transition: opacity .4s ease;
+            overflow: hidden;
         }
 
         #openingPopup.active {
@@ -91,20 +121,18 @@
         }
 
         .popup-box {
-            width: min(92vw, 420px);
-            max-height: calc(100vh - 32px);
-            /* selalu muat di tinggi layar */
-            border-radius: 20px;
+            width: 100vw;
+            max-width: 420px;
+            max-height: 100vh;
+            border-radius: 0;
             overflow: hidden;
             position: relative;
-            margin: auto;
+            margin: 0 auto;
         }
 
         .popup-box img {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* biar mengecil, bukan kepotong */
+            height: auto;
             display: block;
         }
 
@@ -112,11 +140,11 @@
             position: absolute;
             left: 0;
             right: 0;
-            bottom: 10%;
+            bottom: 12%;
             text-align: center;
             color: #fff;
-            padding: 12px 16px;
-            background: linear-gradient(to top, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0));
+            padding: 14px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
         }
 
         .popup-btn {
@@ -126,34 +154,10 @@
             border-radius: 999px;
             border: none;
             font-weight: 700;
-            width: 70%;
-            max-width: 260px;
+            width: 75%;
+            max-width: 280px;
             cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-        }
-
-        @media (max-width: 480px) {
-            .popup-box {
-                border-radius: 18px;
-            }
-
-            .popup-content {
-                bottom: 7%;
-                padding: 10px 12px;
-            }
-
-            .popup-btn {
-                width: 80%;
-                font-size: 0.9rem;
-                padding: 8px 12px;
-            }
-        }
-
-        @media (max-height: 640px) {
-            .popup-content {
-                bottom: 5%;
-            }
         }
 
         /* ================= MUSIC BUTTON ================= */
@@ -171,24 +175,13 @@
             display: none;
         }
 
-        /* ================= VERSE / BRIDE / GROOM ================= */
-        .section-spacer {
-            height: 40px;
-        }
-
+        /* ================= SECTIONS ================= */
         .verse-section,
         .bride-section,
         .groom-section {
             position: relative;
             width: 100%;
-        }
-
-        .verse-bg img,
-        .bride-bg img,
-        .groom-bg img {
-            width: 100%;
-            display: block;
-            height: auto;
+            overflow: hidden;
         }
 
         .verse-content,
@@ -202,12 +195,6 @@
             pointer-events: none;
         }
 
-        .verse-img {
-            width: 70%;
-            max-width: 250px;
-            opacity: 0;
-        }
-
         .bismillah-img {
             width: 70%;
             max-width: 300px;
@@ -215,6 +202,7 @@
             opacity: 0;
         }
 
+        .verse-img,
         .bride-img,
         .groom-img {
             width: 90%;
@@ -226,8 +214,6 @@
             flex-direction: column;
             padding-top: 25%;
         }
-
-        .groom-content {}
 
         [data-aos][data-aos].aos-animate {
             opacity: 1 !important;
@@ -262,6 +248,8 @@
     </audio>
     <div id="musicBtn">🔊</div>
 
+
+    <!-- ================= PAGE CONTENT ================= -->
     <div class="page-wrapper">
 
         <div class="section-spacer"></div>
@@ -269,7 +257,7 @@
         <!-- VERSE -->
         <section class="verse-section">
             <div class="verse-bg">
-                <img src="{{ asset('images/img/verse-1-bg.webp') }}" alt="">
+                <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             </div>
             <div class="verse-content">
                 <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
@@ -282,7 +270,7 @@
         <!-- BRIDE -->
         <section class="bride-section">
             <div class="bride-bg">
-                <img src="{{ asset('images/img/bride-bg.webp') }}" alt="">
+                <img src="{{ asset('images/img/bride-bg.webp') }}">
             </div>
 
             <div class="bride-content">
@@ -297,7 +285,7 @@
         <!-- GROOM -->
         <section class="groom-section">
             <div class="groom-bg">
-                <img src="{{ asset('images/img/groom-bg.webp') }}" alt="">
+                <img src="{{ asset('images/img/groom-bg.webp') }}">
             </div>
 
             <div class="groom-content">
@@ -307,6 +295,7 @@
         </section>
 
         <div class="section-spacer"></div>
+
     </div>
 
     <!-- ================= AOS ================= -->
@@ -319,6 +308,7 @@
         });
     </script>
 
+    <!-- ================= LOGIC ================= -->
     <script>
         /* ============== PRELOADER ============== */
         document.body.style.overflow = "hidden";
