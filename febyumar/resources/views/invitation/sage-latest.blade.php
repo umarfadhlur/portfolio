@@ -207,36 +207,50 @@
 
         /* ================= DATE SECTION ================= */
 
+        /* =======================================================
+   DATE SECTION — FINAL FIX
+   Matching layout bride/groom/verse, overlay stabil
+======================================================= */
+
         .date-section {
             position: relative;
             width: 100%;
         }
 
-        .date-section>img {
+        .date-bg {
             width: 100%;
             display: block;
         }
 
+        /* overlay */
         .date-content {
-            position: relative;
-            z-index: 5;
+            position: absolute;
+            inset: 0;
+            /* top:0; right:0; bottom:0; left:0 */
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: -40%;
-            /* tweak sesuai tinggi bg kamu */
+            justify-content: flex-start;
+
+            z-index: 5;
+            /* pastikan di atas bg */
             pointer-events: none;
+            padding-top: 18%;
+            /* naik–turun date.webp */
         }
 
+        /* date.webp */
         .date-img {
             width: 70%;
             max-width: 300px;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 10;
             opacity: 0;
+            /* biar animasi AOS rapi */
+            z-index: 10;
+            position: relative;
         }
 
+        /* Countdown */
         .countdown-card {
             background: rgba(255, 255, 255, 0.9);
             padding: 14px 18px;
@@ -244,15 +258,16 @@
             width: 85%;
             max-width: 320px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
             pointer-events: auto;
-            position: relative;
+            /* supaya bisa klik */
             z-index: 10;
         }
-
 
         .countdown-header {
             font-size: .9rem;
             font-weight: 600;
+            text-align: center;
             color: #333;
         }
 
@@ -260,6 +275,7 @@
             font-size: 1.2rem;
             opacity: .6;
             margin-top: -4px;
+            text-align: center;
         }
 
         .countdown-display {
@@ -295,7 +311,6 @@
             font-size: .75rem;
             color: #555;
         }
-
 
         [data-aos][data-aos].aos-animate {
             opacity: 1 !important;
@@ -333,7 +348,7 @@
     <!-- =========== CONTENT =========== -->
     <div class="page-wrapper">
 
-        <div class="section-spacer"></div>
+        {{-- <div class="section-spacer"></div> --}}
 
         <!-- VERSE -->
         <section class="verse-section">
@@ -344,7 +359,7 @@
             </div>
         </section>
 
-        <div class="section-spacer"></div>
+        {{-- <div class="section-spacer"></div> --}}
 
         <!-- BRIDE -->
         <section class="bride-section">
@@ -367,11 +382,11 @@
             </div>
         </section>
 
-        <div class="section-spacer"></div>
+        {{-- <div class="section-spacer"></div> --}}
 
         <!-- DATE SECTION -->
         <section class="date-section">
-            <img src="{{ asset('images/img/date-bg.webp') }}">
+            <img src="{{ asset('images/img/date-bg.webp') }}" class="date-bg">
 
             <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
 
@@ -419,7 +434,7 @@
             </div>
         </section>
 
-        <div class="section-spacer"></div>
+        {{-- <div class="section-spacer"></div> --}}
 
     </div>
 
