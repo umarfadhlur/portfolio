@@ -389,7 +389,7 @@
         </section>
 
         <!-- DIRECTION -->
-        <section class="direction-section">
+        {{-- <section class="direction-section">
             <img src="{{ asset('images/img/venue-bg.webp') }}">
 
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
@@ -406,7 +406,7 @@
                 </a>
 
             </div>
-        </section>
+        </section> --}}
 
 
     </div>

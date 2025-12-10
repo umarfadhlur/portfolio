@@ -434,7 +434,7 @@
         </section>
 
         <!-- ===== DIRECTION SECTION ===== -->
-        <section class="direction-section">
+        <!-- <section class="direction-section">
             <div class="direction-bg"></div>
 
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
@@ -448,8 +448,7 @@
                 </a>
 
             </div>
-        </section>
-
+        </section> -->
 
     </div>
 
@@ -500,7 +499,7 @@
             popup.classList.remove("active");
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
-            bgmusic.play().catch(() => {});
+            bgmusic.play().catch(() => { });
         });
 
         musicBtn.addEventListener("click", () => {
