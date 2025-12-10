@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
     <style>
-        /* ===================================
-           GLOBAL — MOBILE FIRST FIX
-        ==================================== */
+        /* ===================== GLOBAL ===================== */
         html,
         body {
             margin: 0;
@@ -41,9 +39,7 @@
             height: 40px;
         }
 
-        /* ===================================
-           PRELOADER
-        ==================================== */
+        /* ===================== PRELOADER ===================== */
         #preloader {
             position: fixed;
             inset: 0;
@@ -53,7 +49,7 @@
             align-items: center;
             justify-content: center;
             z-index: 999999;
-            transition: 2.4s;
+            transition: .8s ease;
         }
 
         .preloader-icon {
@@ -84,9 +80,7 @@
             font-weight: 600;
         }
 
-        /* ===================================
-           POPUP
-        ==================================== */
+        /* ===================== POPUP ===================== */
         #openingPopup {
             position: fixed;
             inset: 0;
@@ -118,7 +112,6 @@
         .popup-content {
             position: absolute;
             bottom: 10%;
-            left: 0;
             width: 100%;
             text-align: center;
             color: #fff;
@@ -133,13 +126,11 @@
             font-weight: 700;
             width: 75%;
             max-width: 260px;
-            cursor: pointer;
             margin-top: 10px;
+            cursor: pointer;
         }
 
-        /* ===================================
-           MUSIC BUTTON
-        ==================================== */
+        /* ===================== MUSIC BUTTON ===================== */
         #musicBtn {
             position: fixed;
             right: 20px;
@@ -154,24 +145,21 @@
             display: none;
         }
 
-        /* ===================================
-           SECTIONS
-        ==================================== */
+        /* ===================== GENERAL SECTIONS ===================== */
         .verse-section,
         .bride-section,
-        .groom-section {
+        .groom-section,
+        .date-section {
             width: 100%;
             position: relative;
         }
 
         .verse-content,
         .bride-content,
-        .groom-content {
+        .groom-content,
+        .date-content {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-
+            inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -201,92 +189,59 @@
         }
 
         .bride-content {
-            flex-direction: column;
             padding-top: 25%;
         }
 
-        /* ================= DATE SECTION ================= */
-
-        /* =======================================================
-   DATE SECTION — FINAL FIX
-   Matching layout bride/groom/verse, overlay stabil
-======================================================= */
+        /* ===================== DATE SECTION ===================== */
 
         .date-section {
-            position: relative;
-            width: 100%;
+            min-height: 100vh;
+            /* FIX UTAMA */
         }
 
-        .date-bg {
-            width: 100%;
-            display: block;
-        }
-
-        /* overlay */
         .date-content {
-            position: absolute;
-            inset: 0;
-            /* top:0; right:0; bottom:0; left:0 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-
+            padding-top: 28%;
+            /* supaya date.webp nongol */
             z-index: 5;
-            /* pastikan di atas bg */
-            pointer-events: none;
-            padding-top: 18%;
-            /* naik–turun date.webp */
         }
 
-        /* date.webp */
         .date-img {
             width: 70%;
             max-width: 300px;
             margin-bottom: 20px;
-            opacity: 0;
-            /* biar animasi AOS rapi */
+            opacity: 1 !important;
             z-index: 10;
-            position: relative;
         }
 
-        /* Countdown */
         .countdown-card {
             background: rgba(255, 255, 255, 0.9);
-            padding: 14px 18px;
-            border-radius: 16px;
+            padding: 16px 20px;
+            border-radius: 20px;
             width: 85%;
-            max-width: 320px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-
+            max-width: 340px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
             pointer-events: auto;
-            /* supaya bisa klik */
-            z-index: 10;
+            text-align: center;
         }
 
         .countdown-header {
-            font-size: .9rem;
             font-weight: 600;
-            text-align: center;
-            color: #333;
+            margin-bottom: 4px;
         }
 
         .countdown-icon {
-            font-size: 1.2rem;
             opacity: .6;
-            margin-top: -4px;
-            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
 
         .countdown-display {
             display: flex;
             gap: 6px;
-            align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin-top: 4px;
             font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            font-weight: 800;
         }
 
         .digit-group {
@@ -299,20 +254,18 @@
         }
 
         .separator {
-            margin: 0 4px;
-            color: #555;
+            color: #444;
         }
 
         .countdown-labels {
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            margin-top: 6px;
             font-size: .75rem;
-            color: #555;
+            margin-top: 8px;
         }
 
-        [data-aos][data-aos].aos-animate {
+        /* ===================== AOS FIX ===================== */
+        [data-aos].aos-animate {
             opacity: 1 !important;
         }
     </style>
@@ -320,14 +273,14 @@
 
 <body>
 
-    <!-- =========== PRELOADER =========== -->
+    <!-- ===================== PRELOADER ===================== -->
     <div id="preloader">
         <img src="{{ asset('images/flower/popup.webp') }}" class="preloader-icon">
         <div class="preloader-bar"><span id="preloaderBar"></span></div>
         <div id="preloaderPercent" class="preloader-percent">0%</div>
     </div>
 
-    <!-- =========== POPUP =========== -->
+    <!-- ===================== POPUP ===================== -->
     <div id="openingPopup">
         <div class="popup-box">
             <img src="{{ asset('images/flower/popup.webp') }}">
@@ -339,18 +292,18 @@
         </div>
     </div>
 
-    <!-- =========== MUSIC BTN =========== -->
+    <!-- ===================== MUSIC ===================== -->
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
     </audio>
     <div id="musicBtn">🔊</div>
 
-    <!-- =========== CONTENT =========== -->
+    <!-- ===================== CONTENT ===================== -->
     <div class="page-wrapper">
 
         {{-- <div class="section-spacer"></div> --}}
 
-        <!-- VERSE -->
+        <!-- ===== VERSE ===== -->
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
@@ -361,7 +314,7 @@
 
         {{-- <div class="section-spacer"></div> --}}
 
-        <!-- BRIDE -->
+        <!-- ===== BRIDE ===== -->
         <section class="bride-section">
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
@@ -373,7 +326,7 @@
             </div>
         </section>
 
-        <!-- GROOM -->
+        <!-- ===== GROOM ===== -->
         <section class="groom-section">
             <img src="{{ asset('images/img/groom-bg.webp') }}">
             <div class="groom-content">
@@ -384,16 +337,13 @@
 
         {{-- <div class="section-spacer"></div> --}}
 
-        <!-- DATE SECTION -->
+        <!-- ===== DATE SECTION ===== -->
         <section class="date-section">
-            <img src="{{ asset('images/img/date-bg.webp') }}" class="date-bg">
+            <img src="{{ asset('images/img/date-bg.webp') }}">
 
             <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
-
-                <!-- Gambar tanggal -->
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
-                <!-- Countdown -->
                 <div class="countdown-card">
                     <div class="countdown-header">Event</div>
                     <div class="countdown-icon">⊙</div>
@@ -430,7 +380,6 @@
                         <span>seconds</span>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -438,13 +387,13 @@
 
     </div>
 
-    <!-- AOS -->
+    <!-- ===================== AOS ===================== -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
 
-    <!-- LOGIC -->
+    <!-- ===================== LOGIC ===================== -->
     <script>
         document.body.style.overflow = "hidden";
 
@@ -498,6 +447,7 @@
             }
         });
 
+        /* ============= COUNTDOWN ============= */
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
 
         function updateTimer() {
@@ -512,10 +462,13 @@
 
             dd.textContent = d[0];
             dd.nextElementSibling.textContent = d[1];
+
             hh.textContent = h[0];
             hh.nextElementSibling.textContent = h[1];
+
             mm.textContent = m[0];
             mm.nextElementSibling.textContent = m[1];
+
             ss.textContent = s[0];
             ss.nextElementSibling.textContent = s[1];
         }
