@@ -127,8 +127,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            padding-top: 20%;
             pointer-events: none;
         }
 
@@ -178,10 +176,10 @@
 
             <div class="bride-content">
 
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="200" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2200" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
@@ -199,7 +197,7 @@
 
             <div class="groom-content">
 
-                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-left"
                     data-aos-duration="2200" data-aos-delay="200" data-aos-easing="ease-out-cubic">
 
             </div>
