@@ -131,14 +131,6 @@
             pointer-events: none;
         }
 
-        .groom-bismillah-img {
-            width: 70%;
-            max-width: 290px;
-            margin-top: 120px;
-            margin-bottom: 100px;
-            opacity: 0;
-        }
-
         .groom-img {
             width: 90%;
             max-width: 400px;
@@ -155,7 +147,6 @@
 <body>
 
     <div class="page-wrapper">
-
         <!-- ====================== -->
         <!-- ===== VERSE SECTION ===== -->
         <!-- ====================== -->
@@ -170,10 +161,8 @@
             </div>
         </section>
 
-
         <!-- SPACING -->
         <div class="section-spacer"></div>
-
 
         <!-- ======================= -->
         <!-- ===== BRIDE SECTION ==== -->
@@ -206,14 +195,14 @@
 
             <div class="groom-content">
 
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="groom-bismillah-img" data-aos="fade-up"
-                    data-aos-duration="1800" data-aos-easing="ease-out-cubic" alt="Bismillah">
-
                 <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-up"
                     data-aos-delay="300" data-aos-duration="2000" data-aos-easing="ease-out-cubic" alt="Groom">
 
             </div>
         </section>
+
+        <!-- SPACING -->
+        <div class="section-spacer"></div>
 
     </div>
 
