@@ -206,62 +206,50 @@
         }
 
         .date-img {
-            width: 70%;
-            max-width: 300px;
+            width: 85%;
+            /* max-width: 300px; */
             margin-bottom: 20px;
             opacity: 1 !important;
             z-index: 10;
         }
 
+        /* COUNTDOWN MODERN MINI TILES */
         .countdown-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 16px 20px;
-            border-radius: 20px;
-            width: 85%;
+            background: transparent;
+            box-shadow: none;
+            width: 95%;
             max-width: 340px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
             pointer-events: auto;
-            text-align: center;
+            margin-top: 10px;
         }
 
-        .countdown-header {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .countdown-icon {
-            opacity: .6;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .countdown-display {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            font-family: 'Courier New', monospace;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .digit-group {
-            display: flex;
-        }
-
-        .digit {
-            min-width: 22px;
-            text-align: center;
-        }
-
-        .separator {
-            color: #444;
-        }
-
-        .countdown-labels {
+        .countdown-tiles {
             display: flex;
             justify-content: space-between;
-            font-size: .75rem;
-            margin-top: 8px;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .ctile {
+            background: rgba(255, 255, 255, .9);
+            width: 25%;
+            padding: 10px 0;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+        }
+
+        .ctile-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .ctile-label {
+            font-size: .7rem;
+            margin-top: 2px;
+            color: #666;
         }
 
         /* ===================== AOS FIX ===================== */
@@ -345,41 +333,33 @@
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
-                    <div class="countdown-header">Event</div>
-                    <div class="countdown-icon">⊙</div>
 
-                    <div class="countdown-display">
-                        <div class="digit-group">
-                            <span id="dd" class="digit">0</span>
-                            <span class="digit">0</span>
-                        </div>
-                        <span class="separator">:</span>
+                    <div class="countdown-tiles">
 
-                        <div class="digit-group">
-                            <span id="hh" class="digit">0</span>
-                            <span class="digit">0</span>
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_days">00</div>
+                            <div class="ctile-label">Days</div>
                         </div>
-                        <span class="separator">:</span>
 
-                        <div class="digit-group">
-                            <span id="mm" class="digit">0</span>
-                            <span class="digit">0</span>
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_hours">00</div>
+                            <div class="ctile-label">Hours</div>
                         </div>
-                        <span class="separator">:</span>
 
-                        <div class="digit-group">
-                            <span id="ss" class="digit">0</span>
-                            <span class="digit">0</span>
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_minutes">00</div>
+                            <div class="ctile-label">Minutes</div>
                         </div>
+
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_seconds">00</div>
+                            <div class="ctile-label">Seconds</div>
+                        </div>
+
                     </div>
 
-                    <div class="countdown-labels">
-                        <span>days</span>
-                        <span>hours</span>
-                        <span>minutes</span>
-                        <span>seconds</span>
-                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -455,22 +435,15 @@
             const diff = target - now;
             if (diff < 0) return;
 
-            const d = String(Math.floor(diff / 86400000)).padStart(2, '0');
-            const h = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-            const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-            const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
 
-            dd.textContent = d[0];
-            dd.nextElementSibling.textContent = d[1];
-
-            hh.textContent = h[0];
-            hh.nextElementSibling.textContent = h[1];
-
-            mm.textContent = m[0];
-            mm.nextElementSibling.textContent = m[1];
-
-            ss.textContent = s[0];
-            ss.nextElementSibling.textContent = s[1];
+            c_days.textContent = String(d).padStart(2, '0');
+            c_hours.textContent = String(h).padStart(2, '0');
+            c_minutes.textContent = String(m).padStart(2, '0');
+            c_seconds.textContent = String(s).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
