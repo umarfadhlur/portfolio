@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
 
@@ -11,82 +11,71 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
     <style>
-        /* ================= GLOBAL FIX ANTI-RUSAK ================= */
+        /* ===================================
+           GLOBAL — MOBILE FIRST FIX
+        ==================================== */
         html,
         body {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            max-width: 100vw;
-            overflow-x: hidden !important;
-            overscroll-behavior-x: none;
             background: #949a8f;
             font-family: "Poppins", sans-serif;
-        }
-
-        * {
-            max-width: 100% !important;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         img {
-            display: block;
             width: 100%;
             height: auto;
+            display: block;
         }
 
-        /* ================= PAGE WRAPPER ================= */
         .page-wrapper {
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
-            overflow-x: hidden !important;
             position: relative;
         }
 
         .section-spacer {
             height: 40px;
-            width: 100%;
         }
 
-        /* ================= PRELOADER ================= */
+        /* ===================================
+           PRELOADER
+        ==================================== */
         #preloader {
             position: fixed;
             inset: 0;
-            width: 100vw;
-            height: 100vh;
             background: #7d8270;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 999999;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity .4s ease, visibility .4s ease;
-            overflow: hidden;
+            transition: .4s;
         }
 
         .preloader-icon {
             width: 120px;
-            height: auto;
         }
 
         .preloader-bar {
-            width: 80vw;
+            width: 70%;
             max-width: 300px;
             height: 10px;
             background: #ddd;
             border-radius: 20px;
             overflow: hidden;
-            margin-top: 18px;
+            margin-top: 12px;
         }
 
         .preloader-bar span {
             display: block;
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #7d8270, #9a8f7e);
-            transition: width .2s linear;
+            background: #9a8f7e;
+            transition: .2s linear;
         }
 
         .preloader-percent {
@@ -95,24 +84,22 @@
             font-weight: 600;
         }
 
-        /* ================= POPUP ================= */
+        /* ===================================
+           POPUP
+        ==================================== */
         #openingPopup {
             position: fixed;
             inset: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, .55);
+            background: rgba(0, 0, 0, .5);
             backdrop-filter: blur(4px);
-            z-index: 99999;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
-            margin: 0;
+            padding: 16px;
+            z-index: 99999;
             opacity: 0;
             visibility: hidden;
-            transition: opacity .4s ease;
-            overflow: hidden;
+            transition: .4s ease;
         }
 
         #openingPopup.active {
@@ -121,67 +108,62 @@
         }
 
         .popup-box {
-            width: 100vw;
+            width: 100%;
             max-width: 420px;
-            max-height: 100vh;
-            border-radius: 0;
+            border-radius: 22px;
             overflow: hidden;
             position: relative;
-            margin: 0 auto;
-        }
-
-        .popup-box img {
-            width: 100%;
-            height: auto;
-            display: block;
         }
 
         .popup-content {
             position: absolute;
+            bottom: 10%;
             left: 0;
-            right: 0;
-            bottom: 12%;
+            width: 100%;
             text-align: center;
             color: #fff;
-            padding: 14px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+            padding: 12px;
+            background: linear-gradient(to top, rgba(0, 0, 0, .4), transparent);
         }
 
         .popup-btn {
-            background: #ffffff;
+            background: #fff;
             color: #2F2E2C;
             padding: 10px 14px;
             border-radius: 999px;
             border: none;
             font-weight: 700;
             width: 75%;
-            max-width: 280px;
+            max-width: 260px;
             cursor: pointer;
             margin-top: 10px;
         }
 
-        /* ================= MUSIC BUTTON ================= */
+        /* ===================================
+           MUSIC BUTTON
+        ==================================== */
         #musicBtn {
             position: fixed;
             right: 20px;
             bottom: 24px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, .95);
             padding: 14px;
             border-radius: 50%;
             box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
-            font-size: 18px;
             cursor: pointer;
-            z-index: 8000;
+            font-size: 18px;
+            z-index: 5000;
             display: none;
         }
 
-        /* ================= SECTIONS ================= */
+        /* ===================================
+           SECTIONS
+        ==================================== */
         .verse-section,
         .bride-section,
         .groom-section {
-            position: relative;
             width: 100%;
-            overflow: hidden;
+            position: relative;
         }
 
         .verse-content,
@@ -205,8 +187,8 @@
         .verse-img,
         .bride-img,
         .groom-img {
-            width: 90%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 380px;
             opacity: 0;
         }
 
@@ -223,17 +205,17 @@
 
 <body>
 
-    <!-- ================= PRELOADER ================= -->
+    <!-- =========== PRELOADER =========== -->
     <div id="preloader">
         <img src="{{ asset('images/flower/popup.webp') }}" class="preloader-icon">
         <div class="preloader-bar"><span id="preloaderBar"></span></div>
         <div id="preloaderPercent" class="preloader-percent">0%</div>
     </div>
 
-    <!-- ================= POPUP ================= -->
+    <!-- =========== POPUP =========== -->
     <div id="openingPopup">
         <div class="popup-box">
-            <img src="{{ asset('images/flower/popup.webp') }}" alt="Opening Card">
+            <img src="{{ asset('images/flower/popup.webp') }}">
             <div class="popup-content">
                 <p>Kepada Yth.</p>
                 <p class="popup-name">{{ $guestName ?? 'Tamu Undangan' }}</p>
@@ -242,23 +224,20 @@
         </div>
     </div>
 
-    <!-- ================= MUSIC ================= -->
+    <!-- =========== MUSIC BTN =========== -->
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
     </audio>
     <div id="musicBtn">🔊</div>
 
-
-    <!-- ================= PAGE CONTENT ================= -->
+    <!-- =========== CONTENT =========== -->
     <div class="page-wrapper">
 
         <div class="section-spacer"></div>
 
         <!-- VERSE -->
         <section class="verse-section">
-            <div class="verse-bg">
-                <img src="{{ asset('images/img/verse-1-bg.webp') }}">
-            </div>
+            <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
                 <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
                     data-aos-duration="1500">
@@ -269,10 +248,7 @@
 
         <!-- BRIDE -->
         <section class="bride-section">
-            <div class="bride-bg">
-                <img src="{{ asset('images/img/bride-bg.webp') }}">
-            </div>
-
+            <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="1800" data-aos-delay="200">
@@ -284,10 +260,7 @@
 
         <!-- GROOM -->
         <section class="groom-section">
-            <div class="groom-bg">
-                <img src="{{ asset('images/img/groom-bg.webp') }}">
-            </div>
-
+            <img src="{{ asset('images/img/groom-bg.webp') }}">
             <div class="groom-content">
                 <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-left"
                     data-aos-duration="2000" data-aos-delay="200">
@@ -298,32 +271,27 @@
 
     </div>
 
-    <!-- ================= AOS ================= -->
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: false,
-            duration: 900,
-            easing: "ease-out",
-        });
+        AOS.init();
     </script>
 
-    <!-- ================= LOGIC ================= -->
+    <!-- LOGIC -->
     <script>
-        /* ============== PRELOADER ============== */
         document.body.style.overflow = "hidden";
 
         const preloader = document.getElementById("preloader");
         const preloaderBar = document.getElementById("preloaderBar");
         const preloaderPercent = document.getElementById("preloaderPercent");
         const popup = document.getElementById("openingPopup");
-        const openBtn = document.getElementById("openInvitationBtn");
-        const bgmusic = document.getElementById("bgmusic");
         const musicBtn = document.getElementById("musicBtn");
+        const bgmusic = document.getElementById("bgmusic");
+        const openBtn = document.getElementById("openInvitationBtn");
 
         let loaded = 0;
         const imgs = document.images;
-        const total = imgs.length || 1;
+        const total = imgs.length;
 
         function updateLoader() {
             loaded++;
@@ -331,32 +299,28 @@
             preloaderBar.style.width = percent + "%";
             preloaderPercent.textContent = percent + "%";
 
-            if (percent >= 100) {
+            if (percent === 100) {
                 setTimeout(() => {
                     preloader.style.opacity = "0";
                     preloader.style.visibility = "hidden";
                     popup.classList.add("active");
-                }, 400);
+                }, 300);
             }
         }
 
-        [...imgs].forEach(img => {
-            if (img.complete) updateLoader();
-            else img.addEventListener("load", updateLoader, {
+        [...imgs].forEach(img =>
+            img.complete ? updateLoader() : img.addEventListener("load", updateLoader, {
                 once: true
-            });
-        });
+            })
+        );
 
-        /* ============== POPUP OPEN ============== */
         openBtn.addEventListener("click", () => {
             popup.classList.remove("active");
-            document.body.style.overflow = "auto";
-
             musicBtn.style.display = "block";
+            document.body.style.overflow = "auto";
             bgmusic.play().catch(() => {});
         });
 
-        /* ============== MUSIC CONTROL ============== */
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
                 bgmusic.play();
@@ -364,21 +328,6 @@
             } else {
                 bgmusic.pause();
                 musicBtn.textContent = "🔈";
-            }
-        });
-
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) {
-                if (!bgmusic.paused) {
-                    bgmusic.pause();
-                    musicBtn.dataset.wasPlaying = "true";
-                }
-            } else {
-                if (musicBtn.dataset.wasPlaying === "true") {
-                    bgmusic.play().catch(() => {});
-                    musicBtn.textContent = "🔊";
-                    musicBtn.dataset.wasPlaying = "false";
-                }
             }
         });
     </script>
