@@ -432,7 +432,7 @@
                 <!-- BUTTON -->
                 <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank">
                     <button class="map-btn" data-aos="zoom-in" data-aos-delay="900">
-                        <img src="{{ asset('images/img`/location.webp') }}">
+                        <img src="{{ asset('images/img/location.webp') }}">
                         Open Map Location
                     </button>
                 </a>
