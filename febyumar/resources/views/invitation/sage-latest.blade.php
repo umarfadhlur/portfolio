@@ -33,6 +33,7 @@
             max-width: 480px;
             margin: 0 auto;
             position: relative;
+            /* padding-bottom: 80px; */
         }
 
         /* ===================== PRELOADER ===================== */
@@ -190,8 +191,10 @@
 
         /* ===================== DATE SECTION ===================== */
         .date-section {
-            min-height: 100vh;
+            position: relative;
+            width: 100%;
         }
+
 
         .date-content {
             padding-top: 28%;
@@ -211,7 +214,6 @@
             background: transparent;
             width: 95%;
             max-width: 340px;
-            margin-top: 10px;
             pointer-events: auto;
         }
 
@@ -239,6 +241,75 @@
         .ctile-label {
             font-size: .7rem;
             color: #666;
+        }
+
+        /* =======================================
+   DIRECTION SECTION
+======================================= */
+        .direction-section {
+            width: 100%;
+            position: relative;
+        }
+
+        .direction-section img {
+            display: block;
+            width: 100%;
+        }
+
+        .direction-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* supaya geser ke kanan */
+            padding-left: 18%;
+            /* geser konten ke kanan */
+            padding-top: 12%;
+            pointer-events: none;
+            /* default */
+        }
+
+        /* DIRECTION TITLE IMAGE */
+        .direction-title {
+            width: 72%;
+            max-width: 360px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* UMN BUILDINGS */
+        .umn-bdg-img,
+        .umn-ads-img {
+            width: 40%;
+            margin-top: 14px;
+            border-radius: 16px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* BUTTON */
+        .map-btn {
+            margin-top: 28px;
+            background: #2F2E2C;
+            color: #fff;
+            border: none;
+            border-radius: 32px;
+            padding: 12px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .95rem;
+            font-weight: 600;
+            cursor: pointer;
+            pointer-events: auto;
+            /* tombol bisa diklik */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        }
+
+        .map-btn img {
+            width: 18px;
+            height: 18px;
         }
 
         [data-aos].aos-animate {
@@ -337,6 +408,34 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </section>
+
+        <!-- ===== DIRECTION SECTION ===== -->
+        <section class="direction-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}">
+
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1600">
+
+                <!-- TITLE -->
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" data-aos="zoom-in"
+                    data-aos-duration="1800">
+
+                <!-- UMN BUILDINGS -->
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-bdg-img" data-aos="zoom-in"
+                    data-aos-delay="300">
+
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-ads-img" data-aos="zoom-in"
+                    data-aos-delay="600">
+
+                <!-- BUTTON -->
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank">
+                    <button class="map-btn" data-aos="zoom-in" data-aos-delay="900">
+                        <img src="{{ asset('images/img`/location.webp') }}">
+                        Open Map Location
+                    </button>
+                </a>
 
             </div>
         </section>
