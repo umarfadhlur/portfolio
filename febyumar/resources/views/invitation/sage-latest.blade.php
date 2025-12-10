@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <title>Sage Wedding Theme</title>
 
-    <!-- AOS Library -->
+    <!-- AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
     <style>
-        /* === GLOBAL RESET === */
+        /* GLOBAL RESET */
         * {
             margin: 0;
             padding: 0;
@@ -18,42 +18,40 @@
         }
 
         body {
-            background: #e6e6e0;
+            background: #a8a89c;
             font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
         }
 
-        /* === PAGE WRAPPER: PC TETAP MOBILE LAYOUT === */
+        /* PAGE WRAPPER – PC tetap mobile layout */
         .page-wrapper {
             width: 100%;
             max-width: 480px;
-            /* PC tetap versi mobile */
-            background: #ffffff;
-            min-height: 100vh;
+            background: #a8a89c;
             overflow-x: hidden;
             position: relative;
         }
 
+        /* ==== SPACING BETWEEN SECTIONS ==== */
+        .section-spacer {
+            height: 40px;
+            width: 100%;
+        }
 
-        /* === VERSE 1 SECTION === */
-
+        /* ==== VERSE SECTION ==== */
         .verse-section {
             position: relative;
             width: 100%;
-            height: auto;
             overflow: hidden;
         }
 
-        /* Background */
         .verse-bg img {
             width: 100%;
             height: auto;
             display: block;
-            user-select: none;
         }
 
-        /* Verse text overlay */
         .verse-content {
             position: absolute;
             inset: 0;
@@ -62,18 +60,52 @@
             justify-content: center;
             padding: 20px;
             pointer-events: none;
-            /* biar ga ganggu scroll */
         }
 
         .verse-img {
-            width: 85%;
+            width: 70%;
             max-width: 330px;
-            height: auto;
             opacity: 0;
-            /* supaya fade-up AOS mulus */
         }
 
-        /* AOS fix */
+        /* ==== BRIDE SECTION ==== */
+        .bride-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bride-bg img {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+        }
+
+        .bride-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 35px;
+            pointer-events: none;
+        }
+
+        .bismillah-img {
+            width: 70%;
+            max-width: 290px;
+            margin-bottom: 12px;
+            opacity: 0;
+        }
+
+        .bride-img {
+            width: 70%;
+            max-width: 340px;
+            opacity: 0;
+        }
+
+        /* AOS visibility fix */
         [data-aos][data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -84,28 +116,45 @@
 
     <div class="page-wrapper">
 
-        {{-- ========================== --}}
-        {{--        SECTION: VERSE 1   --}}
-        {{-- ========================== --}}
-
+        <!-- ===== VERSE SECTION ===== -->
         <section id="verse1" class="verse-section">
-
-            {{-- Background Image --}}
             <div class="verse-bg">
-                <img src="{{ asset('/images/img/verse-1-bg.webp') }}" alt="Verse Background">
+                <img src="{{ asset('assets/img/verse-1-bg.webp') }}" alt="Verse Background">
             </div>
-
-            {{-- Text Overlay --}}
             <div class="verse-content">
-                <img src="{{ asset('/images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
+                <img src="{{ asset('assets/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
                     data-aos-duration="1200" alt="Verse Text">
             </div>
+        </section>
 
+        <!-- SPACING -->
+        <div class="section-spacer"></div>
+
+        <!-- ===== BRIDE SECTION ===== -->
+        <section id="bride" class="bride-section">
+
+            <!-- Background -->
+            <div class="bride-bg">
+                <img src="{{ asset('assets/img/bride-bg.webp') }}" alt="Bride Background">
+            </div>
+
+            <!-- Content overlay -->
+            <div class="bride-content">
+
+                <!-- Bismillah -->
+                <img src="{{ asset('assets/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
+                    data-aos-duration="1200" alt="Bismillah">
+
+                <!-- Bride block -->
+                <img src="{{ asset('assets/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
+                    data-aos-delay="300" data-aos-duration="1200" alt="Bride">
+
+            </div>
         </section>
 
     </div>
 
-    <!-- AOS Script -->
+    <!-- AOS Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
