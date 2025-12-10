@@ -25,7 +25,7 @@ class InvitationController extends Controller
             return view('invitation.empty');
         }
 
-        return view('invitation.theme15', [
+        return view('invitation.sage-latest', [
             'setting' => $setting,
             'guestName' => $guestName,
         ]);
