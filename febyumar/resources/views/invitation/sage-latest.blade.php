@@ -33,7 +33,6 @@
             max-width: 480px;
             margin: 0 auto;
             position: relative;
-            /* padding-bottom: 80px; */
         }
 
         /* ===================== PRELOADER ===================== */
@@ -142,7 +141,7 @@
             display: none;
         }
 
-        /* ===================== GENERAL SECTIONS ===================== */
+        /* ===================== SECTIONS ===================== */
         .verse-section,
         .bride-section,
         .groom-section,
@@ -189,13 +188,7 @@
             padding-top: 25%;
         }
 
-        /* ===================== DATE SECTION ===================== */
-        .date-section {
-            position: relative;
-            width: 100%;
-        }
-
-
+        /* DATE SECTION */
         .date-content {
             padding-top: 28%;
             z-index: 5;
@@ -205,16 +198,12 @@
             width: 92%;
             max-width: 420px;
             margin-bottom: 10%;
-            opacity: 1 !important;
-            z-index: 10;
+            opacity: 1;
         }
 
-        /* COUNTDOWN TILES */
         .countdown-card {
-            background: transparent;
             width: 95%;
             max-width: 340px;
-            pointer-events: auto;
         }
 
         .countdown-tiles {
@@ -235,7 +224,6 @@
         .ctile-number {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #333;
         }
 
         .ctile-label {
@@ -244,53 +232,39 @@
         }
 
         /* =======================================
-        DIRECTION SECTION
+           DIRECTION SECTION — FIX TANPA VH
         ======================================= */
         .direction-section {
             position: relative;
             width: 100%;
         }
 
-        /* FIX PALING PENTING: kontainer absolut harus full width */
         .direction-content {
             position: absolute;
             inset: 0;
             width: 100%;
-            /* ← kuncinya */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* biar stay center */
-            padding-top: 18%;
-            /* biar posisi turun */
+            padding-top: 16%;
             pointer-events: none;
         }
 
-        /* TITLE BESAR */
         .direction-title {
-            width: 70%;
-            max-width: 320px;
-            margin-bottom: 10px;
+            width: 72%;
+            max-width: 340px;
+            margin-bottom: 14px;
             opacity: 0;
         }
 
-        /* GEDUNG 1 */
-        .umn-bdg-img {
-            width: 40%;
-            max-width: 180px;
-            margin-top: 14px;
-            opacity: 0;
-        }
-
-        /* GEDUNG 2 */
+        .umn-bdg-img,
         .umn-ads-img {
             width: 40%;
             max-width: 180px;
-            margin-top: 10px;
             opacity: 0;
+            margin-top: 12px;
         }
 
-        /* BUTTON */
         .map-btn {
             margin-top: 22px;
             background: #2F2E2C;
@@ -310,9 +284,7 @@
 
         .map-btn img {
             width: 20px;
-            height: 20px;
         }
-
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -365,7 +337,6 @@
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="500" data-aos-delay="200">
-
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="1000" data-aos-delay="900">
             </div>
@@ -380,7 +351,7 @@
             </div>
         </section>
 
-        <!-- DATE SECTION -->
+        <!-- DATE -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
             <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
@@ -393,47 +364,36 @@
                             <div class="ctile-number" id="c_days">00</div>
                             <div class="ctile-label">Days</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_hours">00</div>
                             <div class="ctile-label">Hours</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_minutes">00</div>
                             <div class="ctile-label">Minutes</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_seconds">00</div>
                             <div class="ctile-label">Seconds</div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- ===== DIRECTION SECTION ===== -->
+        <!-- DIRECTION -->
         <section class="direction-section">
             <img src="{{ asset('images/img/venue-bg.webp') }}">
-
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1600">
 
-                <!-- TITLE -->
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" data-aos="zoom-in"
-                    data-aos-duration="1800">
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
 
-                <!-- UMN BUILDINGS -->
-                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-bdg-img" data-aos="zoom-in"
-                    data-aos-delay="300">
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-bdg-img">
 
-                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-ads-img" data-aos="zoom-in"
-                    data-aos-delay="600">
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-ads-img">
 
-                <!-- BUTTON -->
                 <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank">
-                    <button class="map-btn" data-aos="zoom-in" data-aos-delay="900">
+                    <button class="map-btn">
                         <img src="{{ asset('images/img/location.webp') }}">
                         Open Map Location
                     </button>
@@ -502,6 +462,15 @@
             } else {
                 bgmusic.pause();
                 musicBtn.textContent = "🔈";
+            }
+        });
+
+        /* === AUTO PAUSE MUSIC SAAT PINDAH TAB === */
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                bgmusic.pause();
+            } else {
+                bgmusic.play().catch(() => {});
             }
         });
 
