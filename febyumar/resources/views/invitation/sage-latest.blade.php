@@ -18,7 +18,7 @@
         }
 
         body {
-            background: #a8a89c;
+            background: #949a8f;
             font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
@@ -28,7 +28,7 @@
         .page-wrapper {
             width: 100%;
             max-width: 480px;
-            background: #a8a89c;
+            background: #949a8f;
             overflow-x: hidden;
             position: relative;
         }
@@ -64,7 +64,7 @@
 
         .verse-img {
             width: 70%;
-            max-width: 330px;
+            max-width: 250px;
             opacity: 0;
         }
 
@@ -95,13 +95,14 @@
         .bismillah-img {
             width: 70%;
             max-width: 290px;
-            margin-bottom: 12px;
+            margin-top: 100px;
+            margin-bottom: 100px;
             opacity: 0;
         }
 
         .bride-img {
-            width: 70%;
-            max-width: 340px;
+            width: 90%;
+            max-width: 500px;
             opacity: 0;
         }
 
@@ -146,7 +147,7 @@
                     data-aos-duration="1200" alt="Bismillah">
 
                 <!-- Bride block -->
-                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-delay="300" data-aos-duration="1200" alt="Bride">
 
             </div>
