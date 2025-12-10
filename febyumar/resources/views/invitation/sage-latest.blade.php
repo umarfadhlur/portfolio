@@ -119,10 +119,10 @@
         <!-- ===== VERSE SECTION ===== -->
         <section id="verse1" class="verse-section">
             <div class="verse-bg">
-                <img src="{{ asset('assets/img/verse-1-bg.webp') }}" alt="Verse Background">
+                <img src="{{ asset('images/img/verse-1-bg.webp') }}" alt="Verse Background">
             </div>
             <div class="verse-content">
-                <img src="{{ asset('assets/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
                     data-aos-duration="1200" alt="Verse Text">
             </div>
         </section>
@@ -135,18 +135,18 @@
 
             <!-- Background -->
             <div class="bride-bg">
-                <img src="{{ asset('assets/img/bride-bg.webp') }}" alt="Bride Background">
+                <img src="{{ asset('images/img/bride-bg.webp') }}" alt="Bride Background">
             </div>
 
             <!-- Content overlay -->
             <div class="bride-content">
 
                 <!-- Bismillah -->
-                <img src="{{ asset('assets/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
                     data-aos-duration="1200" alt="Bismillah">
 
                 <!-- Bride block -->
-                <img src="{{ asset('assets/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
                     data-aos-delay="300" data-aos-duration="1200" alt="Bride">
 
             </div>
