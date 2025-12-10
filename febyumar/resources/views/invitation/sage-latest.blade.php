@@ -207,39 +207,36 @@
 
         /* ================= DATE SECTION ================= */
 
-        /* SECTION */
         .date-section {
             position: relative;
             width: 100%;
         }
 
-        .date-section img {
+        .date-section>img {
             width: 100%;
             display: block;
         }
 
-        /* KONTEN TENGAH */
         .date-content {
-            position: absolute;
-            inset: 0;
+            position: relative;
+            z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: -40%;
+            /* tweak sesuai tinggi bg kamu */
             pointer-events: none;
         }
 
-        /* date.webp */
         .date-img {
             width: 70%;
             max-width: 300px;
-            margin-top: 18%;
-            /* naik turun posisi tanggal */
             margin-bottom: 20px;
-            /* SPASI ANTARA DATE DAN COUNTDOWN */
+            position: relative;
+            z-index: 10;
             opacity: 0;
         }
 
-        /* CARD COUNTDOWN */
         .countdown-card {
             background: rgba(255, 255, 255, 0.9);
             padding: 14px 18px;
@@ -248,7 +245,10 @@
             max-width: 320px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
             pointer-events: auto;
+            position: relative;
+            z-index: 10;
         }
+
 
         .countdown-header {
             font-size: .9rem;
