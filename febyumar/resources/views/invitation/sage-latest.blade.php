@@ -244,73 +244,75 @@
         }
 
         /* =======================================
-   DIRECTION SECTION
-======================================= */
+        DIRECTION SECTION
+        ======================================= */
         .direction-section {
-            width: 100%;
             position: relative;
-        }
-
-        .direction-section img {
-            display: block;
             width: 100%;
         }
 
+        /* FIX PALING PENTING: kontainer absolut harus full width */
         .direction-content {
             position: absolute;
             inset: 0;
+            width: 100%;
+            /* ← kuncinya */
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            /* supaya geser ke kanan */
-            padding-left: 18%;
-            /* geser konten ke kanan */
-            padding-top: 12%;
+            align-items: center;
+            /* biar stay center */
+            padding-top: 18%;
+            /* biar posisi turun */
             pointer-events: none;
-            /* default */
         }
 
-        /* DIRECTION TITLE IMAGE */
+        /* TITLE BESAR */
         .direction-title {
-            width: 72%;
-            max-width: 360px;
+            width: 70%;
+            max-width: 320px;
+            margin-bottom: 10px;
             opacity: 0;
-            pointer-events: none;
         }
 
-        /* UMN BUILDINGS */
-        .umn-bdg-img,
+        /* GEDUNG 1 */
+        .umn-bdg-img {
+            width: 40%;
+            max-width: 180px;
+            margin-top: 14px;
+            opacity: 0;
+        }
+
+        /* GEDUNG 2 */
         .umn-ads-img {
             width: 40%;
-            margin-top: 14px;
-            border-radius: 16px;
+            max-width: 180px;
+            margin-top: 10px;
             opacity: 0;
-            pointer-events: none;
         }
 
         /* BUTTON */
         .map-btn {
-            margin-top: 28px;
+            margin-top: 22px;
             background: #2F2E2C;
             color: #fff;
             border: none;
-            border-radius: 32px;
-            padding: 12px 20px;
+            border-radius: 30px;
+            padding: 12px 22px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: .95rem;
             font-weight: 600;
             cursor: pointer;
             pointer-events: auto;
-            /* tombol bisa diklik */
             box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
         }
 
         .map-btn img {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
         }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -353,7 +355,7 @@
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
                 <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
-                    data-aos-duration="1500">
+                    data-aos-duration="1000">
             </div>
         </section>
 
@@ -362,10 +364,10 @@
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
-                    data-aos-duration="1800" data-aos-delay="200">
+                    data-aos-duration="500" data-aos-delay="200">
 
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
-                    data-aos-duration="2000" data-aos-delay="900">
+                    data-aos-duration="1000" data-aos-delay="900">
             </div>
         </section>
 
