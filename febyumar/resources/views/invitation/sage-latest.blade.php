@@ -149,7 +149,8 @@
         .verse-section,
         .bride-section,
         .groom-section,
-        .date-section {
+        .date-section,
+        .direction-section {
             width: 100%;
             position: relative;
         }
@@ -157,7 +158,8 @@
         .verse-content,
         .bride-content,
         .groom-content,
-        .date-content {
+        .date-content,
+        .direction-content {
             position: absolute;
             inset: 0;
             display: flex;
@@ -193,15 +195,12 @@
         }
 
         /* ===================== DATE SECTION ===================== */
-
         .date-section {
             min-height: 100vh;
-            /* FIX UTAMA */
         }
 
         .date-content {
             padding-top: 28%;
-            /* supaya date.webp nongol */
             z-index: 5;
         }
 
@@ -213,7 +212,7 @@
             z-index: 10;
         }
 
-        /* COUNTDOWN MODERN MINI TILES */
+        /* COUNTDOWN TILES */
         .countdown-card {
             background: transparent;
             box-shadow: none;
@@ -254,54 +253,51 @@
 
         /* ===================== DIRECTION SECTION ===================== */
         .direction-section {
-            width: 100%;
-            position: relative;
             min-height: 100vh;
         }
 
         .direction-content {
-            position: absolute;
             inset: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            /* geser dikit ke kanan */
-            padding-left: 12%;
-            /* sesuai request "agak ke kanan" */
+            align-items: flex-end;
+            /* geser ke kanan */
             padding-top: 18%;
-            padding-right: 6%;
+            padding-right: 10%;
+            padding-left: 6%;
             pointer-events: none;
             z-index: 5;
         }
 
         .direction-img {
             width: 75%;
-            max-width: 330px;
-            margin-bottom: 22px;
+            max-width: 340px;
+            margin-bottom: 18px;
             opacity: 1 !important;
         }
 
         .venue-img {
             width: 80%;
-            max-width: 350px;
-            margin-bottom: 16px;
+            max-width: 360px;
+            margin-bottom: 14px;
             border-radius: 16px;
+            overflow: hidden;
         }
 
         .direction-text {
-            margin-top: 10px;
+            margin-top: 6px;
             font-size: 0.9rem;
-            color: white;
+            color: #ffffff;
             line-height: 1.45;
-            max-width: 85%;
+            max-width: 80%;
+            text-align: right;
         }
 
-        /* BUTTON MAP */
         .map-btn {
             margin-top: 18px;
             background: rgba(255, 255, 255, 0.95);
             color: #2F2E2C;
-            padding: 12px 18px;
+            padding: 11px 18px;
             border-radius: 999px;
             font-weight: 600;
             font-size: 0.95rem;
@@ -314,7 +310,7 @@
         }
 
         .map-btn-icon {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #2F2E2C;
         }
 
@@ -355,8 +351,6 @@
     <!-- ===================== CONTENT ===================== -->
     <div class="page-wrapper">
 
-        {{-- <div class="section-spacer"></div> --}}
-
         <!-- ===== VERSE ===== -->
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
@@ -366,15 +360,12 @@
             </div>
         </section>
 
-        {{-- <div class="section-spacer"></div> --}}
-
         <!-- ===== BRIDE ===== -->
         <section class="bride-section">
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="1800" data-aos-delay="200">
-
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
@@ -389,8 +380,6 @@
             </div>
         </section>
 
-        {{-- <div class="section-spacer"></div> --}}
-
         <!-- ===== DATE SECTION ===== -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
@@ -399,9 +388,7 @@
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
-
                     <div class="countdown-tiles">
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_days">00</div>
                             <div class="ctile-label">Days</div>
@@ -421,11 +408,8 @@
                             <div class="ctile-number" id="c_seconds">00</div>
                             <div class="ctile-label">Seconds</div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </section>
 
@@ -434,33 +418,23 @@
             <img src="{{ asset('images/img/venue-bg.webp') }}">
 
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
-
-                <!-- Title IMG -->
+                <!-- title -->
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-img">
 
-                <!-- UMN Buildings -->
+                <!-- UMN buildings -->
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="venue-img" data-aos="zoom-in"
                     data-aos-delay="200">
 
-                <!-- Additional UMN Assets -->
+                <!-- extra visual -->
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="venue-img" data-aos="zoom-in"
                     data-aos-delay="400">
 
-                <!-- Address -->
-                <div class="direction-text">
-                    Multimedia Nusantara University<br>
-                    Jl. Scientia Boulevard, Gading Serpong,<br>
-                    Kel. Curug Sangereng, Kec. Kelapa Dua,<br>
-                    Kab. Tangerang, Banten 15810, Indonesia
-                </div>
-
-                <!-- Open Map Button -->
+                <!-- map button -->
                 <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn" data-aos="zoom-in"
                     data-aos-delay="600">
                     <span class="map-btn-icon">📍</span>
-                    Open Map Location
+                    <span>Open Map Location</span>
                 </a>
-
             </div>
         </section>
 
