@@ -251,68 +251,88 @@
             color: #666;
         }
 
-        /* ===================== DIRECTION SECTION ===================== */
+        /* ===================== DIRECTION ===================== */
+
         .direction-section {
+            position: relative;
+            width: 100%;
             min-height: 100vh;
-        }
-
-        .direction-content {
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            /* geser ke kanan */
-            padding-top: 18%;
-            padding-right: 10%;
-            padding-left: 6%;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .direction-img {
-            width: 75%;
-            max-width: 340px;
-            margin-bottom: 18px;
-            opacity: 1 !important;
-        }
-
-        .venue-img {
-            width: 80%;
-            max-width: 360px;
-            margin-bottom: 14px;
-            border-radius: 16px;
             overflow: hidden;
         }
 
+        /* Background pakai DIV biar FULL + tidak kepotong */
+        .direction-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("{{ asset('images/img/venue-bg.webp') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        /* Konten */
+        .direction-content {
+            position: relative;
+            z-index: 5;
+            padding: 26% 20px 40px 40px;
+            /* kanan lebih rapih */
+            text-align: center;
+        }
+
+        /* Title "Direction to Venue" */
+        .direction-title {
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Gedung UMN */
+        .direction-building {
+            width: 78%;
+            max-width: 300px;
+            margin: 10px auto 20px auto;
+            border-radius: 12px;
+        }
+
+        /* Title Kampus */
         .direction-text {
-            margin-top: 6px;
-            font-size: 0.9rem;
-            color: #ffffff;
-            line-height: 1.45;
-            max-width: 80%;
-            text-align: right;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2b4a63;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
+        /* Alamat */
+        .direction-address {
+            font-size: 0.88rem;
+            color: #f8f8f8;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol Map */
         .map-btn {
-            margin-top: 18px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #2F2E2C;
-            padding: 11px 18px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            background: rgba(255, 255, 255, .92);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: #2f2f2f;
+            font-size: 0.9rem;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
-            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
         }
 
-        .map-btn-icon {
-            font-size: 1.1rem;
-            color: #2F2E2C;
+        /* Icon */
+        .map-icon {
+            font-size: 1rem;
+            color: #2f2f2f;
         }
+
 
         /* ===================== AOS FIX ===================== */
         [data-aos].aos-animate {
@@ -415,28 +435,21 @@
 
         <!-- ===== DIRECTION SECTION ===== -->
         <section class="direction-section">
-            <img src="{{ asset('images/img/venue-bg.webp') }}">
+            <div class="direction-bg"></div>
 
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
-                <!-- title -->
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-img">
 
-                <!-- UMN buildings -->
-                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="venue-img" data-aos="zoom-in"
-                    data-aos-delay="200">
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
 
-                <!-- extra visual -->
-                <img src="{{ asset('images/img/umn-ads.webp') }}" class="venue-img" data-aos="zoom-in"
-                    data-aos-delay="400">
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building">
 
-                <!-- map button -->
-                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn" data-aos="zoom-in"
-                    data-aos-delay="600">
-                    <span class="map-btn-icon">📍</span>
-                    <span>Open Map Location</span>
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" class="map-btn" target="_blank">
+                    <span class="map-icon">📍</span> Open Map Location
                 </a>
+
             </div>
         </section>
+
 
     </div>
 
