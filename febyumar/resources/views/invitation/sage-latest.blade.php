@@ -74,13 +74,13 @@
             display: block;
             width: 0%;
             height: 100%;
-            background: #9a8f7e;
+            background: #949a8f;
             transition: .2s linear;
         }
 
         .preloader-percent {
             margin-top: 10px;
-            color: #fff;
+            color: #949a8f;
             font-weight: 600;
         }
 
@@ -168,9 +168,12 @@
         .bride-content,
         .groom-content {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             pointer-events: none;
         }
