@@ -206,9 +206,9 @@
         }
 
         .date-img {
-            width: 90%;
-            /* max-width: 300px; */
-            margin-bottom: 20%;
+            width: 92%;
+            max-width: 420px;
+            margin-bottom: 10%;
             opacity: 1 !important;
             z-index: 10;
         }
@@ -250,6 +250,72 @@
             font-size: .7rem;
             margin-top: 2px;
             color: #666;
+        }
+
+        /* ===================== DIRECTION SECTION ===================== */
+        .direction-section {
+            width: 100%;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .direction-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* geser dikit ke kanan */
+            padding-left: 12%;
+            /* sesuai request "agak ke kanan" */
+            padding-top: 18%;
+            padding-right: 6%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .direction-img {
+            width: 75%;
+            max-width: 330px;
+            margin-bottom: 22px;
+            opacity: 1 !important;
+        }
+
+        .venue-img {
+            width: 80%;
+            max-width: 350px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+        }
+
+        .direction-text {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: white;
+            line-height: 1.45;
+            max-width: 85%;
+        }
+
+        /* BUTTON MAP */
+        .map-btn {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #2F2E2C;
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+            pointer-events: auto;
+        }
+
+        .map-btn-icon {
+            font-size: 1.2rem;
+            color: #2F2E2C;
         }
 
         /* ===================== AOS FIX ===================== */
@@ -363,7 +429,41 @@
             </div>
         </section>
 
-        {{-- <div class="section-spacer"></div> --}}
+        <!-- ===== DIRECTION SECTION ===== -->
+        <section class="direction-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}">
+
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
+
+                <!-- Title IMG -->
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-img">
+
+                <!-- UMN Buildings -->
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="venue-img" data-aos="zoom-in"
+                    data-aos-delay="200">
+
+                <!-- Additional UMN Assets -->
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="venue-img" data-aos="zoom-in"
+                    data-aos-delay="400">
+
+                <!-- Address -->
+                <div class="direction-text">
+                    Multimedia Nusantara University<br>
+                    Jl. Scientia Boulevard, Gading Serpong,<br>
+                    Kel. Curug Sangereng, Kec. Kelapa Dua,<br>
+                    Kab. Tangerang, Banten 15810, Indonesia
+                </div>
+
+                <!-- Open Map Button -->
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn" data-aos="zoom-in"
+                    data-aos-delay="600">
+                    <span class="map-btn-icon">📍</span>
+                    Open Map Location
+                </a>
+
+            </div>
+        </section>
+
 
     </div>
 
