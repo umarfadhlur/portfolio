@@ -187,6 +187,7 @@
         }
 
         .verse-img {
+            padding-top: 40%;
             width: 50%;
             max-width: 350px;
             opacity: 0;
@@ -203,6 +204,92 @@
             flex-direction: column;
             padding-top: 25%;
         }
+
+        /* ================= DATE SECTION ================= */
+
+        .date-section {
+            width: 100%;
+            position: relative;
+        }
+
+        .date-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 20%;
+            /* adjust kalau perlu */
+        }
+
+        .date-img {
+            width: 70%;
+            max-width: 300px;
+            opacity: 0;
+        }
+
+        /* COUNTDOWN CARD */
+        .countdown-card {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 14px 18px;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 85%;
+            max-width: 300px;
+        }
+
+        .countdown-header {
+            font-size: .9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .countdown-icon {
+            font-size: 1.2rem;
+            opacity: .6;
+            margin-top: -4px;
+        }
+
+        .countdown-display {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-top: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .digit-group {
+            display: flex;
+        }
+
+        .digit {
+            min-width: 22px;
+            text-align: center;
+        }
+
+        .separator {
+            margin: 0 4px;
+            color: #555;
+        }
+
+        .countdown-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 6px;
+            font-size: .75rem;
+            color: #555;
+        }
+
 
         [data-aos][data-aos].aos-animate {
             opacity: 1 !important;
@@ -276,6 +363,54 @@
 
         <div class="section-spacer"></div>
 
+        <!-- DATE SECTION -->
+        <section class="date-section">
+            <img src="{{ asset('images/img/date-bg.webp') }}">
+
+            <div class="date-content" data-aos="fade-up" data-aos-duration="1500">
+                <img src="{{ asset('images/img/date.webp') }}" class="date-img">
+
+                <div class="countdown-card">
+                    <div class="countdown-header">Event</div>
+                    <div class="countdown-icon">⊙</div>
+
+                    <div class="countdown-display">
+                        <div class="digit-group">
+                            <span id="dd" class="digit">0</span>
+                            <span class="digit">0</span>
+                        </div>
+                        <span class="separator">:</span>
+
+                        <div class="digit-group">
+                            <span id="hh" class="digit">0</span>
+                            <span class="digit">0</span>
+                        </div>
+                        <span class="separator">:</span>
+
+                        <div class="digit-group">
+                            <span id="mm" class="digit">0</span>
+                            <span class="digit">0</span>
+                        </div>
+                        <span class="separator">:</span>
+
+                        <div class="digit-group">
+                            <span id="ss" class="digit">0</span>
+                            <span class="digit">0</span>
+                        </div>
+                    </div>
+
+                    <div class="countdown-labels">
+                        <span>days</span>
+                        <span>hours</span>
+                        <span>minutes</span>
+                        <span>seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-spacer"></div>
+
     </div>
 
     <!-- AOS -->
@@ -337,6 +472,31 @@
                 musicBtn.textContent = "🔈";
             }
         });
+
+        const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
+
+        function updateTimer() {
+            const now = Date.now();
+            const diff = target - now;
+            if (diff < 0) return;
+
+            const d = String(Math.floor(diff / 86400000)).padStart(2, '0');
+            const h = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+
+            dd.textContent = d[0];
+            dd.nextElementSibling.textContent = d[1];
+            hh.textContent = h[0];
+            hh.nextElementSibling.textContent = h[1];
+            mm.textContent = m[0];
+            mm.nextElementSibling.textContent = m[1];
+            ss.textContent = s[0];
+            ss.nextElementSibling.textContent = s[1];
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 
 </body>
