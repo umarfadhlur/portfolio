@@ -92,12 +92,12 @@
 
             {{-- Background Image --}}
             <div class="verse-bg">
-                <img src="{{ asset('assets/images/img/verse-1-bg.webp') }}" alt="Verse Background">
+                <img src="{{ asset('/images/img/verse-1-bg.webp') }}" alt="Verse Background">
             </div>
 
             {{-- Text Overlay --}}
             <div class="verse-content">
-                <img src="{{ asset('assets/images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
+                <img src="{{ asset('/images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
                     data-aos-duration="1200" alt="Verse Text">
             </div>
 
