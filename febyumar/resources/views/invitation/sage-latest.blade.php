@@ -206,9 +206,9 @@
         }
 
         .date-img {
-            width: 85%;
+            width: 90%;
             /* max-width: 300px; */
-            margin-bottom: 20px;
+            margin-bottom: 20%;
             opacity: 1 !important;
             z-index: 10;
         }
