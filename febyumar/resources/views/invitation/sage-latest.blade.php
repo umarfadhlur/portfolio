@@ -182,11 +182,12 @@
             width: 70%;
             max-width: 300px;
             margin-bottom: 10%;
+            margin-top: 10%;
             opacity: 0;
         }
 
         .verse-img {
-            width: 70%;
+            width: 50%;
             max-width: 350px;
             opacity: 0;
         }
