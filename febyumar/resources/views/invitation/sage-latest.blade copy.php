@@ -35,6 +35,10 @@
             position: relative;
         }
 
+        .section-spacer {
+            height: 40px;
+        }
+
         /* ===================== PRELOADER ===================== */
         #preloader {
             position: fixed;
@@ -63,9 +67,9 @@
         }
 
         .preloader-bar span {
+            display: block;
             width: 0%;
             height: 100%;
-            display: block;
             background: #949a8f;
             transition: .2s linear;
         }
@@ -145,7 +149,8 @@
         .verse-section,
         .bride-section,
         .groom-section,
-        .date-section {
+        .date-section,
+        .direction-section {
             width: 100%;
             position: relative;
         }
@@ -153,7 +158,8 @@
         .verse-content,
         .bride-content,
         .groom-content,
-        .date-content {
+        .date-content,
+        .direction-content {
             position: absolute;
             inset: 0;
             display: flex;
@@ -209,16 +215,18 @@
         /* COUNTDOWN TILES */
         .countdown-card {
             background: transparent;
+            box-shadow: none;
             width: 95%;
             max-width: 340px;
-            margin-top: 10px;
             pointer-events: auto;
+            margin-top: 10px;
         }
 
         .countdown-tiles {
             display: flex;
             justify-content: space-between;
             gap: 6px;
+            width: 100%;
         }
 
         .ctile {
@@ -234,13 +242,99 @@
             font-size: 1.4rem;
             font-weight: 700;
             color: #333;
+            font-family: "Poppins", sans-serif;
         }
 
         .ctile-label {
             font-size: .7rem;
+            margin-top: 2px;
             color: #666;
         }
 
+        /* ===================== DIRECTION ===================== */
+
+        .direction-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Background pakai DIV biar FULL + tidak kepotong */
+        .direction-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("{{ asset('images/img/venue-bg.webp') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        /* Konten */
+        .direction-content {
+            position: relative;
+            z-index: 5;
+            padding: 26% 20px 40px 40px;
+            /* kanan lebih rapih */
+            text-align: center;
+        }
+
+        /* Title "Direction to Venue" */
+        .direction-title {
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Gedung UMN */
+        .direction-building {
+            width: 78%;
+            max-width: 300px;
+            margin: 10px auto 20px auto;
+            border-radius: 12px;
+        }
+
+        /* Title Kampus */
+        .direction-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2b4a63;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        /* Alamat */
+        .direction-address {
+            font-size: 0.88rem;
+            color: #f8f8f8;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol Map */
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, .92);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: #2f2f2f;
+            font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+        }
+
+        /* Icon */
+        .map-icon {
+            font-size: 1rem;
+            color: #2f2f2f;
+        }
+
+
+        /* ===================== AOS FIX ===================== */
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -249,14 +343,14 @@
 
 <body>
 
-    <!-- PRELOADER -->
+    <!-- ===================== PRELOADER ===================== -->
     <div id="preloader">
         <img src="{{ asset('images/flower/popup.webp') }}" class="preloader-icon">
         <div class="preloader-bar"><span id="preloaderBar"></span></div>
         <div id="preloaderPercent" class="preloader-percent">0%</div>
     </div>
 
-    <!-- POPUP -->
+    <!-- ===================== POPUP ===================== -->
     <div id="openingPopup">
         <div class="popup-box">
             <img src="{{ asset('images/flower/popup.webp') }}">
@@ -268,16 +362,16 @@
         </div>
     </div>
 
-    <!-- MUSIC -->
+    <!-- ===================== MUSIC ===================== -->
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
     </audio>
     <div id="musicBtn">🔊</div>
 
-    <!-- CONTENT -->
+    <!-- ===================== CONTENT ===================== -->
     <div class="page-wrapper">
 
-        <!-- VERSE -->
+        <!-- ===== VERSE ===== -->
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
@@ -286,19 +380,18 @@
             </div>
         </section>
 
-        <!-- BRIDE -->
+        <!-- ===== BRIDE ===== -->
         <section class="bride-section">
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="1800" data-aos-delay="200">
-
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
         </section>
 
-        <!-- GROOM -->
+        <!-- ===== GROOM ===== -->
         <section class="groom-section">
             <img src="{{ asset('images/img/groom-bg.webp') }}">
             <div class="groom-content">
@@ -307,11 +400,11 @@
             </div>
         </section>
 
-        <!-- DATE SECTION -->
+        <!-- ===== DATE SECTION ===== -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
-            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
 
+            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
@@ -337,19 +430,36 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ===== DIRECTION SECTION ===== -->
+        <section class="direction-section">
+            <div class="direction-bg"></div>
+
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
+
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
+
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building">
+
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" class="map-btn" target="_blank">
+                    <span class="map-icon">📍</span> Open Map Location
+                </a>
 
             </div>
         </section>
 
+
     </div>
 
-    <!-- AOS -->
+    <!-- ===================== AOS ===================== -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
 
-    <!-- LOGIC -->
+    <!-- ===================== LOGIC ===================== -->
     <script>
         document.body.style.overflow = "hidden";
 
@@ -381,8 +491,7 @@
         }
 
         [...imgs].forEach(img =>
-            img.complete ? updateLoader() :
-            img.addEventListener("load", updateLoader, {
+            img.complete ? updateLoader() : img.addEventListener("load", updateLoader, {
                 once: true
             })
         );
@@ -404,7 +513,7 @@
             }
         });
 
-        /* COUNTDOWN */
+        /* ============= COUNTDOWN ============= */
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
 
         function updateTimer() {
