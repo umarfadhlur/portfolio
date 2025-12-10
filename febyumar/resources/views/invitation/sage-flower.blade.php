@@ -694,17 +694,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 48px 0;
+            padding: 40px 12px;
+            box-sizing: border-box;
         }
 
         .story-image {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1240px;
             height: auto;
             display: block;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .story-image-wrap {
+                padding: 30px 0;
+            }
+
+            .story-image {
+                max-width: 100%;
+                border-radius: 0;
+            }
         }
 
         /* HERO CUSTOM (bukan full-screen) */
@@ -717,14 +729,18 @@
             text-align: center;
         }
 
+        /* Hero wrapper: responsive */
         .hero-wrap {
-            width: 90%;
-            max-width: clamp(360px, 45vw, 900px);
+            width: 100%;
+            max-width: 1240px;
             margin: 28px auto;
             display: block;
             will-change: transform, opacity;
+            padding: 0 12px;
+            box-sizing: border-box;
         }
 
+        /* Hero images responsive */
         #hero .hero-img {
             display: block;
             width: 100%;
@@ -738,31 +754,16 @@
             overflow: visible;
         }
 
-        .story-image,
-        .hero-img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @media (min-width: 1200px) {
+        @media (max-width: 768px) {
             .hero-wrap {
-                max-width: 820px;
-            }
-
-            #hero .hero-img {
-                max-width: 820px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-wrap {
-                width: 96%;
-                margin: 16px auto;
+                width: 100%;
+                max-width: none;
+                margin: 18px 0;
+                padding: 0;
             }
 
             #hero {
-                padding: 20px 0;
+                padding: 18px 0;
             }
 
             #hero .hero-img {
@@ -770,64 +771,790 @@
             }
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
+        /* DEFAULT HERO lama (kalau nanti mau dipakai lagi) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(47, 46, 44, 0.4), rgba(47, 46, 44, 0.4)),
+                url('{{ asset($setting->hero_image ?? '/images/default.jpg') }}') center/cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--silver);
+            margin: 1.5rem auto;
+            box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+        }
+
+        .hero .guest {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--silver), #d4d4d4);
+            color: var(--dark);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .title {
-                font-size: 2rem;
-            }
-
-            .rsvp-form {
-                padding: 30px 20px;
-            }
-
-            .gift-box {
-                padding: 30px 20px;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
-            .countdown-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .event-grid {
-                gap: 20px;
+            50% {
+                transform: translateY(-10px);
             }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+        /* CONTAINER & SECTION */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .title::after {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background: var(--sage);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-soft);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* COUPLE */
+        .couple {
+            background: white;
+        }
+
+        .couple-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .couple-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .couple-card {
+            background: linear-gradient(135deg, var(--light), white);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid var(--sage);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .couple-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(199, 211, 192, 0.3);
+            border-color: #a0b89b;
+        }
+
+        .couple-card .label {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 15px;
+        }
+
+        .couple-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* COUNTDOWN */
+        .countdown {
+            background: linear-gradient(135deg, white, var(--light));
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, var(--sage), rgba(199, 211, 192, 0.8));
+            padding: 35px 20px;
+            border-radius: 15px;
+            border: 2px solid var(--silver);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(199, 211, 192, 0.4);
+            border-color: #95a88f;
+        }
+
+        .countdown-item .number {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .countdown-item .label {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+
+        /* EVENT */
+        .event {
+            background: white;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, var(--light), white);
+            padding: 45px 35px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sage), var(--silver));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .event-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(199, 211, 192, 0.2);
+        }
+
+        .event-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .event-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .event-card .date {
+            font-size: 1rem;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .event-card .time {
+            font-size: 1.4rem;
+            margin: 12px 0;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .event-card .location {
+            font-size: 1rem;
+            color: var(--text-soft);
+            margin: 12px 0;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            background: var(--sage);
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .map-link:hover {
+            background: #95a88f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(199, 211, 192, 0.4);
+        }
+
+        /* GALLERY */
+        .gallery {
+            background: linear-gradient(135deg, var(--light), white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Messages list */
+        .messages-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .message-item {
+            background: white;
+            padding: 16px 18px;
+            border-radius: 12px;
+            border: 1px solid #e9e9e9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .message-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .message-item .meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: baseline;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .message-item .text {
+            color: var(--dark);
+            line-height: 1.5;
+            white-space: pre-wrap;
+            font-size: 0.98rem;
+        }
+
+        /* RSVP */
+        .rsvp {
+            background: linear-gradient(135deg, var(--light), var(--sage));
+        }
+
+        .rsvp-form {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: #fafafa;
+            transition: all 0.3s ease;
+            color: var(--dark);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(199, 211, 192, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--sage), #95a88f);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(199, 211, 192, 0.3);
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        /* GIFT */
+        .gift {
+            background: white;
+        }
+
+        .gift-box {
+            background: linear-gradient(135deg, var(--light), white);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid #e0e0e0;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .gift-box img {
+            max-width: 250px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            user-select: none;
+        }
+
+        .bank-info {
+            background: linear-gradient(135deg, var(--sage), rgba(199, 211, 192, 0.7));
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 2px solid var(--silver);
+            transition: all 0.3s ease;
+        }
+
+        .bank-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(199, 211, 192, 0.3);
+        }
+
+        .bank-info p {
+            margin: 10px 0;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--sage);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        /* MUSIC BUTTON */
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--silver);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .music-toggle svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--dark);
+        }
+
+        /* DOT NAVIGATION */
+        .dot-nav {
+            position: fixed;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .dot-nav {
+                display: flex;
+            }
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--dark);
+            opacity: 0.4;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .dot:hover {
+            opacity: 0.7;
+        }
+
+        .dot.active {
+            background: var(--sage);
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        /* STORY / IMAGE */
+        .story-image-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 12px;
+            box-sizing: border-box;
+        }
+
+        .story-image {
+            width: 100%;
+            max-width: 1240px;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .story-image-wrap {
+                padding: 30px 0;
             }
 
-            .hero {
-                padding: 20px;
+            .story-image {
+                max-width: 100%;
+                border-radius: 0;
+            }
+        }
+
+        /* HERO CUSTOM (bukan full-screen) */
+        #hero {
+            padding: 48px 0;
+            min-height: auto;
+            position: relative;
+            background: #949A8F;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* Hero wrapper: responsive */
+        .hero-wrap {
+            width: 100%;
+            max-width: 1240px;
+            margin: 28px auto;
+            display: block;
+            will-change: transform, opacity;
+            padding: 0 12px;
+            box-sizing: border-box;
+        }
+
+        /* Hero images responsive */
+        #hero .hero-img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+            border: none;
+            overflow: visible;
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrap {
+                width: 100%;
+                max-width: none;
+                margin: 18px 0;
+                padding: 0;
             }
 
-            .title {
-                font-size: 1.6rem;
+            #hero {
+                padding: 18px 0;
             }
 
-            .countdown-item {
-                padding: 25px 15px;
+            #hero .hero-img {
+                max-width: 100%;
+            }
+        }
+
+        /* Countdown section */
+        #countdown {
+            padding: 60px 0;
+        }
+
+        /* Wrapper: responsive container seperti hero-wrap */
+        .countdown-wrapper {
+            width: 100%;
+            max-width: 1240px;
+            margin: 40px auto;
+            position: relative;
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 0 12px;
+            box-sizing: border-box;
+        }
+
+        /* Gambar countdown full dalam wrapper */
+        .countdown-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        /* Overlay: transparent canvas yang menutupi gambar */
+        .countdown-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Card: flex layout untuk digit boxes */
+        .countdown-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 0;
+        }
+
+        /* Unit: grup (label + digits) */
+        .countdown-card .unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Label teks kecil */
+        .unit-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: lowercase;
+            font-weight: 500;
+        }
+
+        /* Container digit boxes */
+        .digits {
+            display: flex;
+            gap: 6px;
+        }
+
+        /* Setiap digit box (putih, rounded) */
+        .digit-box {
+            min-width: 40px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #2F2E2C;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .countdown-wrapper {
+                width: 100%;
+                max-width: none;
+                margin: 30px auto;
+                padding: 0;
+                border-radius: 0;
             }
 
-            .countdown-item .number {
-                font-size: 2.5rem;
+            .countdown-img {
+                border-radius: 0;
             }
 
-            section {
-                padding: 40px 0;
+            .digit-box {
+                min-width: 32px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+
+            .countdown-card {
+                gap: 12px;
+            }
+
+            .unit-label {
+                font-size: 0.7rem;
             }
         }
 
@@ -840,102 +1567,85 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 16px;
+            padding: 20px;
             z-index: 99999;
             overflow: hidden;
         }
 
         .popup-box {
-            background: #949a8f;
-            width: 92vw;
+            background: transparent;
+            width: min(92vw, 100%);
             max-width: 480px;
             border-radius: 16px;
-            padding: 28px 20px;
+            padding: 0;
             text-align: center;
-            animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1);
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .popup-box::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .popup-box {
-                width: 45vw;
-                max-width: none;
-                padding: 48px 40px;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .popup-box {
-                width: 40vw;
-            }
+            position: relative;
+            overflow: hidden;
+            max-height: calc(100vh - 40px);
+            margin: 0 auto;
         }
 
         .popup-img {
+            display: block;
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            margin-bottom: 22px;
             object-fit: cover;
-            will-change: transform, opacity;
-            transform: translateZ(0);
+            vertical-align: middle;
+            border-radius: 16px;
+        }
+
+        /* overlay content positioned on top of image */
+        .popup-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 60px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 100%);
+            color: #fff;
         }
 
         .popup-greeting {
-            font-size: 1rem;
-            color: #f3f3f3;
-            margin-bottom: 4px;
+            font-size: 0.85rem;
+            opacity: .9;
+            margin: 0;
         }
 
         .popup-name {
-            font-size: 1.45rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 22px;
-            color: #ffffff;
+            margin: 0;
         }
 
         .popup-btn {
             background: #ffffff;
-            width: 100%;
-            padding: 14px;
-            border-radius: 40px;
-            border: none;
             color: #2F2E2C;
-            font-weight: 600;
-            font-size: 1rem;
+            width: calc(100% - 24px);
+            max-width: 280px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: .3s;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
         }
 
-        .popup-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-        }
-
-        @media (max-width: 420px) {
+        @media (max-width: 520px) {
             .popup-box {
-                padding: 22px 16px;
-                border-radius: 14px;
+                max-height: calc(100vh - 40px);
+                border-radius: 12px;
+                width: 100%;
             }
-
-            .popup-name {
-                font-size: 1.3rem;
-            }
-
-            .popup-btn {
-                padding: 12px;
-                font-size: .95rem;
-            }
+            .popup-img { border-radius: 12px; }
+            .popup-content { padding: 10px 12px; bottom: 50px; }
+            .popup-name { font-size: 1.05rem; }
+            .popup-btn { width: calc(100% - 20px); padding: 8px 12px; font-size: 0.9rem; }
         }
 
         /* PRELOADER */
@@ -947,6 +1657,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             z-index: 999999;
             transition: opacity .45s ease, visibility .45s ease;
         }
@@ -959,6 +1670,7 @@
 
         .preloader-bar {
             width: 60%;
+            min-width: 200px;
             max-width: 420px;
             height: 12px;
             background: #eee;
@@ -967,7 +1679,7 @@
             margin-top: 18px;
         }
 
-        .preloader-bar>i {
+        .preloader-bar > i {
             display: block;
             height: 100%;
             width: 0%;
@@ -980,6 +1692,18 @@
             color: #666;
             font-weight: 600;
         }
+
+        @media (max-width: 520px) {
+            .preloader-overlay {
+                padding: 16px;
+            }
+
+            .preloader-bar {
+                width: 80%;
+                min-width: 160px;
+            }
+        }
+
     </style>
 </head>
 
@@ -988,18 +1712,19 @@
     <!-- POPUP OPENING -->
     <div id="openingPopup" class="popup-overlay" style="display:none;">
         <div class="popup-box">
-            <img src="{{ asset('/images/story/popup.webp') }}" class="popup-img" alt="Popup Image">
+            <img src="{{ asset('/images/flower/popup.webp') }}" class="popup-img" alt="Popup Image">
 
-            <p class="popup-greeting">Kepada Yth.</p>
-            <p class="popup-name">{{ $guestName }}</p>
-
-            <button class="popup-btn" id="openInvitationBtn">Buka Undangan</button>
+            <div class="popup-content" aria-hidden="false">
+                <p class="popup-greeting">Kepada Yth.</p>
+                <p class="popup-name">{{ $guestName }}</p>
+                <button class="popup-btn" id="openInvitationBtn" aria-label="Buka Undangan">Buka Undangan</button>
+            </div>
         </div>
     </div>
 
     <!-- PRELOADER -->
     <div id="preloader" class="preloader-overlay" aria-hidden="true">
-        <img src="{{ asset('/images/story/popup.webp') }}" alt=""
+        <img src="{{ asset('/images/flower/popup.webp') }}" alt=""
             style="width:140px;height:auto;opacity:.98;filter:grayscale(.05);">
         <div class="preloader-bar" aria-hidden="true"><i id="preloaderBar"></i></div>
         <div class="preloader-percent" id="preloaderPercent">0%</div>
@@ -1022,7 +1747,7 @@
     <section id="couple" class="couple">
         <div class="container">
             <div class="story-image-wrap" data-aos="fade-up">
-                <img src="{{ asset('images/story/verse.webp') }}" alt="Verse" loading="lazy" class="hero-img">
+                <img src="{{ asset('images/flower/verse.webp') }}" alt="Verse" loading="lazy" class="hero-img">
             </div>
         </div>
     </section>
@@ -1030,34 +1755,37 @@
     {{-- HERO --}}
     <section id="hero">
         <div class="hero-wrap" data-aos="fade-right" data-aos-delay="200">
-            <img src="{{ asset('images/story/bride.webp') }}" alt="Bride" loading="lazy" class="hero-img">
+            <img src="{{ asset('images/flower/bride.webp') }}" alt="Bride" loading="lazy" class="hero-img">
         </div>
 
         <div class="hero-wrap" data-aos="fade-left" data-aos-delay="700">
-            <img src="{{ asset('images/story/groom.webp') }}" alt="Groom" loading="lazy" class="hero-img">
+            <img src="{{ asset('images/flower/groom.webp') }}" alt="Groom" loading="lazy" class="hero-img">
         </div>
     </section>
 
     {{-- COUNTDOWN --}}
     <section id="countdown" class="countdown">
-        <div class="container">
-            <h2 class="title" data-aos="fade-up">Menghitung Hari Bahagia</h2>
-            <div class="countdown-grid">
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="number" id="days">00</div>
-                    <div class="label">Hari</div>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="number" id="hours">00</div>
-                    <div class="label">Jam</div>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="number" id="minutes">00</div>
-                    <div class="label">Menit</div>
-                </div>
-                <div class="countdown-item" data-aos="fade-up" data-aos-delay="250">
-                    <div class="number" id="seconds">00</div>
-                    <div class="label">Detik</div>
+
+        <!-- Countdown wrapper: gambar + overlay digit boxes -->
+        <div class="countdown-wrapper" data-aos="zoom-in" data-aos-delay="120">
+            <!-- Background image (countdown.webp) -->
+            <img src="{{ asset('images/flower/countdown.webp') }}" alt="Countdown background" class="countdown-img" loading="lazy" />
+
+            <!-- Overlay: digit boxes positioned on top of image (menutupi countdown statis di gambar) -->
+            <div class="countdown-overlay">
+                <div class="countdown-card" id="countdownCard" role="group" aria-label="Countdown">
+                    <div class="unit" data-unit="days">
+                        <div class="unit-label">days</div>
+                        <div class="digits" id="overlay_days"></div>
+                    </div>
+                    <div class="unit" data-unit="hours">
+                        <div class="unit-label">hours</div>
+                        <div class="digits" id="overlay_hours"></div>
+                    </div>
+                    <div class="unit" data-unit="minutes">
+                        <div class="unit-label">minutes</div>
+                        <div class="digits" id="overlay_minutes"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1221,16 +1949,17 @@
     </footer>
 
     {{-- MUSIC BUTTON --}}
-    @if ($setting->music_file)
-        <button id="musicToggle" class="music-toggle" title="Putar Musik">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-        </button>
-        <audio id="bgMusic" preload="auto" loop>
-            <source src="{{ asset('storage/' . $setting->music_file) }}" type="audio/mpeg">
-        </audio>
-    @endif
+    <!-- Manual music: letakkan file di public/audio/manual-song.mp3 -->
+    <button id="musicToggle" class="music-toggle" title="Putar Musik">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+        </svg>
+    </button>
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
+        <!-- fallback text -->
+        Your browser does not support the audio element.
+    </audio>
 
     {{-- AOS Library --}}
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -1598,6 +2327,69 @@
         window.addEventListener('load', () => {
             showPreloader(2500);
         });
+
+        // Improved auto-pause / auto-resume on tab visibility change (best-effort — browsers may block resume)
+        (function(){
+            const bgMusic = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            if (!bgMusic || !musicToggle) return;
+
+            let wasPlayingBeforeHide = false; // remember if music was playing when tab hidden
+
+            function updateToggleUI(isPlaying){
+                musicToggle.classList.toggle('is-playing', !!isPlaying);
+                musicToggle.title = isPlaying ? 'Pause Musik' : 'Putar Musik';
+            }
+
+            // click toggles play/pause
+            musicToggle.addEventListener('click', async () => {
+                try {
+                    if (bgMusic.paused) {
+                        await bgMusic.play();
+                        updateToggleUI(true);
+                    } else {
+                        bgMusic.pause();
+                        updateToggleUI(false);
+                    }
+                } catch (err) {
+                    console.warn('Audio play prevented:', err);
+                }
+            });
+
+            // pause when tab hidden, remember state
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    wasPlayingBeforeHide = !bgMusic.paused;
+                    if (!bgMusic.paused) {
+                        try { bgMusic.pause(); } catch(e) { /*ignore*/ }
+                        updateToggleUI(false);
+                    }
+                } else {
+                    // when tab becomes visible again — try to resume if it was playing before
+                    if (wasPlayingBeforeHide) {
+                        bgMusic.play().then(() => {
+                            updateToggleUI(true);
+                        }).catch(err => {
+                            // resume blocked by browser autoplay policy — keep UI consistent
+                            console.warn('Resume play blocked:', err);
+                            updateToggleUI(false);
+                        });
+                    }
+                    wasPlayingBeforeHide = false;
+                }
+            });
+
+            // also pause on pagehide/unload
+            window.addEventListener('pagehide', () => {
+                if (!bgMusic.paused) {
+                    try { bgMusic.pause(); } catch(e) {}
+                    updateToggleUI(false);
+                }
+            });
+
+            // initial UI state
+            updateToggleUI(!bgMusic.paused);
+        })();
     </script>
 
 </body>
