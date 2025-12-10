@@ -47,13 +47,13 @@
         #preloader {
             position: fixed;
             inset: 0;
-            background: #7d8270;
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 999999;
-            transition: .4s;
+            transition: 2.4s;
         }
 
         .preloader-icon {
@@ -122,8 +122,6 @@
             width: 100%;
             text-align: center;
             color: #fff;
-            padding: 12px;
-            background: linear-gradient(to top, rgba(0, 0, 0, .4), transparent);
         }
 
         .popup-btn {
@@ -184,7 +182,12 @@
             opacity: 0;
         }
 
-        .verse-img,
+        .verse-img {
+            width: 70%;
+            max-width: 350px;
+            opacity: 0;
+        }
+
         .bride-img,
         .groom-img {
             width: 85%;
