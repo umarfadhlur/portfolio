@@ -414,7 +414,7 @@
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // AOS.init();
     </script>
 
     <!-- LOGIC -->
@@ -459,8 +459,17 @@
             popup.classList.remove("active");
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
+
             bgmusic.play().catch(() => {});
+
+            setTimeout(() => {
+                AOS.init({
+                    once: true,
+                    startEvent: 'load',
+                });
+            }, 200);
         });
+
 
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
