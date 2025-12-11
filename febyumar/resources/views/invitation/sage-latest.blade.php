@@ -162,18 +162,18 @@
             pointer-events: none;
         }
 
+        .bismillah-img {
+            width: 70%;
+            max-width: 300px;
+            margin-bottom: 10%;
+            margin-top: 10%;
+            opacity: 0;
+        }
+
         .verse-img {
             padding-top: 40%;
             width: 50%;
             max-width: 350px;
-            opacity: 0;
-        }
-
-        .bismillah-img {
-            width: 70%;
-            max-width: 300px;
-            margin-top: 10%;
-            margin-bottom: 10%;
             opacity: 0;
         }
 
@@ -198,7 +198,6 @@
             width: 92%;
             max-width: 420px;
             margin-bottom: 10%;
-            opacity: 1;
         }
 
         .countdown-card {
@@ -229,64 +228,6 @@
         .ctile-label {
             font-size: .7rem;
             color: #666;
-        }
-
-        /* ============================
-   DIRECTION SECTION BASE
-============================ */
-        .direction-section {
-            position: relative;
-            width: 100%;
-        }
-
-        .direction-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            pointer-events: none;
-            padding-top: 25%;
-            /* kayak Date Section */
-        }
-
-        /* Title direction */
-        .direction-title {
-            width: 80%;
-            max-width: 420px;
-            margin-bottom: 12px;
-            opacity: 0;
-        }
-
-        /* Gedung UMN */
-        .umn-img {
-            width: 75%;
-            max-width: 360px;
-            margin-top: 10px;
-            border-radius: 14px;
-            opacity: 0;
-        }
-
-        /* Tombol Map */
-        .map-btn {
-            margin-top: 22px;
-            background: #2F2E2C;
-            color: #fff;
-            padding: 12px 22px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: .95rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-            pointer-events: auto;
-        }
-
-        .map-btn img {
-            width: 20px;
-            height: 20px;
         }
 
         [data-aos].aos-animate {
@@ -322,14 +263,14 @@
     </audio>
     <div id="musicBtn">🔊</div>
 
-    <!-- ===================== CONTENT ===================== -->
+    <!-- CONTENT -->
     <div class="page-wrapper">
 
         <!-- VERSE -->
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
-                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
+                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
                     data-aos-duration="1000">
             </div>
         </section>
@@ -340,7 +281,6 @@
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="1500" data-aos-delay="200">
-
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
@@ -368,14 +308,17 @@
                             <div class="ctile-number" id="c_days">00</div>
                             <div class="ctile-label">Days</div>
                         </div>
+
                         <div class="ctile">
                             <div class="ctile-number" id="c_hours">00</div>
                             <div class="ctile-label">Hours</div>
                         </div>
+
                         <div class="ctile">
                             <div class="ctile-number" id="c_minutes">00</div>
                             <div class="ctile-label">Minutes</div>
                         </div>
+
                         <div class="ctile">
                             <div class="ctile-number" id="c_seconds">00</div>
                             <div class="ctile-label">Seconds</div>
@@ -386,25 +329,7 @@
             </div>
         </section>
 
-        <!-- DIRECTION SECTION -->
-        <section class="direction-section">
-            <img src="{{ asset('images/img/venue-bg.webp') }}">
-
-            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
-
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
-
-                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-img">
-                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-img">
-
-                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn">
-                    <img src="{{ asset('images/img/location.webp') }}">
-                    Open Map Location
-                </a>
-
-            </div>
-        </section>
-
+        <!-- DIRECTION SECTION DIHAPUS SEMENTARA -->
 
     </div>
 
@@ -419,14 +344,9 @@
         const preloaderBar = document.getElementById("preloaderBar");
         const preloaderPercent = document.getElementById("preloaderPercent");
         const popup = document.getElementById("openingPopup");
-        const openBtn = document.getElementById("openInvitationBtn");
         const musicBtn = document.getElementById("musicBtn");
         const bgmusic = document.getElementById("bgmusic");
-
-        const cDays = document.getElementById('c_days');
-        const cHours = document.getElementById('c_hours');
-        const cMinutes = document.getElementById('c_minutes');
-        const cSeconds = document.getElementById('c_seconds');
+        const openBtn = document.getElementById("openInvitationBtn");
 
         let loaded = 0;
         const imgs = document.images;
@@ -454,17 +374,7 @@
             })
         );
 
-        let aosInitialized = false;
-
-        function initAOSOnce() {
-            if (aosInitialized) return;
-            aosInitialized = true;
-            AOS.init({
-                once: true
-            });
-            AOS.refresh();
-        }
-
+        /* ========== OPEN INVITATION ========== */
         openBtn.addEventListener("click", () => {
             popup.classList.remove("active");
             musicBtn.style.display = "block";
@@ -472,13 +382,18 @@
 
             bgmusic.play().catch(() => {});
 
+            // AOS INIT setelah popup ditutup
             setTimeout(() => {
-                initAOSOnce();
-                // force trigger scroll untuk jaga-jaga
-                window.dispatchEvent(new Event('scroll'));
-            }, 150);
+                AOS.init({
+                    once: false, // reversible
+                    mirror: true, // animasi reverse saat scroll balik
+                    duration: 900
+                });
+                AOS.refreshHard();
+            }, 300);
         });
 
+        /* ========== MUSIC BUTTON ========== */
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
                 bgmusic.play();
@@ -489,20 +404,19 @@
             }
         });
 
-        /* AUTO PAUSE SAAT PINDAH TAB (tidak auto resume) */
+        /* ========== AUTO PAUSE SAAT PINDAH TAB ========== */
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
                 bgmusic.pause();
-                musicBtn.textContent = "🔈";
+            } else {
+                bgmusic.play().catch(() => {});
             }
         });
 
-        /* COUNTDOWN */
+        /* ========== COUNTDOWN ========== */
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
 
         function updateTimer() {
-            if (!cDays || !cHours || !cMinutes || !cSeconds) return;
-
             const now = Date.now();
             const diff = target - now;
             if (diff < 0) return;
@@ -512,10 +426,10 @@
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
 
-            cDays.textContent = String(d).padStart(2, '0');
-            cHours.textContent = String(h).padStart(2, '0');
-            cMinutes.textContent = String(m).padStart(2, '0');
-            cSeconds.textContent = String(s).padStart(2, '0');
+            c_days.textContent = String(d).padStart(2, '0');
+            c_hours.textContent = String(h).padStart(2, '0');
+            c_minutes.textContent = String(m).padStart(2, '0');
+            c_seconds.textContent = String(s).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
