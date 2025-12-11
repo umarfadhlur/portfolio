@@ -162,18 +162,18 @@
             pointer-events: none;
         }
 
-        .bismillah-img {
-            width: 70%;
-            max-width: 300px;
-            margin-bottom: 10%;
-            margin-top: 10%;
-            opacity: 0;
-        }
-
         .verse-img {
             padding-top: 40%;
             width: 50%;
             max-width: 350px;
+            opacity: 0;
+        }
+
+        .bismillah-img {
+            width: 70%;
+            max-width: 300px;
+            margin-top: 10%;
+            margin-bottom: 10%;
             opacity: 0;
         }
 
@@ -231,68 +231,6 @@
             color: #666;
         }
 
-        /* =======================================
-           DIRECTION SECTION — FIX TANPA VH
-        ======================================= */
-        .direction-section {
-            position: relative;
-            width: 100%;
-        }
-
-        /* konten overlay seperti DateSection */
-        .direction-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            pointer-events: none;
-            /* biar gambar tidak memblok tombol */
-            padding-top: 22%;
-            /* naik turunnya title */
-        }
-
-        /* title besar */
-        .direction-title {
-            height: 30%;
-            margin-bottom: 20px;
-            opacity: 0;
-        }
-
-        /* gambar UMN kecil sesuai permintaan (40%) */
-        .umn-bdg-img,
-        .umn-ads-img {
-            width: 70%;
-            /* max-width: 180px; */
-            margin-top: 12px;
-            border-radius: 12px;
-            opacity: 0;
-        }
-
-        /* button Open Map */
-        .map-btn {
-            margin-top: 28px;
-            background: #2F2E2C;
-            color: #fff;
-            padding: 12px 22px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: .95rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-            pointer-events: auto;
-            /* penting */
-        }
-
-        .map-btn img {
-            width: 20px;
-            height: 20px;
-        }
-
-
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -326,7 +264,7 @@
     </audio>
     <div id="musicBtn">🔊</div>
 
-    <!-- CONTENT -->
+    <!-- ===================== CONTENT ===================== -->
     <div class="page-wrapper">
 
         <!-- VERSE -->
@@ -344,6 +282,7 @@
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
                     data-aos-duration="1500" data-aos-delay="200">
+
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
@@ -361,8 +300,8 @@
         <!-- DATE -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
-            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
 
+            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
@@ -385,37 +324,18 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- DIRECTION -->
-        {{-- <section class="direction-section">
-            <img src="{{ asset('images/img/venue-bg.webp') }}">
-
-            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
-
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
-
-                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-bdg-img">
-
-                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-ads-img">
-
-                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn">
-                    <img src="{{ asset('images/img/location.webp') }}">
-                    Open Map Location
-                </a>
-
-            </div>
-        </section> --}}
-
+        <!-- DIRECTION (DISABLED UNTUK SEKARANG)
+        <section class="direction-section"> ... </section>
+        -->
 
     </div>
 
-    <!-- AOS -->
+    <!-- AOS SCRIPT -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        // AOS.init();
-    </script>
 
     <!-- LOGIC -->
     <script>
@@ -425,9 +345,9 @@
         const preloaderBar = document.getElementById("preloaderBar");
         const preloaderPercent = document.getElementById("preloaderPercent");
         const popup = document.getElementById("openingPopup");
+        const openBtn = document.getElementById("openInvitationBtn");
         const musicBtn = document.getElementById("musicBtn");
         const bgmusic = document.getElementById("bgmusic");
-        const openBtn = document.getElementById("openInvitationBtn");
 
         let loaded = 0;
         const imgs = document.images;
@@ -465,11 +385,10 @@
             setTimeout(() => {
                 AOS.init({
                     once: true,
-                    startEvent: 'load',
+                    startEvent: 'load'
                 });
             }, 200);
         });
-
 
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
@@ -481,12 +400,10 @@
             }
         });
 
-        /* === AUTO PAUSE MUSIC SAAT PINDAH TAB === */
+        /* AUTO PAUSE SAAT PINDAH TAB */
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
                 bgmusic.pause();
-            } else {
-                bgmusic.play().catch(() => {});
             }
         });
 
@@ -498,15 +415,10 @@
             const diff = target - now;
             if (diff < 0) return;
 
-            const d = Math.floor(diff / 86400000);
-            const h = Math.floor((diff % 86400000) / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
-
-            c_days.textContent = String(d).padStart(2, '0');
-            c_hours.textContent = String(h).padStart(2, '0');
-            c_minutes.textContent = String(m).padStart(2, '0');
-            c_seconds.textContent = String(s).padStart(2, '0');
+            c_days.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+            c_hours.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            c_minutes.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            c_seconds.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
