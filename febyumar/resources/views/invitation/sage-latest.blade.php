@@ -300,8 +300,8 @@
         <!-- DATE -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
-
             <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
+
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
@@ -328,13 +328,13 @@
             </div>
         </section>
 
-        <!-- DIRECTION (DISABLED UNTUK SEKARANG)
-        <section class="direction-section"> ... </section>
+        <!-- DIRECTION (nanti lagi aja, ini base stable dulu)
+        <section class="direction-section">...</section>
         -->
 
     </div>
 
-    <!-- AOS SCRIPT -->
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- LOGIC -->
@@ -348,6 +348,11 @@
         const openBtn = document.getElementById("openInvitationBtn");
         const musicBtn = document.getElementById("musicBtn");
         const bgmusic = document.getElementById("bgmusic");
+
+        const cDays = document.getElementById('c_days');
+        const cHours = document.getElementById('c_hours');
+        const cMinutes = document.getElementById('c_minutes');
+        const cSeconds = document.getElementById('c_seconds');
 
         let loaded = 0;
         const imgs = document.images;
@@ -375,6 +380,17 @@
             })
         );
 
+        let aosInitialized = false;
+
+        function initAOSOnce() {
+            if (aosInitialized) return;
+            aosInitialized = true;
+            AOS.init({
+                once: true
+            });
+            AOS.refresh();
+        }
+
         openBtn.addEventListener("click", () => {
             popup.classList.remove("active");
             musicBtn.style.display = "block";
@@ -383,11 +399,10 @@
             bgmusic.play().catch(() => {});
 
             setTimeout(() => {
-                AOS.init({
-                    once: true,
-                    startEvent: 'load'
-                });
-            }, 200);
+                initAOSOnce();
+                // force trigger scroll untuk jaga-jaga
+                window.dispatchEvent(new Event('scroll'));
+            }, 150);
         });
 
         musicBtn.addEventListener("click", () => {
@@ -400,10 +415,11 @@
             }
         });
 
-        /* AUTO PAUSE SAAT PINDAH TAB */
+        /* AUTO PAUSE SAAT PINDAH TAB (tidak auto resume) */
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
                 bgmusic.pause();
+                musicBtn.textContent = "🔈";
             }
         });
 
@@ -411,14 +427,21 @@
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
 
         function updateTimer() {
+            if (!cDays || !cHours || !cMinutes || !cSeconds) return;
+
             const now = Date.now();
             const diff = target - now;
             if (diff < 0) return;
 
-            c_days.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
-            c_hours.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-            c_minutes.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-            c_seconds.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            cDays.textContent = String(d).padStart(2, '0');
+            cHours.textContent = String(h).padStart(2, '0');
+            cMinutes.textContent = String(m).padStart(2, '0');
+            cSeconds.textContent = String(s).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
