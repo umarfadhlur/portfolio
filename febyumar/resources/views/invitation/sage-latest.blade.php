@@ -231,6 +231,64 @@
             color: #666;
         }
 
+        /* ============================
+   DIRECTION SECTION BASE
+============================ */
+        .direction-section {
+            position: relative;
+            width: 100%;
+        }
+
+        .direction-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 25%;
+            /* kayak Date Section */
+        }
+
+        /* Title direction */
+        .direction-title {
+            width: 80%;
+            max-width: 420px;
+            margin-bottom: 12px;
+            opacity: 0;
+        }
+
+        /* Gedung UMN */
+        .umn-img {
+            width: 75%;
+            max-width: 360px;
+            margin-top: 10px;
+            border-radius: 14px;
+            opacity: 0;
+        }
+
+        /* Tombol Map */
+        .map-btn {
+            margin-top: 22px;
+            background: #2F2E2C;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .95rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+            pointer-events: auto;
+        }
+
+        .map-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -271,7 +329,7 @@
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
-                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
                     data-aos-duration="1000">
             </div>
         </section>
@@ -328,9 +386,25 @@
             </div>
         </section>
 
-        <!-- DIRECTION (nanti lagi aja, ini base stable dulu)
-        <section class="direction-section">...</section>
-        -->
+        <!-- DIRECTION SECTION -->
+        <section class="direction-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}">
+
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
+
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
+
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="umn-img">
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="umn-img">
+
+                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" target="_blank" class="map-btn">
+                    <img src="{{ asset('images/img/location.webp') }}">
+                    Open Map Location
+                </a>
+
+            </div>
+        </section>
+
 
     </div>
 
