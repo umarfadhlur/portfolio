@@ -243,26 +243,24 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 12%;
-            /* sesuaikan biar layout mirip desain */
+            padding-top: 4%;
+            transform: translateX(6%);
         }
 
         .direction-title {
             width: 80%;
             max-width: 320px;
-            margin-bottom: 6%;
         }
 
         .direction-building {
-            width: 70%;
+            width: 50%;
             max-width: 320px;
-            margin-bottom: 6%;
+            margin-bottom: 2%;
         }
 
         .direction-address {
-            width: 85%;
+            width: 65%;
             max-width: 360px;
-            margin-bottom: 6%;
         }
 
         [data-aos].aos-animate {
