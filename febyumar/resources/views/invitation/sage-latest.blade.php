@@ -308,6 +308,7 @@
 
         .rsvp-card {
             max-width: 420px;
+            width: 100%;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.96);
             border-radius: 18px;
@@ -412,6 +413,7 @@
 
         .messages-card {
             max-width: 420px;
+            width: 100%;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.96);
             border-radius: 18px;
