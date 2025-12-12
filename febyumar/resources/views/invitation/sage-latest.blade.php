@@ -283,6 +283,122 @@
             opacity: 0;
         }
 
+        /* RSVP SECTION */
+        .rsvp-section {
+            background: #949a8f;
+            /* selaras theme */
+            padding: 24px 16px 32px;
+        }
+
+        .rsvp-section>img {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .rsvp-inner {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .rsvp-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2F2E2C;
+            margin-bottom: 16px;
+        }
+
+        /* Card form mobile-first */
+        .rsvp-form {
+            background: #ffffff;
+            padding: 18px 16px;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Form controls full-width */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2F2E2C;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            background: #fafafa;
+            transition: all 0.2s ease;
+            color: #2F2E2C;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #727d6c;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Alert */
+        .alert {
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid;
+            font-size: 0.85rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        /* Messages section */
+        .messages-section {
+            background: #949a8f;
+            padding: 8px 16px 32px;
+        }
+
+        .messages-inner {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .messages-list {
+            margin-top: 12px;
+        }
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -412,12 +528,58 @@
             </div>
         </section>
 
+        <!-- RSVP -->
+        <section id="rsvp" class="rsvp-section">
+            <img src="{{ asset('images/img/bless.webp') }}" alt="Bless Illustration">
+
+            <div class="rsvp-inner" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="rsvp-title">Konfirmasi Kehadiran</h2>
+
+                <form id="rsvpForm" class="rsvp-form">
+                    @csrf
+                    <div id="rsvpAlert"></div>
+
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Konfirmasi Kehadiran</label>
+                        <select name="status" id="fm_status" required>
+                            <option value="">-- Pilih Status --</option>
+                            <option value="hadir">✓ Hadir</option>
+                            <option value="tidak hadir">✗ Tidak Hadir</option>
+                            <option value="tentatif">? Tentatif</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ucapan & Doa</label>
+                        <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Ucapan & Doa -->
+        <section id="messages" class="messages-section">
+            <div class="messages-inner" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="rsvp-title">Ucapan & Doa</h2>
+                <div id="messagesList" class="messages-list">
+                    <!-- pesan di‑inject JS -->
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-    <!-- LOGIC -->
+    {{-- <!-- LOGIC -->
     <script>
         document.body.style.overflow = "hidden";
 
@@ -523,6 +685,258 @@
 
         setInterval(updateTimer, 1000);
         updateTimer();
+    </script> --}}
+
+    <!-- LOGIC + RSVP -->
+    <script>
+        document.body.style.overflow = "hidden";
+
+        const preloader = document.getElementById("preloader");
+        const preloaderBar = document.getElementById("preloaderBar");
+        const preloaderPercent = document.getElementById("preloaderPercent");
+        const popup = document.getElementById("openingPopup");
+        const musicBtn = document.getElementById("musicBtn");
+        const bgmusic = document.getElementById("bgmusic");
+        const openBtn = document.getElementById("openInvitationBtn");
+
+        let loaded = 0;
+        const imgs = document.images;
+        const total = imgs.length;
+
+        function updateLoader() {
+            loaded++;
+            const percent = Math.min(100, Math.floor((loaded / total) * 100));
+            preloaderBar.style.width = percent + "%";
+            preloaderPercent.textContent = percent + "%";
+
+            if (percent === 100) {
+                setTimeout(() => {
+                    preloader.style.opacity = "0";
+                    preloader.style.visibility = "hidden";
+                    popup.classList.add("active");
+                }, 300);
+            }
+        }
+
+        [...imgs].forEach(img =>
+            img.complete ?
+            updateLoader() :
+            img.addEventListener("load", updateLoader, {
+                once: true
+            })
+        );
+
+        /* ========== OPEN INVITATION ========== */
+        openBtn.addEventListener("click", () => {
+            popup.classList.remove("active");
+            musicBtn.style.display = "block";
+            document.body.style.overflow = "auto";
+
+            bgmusic.play().catch(() => {});
+
+            // AOS INIT setelah popup ditutup
+            setTimeout(() => {
+                AOS.init({
+                    once: false,
+                    mirror: true,
+                    duration: 1200,
+                    easing: 'ease-out-quart',
+                    offset: 80
+                });
+                AOS.refreshHard();
+            }, 300);
+        });
+
+        /* ========== MUSIC BUTTON ========== */
+        musicBtn.addEventListener("click", () => {
+            if (bgmusic.paused) {
+                bgmusic.play();
+                musicBtn.textContent = "🔊";
+            } else {
+                bgmusic.pause();
+                musicBtn.textContent = "🔈";
+            }
+        });
+
+        /* ========== AUTO PAUSE SAAT PINDAH TAB ========== */
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                bgmusic.pause();
+            } else {
+                bgmusic.play().catch(() => {});
+            }
+        });
+
+        /* ========== COUNTDOWN ========== */
+        const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
+
+        const cDaysEl = document.getElementById('c_days');
+        const cHoursEl = document.getElementById('c_hours');
+        const cMinutesEl = document.getElementById('c_minutes');
+        const cSecondsEl = document.getElementById('c_seconds');
+
+        function updateTimer() {
+            const now = Date.now();
+            const diff = target - now;
+            if (diff < 0) return;
+
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            cDaysEl.textContent = String(d).padStart(2, '0');
+            cHoursEl.textContent = String(h).padStart(2, '0');
+            cMinutesEl.textContent = String(m).padStart(2, '0');
+            cSecondsEl.textContent = String(s).padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        /* ========== RSVP & MESSAGES ========== */
+        const messagesIndexUrl = "{{ route('rsvp.messages') }}";
+        const messagesStoreUrl = "{{ route('rsvp.store') }}";
+
+        function escapeHtml(s) {
+            return String(s || '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            } [c]));
+        }
+
+        async function fetchMessages() {
+            try {
+                const res = await fetch(messagesIndexUrl, {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                const data = await res.json().catch(() => null);
+                if (!res.ok) throw new Error('Fetch failed');
+
+                let items = [];
+                if (Array.isArray(data)) items = data;
+                else if (data && Array.isArray(data.rows)) items = data.rows;
+                else if (data && Array.isArray(data.data)) items = data.data;
+
+                items = items.filter(m => m).slice(0, 10);
+
+                const container = document.getElementById('messagesList');
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                if (!items.length) {
+                    container.innerHTML =
+                        '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
+                    return;
+                }
+
+                items.forEach(msg => {
+                    const el = document.createElement('div');
+                    el.className = 'message-item';
+                    const messageText =
+                        (msg.message && String(msg.message).trim() !== '') ?
+                        escapeHtml(msg.message) :
+                        '— Belum menulis ucapan —';
+                    el.innerHTML = `
+                    <div class="meta">
+                        <div>${escapeHtml(msg.name || 'Tamu')}</div>
+                        <div style="opacity:.75;font-weight:600;font-size:.92rem">
+                            ${escapeHtml(msg.status || '')}
+                        </div>
+                    </div>
+                    <div class="text">${messageText}</div>
+                    <div style="margin-top:10px;font-size:0.82rem;color:#777">
+                        ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
+                    </div>
+                `;
+                    container.appendChild(el);
+                });
+            } catch (e) {
+                console.error('fetchMessages error', e);
+                const container = document.getElementById('messagesList');
+                if (container) {
+                    container.innerHTML =
+                        '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // load ucapan
+            fetchMessages();
+
+            // handle submit RSVP
+            const form = document.getElementById('rsvpForm');
+            if (form) {
+                form.addEventListener('submit', async (ev) => {
+                    ev.preventDefault();
+                    const name = document.getElementById('fm_name').value.trim();
+                    const status = document.getElementById('fm_status').value;
+                    const message = document.getElementById('fm_message').value.trim();
+                    const alertBox = document.getElementById('rsvpAlert');
+                    alertBox.innerHTML = '';
+
+                    if (!name || !status || !message) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
+                        return;
+                    }
+
+                    try {
+                        const token = document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content');
+
+                        const res = await fetch(messagesStoreUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': token,
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name,
+                                status,
+                                message
+                            })
+                        });
+
+                        if (!res.ok) throw new Error('Request failed');
+
+                        await res.json();
+                        form.reset();
+                        alertBox.innerHTML =
+                            '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
+                        fetchMessages();
+                    } catch (err) {
+                        console.error('submit error', err);
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                    }
+                });
+            }
+        });
+
+        // DISABLE RIGHT CLICK & multi-touch zoom
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, {
+            passive: false
+        });
     </script>
 
 </body>
