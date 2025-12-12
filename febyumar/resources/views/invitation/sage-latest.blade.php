@@ -236,14 +236,14 @@
         }
 
         .direction-content {
-            position: static;
+            position: absolute;
             inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
             padding-top: 4%;
-            transform: translateX(6%);
+            left: 6%;
         }
 
         .direction-title {
