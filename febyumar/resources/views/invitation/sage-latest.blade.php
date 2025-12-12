@@ -231,15 +231,38 @@
         }
 
         /* DIRECTION SECTION */
-        .direction-content {
-            padding-top: 28%;
-            z-index: 5;
+        .direction-section {
+            width: 100%;
+            position: relative;
         }
 
-        .direction-img {
-            width: 92%;
-            max-width: 420px;
-            margin-bottom: 10%;
+        .direction-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 12%;
+            /* sesuaikan biar layout mirip desain */
+        }
+
+        .direction-title {
+            width: 80%;
+            max-width: 320px;
+            margin-bottom: 6%;
+        }
+
+        .direction-building {
+            width: 70%;
+            max-width: 320px;
+            margin-bottom: 6%;
+        }
+
+        .direction-address {
+            width: 85%;
+            max-width: 360px;
+            margin-bottom: 6%;
         }
 
         [data-aos].aos-animate {
@@ -341,11 +364,24 @@
             </div>
         </section>
 
-
+        <!-- DIRECTION -->
         <section class="direction-section">
             <img src="{{ asset('images/img/venue-bg.webp') }}" alt="Venue Background">
-            <div class="direction-content" data-aos="zoom-in" data-aos-duration="1500">
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-img" alt="Direction">
+            <div class="direction-content">
+
+                <!-- Title: Direction to Venue -->
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
+                    data-aos="fade-down" data-aos-duration="1200">
+
+                <!-- Gedung UMN -->
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1200"
+                    data-aos-delay="150">
+
+                <!-- Alamat UMN -->
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1200"
+                    data-aos-delay="300">
             </div>
         </section>
 
