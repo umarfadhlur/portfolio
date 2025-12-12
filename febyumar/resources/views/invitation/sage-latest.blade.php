@@ -284,22 +284,37 @@
             opacity: 0;
         }
 
-        /* RSVP SECTION */
+        /* RSVP SECTION (background bless-bg, content overlay) */
         .rsvp-section {
-            background: #949a8f;
-            padding: 24px 16px 32px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
         .rsvp-section>img {
             width: 100%;
-            max-width: 420px;
-            margin: 0 auto 16px;
             display: block;
         }
 
         .rsvp-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px 16px 32px;
+            pointer-events: none;
+        }
+
+        .rsvp-card {
             max-width: 420px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            padding: 18px 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            pointer-events: auto;
         }
 
         .rsvp-title {
@@ -310,15 +325,7 @@
             margin-bottom: 16px;
         }
 
-        .rsvp-form {
-            background: #ffffff;
-            padding: 18px 16px;
-            border-radius: 16px;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
-
-        .form-group {
+        .rsvp-form .form-group {
             margin-bottom: 16px;
         }
 
@@ -381,62 +388,60 @@
             color: #155724;
         }
 
-        /* Messages section with overlay backgrounds */
+        /* Messages section (background gift-bg, cards overlay) */
         .messages-section {
             position: relative;
-            background: #949a8f;
-            padding: 24px 16px 40px;
+            width: 100%;
             overflow: hidden;
         }
 
-        .messages-section::before,
-        .messages-section::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-repeat: no-repeat;
-            background-size: contain;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        .messages-section::before {
-            background-image: url("{{ asset('images/img/bless-bg.webp') }}");
-            background-position: top center;
-        }
-
-        .messages-section::after {
-            background-image: url("{{ asset('images/img/gift-bg.webp') }}");
-            background-position: bottom center;
+        .messages-section>img {
+            width: 100%;
+            display: block;
         }
 
         .messages-inner {
-            position: relative;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px 16px 40px;
+            pointer-events: none;
+        }
+
+        .messages-card {
             max-width: 420px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            padding: 16px 14px 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            pointer-events: auto;
         }
 
         .messages-list {
-            margin-top: 16px;
+            margin-top: 8px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
         .message-item {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 14px;
-            padding: 10px 12px;
+            padding: 8px 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .message-item .meta {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: 600;
             color: #2F2E2C;
         }
@@ -573,48 +578,53 @@
             </div>
         </section>
 
-        <!-- RSVP -->
+        <!-- RSVP (bless-bg as background) -->
         <section id="rsvp" class="rsvp-section">
-            <img src="{{ asset('images/img/bless.webp') }}" alt="Bless Illustration">
+            <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
+            <div class="rsvp-inner">
+                <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
+                    <h2 class="rsvp-title">Konfirmasi Kehadiran</h2>
 
-            <div class="rsvp-inner" data-aos="fade-up" data-aos-duration="1200">
-                <h2 class="rsvp-title">Konfirmasi Kehadiran</h2>
+                    <form id="rsvpForm" class="rsvp-form">
+                        @csrf
+                        <div id="rsvpAlert"></div>
 
-                <form id="rsvpForm" class="rsvp-form">
-                    @csrf
-                    <div id="rsvpAlert"></div>
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
+                                required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
-                    </div>
+                        <div class="form-group">
+                            <label>Konfirmasi Kehadiran</label>
+                            <select name="status" id="fm_status" required>
+                                <option value="">-- Pilih Status --</option>
+                                <option value="hadir">✓ Hadir</option>
+                                <option value="tidak hadir">✗ Tidak Hadir</option>
+                                <option value="tentatif">? Tentatif</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Konfirmasi Kehadiran</label>
-                        <select name="status" id="fm_status" required>
-                            <option value="">-- Pilih Status --</option>
-                            <option value="hadir">✓ Hadir</option>
-                            <option value="tidak hadir">✗ Tidak Hadir</option>
-                            <option value="tentatif">? Tentatif</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label>Ucapan & Doa</label>
+                            <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Ucapan & Doa</label>
-                        <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
-                </form>
+                        <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- Ucapan & Doa -->
+        <!-- Ucapan & Doa (gift-bg as background) -->
         <section id="messages" class="messages-section">
-            <div class="messages-inner" data-aos="fade-up" data-aos-duration="1200">
-                <h2 class="rsvp-title">Ucapan & Doa</h2>
-                <div id="messagesList" class="messages-list">
-                    <!-- pesan di‑inject JS -->
+            <img src="{{ asset('images/img/gift-bg.webp') }}" alt="Gift Background">
+            <div class="messages-inner">
+                <div class="messages-card" data-aos="fade-up" data-aos-duration="1200">
+                    <h2 class="rsvp-title">Ucapan & Doa</h2>
+                    <div id="messagesList" class="messages-list">
+                        <!-- pesan di‑inject JS -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -789,7 +799,7 @@
                             </div>
                         </div>
                         <div class="text">${messageText}</div>
-                        <div style="margin-top:10px;font-size:0.82rem;color:#777">
+                        <div style="margin-top:8px;font-size:0.8rem;color:#777">
                             ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
                         </div>
                     `;
