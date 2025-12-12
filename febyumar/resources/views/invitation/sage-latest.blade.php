@@ -232,12 +232,11 @@
 
         /* DIRECTION SECTION */
         .direction-section {
-            width: 100%;
             position: relative;
         }
 
         .direction-content {
-            position: absolute;
+            position: static;
             inset: 0;
             display: flex;
             flex-direction: column;
@@ -248,18 +247,18 @@
         }
 
         .direction-title {
-            width: 80%;
+            width: 75%;
             max-width: 320px;
         }
 
         .direction-building {
-            width: 50%;
+            width: 40%;
             max-width: 320px;
-            margin-bottom: 2%;
+            margin-bottom: 5%;
         }
 
         .direction-address {
-            width: 65%;
+            width: 70%;
             max-width: 360px;
         }
 
