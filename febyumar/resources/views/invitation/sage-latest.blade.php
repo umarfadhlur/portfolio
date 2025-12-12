@@ -243,7 +243,7 @@
             align-items: center;
             pointer-events: none;
             padding-top: 4%;
-            left: 6%;
+            left: 10%;
         }
 
         .direction-title {
@@ -252,14 +252,29 @@
         }
 
         .direction-building {
-            width: 40%;
+            width: 50%;
             max-width: 320px;
             margin-bottom: 5%;
         }
 
         .direction-address {
-            width: 70%;
+            width: 80%;
             max-width: 360px;
+        }
+
+        .verse2-section {
+            width: 100%;
+            position: relative;
+        }
+
+        .verse2-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            right: 25%;
         }
 
         [data-aos].aos-animate {
@@ -272,7 +287,7 @@
 
     <!-- PRELOADER -->
     <div id="preloader">
-        <img src="{{ asset('images/flower/popup.webp') }}" class="preloader-icon">
+        <img src="{{ asset('images/img/popup.webp') }}" class="preloader-icon">
         <div class="preloader-bar"><span id="preloaderBar"></span></div>
         <div id="preloaderPercent" class="preloader-percent">0%</div>
     </div>
@@ -280,7 +295,7 @@
     <!-- POPUP -->
     <div id="openingPopup">
         <div class="popup-box">
-            <img src="{{ asset('images/flower/popup.webp') }}">
+            <img src="{{ asset('images/img/popup.webp') }}">
             <div class="popup-content">
                 <p>Kepada Yth.</p>
                 <p class="popup-name">{{ $guestName ?? 'Tamu Undangan' }}</p>
@@ -379,6 +394,15 @@
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
                     alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1200"
                     data-aos-delay="300">
+            </div>
+        </section>
+
+        <!-- VERSE -->
+        <section class="verse2-section">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}">
+            <div class="verse2-content">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse-img" data-aos="zoom-in"
+                    data-aos-duration="1000">
             </div>
         </section>
 
