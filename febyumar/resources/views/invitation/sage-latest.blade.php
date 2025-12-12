@@ -230,6 +230,18 @@
             color: #666;
         }
 
+        /* DIRECTION SECTION */
+        .direction-content {
+            padding-top: 28%;
+            z-index: 5;
+        }
+
+        .direction-img {
+            width: 92%;
+            max-width: 420px;
+            margin-bottom: 10%;
+        }
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -329,39 +341,13 @@
             </div>
         </section>
 
-        <section class="date-section">
-            <img src="{{ asset('images/img/venue-bg.webp') }}">
-            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
 
-                <img src="{{ asset('images/img/date.webp') }}" class="date-img">
-
-                <div class="countdown-card">
-                    <div class="countdown-tiles">
-                        <div class="ctile">
-                            <div class="ctile-number" id="c_days">00</div>
-                            <div class="ctile-label">Days</div>
-                        </div>
-
-                        <div class="ctile">
-                            <div class="ctile-number" id="c_hours">00</div>
-                            <div class="ctile-label">Hours</div>
-                        </div>
-
-                        <div class="ctile">
-                            <div class="ctile-number" id="c_minutes">00</div>
-                            <div class="ctile-label">Minutes</div>
-                        </div>
-
-                        <div class="ctile">
-                            <div class="ctile-number" id="c_seconds">00</div>
-                            <div class="ctile-label">Seconds</div>
-                        </div>
-                    </div>
-                </div>
-
+        <section class="direction-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}" alt="Venue Background">
+            <div class="direction-content" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-img" alt="Direction">
             </div>
         </section>
-
 
     </div>
 
@@ -448,6 +434,12 @@
         /* ========== COUNTDOWN ========== */
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
 
+        // ambil elemen sekali di awal
+        const cDaysEl = document.getElementById('c_days');
+        const cHoursEl = document.getElementById('c_hours');
+        const cMinutesEl = document.getElementById('c_minutes');
+        const cSecondsEl = document.getElementById('c_seconds');
+
         function updateTimer() {
             const now = Date.now();
             const diff = target - now;
@@ -458,10 +450,10 @@
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
 
-            c_days.textContent = String(d).padStart(2, '0');
-            c_hours.textContent = String(h).padStart(2, '0');
-            c_minutes.textContent = String(m).padStart(2, '0');
-            c_seconds.textContent = String(s).padStart(2, '0');
+            cDaysEl.textContent = String(d).padStart(2, '0');
+            cHoursEl.textContent = String(h).padStart(2, '0');
+            cMinutesEl.textContent = String(m).padStart(2, '0');
+            cSecondsEl.textContent = String(s).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
