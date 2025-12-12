@@ -19,7 +19,6 @@
             background: #949a8f;
             font-family: "Poppins", sans-serif;
             overflow-x: hidden;
-            width: 100%;
         }
 
         img {
@@ -33,6 +32,7 @@
             max-width: 480px;
             margin: 0 auto;
             position: relative;
+            overflow-x: hidden;
         }
 
         /* ===================== PRELOADER ===================== */
@@ -141,7 +141,7 @@
             display: none;
         }
 
-        /* ===================== SECTIONS ===================== */
+        /* ===================== SECTIONS BASE ===================== */
         .verse-section,
         .bride-section,
         .groom-section,
@@ -262,6 +262,7 @@
             max-width: 360px;
         }
 
+        /* VERSE 2 */
         .verse2-section {
             width: 100%;
             position: relative;
@@ -286,7 +287,6 @@
         /* RSVP SECTION */
         .rsvp-section {
             background: #949a8f;
-            /* selaras theme */
             padding: 24px 16px 32px;
         }
 
@@ -310,7 +310,6 @@
             margin-bottom: 16px;
         }
 
-        /* Card form mobile-first */
         .rsvp-form {
             background: #ffffff;
             padding: 18px 16px;
@@ -319,7 +318,6 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         }
 
-        /* Form controls full-width */
         .form-group {
             margin-bottom: 16px;
         }
@@ -369,7 +367,6 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         }
 
-        /* Alert */
         .alert {
             padding: 10px 12px;
             border-radius: 10px;
@@ -384,19 +381,70 @@
             color: #155724;
         }
 
-        /* Messages section */
+        /* Messages section with overlay backgrounds */
         .messages-section {
+            position: relative;
             background: #949a8f;
-            padding: 8px 16px 32px;
+            padding: 24px 16px 40px;
+            overflow: hidden;
+        }
+
+        .messages-section::before,
+        .messages-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .messages-section::before {
+            background-image: url("{{ asset('images/img/bless-bg.webp') }}");
+            background-position: top center;
+        }
+
+        .messages-section::after {
+            background-image: url("{{ asset('images/img/gift-bg.webp') }}");
+            background-position: bottom center;
         }
 
         .messages-inner {
+            position: relative;
             max-width: 420px;
             margin: 0 auto;
         }
 
         .messages-list {
-            margin-top: 12px;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message-item {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 14px;
+            padding: 10px 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .message-item .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2F2E2C;
+        }
+
+        .message-item .text {
+            color: #444;
+            line-height: 1.4;
+            white-space: pre-wrap;
         }
 
         [data-aos].aos-animate {
@@ -503,23 +551,20 @@
             <img src="{{ asset('images/img/venue-bg.webp') }}" alt="Venue Background">
             <div class="direction-content">
 
-                <!-- Title: Direction to Venue -->
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
                     data-aos="fade-down" data-aos-duration="1200">
 
-                <!-- Gedung UMN -->
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
                     alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1200"
                     data-aos-delay="150">
 
-                <!-- Alamat UMN -->
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
                     alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1200"
                     data-aos-delay="300">
             </div>
         </section>
 
-        <!-- VERSE -->
+        <!-- VERSE 2 -->
         <section class="verse2-section">
             <img src="{{ asset('images/img/verse-2-bg.webp') }}">
             <div class="verse2-content">
@@ -578,114 +623,6 @@
 
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    {{-- <!-- LOGIC -->
-    <script>
-        document.body.style.overflow = "hidden";
-
-        const preloader = document.getElementById("preloader");
-        const preloaderBar = document.getElementById("preloaderBar");
-        const preloaderPercent = document.getElementById("preloaderPercent");
-        const popup = document.getElementById("openingPopup");
-        const musicBtn = document.getElementById("musicBtn");
-        const bgmusic = document.getElementById("bgmusic");
-        const openBtn = document.getElementById("openInvitationBtn");
-
-        let loaded = 0;
-        const imgs = document.images;
-        const total = imgs.length;
-
-        function updateLoader() {
-            loaded++;
-            const percent = Math.min(100, Math.floor((loaded / total) * 100));
-            preloaderBar.style.width = percent + "%";
-            preloaderPercent.textContent = percent + "%";
-
-            if (percent === 100) {
-                setTimeout(() => {
-                    preloader.style.opacity = "0";
-                    preloader.style.visibility = "hidden";
-                    popup.classList.add("active");
-                }, 300);
-            }
-        }
-
-        [...imgs].forEach(img =>
-            img.complete ? updateLoader() :
-            img.addEventListener("load", updateLoader, {
-                once: true
-            })
-        );
-
-        /* ========== OPEN INVITATION ========== */
-        openBtn.addEventListener("click", () => {
-            popup.classList.remove("active");
-            musicBtn.style.display = "block";
-            document.body.style.overflow = "auto";
-
-            bgmusic.play().catch(() => {});
-
-            // AOS INIT setelah popup ditutup
-            setTimeout(() => {
-                AOS.init({
-                    once: false,
-                    mirror: true,
-                    duration: 1200,
-                    easing: 'ease-out-quart',
-                    offset: 80
-                });
-                AOS.refreshHard();
-            }, 300);
-        });
-
-        /* ========== MUSIC BUTTON ========== */
-        musicBtn.addEventListener("click", () => {
-            if (bgmusic.paused) {
-                bgmusic.play();
-                musicBtn.textContent = "🔊";
-            } else {
-                bgmusic.pause();
-                musicBtn.textContent = "🔈";
-            }
-        });
-
-        /* ========== AUTO PAUSE SAAT PINDAH TAB ========== */
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) {
-                bgmusic.pause();
-            } else {
-                bgmusic.play().catch(() => {});
-            }
-        });
-
-        /* ========== COUNTDOWN ========== */
-        const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
-
-        // ambil elemen sekali di awal
-        const cDaysEl = document.getElementById('c_days');
-        const cHoursEl = document.getElementById('c_hours');
-        const cMinutesEl = document.getElementById('c_minutes');
-        const cSecondsEl = document.getElementById('c_seconds');
-
-        function updateTimer() {
-            const now = Date.now();
-            const diff = target - now;
-            if (diff < 0) return;
-
-            const d = Math.floor(diff / 86400000);
-            const h = Math.floor((diff % 86400000) / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
-
-            cDaysEl.textContent = String(d).padStart(2, '0');
-            cHoursEl.textContent = String(h).padStart(2, '0');
-            cMinutesEl.textContent = String(m).padStart(2, '0');
-            cSecondsEl.textContent = String(s).padStart(2, '0');
-        }
-
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script> --}}
 
     <!-- LOGIC + RSVP -->
     <script>
@@ -845,17 +782,17 @@
                         escapeHtml(msg.message) :
                         '— Belum menulis ucapan —';
                     el.innerHTML = `
-                    <div class="meta">
-                        <div>${escapeHtml(msg.name || 'Tamu')}</div>
-                        <div style="opacity:.75;font-weight:600;font-size:.92rem">
-                            ${escapeHtml(msg.status || '')}
+                        <div class="meta">
+                            <div>${escapeHtml(msg.name || 'Tamu')}</div>
+                            <div style="opacity:.75;font-weight:600;font-size:.92rem">
+                                ${escapeHtml(msg.status || '')}
+                            </div>
                         </div>
-                    </div>
-                    <div class="text">${messageText}</div>
-                    <div style="margin-top:10px;font-size:0.82rem;color:#777">
-                        ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
-                    </div>
-                `;
+                        <div class="text">${messageText}</div>
+                        <div style="margin-top:10px;font-size:0.82rem;color:#777">
+                            ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
+                        </div>
+                    `;
                     container.appendChild(el);
                 });
             } catch (e) {
@@ -869,10 +806,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // load ucapan
             fetchMessages();
 
-            // handle submit RSVP
             const form = document.getElementById('rsvpForm');
             if (form) {
                 form.addEventListener('submit', async (ev) => {

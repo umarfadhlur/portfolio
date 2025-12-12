@@ -35,10 +35,6 @@
             position: relative;
         }
 
-        .section-spacer {
-            height: 40px;
-        }
-
         /* ===================== PRELOADER ===================== */
         #preloader {
             position: fixed;
@@ -67,9 +63,9 @@
         }
 
         .preloader-bar span {
-            display: block;
             width: 0%;
             height: 100%;
+            display: block;
             background: #949a8f;
             transition: .2s linear;
         }
@@ -145,12 +141,11 @@
             display: none;
         }
 
-        /* ===================== GENERAL SECTIONS ===================== */
+        /* ===================== SECTIONS ===================== */
         .verse-section,
         .bride-section,
         .groom-section,
-        .date-section,
-        .direction-section {
+        .date-section {
             width: 100%;
             position: relative;
         }
@@ -158,8 +153,7 @@
         .verse-content,
         .bride-content,
         .groom-content,
-        .date-content,
-        .direction-content {
+        .date-content {
             position: absolute;
             inset: 0;
             display: flex;
@@ -194,11 +188,7 @@
             padding-top: 25%;
         }
 
-        /* ===================== DATE SECTION ===================== */
-        .date-section {
-            min-height: 100vh;
-        }
-
+        /* DATE SECTION */
         .date-content {
             padding-top: 28%;
             z-index: 5;
@@ -208,25 +198,17 @@
             width: 92%;
             max-width: 420px;
             margin-bottom: 10%;
-            opacity: 1 !important;
-            z-index: 10;
         }
 
-        /* COUNTDOWN TILES */
         .countdown-card {
-            background: transparent;
-            box-shadow: none;
             width: 95%;
             max-width: 340px;
-            pointer-events: auto;
-            margin-top: 10px;
         }
 
         .countdown-tiles {
             display: flex;
             justify-content: space-between;
             gap: 6px;
-            width: 100%;
         }
 
         .ctile {
@@ -241,100 +223,182 @@
         .ctile-number {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #333;
-            font-family: "Poppins", sans-serif;
         }
 
         .ctile-label {
             font-size: .7rem;
-            margin-top: 2px;
             color: #666;
         }
 
-        /* ===================== DIRECTION ===================== */
-
+        /* DIRECTION SECTION */
         .direction-section {
             position: relative;
-            width: 100%;
-            min-height: 100vh;
-            overflow: hidden;
         }
 
-        /* Background pakai DIV biar FULL + tidak kepotong */
-        .direction-bg {
+        .direction-content {
             position: absolute;
             inset: 0;
-            background-image: url("{{ asset('images/img/venue-bg.webp') }}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-        }
-
-        /* Konten */
-        .direction-content {
-            position: relative;
-            z-index: 5;
-            padding: 26% 20px 40px 40px;
-            /* kanan lebih rapih */
-            text-align: center;
-        }
-
-        /* Title "Direction to Venue" */
-        .direction-title {
-            width: 90%;
-            max-width: 350px;
-            margin: 0 auto 20px auto;
-        }
-
-        /* Gedung UMN */
-        .direction-building {
-            width: 78%;
-            max-width: 300px;
-            margin: 10px auto 20px auto;
-            border-radius: 12px;
-        }
-
-        /* Title Kampus */
-        .direction-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #2b4a63;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        /* Alamat */
-        .direction-address {
-            font-size: 0.88rem;
-            color: #f8f8f8;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
-
-        /* Tombol Map */
-        .map-btn {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, .92);
-            padding: 10px 18px;
-            border-radius: 999px;
+            pointer-events: none;
+            padding-top: 4%;
+            left: 10%;
+        }
+
+        .direction-title {
+            width: 75%;
+            max-width: 320px;
+        }
+
+        .direction-building {
+            width: 50%;
+            max-width: 320px;
+            margin-bottom: 5%;
+        }
+
+        .direction-address {
+            width: 80%;
+            max-width: 360px;
+        }
+
+        .verse2-section {
+            width: 100%;
+            position: relative;
+        }
+
+        .verse2-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            right: 25%;
+        }
+
+        .verse2-img {
+            padding-top: 40%;
+            width: 80%;
+            opacity: 0;
+        }
+
+        /* RSVP SECTION */
+        .rsvp-section {
+            background: #949a8f;
+            /* selaras theme */
+            padding: 24px 16px 32px;
+        }
+
+        .rsvp-section>img {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .rsvp-inner {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .rsvp-title {
+            text-align: center;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #2f2f2f;
+            color: #2F2E2C;
+            margin-bottom: 16px;
+        }
+
+        /* Card form mobile-first */
+        .rsvp-form {
+            background: #ffffff;
+            padding: 18px 16px;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Form controls full-width */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2F2E2C;
             font-size: 0.9rem;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
         }
 
-        /* Icon */
-        .map-icon {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            background: #fafafa;
+            transition: all 0.2s ease;
+            color: #2F2E2C;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #727d6c;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 999px;
             font-size: 1rem;
-            color: #2f2f2f;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
 
-        /* ===================== AOS FIX ===================== */
+        /* Alert */
+        .alert {
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid;
+            font-size: 0.85rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        /* Messages section */
+        .messages-section {
+            background: #949a8f;
+            padding: 8px 16px 32px;
+        }
+
+        .messages-inner {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .messages-list {
+            margin-top: 12px;
+        }
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -343,17 +407,17 @@
 
 <body>
 
-    <!-- ===================== PRELOADER ===================== -->
+    <!-- PRELOADER -->
     <div id="preloader">
-        <img src="{{ asset('images/flower/popup.webp') }}" class="preloader-icon">
+        <img src="{{ asset('images/img/popup.webp') }}" class="preloader-icon">
         <div class="preloader-bar"><span id="preloaderBar"></span></div>
         <div id="preloaderPercent" class="preloader-percent">0%</div>
     </div>
 
-    <!-- ===================== POPUP ===================== -->
+    <!-- POPUP -->
     <div id="openingPopup">
         <div class="popup-box">
-            <img src="{{ asset('images/flower/popup.webp') }}">
+            <img src="{{ asset('images/img/popup.webp') }}">
             <div class="popup-content">
                 <p>Kepada Yth.</p>
                 <p class="popup-name">{{ $guestName ?? 'Tamu Undangan' }}</p>
@@ -362,36 +426,36 @@
         </div>
     </div>
 
-    <!-- ===================== MUSIC ===================== -->
+    <!-- MUSIC -->
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
     </audio>
     <div id="musicBtn">🔊</div>
 
-    <!-- ===================== CONTENT ===================== -->
+    <!-- CONTENT -->
     <div class="page-wrapper">
 
-        <!-- ===== VERSE ===== -->
+        <!-- VERSE -->
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
-                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
-                    data-aos-duration="1500">
+                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
+                    data-aos-duration="1000">
             </div>
         </section>
 
-        <!-- ===== BRIDE ===== -->
+        <!-- BRIDE -->
         <section class="bride-section">
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
-                    data-aos-duration="1800" data-aos-delay="200">
+                    data-aos-duration="1500" data-aos-delay="200">
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
         </section>
 
-        <!-- ===== GROOM ===== -->
+        <!-- GROOM -->
         <section class="groom-section">
             <img src="{{ asset('images/img/groom-bg.webp') }}">
             <div class="groom-content">
@@ -400,11 +464,11 @@
             </div>
         </section>
 
-        <!-- ===== DATE SECTION ===== -->
+        <!-- DATE -->
         <section class="date-section">
             <img src="{{ asset('images/img/date-bg.webp') }}">
-
             <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
+
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img">
 
                 <div class="countdown-card">
@@ -430,35 +494,92 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- ===== DIRECTION SECTION ===== -->
-        <!-- <section class="direction-section">
-            <div class="direction-bg"></div>
+        <!-- DIRECTION -->
+        <section class="direction-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}" alt="Venue Background">
+            <div class="direction-content">
 
-            <div class="direction-content" data-aos="fade-up" data-aos-duration="1500">
+                <!-- Title: Direction to Venue -->
+                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
+                    data-aos="fade-down" data-aos-duration="1200">
 
-                <img src="{{ asset('images/img/direction.webp') }}" class="direction-title">
+                <!-- Gedung UMN -->
+                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1200"
+                    data-aos-delay="150">
 
-                <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building">
-
-                <a href="https://maps.app.goo.gl/943R7EmQ2ZJnic4x6" class="map-btn" target="_blank">
-                    <span class="map-icon">📍</span> Open Map Location
-                </a>
-
+                <!-- Alamat UMN -->
+                <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1200"
+                    data-aos-delay="300">
             </div>
-        </section> -->
+        </section>
+
+        <!-- VERSE -->
+        <section class="verse2-section">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}">
+            <div class="verse2-content">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" data-aos="zoom-in"
+                    data-aos-duration="1000">
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section id="rsvp" class="rsvp-section">
+            <img src="{{ asset('images/img/bless.webp') }}" alt="Bless Illustration">
+
+            <div class="rsvp-inner" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="rsvp-title">Konfirmasi Kehadiran</h2>
+
+                <form id="rsvpForm" class="rsvp-form">
+                    @csrf
+                    <div id="rsvpAlert"></div>
+
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Konfirmasi Kehadiran</label>
+                        <select name="status" id="fm_status" required>
+                            <option value="">-- Pilih Status --</option>
+                            <option value="hadir">✓ Hadir</option>
+                            <option value="tidak hadir">✗ Tidak Hadir</option>
+                            <option value="tentatif">? Tentatif</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ucapan & Doa</label>
+                        <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Ucapan & Doa -->
+        <section id="messages" class="messages-section">
+            <div class="messages-inner" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="rsvp-title">Ucapan & Doa</h2>
+                <div id="messagesList" class="messages-list">
+                    <!-- pesan di‑inject JS -->
+                </div>
+            </div>
+        </section>
 
     </div>
 
-    <!-- ===================== AOS ===================== -->
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 
-    <!-- ===================== LOGIC ===================== -->
+    {{-- <!-- LOGIC -->
     <script>
         document.body.style.overflow = "hidden";
 
@@ -490,18 +611,34 @@
         }
 
         [...imgs].forEach(img =>
-            img.complete ? updateLoader() : img.addEventListener("load", updateLoader, {
+            img.complete ? updateLoader() :
+            img.addEventListener("load", updateLoader, {
                 once: true
             })
         );
 
+        /* ========== OPEN INVITATION ========== */
         openBtn.addEventListener("click", () => {
             popup.classList.remove("active");
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
-            bgmusic.play().catch(() => { });
+
+            bgmusic.play().catch(() => {});
+
+            // AOS INIT setelah popup ditutup
+            setTimeout(() => {
+                AOS.init({
+                    once: false,
+                    mirror: true,
+                    duration: 1200,
+                    easing: 'ease-out-quart',
+                    offset: 80
+                });
+                AOS.refreshHard();
+            }, 300);
         });
 
+        /* ========== MUSIC BUTTON ========== */
         musicBtn.addEventListener("click", () => {
             if (bgmusic.paused) {
                 bgmusic.play();
@@ -512,8 +649,23 @@
             }
         });
 
-        /* ============= COUNTDOWN ============= */
+        /* ========== AUTO PAUSE SAAT PINDAH TAB ========== */
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                bgmusic.pause();
+            } else {
+                bgmusic.play().catch(() => {});
+            }
+        });
+
+        /* ========== COUNTDOWN ========== */
         const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
+
+        // ambil elemen sekali di awal
+        const cDaysEl = document.getElementById('c_days');
+        const cHoursEl = document.getElementById('c_hours');
+        const cMinutesEl = document.getElementById('c_minutes');
+        const cSecondsEl = document.getElementById('c_seconds');
 
         function updateTimer() {
             const now = Date.now();
@@ -525,14 +677,266 @@
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
 
-            c_days.textContent = String(d).padStart(2, '0');
-            c_hours.textContent = String(h).padStart(2, '0');
-            c_minutes.textContent = String(m).padStart(2, '0');
-            c_seconds.textContent = String(s).padStart(2, '0');
+            cDaysEl.textContent = String(d).padStart(2, '0');
+            cHoursEl.textContent = String(h).padStart(2, '0');
+            cMinutesEl.textContent = String(m).padStart(2, '0');
+            cSecondsEl.textContent = String(s).padStart(2, '0');
         }
 
         setInterval(updateTimer, 1000);
         updateTimer();
+    </script> --}}
+
+    <!-- LOGIC + RSVP -->
+    <script>
+        document.body.style.overflow = "hidden";
+
+        const preloader = document.getElementById("preloader");
+        const preloaderBar = document.getElementById("preloaderBar");
+        const preloaderPercent = document.getElementById("preloaderPercent");
+        const popup = document.getElementById("openingPopup");
+        const musicBtn = document.getElementById("musicBtn");
+        const bgmusic = document.getElementById("bgmusic");
+        const openBtn = document.getElementById("openInvitationBtn");
+
+        let loaded = 0;
+        const imgs = document.images;
+        const total = imgs.length;
+
+        function updateLoader() {
+            loaded++;
+            const percent = Math.min(100, Math.floor((loaded / total) * 100));
+            preloaderBar.style.width = percent + "%";
+            preloaderPercent.textContent = percent + "%";
+
+            if (percent === 100) {
+                setTimeout(() => {
+                    preloader.style.opacity = "0";
+                    preloader.style.visibility = "hidden";
+                    popup.classList.add("active");
+                }, 300);
+            }
+        }
+
+        [...imgs].forEach(img =>
+            img.complete ?
+            updateLoader() :
+            img.addEventListener("load", updateLoader, {
+                once: true
+            })
+        );
+
+        /* ========== OPEN INVITATION ========== */
+        openBtn.addEventListener("click", () => {
+            popup.classList.remove("active");
+            musicBtn.style.display = "block";
+            document.body.style.overflow = "auto";
+
+            bgmusic.play().catch(() => {});
+
+            // AOS INIT setelah popup ditutup
+            setTimeout(() => {
+                AOS.init({
+                    once: false,
+                    mirror: true,
+                    duration: 1200,
+                    easing: 'ease-out-quart',
+                    offset: 80
+                });
+                AOS.refreshHard();
+            }, 300);
+        });
+
+        /* ========== MUSIC BUTTON ========== */
+        musicBtn.addEventListener("click", () => {
+            if (bgmusic.paused) {
+                bgmusic.play();
+                musicBtn.textContent = "🔊";
+            } else {
+                bgmusic.pause();
+                musicBtn.textContent = "🔈";
+            }
+        });
+
+        /* ========== AUTO PAUSE SAAT PINDAH TAB ========== */
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                bgmusic.pause();
+            } else {
+                bgmusic.play().catch(() => {});
+            }
+        });
+
+        /* ========== COUNTDOWN ========== */
+        const target = new Date(`{{ \Carbon\Carbon::parse($setting->wedding_date)->format('Y-m-d') }} 08:00:00`).getTime();
+
+        const cDaysEl = document.getElementById('c_days');
+        const cHoursEl = document.getElementById('c_hours');
+        const cMinutesEl = document.getElementById('c_minutes');
+        const cSecondsEl = document.getElementById('c_seconds');
+
+        function updateTimer() {
+            const now = Date.now();
+            const diff = target - now;
+            if (diff < 0) return;
+
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            cDaysEl.textContent = String(d).padStart(2, '0');
+            cHoursEl.textContent = String(h).padStart(2, '0');
+            cMinutesEl.textContent = String(m).padStart(2, '0');
+            cSecondsEl.textContent = String(s).padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        /* ========== RSVP & MESSAGES ========== */
+        const messagesIndexUrl = "{{ route('rsvp.messages') }}";
+        const messagesStoreUrl = "{{ route('rsvp.store') }}";
+
+        function escapeHtml(s) {
+            return String(s || '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            } [c]));
+        }
+
+        async function fetchMessages() {
+            try {
+                const res = await fetch(messagesIndexUrl, {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                const data = await res.json().catch(() => null);
+                if (!res.ok) throw new Error('Fetch failed');
+
+                let items = [];
+                if (Array.isArray(data)) items = data;
+                else if (data && Array.isArray(data.rows)) items = data.rows;
+                else if (data && Array.isArray(data.data)) items = data.data;
+
+                items = items.filter(m => m).slice(0, 10);
+
+                const container = document.getElementById('messagesList');
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                if (!items.length) {
+                    container.innerHTML =
+                        '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
+                    return;
+                }
+
+                items.forEach(msg => {
+                    const el = document.createElement('div');
+                    el.className = 'message-item';
+                    const messageText =
+                        (msg.message && String(msg.message).trim() !== '') ?
+                        escapeHtml(msg.message) :
+                        '— Belum menulis ucapan —';
+                    el.innerHTML = `
+                    <div class="meta">
+                        <div>${escapeHtml(msg.name || 'Tamu')}</div>
+                        <div style="opacity:.75;font-weight:600;font-size:.92rem">
+                            ${escapeHtml(msg.status || '')}
+                        </div>
+                    </div>
+                    <div class="text">${messageText}</div>
+                    <div style="margin-top:10px;font-size:0.82rem;color:#777">
+                        ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
+                    </div>
+                `;
+                    container.appendChild(el);
+                });
+            } catch (e) {
+                console.error('fetchMessages error', e);
+                const container = document.getElementById('messagesList');
+                if (container) {
+                    container.innerHTML =
+                        '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // load ucapan
+            fetchMessages();
+
+            // handle submit RSVP
+            const form = document.getElementById('rsvpForm');
+            if (form) {
+                form.addEventListener('submit', async (ev) => {
+                    ev.preventDefault();
+                    const name = document.getElementById('fm_name').value.trim();
+                    const status = document.getElementById('fm_status').value;
+                    const message = document.getElementById('fm_message').value.trim();
+                    const alertBox = document.getElementById('rsvpAlert');
+                    alertBox.innerHTML = '';
+
+                    if (!name || !status || !message) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
+                        return;
+                    }
+
+                    try {
+                        const token = document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content');
+
+                        const res = await fetch(messagesStoreUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': token,
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name,
+                                status,
+                                message
+                            })
+                        });
+
+                        if (!res.ok) throw new Error('Request failed');
+
+                        await res.json();
+                        form.reset();
+                        alertBox.innerHTML =
+                            '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
+                        fetchMessages();
+                    } catch (err) {
+                        console.error('submit error', err);
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                    }
+                });
+            }
+        });
+
+        // DISABLE RIGHT CLICK & multi-touch zoom
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, {
+            passive: false
+        });
     </script>
 
 </body>
