@@ -270,7 +270,7 @@
         <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
-                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="fade-up"
+                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
                     data-aos-duration="1000">
             </div>
         </section>
@@ -329,7 +329,39 @@
             </div>
         </section>
 
-        <!-- DIRECTION SECTION DIHAPUS SEMENTARA -->
+        <section class="date-section">
+            <img src="{{ asset('images/img/venue-bg.webp') }}">
+            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
+
+                <img src="{{ asset('images/img/date.webp') }}" class="date-img">
+
+                <div class="countdown-card">
+                    <div class="countdown-tiles">
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_days">00</div>
+                            <div class="ctile-label">Days</div>
+                        </div>
+
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_hours">00</div>
+                            <div class="ctile-label">Hours</div>
+                        </div>
+
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_minutes">00</div>
+                            <div class="ctile-label">Minutes</div>
+                        </div>
+
+                        <div class="ctile">
+                            <div class="ctile-number" id="c_seconds">00</div>
+                            <div class="ctile-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
 
     </div>
 
