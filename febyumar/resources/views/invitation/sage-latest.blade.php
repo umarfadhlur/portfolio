@@ -277,6 +277,12 @@
             right: 25%;
         }
 
+        .verse2-img {
+            padding-top: 40%;
+            width: 80%;
+            opacity: 0;
+        }
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -401,7 +407,7 @@
         <section class="verse2-section">
             <img src="{{ asset('images/img/verse-2-bg.webp') }}">
             <div class="verse2-content">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse-img" data-aos="zoom-in"
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" data-aos="zoom-in"
                     data-aos-duration="1000">
             </div>
         </section>
@@ -460,9 +466,11 @@
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
                 AOS.init({
-                    once: false, // reversible
-                    mirror: true, // animasi reverse saat scroll balik
-                    duration: 900
+                    once: false,
+                    mirror: true,
+                    duration: 1200,
+                    easing: 'ease-out-quart',
+                    offset: 80
                 });
                 AOS.refreshHard();
             }, 300);
