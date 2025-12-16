@@ -35,11 +35,15 @@
                     }
 
                     $techs = safeArray($portfolio->tech_stack);
-                    $roles = safeArray($portfolio->roles);
-                    $contributions = safeArray($portfolio->contributions);
-                    $features = safeArray($portfolio->features ?? []);
 
-                    $projectBadge = count($techs) ? $techs[0] : 'Project';
+                    // roles -> project badges
+                    $roles = safeArray($portfolio->roles);
+                    $roles = array_values(array_filter(array_map('trim', $roles)));
+
+                    // contributions -> key features
+                    $contributions = safeArray($portfolio->contributions);
+                    $contributions = array_values(array_filter(array_map('trim', $contributions)));
+
                     $projectDate = $portfolio->created_at ? $portfolio->created_at->format('F Y') : null;
 
                     $photos = $portfolio->photos ?? collect();
@@ -54,19 +58,19 @@
                             <div class="main-image">
                                 <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
                                     <script type="application/json" class="swiper-config">
-                  {
-                    "loop": true,
-                    "speed": 1000,
-                    "autoplay": { "delay": 6000 },
-                    "effect": "creative",
-                    "creativeEffect": {
-                      "prev": { "shadow": true, "translate": [0,0,-400] },
-                      "next": { "translate": ["100%",0,0] }
-                    },
-                    "slidesPerView": 1,
-                    "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }
-                  }
-                </script>
+                                        {
+                                          "loop": true,
+                                          "speed": 1000,
+                                          "autoplay": { "delay": 6000 },
+                                          "effect": "creative",
+                                          "creativeEffect": {
+                                            "prev": { "shadow": true, "translate": [0,0,-400] },
+                                            "next": { "translate": ["100%",0,0] }
+                                          },
+                                          "slidesPerView": 1,
+                                          "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }
+                                        }
+                                    </script>
 
                                     <div class="swiper-wrapper">
                                         @if ($hasPhotos)
@@ -89,13 +93,12 @@
                                 </div>
                             </div>
 
-                            <!-- Thumbnails (ikut template) -->
+                            <!-- Thumbnails -->
                             @if ($hasPhotos)
                                 <div class="thumbnail-grid" data-aos="fade-up" data-aos-delay="200">
                                     <div class="row g-2 mt-3">
                                         @foreach ($photos->take(8) as $photo)
                                             <div class="col-3">
-                                                {{-- Template menggunakan .glightbox pada image thumbnail [file:2] --}}
                                                 <a href="{{ Storage::url($photo->image_path) }}" class="glightbox"
                                                     data-gallery="portfolio-gallery">
                                                     <img src="{{ Storage::url($photo->image_path) }}" alt="Gallery Image"
@@ -111,7 +114,9 @@
                             @if (count($techs))
                                 <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
                                     @foreach ($techs as $t)
-                                        <span>{{ $t }}</span>
+                                        @if (!empty(trim($t)))
+                                            <span>{{ $t }}</span>
+                                        @endif
                                     @endforeach
                                 </div>
                             @endif
@@ -125,7 +130,13 @@
 
                             <div class="project-meta">
                                 <div class="badge-wrapper">
-                                    <span class="project-badge">{{ $projectBadge }}</span>
+                                    @if (count($roles))
+                                        @foreach ($roles as $r)
+                                            <span class="project-badge">{{ $r }}</span>
+                                        @endforeach
+                                    @else
+                                        <span class="project-badge">Project</span>
+                                    @endif
                                 </div>
 
                                 <div class="date-client">
@@ -158,91 +169,23 @@
 
                             <div class="project-overview">
                                 <p class="lead">{{ $portfolio->description }}</p>
-
-                                <div class="accordion project-accordion" id="portfolio-details-projectAccordion">
-
-                                    <div class="accordion-item" data-aos="fade-up">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#portfolio-details-collapse-1" aria-expanded="true"
-                                                aria-controls="portfolio-details-collapse-1">
-                                                <i class="bi bi-clipboard-data me-2"></i> Project Overview
-                                            </button>
-                                        </h2>
-                                        <div id="portfolio-details-collapse-1" class="accordion-collapse collapse show"
-                                            data-bs-parent="#portfolio-details-projectAccordion">
-                                            <div class="accordion-body">
-                                                <p>{{ $portfolio->overview ?? $portfolio->description }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-2"
-                                                aria-expanded="false" aria-controls="portfolio-details-collapse-2">
-                                                <i class="bi bi-exclamation-diamond me-2"></i> The Challenge
-                                            </button>
-                                        </h2>
-                                        <div id="portfolio-details-collapse-2" class="accordion-collapse collapse"
-                                            data-bs-parent="#portfolio-details-projectAccordion">
-                                            <div class="accordion-body">
-                                                <p>{{ $portfolio->challenge ?? 'Challenge details not provided.' }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#portfolio-details-collapse-3"
-                                                aria-expanded="false" aria-controls="portfolio-details-collapse-3">
-                                                <i class="bi bi-award me-2"></i> The Solution
-                                            </button>
-                                        </h2>
-                                        <div id="portfolio-details-collapse-3" class="accordion-collapse collapse"
-                                            data-bs-parent="#portfolio-details-projectAccordion">
-                                            <div class="accordion-body">
-                                                <p>{{ $portfolio->solution ?? 'Solution details not provided.' }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
 
+                            <!-- Key Features (1 kolom ke bawah) -->
                             <div class="project-features" data-aos="fade-up" data-aos-delay="300">
-                                <h3><i class="bi bi-stars"></i> Key Features</h3>
+                                <h3><i class="bi bi-stars"></i> Contributions</h3>
 
-                                <div class="row g-3">
-                                    @if (count($features))
-                                        @foreach (array_chunk($features, (int) ceil(count($features) / 2)) as $col)
-                                            <div class="col-md-6">
-                                                <ul class="feature-list">
-                                                    @foreach ($col as $f)
-                                                        <li><i class="bi bi-check2-circle"></i> {{ $f }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                @if (count($contributions))
+                                    <ul class="feature-list">
+                                        @foreach ($contributions as $c)
+                                            <li><i class="bi bi-check2-circle"></i> {{ $c }}</li>
                                         @endforeach
-                                    @else
-                                        <div class="col-md-6">
-                                            <ul class="feature-list">
-                                                <li><i class="bi bi-check2-circle"></i> Real-time Data Visualization</li>
-                                                <li><i class="bi bi-check2-circle"></i> User Role Management</li>
-                                                <li><i class="bi bi-check2-circle"></i> Secure Authentication</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ul class="feature-list">
-                                                <li><i class="bi bi-check2-circle"></i> Customizable Dashboards</li>
-                                                <li><i class="bi bi-check2-circle"></i> Data Export Options</li>
-                                                <li><i class="bi bi-check2-circle"></i> Multi-device Support</li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                </div>
+                                    </ul>
+                                @else
+                                    <ul class="feature-list">
+                                        <li><i class="bi bi-check2-circle"></i> Contribution details not provided.</li>
+                                    </ul>
+                                @endif
                             </div>
 
                             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
@@ -281,7 +224,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // init glightbox jika tersedia (template pakai glightbox) [file:2]
+            // init glightbox (template pakai glightbox) [file:2]
             if (window.GLightbox) {
                 window.GLightbox({
                     selector: '.glightbox'

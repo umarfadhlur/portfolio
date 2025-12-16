@@ -67,12 +67,21 @@
                                         @if ($image)
                                             <img src="{{ $image }}" alt="{{ $p->portfolio_name }}" class="img-fluid">
                                         @else
-                                            {{-- Kalau kamu punya placeholder, pakai ini. Kalau tidak, boleh hapus dan biarkan kosong --}}
-                                            <img src="{{ asset('assets/img/placeholder.webp') }}"
-                                                alt="{{ $p->portfolio_name }}" class="img-fluid">
+                                            <div
+                                                style="
+                                            height: 200px;
+                                            width: 100%;
+                                            background: #2a2d30;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            color: #777;
+                                            font-size: 2.2rem;">
+                                                <i class="bi bi-image"></i>
+                                            </div>
                                         @endif
 
-                                        <div class="portfolio-overlay">
+                                        {{-- <div class="portfolio-overlay">
                                             @if ($image)
                                                 <a href="{{ $image }}" class="glightbox portfolio-lightbox"
                                                     data-gallery="portfolio-gallery">
@@ -84,11 +93,12 @@
                                                 class="portfolio-details-link">
                                                 <i class="bi bi-link"></i>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <div class="portfolio-info">
-                                        <h4>{{ $p->portfolio_name }}</h4>
+                                        <h4><a href="{{ route('portfolio.show', $p->slug) }}"
+                                                class="text-white text-decoration-none">{{ $p->portfolio_name }}</a></h4>
                                         <p>{{ Str::limit($p->description, 60) }}</p>
 
                                         <div class="portfolio-tags">
