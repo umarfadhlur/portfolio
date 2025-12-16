@@ -129,7 +129,7 @@
                     <!-- Portfolio Grid -->
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-                        @forelse ($portfolios as $p)
+                        @forelse ($projects as $p)
 
                             @php
                                 $photo = $p->photos->first();
