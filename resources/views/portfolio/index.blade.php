@@ -9,9 +9,9 @@
 
         <style>
             /* -- NAVBAR FIX ------------------------------------------------------
-               Memaksa header/navbar berada di atas (fixed) dan memberi ruang
-               pada <main> agar konten tidak tertutup. Sesuaikan --header-h.
-            -------------------------------------------------------------------*/
+                       Memaksa header/navbar berada di atas (fixed) dan memberi ruang
+                       pada <main> agar konten tidak tertutup. Sesuaikan --header-h.
+                    -------------------------------------------------------------------*/
             :root {
                 --header-h: 72px;
             }
@@ -153,9 +153,10 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Portfolio</h2>
+                <p>My selected projects showcasing my skills in Flutter, PHP, and ERP integrations.</p>
             </div>
 
-            <div class="container">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <!-- Intro Text -->
                 <div class="portfolio-intro-wrapper" data-aos="fade-up" data-aos-delay="120">
@@ -278,6 +279,10 @@
 
                     </div>
 
+                </div>
+
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#portfolio" class="btn btn-primary">View All Case Studies</a>
                 </div>
 
             </div>
