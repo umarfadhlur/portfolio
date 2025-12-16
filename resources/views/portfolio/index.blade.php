@@ -119,10 +119,6 @@
                     </div>
 
                 </div>
-
-                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#portfolio" class="btn btn-primary">View All Case Studies</a>
-                </div>
             </div>
         </section>
 

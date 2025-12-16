@@ -7,11 +7,6 @@
     <main class="main">
 
         <section id="portfolio-details" class="portfolio-details section">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfolio Details</h2>
-                <p>{{ $portfolio->short_summary ?? 'Project case study and implementation details.' }}</p>
-            </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -196,17 +191,8 @@
                                     </a>
                                 @endif
 
-                                @php
-                                    $next = \App\Models\Portfolio::where('id', '>', $portfolio->id)
-                                        ->orderBy('id')
-                                        ->first();
-                                @endphp
-
-                                <a href="{{ $next ? route('portfolio.show', $next->slug) : route('portfolio') }}"
-                                    class="btn-next-project">
-                                    {{ $next ? 'Next Project' : 'Back to Portfolio' }}
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
+                                <a href="{{ route('portfolio') }}" class="btn-next-project">Back to Portfolio <i
+                                        class="bi bi-arrow-right"></i></a>
                             </div>
 
                         </div>
@@ -215,10 +201,6 @@
 
             </div>
         </section>
-
-        <div class="mt-5">
-            <a href="{{ route('portfolio') }}" class="btn btn-dark">← Back to Portfolio</a>
-        </div>
 
     </main>
 
