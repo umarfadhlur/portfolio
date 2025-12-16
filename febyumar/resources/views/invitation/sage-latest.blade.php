@@ -316,6 +316,10 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.9);
             pointer-events: auto;
+
+            /* batasi tinggi supaya tidak terlalu panjang, isi bisa scroll */
+            max-height: 420px;
+            overflow-y: auto;
         }
 
         .rsvp-title {
@@ -348,7 +352,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             background: #fafafa;
-            transition: all 0.2s ease;
+            transition: all 0.2s.ease;
             color: #2F2E2C;
         }
 
@@ -421,6 +425,11 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.9);
             pointer-events: auto;
+
+            /* batasi tinggi card ucapan */
+            max-height: 360px;
+            display: flex;
+            flex-direction: column;
         }
 
         .messages-list {
@@ -428,6 +437,10 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+
+            /* area ucapan scroll di dalam card */
+            overflow-y: auto;
+            padding-right: 4px;
         }
 
         .message-item {
@@ -585,8 +598,6 @@
             <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
             <div class="rsvp-inner">
                 <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
-                    <h2 class="rsvp-title">Konfirmasi Kehadiran</h2>
-
                     <form id="rsvpForm" class="rsvp-form">
                         @csrf
                         <div id="rsvpAlert"></div>
@@ -773,7 +784,10 @@
                 else if (data && Array.isArray(data.rows)) items = data.rows;
                 else if (data && Array.isArray(data.data)) items = data.data;
 
-                items = items.filter(m => m).slice(0, 10);
+                // sort terbaru dulu lalu ambil 5 terakhir
+                items = items.filter(m => m);
+                items.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                items = items.slice(0, 5);
 
                 const container = document.getElementById('messagesList');
                 if (!container) return;
