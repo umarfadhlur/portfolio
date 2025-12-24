@@ -237,7 +237,7 @@
         /* blink */
         .verse-blink {
             position: absolute;
-            width: 6%;
+            width: 10%;
             height: auto;
         }
 
@@ -247,13 +247,13 @@
         }
 
         .verse-blink-2 {
-            top: 28%;
-            right: 8%;
+            top: 40%;
+            right: 18%;
         }
 
         .verse-blink-3 {
             bottom: 24%;
-            left: 50%;
+            left: 25%;
             transform: translateX(-50%);
         }
 
@@ -283,6 +283,92 @@
         .bride-content {
             padding-top: 25%;
         }
+
+        .bride-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            /* kunci efek “terpotong” */
+        }
+
+        /* base kosong */
+        .bride-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* bunga kiri/kanan */
+        .bride-flower {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            /* bikin tinggi mengikuti section */
+            width: 52%;
+            /* besarin biar bisa dicrop */
+            height: 100%;
+            object-fit: cover;
+            /* biar utuhnya “kepotong” rapi */
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bride-flower-left {
+            left: 0;
+            object-position: left top;
+            /* fokus crop di sisi kiri */
+        }
+
+        .bride-flower-right {
+            right: 0;
+            object-position: right top;
+            /* fokus crop di sisi kanan */
+        }
+
+        /* konten di atas bunga */
+        .bride-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 14%;
+        }
+
+        /* Mobile first sizing (bisa kamu tune) */
+        .bismillah-img {
+            width: 70%;
+            max-width: 280px;
+            margin-bottom: 10%;
+            height: auto;
+        }
+
+        .bride-img {
+            width: 78%;
+            max-width: 360px;
+            height: auto;
+        }
+
+        /* sedikit perapihan untuk layar > 481 */
+        @media (min-width: 482px) {
+            .bismillah-img {
+                width: 55%;
+                max-width: 320px;
+                margin-bottom: 6%;
+            }
+
+            .bride-img {
+                width: 62%;
+                max-width: 420px;
+            }
+
+            .bride-flower {
+                width: 46%;
+            }
+        }
+
 
         /* DATE SECTION */
         .date-content {
@@ -636,6 +722,27 @@
 
         <!-- BRIDE -->
         <section class="bride-section">
+            <!-- Base background -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
+
+            <!-- Bunga kiri & kanan (nanti terlihat seperti terpotong) -->
+            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
+
+            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
+
+            <!-- Konten existing (tetap) -->
+            <div class="bride-content">
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
+                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
+                    data-aos-duration="2000" data-aos-delay="900" data-aos-easing="ease-out-cubic">
+            </div>
+        </section>
+        {{-- <section class="bride-section">
             <img src="{{ asset('images/img/bride-bg.webp') }}">
             <div class="bride-content">
                 <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
@@ -643,7 +750,7 @@
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
                     data-aos-duration="2000" data-aos-delay="900">
             </div>
-        </section>
+        </section> --}}
 
         <!-- GROOM -->
         <section class="groom-section">
