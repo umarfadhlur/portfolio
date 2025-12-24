@@ -177,39 +177,43 @@
             opacity: 0;
         }
 
-        /* Basis: mobile */
         .verse-section {
-            width: 100%;
             position: relative;
+            width: 100%;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
         }
 
-        .verse-bg {
+        /* base hijau + frame sama-sama memenuhi section */
+        .verse-base,
+        .verse-frame {
             width: 100%;
+            height: auto;
             display: block;
         }
 
+        /* frame ditumpuk di atas base */
+        .verse-frame {
+            position: absolute;
+            inset: 0;
+            object-fit: cover;
+            /* jaga proporsi saat container beda ukuran */
+            object-position: center;
+            /* tetap center */
+        }
+
+        /* konten overlay paling atas */
         .verse-content {
             position: absolute;
             inset: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             pointer-events: none;
-            max-width: 480px;
-            margin: 0 auto;
         }
 
-        .verse-text {
-            max-width: 75%;
-        }
-
+        /* contoh ukuran & posisi (mobile-first) */
         .verse-ring,
         .verse-swan {
             position: absolute;
             width: 32%;
+            height: auto;
         }
 
         .verse-ring {
@@ -222,9 +226,20 @@
             right: 10%;
         }
 
+        .verse-text {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75%;
+            height: auto;
+        }
+
+        /* blink */
         .verse-blink {
             position: absolute;
             width: 6%;
+            height: auto;
         }
 
         .verse-blink-1 {
@@ -243,14 +258,10 @@
             transform: translateX(-50%);
         }
 
-        /* Naikkan sedikit untuk layar > 480px */
+        /* tablet/desktop adjustment */
         @media (min-width: 481px) {
-            .verse-content {
-                max-width: 768px;
-            }
-
             .verse-text {
-                max-width: 55%;
+                width: 55%;
             }
 
             .verse-ring,
@@ -262,7 +273,6 @@
                 width: 4%;
             }
         }
-
 
         .bride-img,
         .groom-img {
@@ -600,32 +610,39 @@
         </section> -->
 
         <section class="verse-section">
-            <!-- Background bunga kiri-kanan + burung -->
-            <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-bg">
+            <!-- Base background hijau (TANPA animasi) -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="verse-base" alt="">
 
-            <!-- Layer isi (absolute di atas bg) -->
+            <!-- Frame bunga kiri-kanan + burung (animasi) -->
+            <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-frame" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+
+            <!-- Layer isi -->
             <div class="verse-content">
                 <!-- Cincin -->
-                <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" data-aos="zoom-in"
-                    data-aos-duration="1000" data-aos-delay="200">
+                <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" alt="" data-aos="zoom-in"
+                    data-aos-duration="1000" data-aos-delay="250" data-aos-easing="ease-out-back">
 
                 <!-- Angsa -->
-                <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" data-aos="zoom-in"
-                    data-aos-duration="1000" data-aos-delay="400">
+                <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" alt="" data-aos="zoom-in"
+                    data-aos-duration="1000" data-aos-delay="450" data-aos-easing="ease-out-back">
 
-                <!-- Bintang-bintang kecil -->
-                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" data-aos="fade"
-                    data-aos-duration="800" data-aos-delay="600">
-                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" data-aos="fade"
-                    data-aos-duration="800" data-aos-delay="700">
-                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" data-aos="fade"
-                    data-aos-duration="800" data-aos-delay="800">
+                <!-- Blink (biar terasa hidup, beda-beda animasinya) -->
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
+                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="650" data-aos-easing="ease-out-cubic">
 
-                <!-- Quote (PALING TERAKHIR) -->
-                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" data-aos="fade-up"
-                    data-aos-duration="1000" data-aos-delay="1200">
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
+                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="750" data-aos-easing="ease-out-cubic">
+
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
+                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="850" data-aos-easing="ease-out-cubic">
+
+                <!-- Verse (PALING TERAKHIR) -->
+                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
+                    data-aos-duration="1100" data-aos-delay="1200" data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
 
         <!-- BRIDE -->
