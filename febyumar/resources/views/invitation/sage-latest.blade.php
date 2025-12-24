@@ -230,7 +230,7 @@
             position: absolute;
             top: 30%;
             transform: translateX(-50%);
-            width: 75%;
+            width: 55%;
             height: auto;
         }
 
@@ -315,12 +315,12 @@
 
         /* kiri: geser ke kiri sedikit (crop kiri/kanan saja) */
         .bride-flower-left {
-            left: -25%;
+            left: -30%;
         }
 
         /* kanan: geser ke kanan sedikit (crop kiri/kanan saja) */
         .bride-flower-right {
-            right: -25%;
+            right: -30%;
         }
 
         /* opsional: kalau mau sedikit lebih “pojok” tanpa menghilangkan atas/bawah */
@@ -404,11 +404,11 @@
         }
 
         .date-flower-left {
-            left: -22%;
+            left: -30%;
         }
 
         .date-flower-right {
-            right: -22%;
+            right: -30%;
         }
 
         /* overlay content */
