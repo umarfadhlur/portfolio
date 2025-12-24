@@ -319,14 +319,14 @@
         /* bunga kiri -> pojok kiri atas */
         .bride-flower-left {
             top: -6%;
-            left: -18%;
+            left: -8%;
             object-position: left top;
         }
 
         /* bunga kanan -> pojok kanan bawah (sesuai feel gambar 2) */
         .bride-flower-right {
             bottom: -8%;
-            right: -18%;
+            right: -8%;
             object-position: right bottom;
         }
 
