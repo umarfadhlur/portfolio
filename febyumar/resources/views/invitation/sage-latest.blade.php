@@ -288,41 +288,46 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            /* kunci efek “terpotong” */
+            /* WAJIB: supaya bagian di luar frame kepotong */
         }
 
-        /* base kosong */
+        /* base */
         .bride-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* bunga kiri/kanan */
+        /* bunga (dibuat jadi ornamen pojok, bukan full tinggi) */
         .bride-flower {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            /* bikin tinggi mengikuti section */
-            width: 52%;
-            /* besarin biar bisa dicrop */
-            height: 100%;
-            object-fit: cover;
-            /* biar utuhnya “kepotong” rapi */
             pointer-events: none;
             z-index: 1;
+
+            /* kunci crop */
+            width: 68%;
+            /* besarin biar ada yang “keluar” lalu kepotong */
+            max-width: 420px;
+            height: 42%;
+            /* batasi tinggi ornamen */
+            max-height: 360px;
+
+            object-fit: cover;
+            /* crop isi gambar */
         }
 
+        /* bunga kiri -> pojok kiri atas */
         .bride-flower-left {
-            left: 0;
+            top: -6%;
+            left: -18%;
             object-position: left top;
-            /* fokus crop di sisi kiri */
         }
 
+        /* bunga kanan -> pojok kanan bawah (sesuai feel gambar 2) */
         .bride-flower-right {
-            right: 0;
-            object-position: right top;
-            /* fokus crop di sisi kanan */
+            bottom: -8%;
+            right: -18%;
+            object-position: right bottom;
         }
 
         /* konten di atas bunga */
@@ -337,19 +342,6 @@
             padding-top: 14%;
         }
 
-        /* Mobile first sizing (bisa kamu tune) */
-        .bismillah-img {
-            width: 70%;
-            max-width: 280px;
-            margin-bottom: 10%;
-            height: auto;
-        }
-
-        .bride-img {
-            width: 78%;
-            max-width: 360px;
-            height: auto;
-        }
 
         /* sedikit perapihan untuk layar > 481 */
         @media (min-width: 482px) {
