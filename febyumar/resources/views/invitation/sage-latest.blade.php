@@ -315,12 +315,12 @@
 
         /* kiri: geser ke kiri sedikit (crop kiri/kanan saja) */
         .bride-flower-left {
-            left: -22%;
+            left: -12%;
         }
 
         /* kanan: geser ke kanan sedikit (crop kiri/kanan saja) */
         .bride-flower-right {
-            right: -22%;
+            right: -12%;
         }
 
         /* opsional: kalau mau sedikit lebih “pojok” tanpa menghilangkan atas/bawah */
