@@ -315,12 +315,12 @@
 
         /* kiri: geser ke kiri sedikit (crop kiri/kanan saja) */
         .bride-flower-left {
-            left: -50%;
+            left: -30%;
         }
 
         /* kanan: geser ke kanan sedikit (crop kiri/kanan saja) */
         .bride-flower-right {
-            right: -50%;
+            right: -30%;
         }
 
         /* opsional: kalau mau sedikit lebih “pojok” tanpa menghilangkan atas/bawah */
@@ -331,6 +331,39 @@
 
         /* konten di atas bunga */
         .bride-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 14%;
+        }
+
+        /* bunga: tinggi full, tidak hilang atas/bawah */
+        .groom-flower {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 85%;
+            max-width: 520px;
+
+            object-fit: contain;
+            /* biar tidak crop vertikal */
+            object-position: center;
+
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .groom-flower-right {
+            right: -22%;
+        }
+
+        /* konten di atas bunga */
+        .groom-content {
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -713,24 +746,32 @@
                     data-aos-duration="2000" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
-        {{-- <section class="bride-section">
-            <img src="{{ asset('images/img/bride-bg.webp') }}">
-            <div class="bride-content">
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-right"
-                    data-aos-duration="1500" data-aos-delay="200">
-                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-right"
-                    data-aos-duration="2000" data-aos-delay="900">
-            </div>
-        </section> --}}
 
         <!-- GROOM -->
+        <!-- GROOM -->
         <section class="groom-section">
+            <!-- Base background -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
+
+            <!-- Bunga kiri & kanan -->
+            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
+
+            <!-- Konten existing (tetap konsep overlay) -->
+            <div class="groom-content">
+                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-up"
+                    data-aos-duration="2000" data-aos-delay="700" data-aos-easing="ease-out-cubic">
+            </div>
+        </section>
+
+        {{-- <section class="groom-section">
             <img src="{{ asset('images/img/groom-bg.webp') }}">
             <div class="groom-content">
                 <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-left"
                     data-aos-duration="2000" data-aos-delay="200">
             </div>
-        </section>
+        </section> --}}
 
         <!-- DATE -->
         <section class="date-section">
