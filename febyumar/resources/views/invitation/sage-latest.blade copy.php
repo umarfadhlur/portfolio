@@ -316,6 +316,10 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.9);
             pointer-events: auto;
+
+            /* batasi tinggi supaya tidak terlalu panjang, isi bisa scroll */
+            max-height: 420px;
+            overflow-y: auto;
         }
 
         .rsvp-title {
@@ -348,7 +352,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             background: #fafafa;
-            transition: all 0.2s ease;
+            transition: all 0.2s.ease;
             color: #2F2E2C;
         }
 
@@ -421,6 +425,11 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.9);
             pointer-events: auto;
+
+            /* batasi tinggi card ucapan */
+            max-height: 360px;
+            display: flex;
+            flex-direction: column;
         }
 
         .messages-list {
@@ -428,6 +437,10 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+
+            /* area ucapan scroll di dalam card */
+            overflow-y: auto;
+            padding-right: 4px;
         }
 
         .message-item {
@@ -591,8 +604,7 @@
 
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                                required>
+                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
                         </div>
 
                         <div class="form-group">
@@ -607,7 +619,8 @@
 
                         <div class="form-group">
                             <label>Ucapan & Doa</label>
-                            <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
+                            <textarea name="message" id="fm_message"
+                                placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
@@ -667,10 +680,10 @@
 
         [...imgs].forEach(img =>
             img.complete ?
-            updateLoader() :
-            img.addEventListener("load", updateLoader, {
-                once: true
-            })
+                updateLoader() :
+                img.addEventListener("load", updateLoader, {
+                    once: true
+                })
         );
 
         /* ========== OPEN INVITATION ========== */
@@ -679,7 +692,7 @@
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
 
-            bgmusic.play().catch(() => {});
+            bgmusic.play().catch(() => { });
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
@@ -710,7 +723,7 @@
             if (document.hidden) {
                 bgmusic.pause();
             } else {
-                bgmusic.play().catch(() => {});
+                bgmusic.play().catch(() => { });
             }
         });
 
@@ -752,7 +765,7 @@
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#39;'
-            } [c]));
+            }[c]));
         }
 
         async function fetchMessages() {
@@ -771,7 +784,10 @@
                 else if (data && Array.isArray(data.rows)) items = data.rows;
                 else if (data && Array.isArray(data.data)) items = data.data;
 
-                items = items.filter(m => m).slice(0, 10);
+                // sort terbaru dulu lalu ambil 5 terakhir
+                items = items.filter(m => m);
+                items.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                items = items.slice(0, 5);
 
                 const container = document.getElementById('messagesList');
                 if (!container) return;
@@ -789,8 +805,8 @@
                     el.className = 'message-item';
                     const messageText =
                         (msg.message && String(msg.message).trim() !== '') ?
-                        escapeHtml(msg.message) :
-                        '— Belum menulis ucapan —';
+                            escapeHtml(msg.message) :
+                            '— Belum menulis ucapan —';
                     el.innerHTML = `
                         <div class="meta">
                             <div>${escapeHtml(msg.name || 'Tamu')}</div>
@@ -870,12 +886,12 @@
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
-        document.addEventListener('contextmenu', function(e) {
+        document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
             return false;
         }, false);
 
-        document.addEventListener('touchmove', function(e) {
+        document.addEventListener('touchmove', function (e) {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }

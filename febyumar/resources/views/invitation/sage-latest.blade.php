@@ -177,6 +177,93 @@
             opacity: 0;
         }
 
+        /* Basis: mobile */
+        .verse-section {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .verse-bg {
+            width: 100%;
+            display: block;
+        }
+
+        .verse-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .verse-text {
+            max-width: 75%;
+        }
+
+        .verse-ring,
+        .verse-swan {
+            position: absolute;
+            width: 32%;
+        }
+
+        .verse-ring {
+            bottom: 16%;
+            left: 10%;
+        }
+
+        .verse-swan {
+            bottom: 12%;
+            right: 10%;
+        }
+
+        .verse-blink {
+            position: absolute;
+            width: 6%;
+        }
+
+        .verse-blink-1 {
+            top: 28%;
+            left: 8%;
+        }
+
+        .verse-blink-2 {
+            top: 28%;
+            right: 8%;
+        }
+
+        .verse-blink-3 {
+            bottom: 24%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Naikkan sedikit untuk layar > 480px */
+        @media (min-width: 481px) {
+            .verse-content {
+                max-width: 768px;
+            }
+
+            .verse-text {
+                max-width: 55%;
+            }
+
+            .verse-ring,
+            .verse-swan {
+                width: 26%;
+            }
+
+            .verse-blink {
+                width: 4%;
+            }
+        }
+
+
         .bride-img,
         .groom-img {
             width: 85%;
@@ -504,13 +591,42 @@
     <div class="page-wrapper">
 
         <!-- VERSE -->
-        <section class="verse-section">
+        <!-- <section class="verse-section">
             <img src="{{ asset('images/img/verse-1-bg.webp') }}">
             <div class="verse-content">
                 <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
                     data-aos-duration="1000">
             </div>
+        </section> -->
+
+        <section class="verse-section">
+            <!-- Background bunga kiri-kanan + burung -->
+            <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-bg">
+
+            <!-- Layer isi (absolute di atas bg) -->
+            <div class="verse-content">
+                <!-- Cincin -->
+                <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" data-aos="zoom-in"
+                    data-aos-duration="1000" data-aos-delay="200">
+
+                <!-- Angsa -->
+                <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" data-aos="zoom-in"
+                    data-aos-duration="1000" data-aos-delay="400">
+
+                <!-- Bintang-bintang kecil -->
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" data-aos="fade"
+                    data-aos-duration="800" data-aos-delay="600">
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" data-aos="fade"
+                    data-aos-duration="800" data-aos-delay="700">
+                <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" data-aos="fade"
+                    data-aos-duration="800" data-aos-delay="800">
+
+                <!-- Quote (PALING TERAKHIR) -->
+                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" data-aos="fade-up"
+                    data-aos-duration="1000" data-aos-delay="1200">
+            </div>
         </section>
+
 
         <!-- BRIDE -->
         <section class="bride-section">
