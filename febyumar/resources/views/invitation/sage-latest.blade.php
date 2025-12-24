@@ -342,26 +342,6 @@
             padding-top: 14%;
         }
 
-
-        /* sedikit perapihan untuk layar > 481 */
-        @media (min-width: 482px) {
-            .bismillah-img {
-                width: 55%;
-                max-width: 320px;
-                margin-bottom: 6%;
-            }
-
-            .bride-img {
-                width: 62%;
-                max-width: 420px;
-            }
-
-            .bride-flower {
-                width: 46%;
-            }
-        }
-
-
         /* DATE SECTION */
         .date-content {
             padding-top: 28%;
