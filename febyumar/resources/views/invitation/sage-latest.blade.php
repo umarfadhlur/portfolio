@@ -229,7 +229,6 @@
         .verse-text {
             position: absolute;
             top: 30%;
-            left: 50%;
             transform: translateX(-50%);
             width: 75%;
             height: auto;
@@ -601,49 +600,39 @@
     <div class="page-wrapper">
 
         <!-- VERSE -->
-        <!-- <section class="verse-section">
-            <img src="{{ asset('images/img/verse-1-bg.webp') }}">
-            <div class="verse-content">
-                <img src="{{ asset('images/img/verse-1.webp') }}" class="verse-img" data-aos="zoom-in"
-                    data-aos-duration="1000">
-            </div>
-        </section> -->
-
         <section class="verse-section">
             <!-- Base background hijau (TANPA animasi) -->
             <img src="{{ asset('images/img/empty.webp') }}" class="verse-base" alt="">
 
             <!-- Frame bunga kiri-kanan + burung (animasi) -->
             <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-frame" alt="" data-aos="fade"
-                data-aos-duration="1200" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Layer isi -->
             <div class="verse-content">
                 <!-- Cincin -->
                 <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" alt="" data-aos="zoom-in"
-                    data-aos-duration="1000" data-aos-delay="250" data-aos-easing="ease-out-back">
+                    data-aos-duration="1400" data-aos-delay="400" data-aos-easing="ease-out-cubic">
 
                 <!-- Angsa -->
                 <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" alt="" data-aos="zoom-in"
-                    data-aos-duration="1000" data-aos-delay="450" data-aos-easing="ease-out-back">
+                    data-aos-duration="1400" data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
-                <!-- Blink (biar terasa hidup, beda-beda animasinya) -->
+                <!-- Blink -->
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
-                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="650" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
-                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="750" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1250" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
-                    data-aos="fade-up" data-aos-duration="700" data-aos-delay="850" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-easing="ease-out-cubic">
 
                 <!-- Verse (PALING TERAKHIR) -->
                 <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
-                    data-aos-duration="1100" data-aos-delay="1200" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1600" data-aos-delay="1800" data-aos-easing="ease-out-cubic">
             </div>
         </section>
-
-
 
         <!-- BRIDE -->
         <section class="bride-section">
