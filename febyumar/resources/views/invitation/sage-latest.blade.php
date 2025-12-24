@@ -315,12 +315,12 @@
 
         /* kiri: geser ke kiri sedikit (crop kiri/kanan saja) */
         .bride-flower-left {
-            left: -30%;
+            left: -25%;
         }
 
         /* kanan: geser ke kanan sedikit (crop kiri/kanan saja) */
         .bride-flower-right {
-            right: -30%;
+            right: -25%;
         }
 
         /* opsional: kalau mau sedikit lebih “pojok” tanpa menghilangkan atas/bawah */
@@ -375,6 +375,80 @@
         }
 
         /* DATE SECTION */
+        .date-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .date-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* bunga: tinggi full, tidak hilang atas/bawah (crop cuma kiri/kanan) */
+        .date-flower {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 85%;
+            max-width: 520px;
+
+            object-fit: contain;
+            object-position: center;
+
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .date-flower-left {
+            left: -22%;
+        }
+
+        .date-flower-right {
+            right: -22%;
+        }
+
+        /* overlay content */
+        .date-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 14%;
+        }
+
+        /* date image */
+        .date-img {
+            width: 85%;
+            max-width: 380px;
+            height: auto;
+            margin-bottom: 6%;
+        }
+
+        /* countdown card (biar rapi di mobile) */
+        .countdown-card {
+            width: 90%;
+            max-width: 420px;
+            pointer-events: auto;
+            /* kalau nanti ada tombol/klik, aman */
+        }
+
+        .countdown-tiles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .ctile {
+            text-align: center;
+        }
+
         .date-content {
             padding-top: 28%;
             z-index: 5;
@@ -748,7 +822,6 @@
         </section>
 
         <!-- GROOM -->
-        <!-- GROOM -->
         <section class="groom-section">
             <!-- Base background -->
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
@@ -765,45 +838,46 @@
             </div>
         </section>
 
-        {{-- <section class="groom-section">
-            <img src="{{ asset('images/img/groom-bg.webp') }}">
-            <div class="groom-content">
-                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-left"
-                    data-aos-duration="2000" data-aos-delay="200">
-            </div>
-        </section> --}}
-
         <!-- DATE -->
         <section class="date-section">
-            <img src="{{ asset('images/img/date-bg.webp') }}">
-            <div class="date-content" data-aos="zoom-in" data-aos-duration="1500">
+            <!-- Base background -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
-                <img src="{{ asset('images/img/date.webp') }}" class="date-img">
+            <!-- Bunga kiri & kanan -->
+            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
 
-                <div class="countdown-card">
+            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
+
+            <!-- Content overlay -->
+            <div class="date-content">
+                <img src="{{ asset('images/img/date.webp') }}" class="date-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+
+                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="900"
+                    data-aos-easing="ease-out-cubic">
                     <div class="countdown-tiles">
                         <div class="ctile">
                             <div class="ctile-number" id="c_days">00</div>
                             <div class="ctile-label">Days</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_hours">00</div>
                             <div class="ctile-label">Hours</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_minutes">00</div>
                             <div class="ctile-label">Minutes</div>
                         </div>
-
                         <div class="ctile">
                             <div class="ctile-number" id="c_seconds">00</div>
                             <div class="ctile-label">Seconds</div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
