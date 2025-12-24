@@ -294,36 +294,39 @@
             display: block;
         }
 
-        /* bunga (dibuat jadi ornamen pojok, bukan full tinggi) */
+        /* bunga: tinggi FULL mengikuti section, jadi tidak ada yang hilang atas/bawah */
         .bride-flower {
             position: absolute;
             pointer-events: none;
             z-index: 1;
 
-            /* kunci crop */
-            width: 68%;
-            /* besarin biar ada yang “keluar” lalu kepotong */
-            max-width: 420px;
-            height: 42%;
-            /* batasi tinggi ornamen */
-            max-height: 360px;
+            top: 0;
+            bottom: 0;
+            height: 100%;
 
-            object-fit: cover;
-            /* crop isi gambar */
+            /* Lebarkan supaya bisa “keluar” kiri/kanan lalu kepotong */
+            width: 85%;
+            max-width: 520px;
+
+            /* penting: jangan cover, biar tidak crop vertikal */
+            object-fit: contain;
+            object-position: center;
         }
 
-        /* bunga kiri -> pojok kiri atas */
+        /* kiri: geser ke kiri sedikit (crop kiri/kanan saja) */
         .bride-flower-left {
-            top: -6%;
-            left: -8%;
-            object-position: left top;
+            left: -22%;
         }
 
-        /* bunga kanan -> pojok kanan bawah (sesuai feel gambar 2) */
+        /* kanan: geser ke kanan sedikit (crop kiri/kanan saja) */
         .bride-flower-right {
-            bottom: -8%;
-            right: -8%;
-            object-position: right bottom;
+            right: -22%;
+        }
+
+        /* opsional: kalau mau sedikit lebih “pojok” tanpa menghilangkan atas/bawah */
+        .bride-flower-left,
+        .bride-flower-right {
+            transform: translateY(-2%);
         }
 
         /* konten di atas bunga */
