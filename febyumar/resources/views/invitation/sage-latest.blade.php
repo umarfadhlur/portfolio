@@ -280,10 +280,6 @@
             opacity: 0;
         }
 
-        .bride-content {
-            padding-top: 25%;
-        }
-
         .bride-section {
             position: relative;
             width: 100%;
