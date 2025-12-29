@@ -801,6 +801,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
+            /* kunci: biar ornament kepotong dan gak overlap keluar */
         }
 
         .thanks-base {
@@ -809,104 +810,58 @@
             display: block;
         }
 
-        /* container bg kiri/kanan */
-        .thanks-bg {
+        /* ornament 1 gambar */
+        .thanks-ornament {
             position: absolute;
             top: 0;
             bottom: 0;
             height: 100%;
-            width: 85%;
-            max-width: 520px;
+
+            width: 110%;
+            /* dibesarin dikit biar bisa “kepotong” */
+            left: -5%;
+            /* geser keluar dikit -> kepotong kiri/kanan */
+            right: -5%;
+
+            object-fit: contain;
+            /* gak crop atas/bawah */
+            object-position: center;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* posisi “kepotong” kayak date */
-        .thanks-bg-left {
-            left: -45%;
-        }
-
-        .thanks-bg-right {
-            right: -45%;
-            transform: scale(1.4);
-        }
-
-        .thanks-bg-bottom {
+        /* konten column */
+        .thanks-content {
             position: absolute;
-            left: 12%;
-            bottom: -16%;
-            top: auto;
-            transform: translateX(-50%);
+            inset: 0;
+            z-index: 5;
 
-            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 2 & 3 di tengah */
+            gap: 18px;
+            padding-top: 14%;
+            pointer-events: none;
+        }
+
+        .thanks-item {
+            width: 78%;
             max-width: 420px;
-            height: auto;
-
-            pointer-events: none;
-            z-index: 2;
-            /* di atas bg kiri/kanan */
-        }
-
-        /* pastikan konten tetap paling atas */
-        .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-        }
-
-        /* layer di dalam bg */
-        .thanks-bg-layer {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* biar tidak kepotong atas/bawah */
-            object-position: center;
-        }
-
-        .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        /* semua konten center by bounding box */
-        .thanks-img {
-            position: absolute;
-            left: 0;
-            right: 0;
-            /* bikin area selebar container */
-            margin: 0 auto;
-            /* center element */
             height: auto;
             display: block;
         }
 
-        /* Title */
-        .thanks-img-1 {
-            top: 8%;
-            width: 280px;
-            max-width: 60%;
-            transform: translateX(-50px);
+        /* only thanks-1 geser kiri 10% */
+        .thanks-1 {
+            transform: translateX(-10%);
         }
 
-
-        /* Paragraph */
-        .thanks-img-2 {
-            top: 30%;
-            width: 420px;
-            max-width: 58%;
+        /* optional: kecilkan thanks-3 biar mirip kartu */
+        .thanks-3 {
+            width: 62%;
+            max-width: 360px;
         }
-
-        /* With love */
-        .thanks-img-3 {
-            bottom: 20%;
-            width: 220px;
-            max-width: 60%;
-        }
-
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -1158,37 +1113,21 @@
 
         <!-- THANK YOU -->
         <section class="thanks-section">
-            <!-- Base background -->
+            <!-- base -->
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- BG kiri -->
-            <img src="{{ asset('images/img/thanks-bg-left.webp') }}" class="thanks-bg thanks-bg-left" alt=""
-                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <!-- ornament (animasi) -->
+            <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt=""
+                data-aos="fade-up" data-aos-duration="1800" data-aos-easing="ease-out-cubic">
 
-            <!-- BG kanan -->
-            <img src="{{ asset('images/img/thanks-bg-right.webp') }}" class="thanks-bg thanks-bg-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
-
-            <!-- BG bawah -->
-            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bg-bottom" alt=""
-                data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150" data-aos-easing="ease-out-cubic">
-
-            <!-- Content overlay -->
+            <!-- content -->
             <div class="thanks-content">
-                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-img thanks-img-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="500"
-                    data-aos-easing="ease-out-cubic">
-
-                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-img thanks-img-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="850"
-                    data-aos-easing="ease-out-cubic">
-
-                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-img thanks-img-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="1200"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt="">
+                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt="">
+                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt="">
             </div>
         </section>
+
 
     </div>
 
