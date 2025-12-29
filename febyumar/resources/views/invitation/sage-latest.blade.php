@@ -796,7 +796,9 @@
             white-space: pre-wrap;
         }
 
-        /* THANK YOU SECTION */
+        /* =========================
+   THANK YOU SECTION (CLEAN)
+   ========================= */
         .thanks-section {
             position: relative;
             width: 100%;
@@ -809,62 +811,44 @@
             display: block;
         }
 
-        /* container bg kiri/kanan */
+        /* BG kiri/kanan (hanya pinggir, tidak nutup tengah) */
         .thanks-bg {
             position: absolute;
             top: 0;
             bottom: 0;
             height: 100%;
-            width: 85%;
-            max-width: 520px;
+            width: 46%;
+            max-width: 340px;
+            object-fit: contain;
+            object-position: top;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* posisi “kepotong” kayak date */
         .thanks-bg-left {
-            left: -45%;
+            left: -14%;
         }
 
         .thanks-bg-right {
-            right: -45%;
-            transform: scale(1.4);
+            right: -14%;
         }
 
+        /* BG bawah (beda class, jangan pakai .thanks-bg) */
         .thanks-bg-bottom {
             position: absolute;
-            left: 12%;
+            left: 50%;
             bottom: -16%;
             top: auto;
             transform: translateX(-50%);
-
-            width: 80%;
-            max-width: 420px;
+            width: 120%;
+            max-width: 820px;
             height: auto;
-
             pointer-events: none;
             z-index: 2;
             /* di atas bg kiri/kanan */
         }
 
-        /* pastikan konten tetap paling atas */
-        .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-        }
-
-        /* layer di dalam bg */
-        .thanks-bg-layer {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* biar tidak kepotong atas/bawah */
-            object-position: center;
-        }
-
+        /* Konten overlay paling atas */
         .thanks-content {
             position: absolute;
             inset: 0;
@@ -872,14 +856,12 @@
             pointer-events: none;
         }
 
-        /* semua konten center by bounding box */
+        /* semua konten center by bounding box (stabil) */
         .thanks-img {
             position: absolute;
             left: 0;
             right: 0;
-            /* bikin area selebar container */
             margin: 0 auto;
-            /* center element */
             height: auto;
             display: block;
         }
@@ -888,14 +870,14 @@
         .thanks-img-1 {
             top: 8%;
             width: 280px;
-            /* fixed biar stabil */
             max-width: 60%;
-            transform: translateX(-7%);
+            transform: translateX(-6%);
+            /* optional: geser kiri dikit */
         }
 
         /* Paragraph */
         .thanks-img-2 {
-            top: 20%;
+            top: 24%;
             width: 420px;
             max-width: 58%;
         }
@@ -906,7 +888,6 @@
             width: 220px;
             max-width: 60%;
         }
-
 
         [data-aos].aos-animate {
             opacity: 1 !important;
