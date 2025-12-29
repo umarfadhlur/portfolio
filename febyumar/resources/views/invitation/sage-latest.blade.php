@@ -538,6 +538,7 @@
 
         /* sizing konten */
         .direction-title {
+            transform: translateY(15%);
             width: 60%;
             max-width: 320px;
             height: auto;
@@ -854,13 +855,17 @@
 
         /* only thanks-1 geser kiri 10% */
         .thanks-1 {
-            transform: translateX(-10%);
+            transform: translateX(-20%);
         }
 
-        /* optional: kecilkan thanks-3 biar mirip kartu */
+        .thanks-2 {
+            width: 50%;
+            max-width: 240px;
+        }
+
         .thanks-3 {
-            width: 62%;
-            max-width: 360px;
+            width: 40%;
+            max-width: 240px;
         }
 
         [data-aos].aos-animate {
@@ -1118,13 +1123,21 @@
 
             <!-- ornament (animasi) -->
             <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt=""
-                data-aos="fade-up" data-aos-duration="1800" data-aos-easing="ease-out-cubic">
+                data-aos="zoom-in" data-aos-duration="1800" data-aos-easing="ease-out-cubic">
 
             <!-- content -->
             <div class="thanks-content">
-                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt="">
-                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt="">
-                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt="">
+                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="200"
+                    data-aos-easing="ease-out-cubic">
+
+                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="500"
+                    data-aos-easing="ease-out-cubic">
+
+                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="800"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
