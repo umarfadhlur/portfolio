@@ -838,11 +838,21 @@
             top: auto;
             transform: translateX(-50%);
 
-            width: 50%;
+            width: 120%;
+            /* jangan 50%, itu kekecilan */
+            max-width: 820px;
             height: auto;
 
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
+            /* di atas bg kiri/kanan */
+        }
+
+        /* pastikan konten tetap paling atas */
+        .thanks-content {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
         }
 
         /* layer di dalam bg */
