@@ -591,7 +591,7 @@
         }
 
         .verse2-flower-right {
-            right: -22%;
+            right: -28%;
         }
 
         /* overlay content */
@@ -603,7 +603,7 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 16%;
+            padding-top: 20%;
             right: 25%;
         }
 
