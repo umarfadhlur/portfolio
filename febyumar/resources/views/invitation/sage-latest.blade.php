@@ -1124,16 +1124,13 @@
             <!-- BG kiri (stack 2 layer) -->
             <div class="thanks-bg thanks-bg-left" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/thanks-bg-left-1.webp') }}" class="thanks-bg-layer" alt="">
-                <img src="{{ asset('images/img/thanks-bg-left-2.webp') }}" class="thanks-bg-layer" alt="">
+                <img src="{{ asset('images/img/thanks-bg-left.webp') }}" class="thanks-bg-layer" alt="">
             </div>
 
             <!-- BG kanan (stack 3 layer) -->
             <div class="thanks-bg thanks-bg-right" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/thanks-bg-right-1.webp') }}" class="thanks-bg-layer" alt="">
-                <img src="{{ asset('images/img/thanks-bg-right-2.webp') }}" class="thanks-bg-layer" alt="">
-                <img src="{{ asset('images/img/thanks-bg-right-3.webp') }}" class="thanks-bg-layer" alt="">
+                <img src="{{ asset('images/img/thanks-bg-right.webp') }}" class="thanks-bg-layer" alt="">
             </div>
 
             <!-- Content overlay -->
