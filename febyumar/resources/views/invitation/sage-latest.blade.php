@@ -526,6 +526,7 @@
 
         /* overlay content */
         .direction-content {
+            transform: translateX(15%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -538,7 +539,6 @@
 
         /* sizing konten */
         .direction-title {
-            transform: translateY(15%);
             width: 60%;
             max-width: 320px;
             height: auto;
@@ -855,12 +855,12 @@
 
         /* only thanks-1 geser kiri 10% */
         .thanks-1 {
-            transform: translateX(-20%);
+            transform: translateX(-10%);
         }
 
         .thanks-2 {
-            width: 50%;
-            max-width: 240px;
+            width: 60%;
+            max-width: 300px;
         }
 
         .thanks-3 {
