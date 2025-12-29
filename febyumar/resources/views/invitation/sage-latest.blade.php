@@ -591,7 +591,7 @@
         }
 
         .verse2-flower-right {
-            right: -28%;
+            right: -32%;
         }
 
         /* overlay content */
@@ -603,7 +603,7 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 20%;
+            padding-top: 25%;
             right: 25%;
         }
 
@@ -795,6 +795,113 @@
             line-height: 1.4;
             white-space: pre-wrap;
         }
+
+        /* THANK YOU SECTION */
+        .thanks-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .thanks-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ornament kiri/kanan (crop kiri/kanan aja) */
+        .thanks-flower {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 85%;
+            max-width: 520px;
+
+            object-fit: contain;
+            object-position: center;
+
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* kiri & kanan: geser keluar */
+        .thanks-left {
+            left: -22%;
+        }
+
+        .thanks-right {
+            right: -22%;
+        }
+
+        /* variasi sedikit supaya layer tidak tumpuk persis */
+        .thanks-left-1 {
+            transform: translateY(-1%);
+            opacity: 0.95;
+        }
+
+        .thanks-left-2 {
+            transform: translateY(2%);
+            opacity: 0.95;
+        }
+
+        .thanks-right-1 {
+            transform: translateY(-1%);
+            opacity: 0.95;
+        }
+
+        .thanks-right-2 {
+            transform: translateY(2%);
+            opacity: 0.95;
+        }
+
+        .thanks-right-3 {
+            transform: translateY(5%);
+            opacity: 0.95;
+        }
+
+        /* ornament bawah */
+        .thanks-bottom {
+            position: absolute;
+            left: 50%;
+            bottom: -2%;
+            transform: translateX(-50%);
+            width: 120%;
+            max-width: 760px;
+            height: auto;
+
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* content overlay */
+        .thanks-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding-top: 14%;
+        }
+
+        /* urutan konten */
+        .thanks-img {
+            width: 15%;
+            height: auto;
+        }
+
+        .thanks-img-1 {
+            height: 40%;
+            margin-bottom: 6%;
+        }
+
+        .thanks-img-2 {
+            height: 10%;
+            margin-bottom: 6%;
+        }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -1041,6 +1148,53 @@
                         <!-- pesan di‑inject JS -->
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- THANK YOU -->
+        <section class="thanks-section">
+            <!-- Base background -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
+
+            <!-- LEFT stack (2 layer) -->
+            <img src="{{ asset('images/img/thanks-bg-left-1.webp') }}"
+                class="thanks-flower thanks-left thanks-left-1" alt="" data-aos="fade-right"
+                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+
+            <img src="{{ asset('images/img/thanks-bg-left-2.webp') }}"
+                class="thanks-flower thanks-left thanks-left-2" alt="" data-aos="fade-right"
+                data-aos-duration="2000" data-aos-delay="150" data-aos-easing="ease-out-cubic">
+
+            <!-- RIGHT stack (3 layer) -->
+            <img src="{{ asset('images/img/thanks-bg-right-1.webp') }}"
+                class="thanks-flower thanks-right thanks-right-1" alt="" data-aos="fade-left"
+                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+
+            <img src="{{ asset('images/img/thanks-bg-right-2.webp') }}"
+                class="thanks-flower thanks-right thanks-right-2" alt="" data-aos="fade-left"
+                data-aos-duration="2000" data-aos-delay="150" data-aos-easing="ease-out-cubic">
+
+            <img src="{{ asset('images/img/thanks-bg-right-3.webp') }}"
+                class="thanks-flower thanks-right thanks-right-3" alt="" data-aos="fade-left"
+                data-aos-duration="2200" data-aos-delay="300" data-aos-easing="ease-out-cubic">
+
+            <!-- BOTTOM -->
+            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bottom" alt=""
+                data-aos="fade-up" data-aos-duration="2000" data-aos-delay="250" data-aos-easing="ease-out-cubic">
+
+            <!-- Content overlay -->
+            <div class="thanks-content">
+                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-img thanks-img-1" alt=""
+                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="650"
+                    data-aos-easing="ease-out-cubic">
+
+                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-img thanks-img-2" alt=""
+                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="950"
+                    data-aos-easing="ease-out-cubic">
+
+                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-img thanks-img-3" alt=""
+                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="1250"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
