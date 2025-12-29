@@ -835,6 +835,7 @@
             position: absolute;
             left: 50%;
             bottom: -16%;
+            top: auto;
             transform: translateX(-50%);
 
             width: 50%;
@@ -1146,9 +1147,8 @@
                 data-aos-easing="ease-out-cubic">
 
             <!-- BG bawah -->
-            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bg thanks-bg-bottom"
-                alt="" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bg-bottom" alt=""
+                data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay -->
             <div class="thanks-content">
