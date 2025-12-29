@@ -890,11 +890,12 @@
             width: 280px;
             /* fixed biar stabil */
             max-width: 60%;
+            transform: translateX(-7%);
         }
 
         /* Paragraph */
         .thanks-img-2 {
-            top: 30%;
+            top: 20%;
             width: 420px;
             max-width: 58%;
         }
