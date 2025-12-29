@@ -887,7 +887,7 @@
         /* Title */
         .thanks-img-1 {
             top: 8%;
-            width: 180px;
+            width: 280px;
             /* fixed biar stabil */
             max-width: 60%;
         }
@@ -896,7 +896,7 @@
         .thanks-img-2 {
             top: 30%;
             width: 420px;
-            max-width: 78%;
+            max-width: 58%;
         }
 
         /* With love */
