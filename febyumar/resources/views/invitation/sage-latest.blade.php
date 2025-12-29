@@ -821,13 +821,13 @@
             z-index: 1;
         }
 
-        /* posisi “kepotong” kayak date */
+        /* Balikin ke nilai yang lebih "date-like" dan seimbang */
         .thanks-bg-left {
-            left: -45%;
+            left: -22%;
         }
 
         .thanks-bg-right {
-            right: -15%;
+            right: -22%;
         }
 
         /* layer di dalam bg */
@@ -837,7 +837,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* biar tidak kepotong atas/bawah */
             object-position: center;
         }
 
@@ -850,24 +849,26 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 16%;
+            padding-top: 14%;
         }
 
+        /* semua konten harus center & konsisten */
         .thanks-img {
-            width: 50%;
-            left: -5%;
+            width: 82%;
+            max-width: 420px;
             height: auto;
+            display: block;
         }
 
+        /* rapihin spacing aja (jangan ubah width per item) */
         .thanks-img-1 {
-            width: 60%;
             margin-bottom: 6%;
         }
 
         .thanks-img-2 {
-            width: 40%;
             margin-bottom: 6%;
         }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
