@@ -525,6 +525,7 @@
         }
 
         .direction-content {
+            transform: translateX(5%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -573,8 +574,8 @@
 
             padding: 12px 16px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, .92);
-            color: #2F2E2C;
+            background: #727d6c;
+            color: #fff;
             font-weight: 700;
             text-decoration: none;
             box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
@@ -1079,8 +1080,8 @@
                 <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
                     rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1350"
                     data-aos-easing="ease-out-cubic">
-                    <span>Open Maps Location</span>
                     <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
+                    <span>Open Maps Location</span>
                 </a>
 
             </div>
