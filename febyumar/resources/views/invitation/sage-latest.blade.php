@@ -538,21 +538,21 @@
 
         /* sizing konten */
         .direction-title {
-            width: 78%;
+            width: 75%;
             max-width: 320px;
             height: auto;
             margin-bottom: 6%;
         }
 
         .direction-building {
-            width: 72%;
+            width: 50%;
             max-width: 320px;
             height: auto;
             margin-bottom: 6%;
         }
 
         .direction-address {
-            width: 82%;
+            width: 80%;
             max-width: 360px;
             height: auto;
         }
