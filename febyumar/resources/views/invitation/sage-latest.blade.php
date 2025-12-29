@@ -877,7 +877,6 @@
         .thanks-img {
             position: absolute;
             /* kunci: kita kontrol posisi 1-1 */
-            left: 50%;
             transform: translateX(-50%);
             height: auto;
             display: block;
@@ -885,23 +884,24 @@
 
         /* 1) Title "Thank You" (atas) */
         .thanks-img-1 {
+            right: 25%;
             top: 8%;
-            width: 70%;
-            max-width: 360px;
+            width: 60%;
+            max-width: 180px;
         }
 
         /* 2) Paragraph (tengah) */
         .thanks-img-2 {
             top: 30%;
-            width: 78%;
+            width: 58%;
             max-width: 420px;
         }
 
         /* 3) With love + name (bawah) */
         .thanks-img-3 {
             bottom: 12%;
-            width: 72%;
-            max-width: 380px;
+            width: 36%;
+            max-width: 120px;
         }
 
         [data-aos].aos-animate {
