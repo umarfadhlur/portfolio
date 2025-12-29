@@ -833,10 +833,7 @@
 
         .thanks-bg-bottom {
             left: 50%;
-            bottom: -6%;
-            transform: translateX(-50%);
-            width: 120%;
-            max-width: 820px;
+            bottom: -16%;
             height: auto;
         }
 
