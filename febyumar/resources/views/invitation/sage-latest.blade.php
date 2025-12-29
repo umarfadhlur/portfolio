@@ -833,7 +833,7 @@
 
         .thanks-bg-bottom {
             position: absolute;
-            left: 20%;
+            left: 25%;
             bottom: -16%;
             top: auto;
             transform: translateX(-50%);
@@ -879,17 +879,17 @@
 
         .thanks-img {
             width: 50%;
-            left: -5%;
+            left: -15%;
             height: auto;
         }
 
         .thanks-img-1 {
-            width: 60%;
+            width: 80%;
             margin-bottom: 6%;
         }
 
         .thanks-img-2 {
-            width: 40%;
+            width: 30%;
             margin-bottom: 6%;
         }
 
