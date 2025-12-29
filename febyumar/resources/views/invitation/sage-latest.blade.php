@@ -823,11 +823,11 @@
 
         /* posisi “kepotong” kayak date */
         .thanks-bg-left {
-            left: -40%;
+            left: -35%;
         }
 
         .thanks-bg-right {
-            right: -40%;
+            right: -10%;
         }
 
         /* layer di dalam bg */
@@ -854,17 +854,18 @@
         }
 
         .thanks-img {
-            width: 22%;
+            width: 50%;
             left: 5%;
             height: auto;
         }
 
         .thanks-img-1 {
+            width: 50%;
             margin-bottom: 6%;
         }
 
         .thanks-img-2 {
-            width: 22%;
+            width: 40%;
             margin-bottom: 6%;
         }
 
