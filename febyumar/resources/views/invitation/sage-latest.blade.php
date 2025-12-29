@@ -1012,7 +1012,7 @@
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
                 AOS.init({
-                    once: false,
+                    once: true,
                     mirror: true,
                     duration: 1200,
                     easing: 'ease-out-quart',
