@@ -493,33 +493,68 @@
         /* DIRECTION SECTION */
         .direction-section {
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
+        .direction-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ornamen: crop kiri/kanan saja (tidak hilang atas/bawah) */
+        .direction-flower {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 85%;
+            max-width: 520px;
+
+            object-fit: contain;
+            /* biar aman atas/bawah */
+            object-position: center;
+
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .direction-flower-left {
+            left: -22%;
+        }
+
+        /* overlay content */
         .direction-content {
             position: absolute;
             inset: 0;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 4%;
-            left: 10%;
+            padding-top: 12%;
         }
 
+        /* sizing konten */
         .direction-title {
-            width: 75%;
+            width: 78%;
             max-width: 320px;
+            height: auto;
+            margin-bottom: 6%;
         }
 
         .direction-building {
-            width: 50%;
+            width: 72%;
             max-width: 320px;
-            margin-bottom: 5%;
+            height: auto;
+            margin-bottom: 6%;
         }
 
         .direction-address {
-            width: 80%;
+            width: 82%;
             max-width: 360px;
+            height: auto;
         }
 
         /* VERSE 2 */
@@ -883,19 +918,27 @@
 
         <!-- DIRECTION -->
         <section class="direction-section">
-            <img src="{{ asset('images/img/venue-bg.webp') }}" alt="Venue Background">
-            <div class="direction-content">
+            <!-- Base background -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
+            <!-- Ornamennya seperti date -->
+            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
+
+            <!-- Content overlay (punyamu, sama) -->
+            <div class="direction-content">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1200">
+                    data-aos="fade-down" data-aos-duration="1700" data-aos-delay="450"
+                    data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
-                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1200"
-                    data-aos-delay="150">
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1800"
+                    data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
-                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1200"
-                    data-aos-delay="300">
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1800"
+                    data-aos-delay="1050" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
