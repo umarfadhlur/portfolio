@@ -833,7 +833,8 @@
 
         .thanks-bg-bottom {
             position: absolute;
-            bottom: -16%;
+            left: 30%;
+            bottom: -10%;
             top: auto;
             transform: translateX(-50%);
 
