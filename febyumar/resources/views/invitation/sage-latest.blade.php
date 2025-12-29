@@ -831,6 +831,15 @@
             transform: scale(1.1);
         }
 
+        .thanks-bg-bottom {
+            left: 50%;
+            bottom: -6%;
+            transform: translateX(-50%);
+            width: 120%;
+            max-width: 820px;
+            height: auto;
+        }
+
         /* layer di dalam bg */
         .thanks-bg-layer {
             position: absolute;
