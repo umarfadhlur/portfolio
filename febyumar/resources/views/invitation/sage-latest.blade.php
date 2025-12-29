@@ -809,67 +809,72 @@
             display: block;
         }
 
-        /* ornament kiri/kanan (crop kiri/kanan aja) */
+        /* === ORNAMEN KIRI/KANAN: JANGAN FULL HEIGHT === */
         .thanks-flower {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            height: 100%;
-            width: 85%;
-            max-width: 520px;
-
-            object-fit: contain;
-            object-position: center;
-
             pointer-events: none;
             z-index: 1;
+
+            /* bikin jadi strip kiri/kanan */
+            width: 42%;
+            max-width: 260px;
+
+            height: 78%;
+            /* kunci: jangan 100% */
+            max-height: 720px;
+
+            top: -2%;
+            bottom: auto;
+
+            object-fit: contain;
+            /* biar ga kepotong atas/bawah */
+            object-position: top;
         }
 
-        /* kiri & kanan: geser keluar */
+        /* kiri & kanan */
         .thanks-left {
-            left: -22%;
+            left: -10%;
         }
 
         .thanks-right {
-            right: -22%;
+            right: -10%;
         }
 
-        /* variasi sedikit supaya layer tidak tumpuk persis */
+        /* variasi layer biar ga numpuk plek */
         .thanks-left-1 {
-            transform: translateY(-1%);
+            transform: translateY(0%);
             opacity: 0.95;
         }
 
         .thanks-left-2 {
-            transform: translateY(2%);
-            opacity: 0.95;
+            transform: translateY(7%);
+            opacity: 0.90;
         }
 
         .thanks-right-1 {
-            transform: translateY(-1%);
+            transform: translateY(0%);
             opacity: 0.95;
         }
 
         .thanks-right-2 {
-            transform: translateY(2%);
-            opacity: 0.95;
+            transform: translateY(7%);
+            opacity: 0.90;
         }
 
         .thanks-right-3 {
-            transform: translateY(5%);
-            opacity: 0.95;
+            transform: translateY(14%);
+            opacity: 0.88;
         }
 
         /* ornament bawah */
         .thanks-bottom {
             position: absolute;
             left: 50%;
-            bottom: -2%;
+            bottom: -6%;
             transform: translateX(-50%);
-            width: 120%;
-            max-width: 760px;
+            width: 130%;
+            max-width: 820px;
             height: auto;
-
             pointer-events: none;
             z-index: 1;
         }
@@ -883,23 +888,50 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 14%;
+            padding-top: 16%;
         }
 
-        /* urutan konten */
+        /* === KONTEN: jangan width 15% + height persen === */
         .thanks-img {
-            width: 15%;
+            width: 82%;
+            max-width: 420px;
             height: auto;
         }
 
         .thanks-img-1 {
-            height: 40%;
             margin-bottom: 6%;
         }
 
         .thanks-img-2 {
-            height: 10%;
             margin-bottom: 6%;
+        }
+
+        /* layar > 481 */
+        @media (min-width: 482px) {
+            .thanks-flower {
+                width: 34%;
+                max-width: 320px;
+                height: 82%;
+            }
+
+            .thanks-left {
+                left: -8%;
+            }
+
+            .thanks-right {
+                right: -8%;
+            }
+
+            .thanks-bottom {
+                width: 115%;
+                max-width: 980px;
+                bottom: -8%;
+            }
+
+            .thanks-img {
+                width: 62%;
+                max-width: 520px;
+            }
         }
 
 
