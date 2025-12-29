@@ -524,34 +524,7 @@
             left: -22%;
         }
 
-        .direction-maps-btn {
-            margin-top: 14px;
-            pointer-events: auto;
-            /* penting: biar bisa diklik (karena parent pointer-events:none) */
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-
-            padding: 12px 16px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .92);
-            color: #2F2E2C;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-        }
-
-        .direction-maps-icon {
-            width: 18px;
-            height: 18px;
-            object-fit: contain;
-            display: block;
-        }
-
-        /* overlay content */
         .direction-content {
-            transform: translateX(15%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -559,7 +532,13 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 12%;
+            padding-top: 5%;
+
+            padding-left: 18px;
+            /* ruang aman */
+            padding-right: 18px;
+            /* ruang aman */
+            box-sizing: border-box;
         }
 
         /* sizing konten */
@@ -580,6 +559,33 @@
             width: 80%;
             max-width: 360px;
             height: auto;
+        }
+
+
+        .direction-maps-btn {
+            margin-top: 14px;
+            pointer-events: auto;
+            /* penting: biar bisa diklik (karena parent pointer-events:none) */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .92);
+            color: #2F2E2C;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+            max-width: 100%;
+        }
+
+        .direction-maps-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            display: block;
         }
 
         /* VERSE 2 */
