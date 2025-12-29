@@ -827,14 +827,14 @@
         }
 
         .thanks-bg-right {
-            right: -25%;
-            transform: scale(1.1);
+            right: -45%;
+            transform: scale(1.4);
         }
 
         .thanks-bg-bottom {
             position: absolute;
-            left: 30%;
-            bottom: -10%;
+            left: 20%;
+            bottom: -16%;
             top: auto;
             transform: translateX(-50%);
 
