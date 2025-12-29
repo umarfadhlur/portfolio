@@ -833,7 +833,7 @@
 
         .thanks-bg-bottom {
             position: absolute;
-            left: 25%;
+            left: 12%;
             bottom: -16%;
             top: auto;
             transform: translateX(-50%);
@@ -869,28 +869,39 @@
         .thanks-content {
             position: absolute;
             inset: 0;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            z-index: 5;
             pointer-events: none;
-            padding-top: 16%;
         }
 
+        /* default semua img konten */
         .thanks-img {
-            width: 50%;
-            left: -15%;
+            position: absolute;
+            /* kunci: kita kontrol posisi 1-1 */
+            left: 50%;
+            transform: translateX(-50%);
             height: auto;
+            display: block;
         }
 
+        /* 1) Title "Thank You" (atas) */
         .thanks-img-1 {
-            width: 80%;
-            margin-bottom: 6%;
+            top: 8%;
+            width: 70%;
+            max-width: 360px;
         }
 
+        /* 2) Paragraph (tengah) */
         .thanks-img-2 {
-            width: 30%;
-            margin-bottom: 6%;
+            top: 30%;
+            width: 78%;
+            max-width: 420px;
+        }
+
+        /* 3) With love + name (bawah) */
+        .thanks-img-3 {
+            bottom: 12%;
+            width: 72%;
+            max-width: 380px;
         }
 
         [data-aos].aos-animate {
