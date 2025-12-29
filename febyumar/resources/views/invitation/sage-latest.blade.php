@@ -558,24 +558,48 @@
 
         /* VERSE 2 */
         .verse2-section {
-            width: 100%;
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
+        /* base */
+        .verse2-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* bg ornament di atas base */
+        .verse2-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* aman untuk bg */
+            object-position: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* konten overlay paling atas */
         .verse2-content {
             position: absolute;
             inset: 0;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
+            padding-top: 16%;
             right: 25%;
         }
 
         .verse2-img {
-            padding-top: 40%;
-            width: 80%;
-            opacity: 0;
+            width: 82%;
+            max-width: 420px;
+            height: auto;
         }
 
         /* RSVP SECTION (background bless-bg, content overlay) */
@@ -943,10 +967,18 @@
 
         <!-- VERSE 2 -->
         <section class="verse2-section">
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}">
+            <!-- Base background (tanpa animasi) -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
+
+            <!-- Ornament bg (animasi) -->
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-bg" alt="" data-aos="fade"
+                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+
+            <!-- Content overlay -->
             <div class="verse2-content">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" data-aos="zoom-in"
-                    data-aos-duration="1000">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
+                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="600"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
