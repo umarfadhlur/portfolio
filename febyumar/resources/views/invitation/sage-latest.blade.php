@@ -563,27 +563,38 @@
             overflow: hidden;
         }
 
-        /* base */
         .verse2-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* bg ornament di atas base */
-        .verse2-bg {
+        /* ornamen: tinggi full, biar nggak kepotong atas/bawah */
+        .verse2-flower {
             position: absolute;
-            inset: 0;
-            width: 100%;
+            top: 0;
+            bottom: 0;
             height: 100%;
-            object-fit: cover;
-            /* aman untuk bg */
+            width: 85%;
+            max-width: 520px;
+
+            object-fit: contain;
+            /* aman vertikal */
             object-position: center;
+
             pointer-events: none;
             z-index: 1;
         }
 
-        /* konten overlay paling atas */
+        .verse2-flower-left {
+            left: -22%;
+        }
+
+        .verse2-flower-right {
+            right: -22%;
+        }
+
+        /* overlay content */
         .verse2-content {
             position: absolute;
             inset: 0;
@@ -970,17 +981,19 @@
             <!-- Base background (tanpa animasi) -->
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
-            <!-- Ornament bg (animasi) -->
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-bg" alt="" data-aos="fade"
-                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <!-- Ornament kanan -->
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay -->
             <div class="verse2-content">
                 <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="600"
+                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="700"
                     data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
         <!-- RSVP (bless-bg as background) -->
         <section id="rsvp" class="rsvp-section">
