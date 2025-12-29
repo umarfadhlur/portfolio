@@ -873,36 +873,39 @@
             pointer-events: none;
         }
 
-        /* default semua img konten */
+        /* default semua img konten => CENTER */
         .thanks-img {
             position: absolute;
-            /* kunci: kita kontrol posisi 1-1 */
+            left: 50%;
+            /* INI yang kamu lupa */
             transform: translateX(-50%);
+            /* baru ini berfungsi untuk center */
             height: auto;
             display: block;
         }
 
-        /* 1) Title "Thank You" (atas) */
+        /* 1) Title */
         .thanks-img-1 {
-            right: 25%;
             top: 8%;
             width: 60%;
             max-width: 180px;
         }
 
-        /* 2) Paragraph (tengah) */
+        /* 2) Paragraph */
         .thanks-img-2 {
             top: 30%;
             width: 58%;
             max-width: 420px;
         }
 
-        /* 3) With love + name (bawah) */
+        /* 3) With love + name */
         .thanks-img-3 {
             bottom: 12%;
             width: 36%;
-            max-width: 120px;
+            max-width: 180px;
+            /* jangan 120, biasanya kekecilan */
         }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
