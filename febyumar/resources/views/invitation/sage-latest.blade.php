@@ -832,9 +832,16 @@
         }
 
         .thanks-bg-bottom {
+            position: absolute;
             left: 50%;
             bottom: -16%;
+            transform: translateX(-50%);
+
+            width: 50%;
             height: auto;
+
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* layer di dalam bg */
