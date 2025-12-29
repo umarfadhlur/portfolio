@@ -865,7 +865,6 @@
             object-position: center;
         }
 
-        /* content overlay */
         .thanks-content {
             position: absolute;
             inset: 0;
@@ -873,37 +872,38 @@
             pointer-events: none;
         }
 
-        /* default semua img konten => CENTER */
+        /* semua konten center by bounding box */
         .thanks-img {
             position: absolute;
-            left: 50%;
-            /* INI yang kamu lupa */
-            transform: translateX(-50%);
-            /* baru ini berfungsi untuk center */
+            left: 0;
+            right: 0;
+            /* bikin area selebar container */
+            margin: 0 auto;
+            /* center element */
             height: auto;
             display: block;
         }
 
-        /* 1) Title */
+        /* Title */
         .thanks-img-1 {
             top: 8%;
-            width: 60%;
-            max-width: 180px;
+            width: 180px;
+            /* fixed biar stabil */
+            max-width: 60%;
         }
 
-        /* 2) Paragraph */
+        /* Paragraph */
         .thanks-img-2 {
             top: 30%;
-            width: 58%;
-            max-width: 420px;
+            width: 420px;
+            max-width: 78%;
         }
 
-        /* 3) With love + name */
+        /* With love */
         .thanks-img-3 {
             bottom: 12%;
-            width: 36%;
-            max-width: 180px;
-            /* jangan 120, biasanya kekecilan */
+            width: 220px;
+            max-width: 60%;
         }
 
 
