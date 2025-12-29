@@ -833,14 +833,12 @@
 
         .thanks-bg-bottom {
             position: absolute;
-            left: 50%;
             bottom: -16%;
             top: auto;
             transform: translateX(-50%);
 
-            width: 120%;
-            /* jangan 50%, itu kekecilan */
-            max-width: 820px;
+            width: 80%;
+            max-width: 420px;
             height: auto;
 
             pointer-events: none;
