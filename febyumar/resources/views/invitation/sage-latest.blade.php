@@ -524,6 +524,31 @@
             left: -22%;
         }
 
+        .direction-maps-btn {
+            margin-top: 14px;
+            pointer-events: auto;
+            /* penting: biar bisa diklik (karena parent pointer-events:none) */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .92);
+            color: #2F2E2C;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+        }
+
+        .direction-maps-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            display: block;
+        }
+
         /* overlay content */
         .direction-content {
             transform: translateX(15%);
@@ -840,7 +865,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* 2 & 3 di tengah */
             gap: 18px;
             padding-top: 14%;
             pointer-events: none;
@@ -859,8 +883,8 @@
         }
 
         .thanks-2 {
-            width: 60%;
-            max-width: 300px;
+            width: 55%;
+            max-width: 280px;
         }
 
         .thanks-3 {
@@ -1045,6 +1069,14 @@
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
                     alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1800"
                     data-aos-delay="1050" data-aos-easing="ease-out-cubic">
+
+                <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
+                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1350"
+                    data-aos-easing="ease-out-cubic">
+                    <span>Open Maps Location</span>
+                    <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
+                </a>
+
             </div>
         </section>
 
