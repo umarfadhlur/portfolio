@@ -821,13 +821,14 @@
             z-index: 1;
         }
 
-        /* Balikin ke nilai yang lebih "date-like" dan seimbang */
+        /* posisi “kepotong” kayak date */
         .thanks-bg-left {
-            left: -22%;
+            left: -45%;
         }
 
         .thanks-bg-right {
-            right: -22%;
+            right: -25%;
+            transform: scale(1.1);
         }
 
         /* layer di dalam bg */
@@ -837,6 +838,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            /* biar tidak kepotong atas/bawah */
             object-position: center;
         }
 
@@ -849,26 +851,24 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 14%;
+            padding-top: 16%;
         }
 
-        /* semua konten harus center & konsisten */
         .thanks-img {
-            width: 82%;
-            max-width: 420px;
+            width: 50%;
+            left: -5%;
             height: auto;
-            display: block;
         }
 
-        /* rapihin spacing aja (jangan ubah width per item) */
         .thanks-img-1 {
+            width: 60%;
             margin-bottom: 6%;
         }
 
         .thanks-img-2 {
+            width: 40%;
             margin-bottom: 6%;
         }
-
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -1123,17 +1123,19 @@
             <!-- Base background -->
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- BG kiri (stack 2 layer) -->
-            <div class="thanks-bg thanks-bg-left" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/thanks-bg-left.webp') }}" class="thanks-bg-layer" alt="">
-            </div>
+            <!-- BG kiri -->
+            <img src="{{ asset('images/img/thanks-bg-left.webp') }}" class="thanks-bg thanks-bg-left" alt=""
+                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
-            <!-- BG kanan (stack 3 layer) -->
-            <div class="thanks-bg thanks-bg-right" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+            <!-- BG kanan -->
+            <img src="{{ asset('images/img/thanks-bg-right.webp') }}" class="thanks-bg thanks-bg-right"
+                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/thanks-bg-right.webp') }}" class="thanks-bg-layer" alt="">
-            </div>
+
+            <!-- BG bawah -->
+            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bg thanks-bg-bottom"
+                alt="" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150"
+                data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay -->
             <div class="thanks-content">
