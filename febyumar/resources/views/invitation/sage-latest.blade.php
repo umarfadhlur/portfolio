@@ -899,22 +899,18 @@
             max-width: 240px;
         }
 
-        /* section solid color */
         .wish-section {
             position: relative;
             width: 100%;
             overflow: hidden;
             background-color: #949a8f;
-            /* set background warna solid */
+            /* background solid */
             /* [web:570] */
         }
 
-        /* layout overlay */
         .wish-inner {
             padding: 22px 18px 18px;
             box-sizing: border-box;
-
-            /* bikin bagian list bisa scroll: perlu flex column + min-height:0 */
             min-height: 100vh;
 
             display: flex;
@@ -923,7 +919,6 @@
             gap: 12px;
         }
 
-        /* header */
         .wish-head {
             text-align: center;
             color: #fff;
@@ -984,15 +979,13 @@
             opacity: .8;
         }
 
-        /* 50/50: form dan list sama-sama flex:1 */
+        /* 50/50 area */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
             max-width: 420px;
             flex: 1 1 0;
             min-height: 0;
-            /* penting biar overflow scroll jalan di child */
-            /* [web:577] */
         }
 
         /* form */
@@ -1044,7 +1037,7 @@
             color: #fff;
         }
 
-        /* contoh style item (biar mirip screenshot: teks putih, tanpa card putih) */
+        /* kalau template JS kamu bikin .message-item seperti di paste.txt */
         .wish-list .message-item {
             background: transparent;
             border: none;
@@ -1060,18 +1053,6 @@
         .wish-list .message-item .text {
             color: #fff;
             opacity: .95;
-        }
-
-        .wish-list .message-item .time {
-            color: rgba(255, 255, 255, .75);
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .wish-list .message-item .reply {
-            color: rgba(255, 255, 255, .85);
-            font-size: 12px;
-            font-weight: 900;
         }
 
         [data-aos].aos-animate {
@@ -1348,29 +1329,30 @@
                     </div>
                 </div>
 
-                <!-- form -->
+                <!-- FORM (ID FORM HARUS rsvpForm) -->
                 <div class="wish-formPane">
                     <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
                         @csrf
                         <div id="rsvpAlert"></div>
 
-                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
+                        <!-- BALIKIN KE ID LAMA BIAR JS KAMU WORK -->
+                        <input type="text" name="name" id="fmname" value="{{ $guestName }}"
                             placeholder="Name" required>
 
-                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
+                        <textarea name="message" id="fmmessage" placeholder="Wish" required></textarea>
 
-                        <select name="status" id="fm_status" required>
+                        <select name="status" id="fmstatus" required>
                             <option value="">Attendance Confirmation</option>
-                            <option value="hadir">Present</option>
-                            <option value="tidak hadir">Absent</option>
-                            <option value="tentatif">Tentative</option>
+                            <option value="hadir">✓ Present</option>
+                            <option value="tidak hadir">✗ Absent</option>
+                            <option value="tentatif">? Tentative</option>
                         </select>
 
                         <button type="submit" class="wish-send">SEND</button>
                     </form>
                 </div>
 
-                <!-- list -->
+                <!-- LIST (ID HARUS messagesList) -->
                 <div class="wish-listPane">
                     <div id="messagesList" class="wish-list">
                         <!-- pesan di-inject JS -->
