@@ -1643,6 +1643,15 @@
 
                     // langsung tampil (tanpa fetch ulang)
                     if (list) {
+                        // hapus placeholder atau error placeholder jika ada (lebih robust)
+                        Array.from(list.querySelectorAll('p')).forEach(p => {
+                            const txt = (p.textContent || '').trim();
+                            if (txt.includes('Belum ada ucapan') || txt.includes(
+                                    'Gagal memuat ucapan')) {
+                                p.remove();
+                            }
+                        });
+
                         list.prepend(renderMessageItem({
                             name,
                             status,
