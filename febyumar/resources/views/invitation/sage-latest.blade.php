@@ -761,16 +761,16 @@
             width: 100%;
             overflow: hidden;
             background: #949a8f;
-
-            /* tetap stabil & portrait */
-            aspect-ratio: 9 / 16;
         }
 
+        /* balikin base supaya section punya tinggi “default” */
         .thanks-base {
-            display: none;
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* BUNGA: dibuat melebar (fill), jadi akan kepotong kiri/kanan */
+        /* BUNGA: cover + zoom-out dikit */
         .thanks-ornament {
             position: absolute;
             inset: 0;
@@ -778,14 +778,16 @@
             height: 100%;
 
             object-fit: cover;
-            /* ini kuncinya */
             object-position: center;
-            /* titik fokus crop */
+
+            transform: scale(0.90);
+            transform-origin: center;
+
             pointer-events: none;
             z-index: 1;
         }
 
-        /* konten overlay tetap di atas */
+        /* konten di atas bunga */
         .thanks-content {
             position: absolute;
             inset: 0;
@@ -810,7 +812,9 @@
         }
 
         .thanks-1 {
-            transform: translateX(-10%);
+            /* transform: translateX(-10%); */
+            width: 40%;
+            max-width: 240px;
         }
 
         .thanks-2 {
