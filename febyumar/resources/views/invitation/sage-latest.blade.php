@@ -763,13 +763,14 @@
             background: #949a8f;
         }
 
+        /* base biarin jadi “tinggi section” */
         .thanks-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* full artwork: jangan dibesarin/geser */
+        /* frame bunga: FIT, jangan crop */
         .thanks-ornament {
             position: absolute;
             inset: 0;
@@ -777,15 +778,29 @@
             height: 100%;
 
             object-fit: contain;
-            /* FIT: gak kepotong */
+            /* frame utuh */
             object-position: center;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* karena artwork sudah ada teksnya, hide overlay lama */
+        /* konten di atas frame */
         .thanks-content {
-            display: none;
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* penting biar gak naik-turun aneh */
+            gap: 18px;
+
+            padding: 12% 16px;
+            /* kiri kanan aman */
+            box-sizing: border-box;
+            pointer-events: none;
         }
 
         .thanks-item {
@@ -795,7 +810,6 @@
             display: block;
         }
 
-        /* only thanks-1 geser kiri 10% */
         .thanks-1 {
             transform: translateX(-10%);
         }
