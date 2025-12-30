@@ -829,6 +829,56 @@
             white-space: pre-wrap;
         }
 
+        /* WEDDING WISH */
+        .wish-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .wish-bg {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* tinggi section ngikut gambar */
+        }
+
+        .wish-inner {
+            position: absolute;
+            inset: 0;
+            padding: 22px 18px 18px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* container yang dibagi 50/50 */
+        .wish-split {
+            flex: 1 1 auto;
+            /* ambil sisa tinggi setelah header+stats */
+            min-height: 0;
+            /* penting */
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .wish-formPane,
+        .wish-listPane {
+            flex: 1 1 0;
+            /* 50/50 */
+            min-height: 0;
+            /* penting biar child bisa scroll */
+        }
+
+        /* list scroll */
+        .wish-list {
+            height: 100%;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
         /* THANK YOU SECTION */
         .thanks-section {
             position: relative;
@@ -1151,6 +1201,50 @@
                     <div id="messagesList" class="messages-list">
                         <!-- pesan di‑inject JS -->
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="weddingWish" class="wish-shell">
+            <div class="wish-card">
+                <div class="wish-head">
+                    <div class="wish-title">Wedding Wish</div>
+                    <div class="wish-sub">Sending Wedding Wish</div>
+                    <div class="wish-comments"><span id="wishCommentCount">0</span> Comments</div>
+                </div>
+
+                <div class="wish-stats">
+                    <div class="wish-stat wish-present">
+                        <div class="wish-num" id="wishPresentCount">0</div>
+                        <div class="wish-label">Present</div>
+                    </div>
+                    <div class="wish-stat wish-absent">
+                        <div class="wish-num" id="wishAbsentCount">0</div>
+                        <div class="wish-label">Absent</div>
+                    </div>
+                </div>
+
+                <!-- 50% FORM -->
+                <div class="wish-pane wish-formPane">
+                    <form id="rsvpForm" class="wish-form">
+                        @csrf
+                        <input type="text" id="fmname" name="name" placeholder="Name"
+                            value="{{ $guestName ?? '' }}" required>
+                        <textarea id="fmmessage" name="message" placeholder="Wish" required></textarea>
+                        <select id="fmstatus" name="status" required>
+                            <option value="">Attendance Confirmation</option>
+                            <option value="hadir">Present</option>
+                            <option value="tidak hadir">Absent</option>
+                            <option value="tentatif">Tentative</option>
+                        </select>
+                        <button type="submit" class="wish-send">SEND</button>
+                        <div id="rsvpAlert"></div>
+                    </form>
+                </div>
+
+                <!-- 50% LIST (scroll) -->
+                <div class="wish-pane wish-listPane">
+                    <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
         </section>
