@@ -1359,8 +1359,8 @@
                     once: true,
                     mirror: false,
                     offset: 120,
-                    duration: 2000, // lebih slow
-                    easing: 'ease-in-out', // lebih lembut dari ease-out-quart/cubic
+                    duration: 2000,
+                    easing: 'ease-in-out',
                     delay: 0,
                     debounceDelay: 50,
                     throttleDelay: 99
