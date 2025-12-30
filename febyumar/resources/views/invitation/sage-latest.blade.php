@@ -755,80 +755,6 @@
             color: #155724;
         }
 
-        /* Messages section (background gift-bg, cards overlay) */
-        .messages-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .messages-section>img {
-            width: 100%;
-            display: block;
-        }
-
-        .messages-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 24px 16px 40px;
-            pointer-events: none;
-        }
-
-        .messages-card {
-            max-width: 420px;
-            width: 100%;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 18px;
-            padding: 16px 14px 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            pointer-events: auto;
-
-            /* batasi tinggi card ucapan */
-            max-height: 360px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .messages-list {
-            margin-top: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            /* area ucapan scroll di dalam card */
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .message-item {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 14px;
-            padding: 8px 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            font-size: 0.88rem;
-        }
-
-        .message-item .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4px;
-            font-weight: 600;
-            color: #2F2E2C;
-        }
-
-        .message-item .text {
-            color: #444;
-            line-height: 1.4;
-            white-space: pre-wrap;
-        }
-
         /* THANK YOU SECTION */
         .thanks-section {
             position: relative;
@@ -899,20 +825,19 @@
             max-width: 240px;
         }
 
+        /* ========== WEDDING WISH ========== */
         .wish-section {
-            position: relative;
             width: 100%;
-            overflow: hidden;
-            background-color: #949a8f;
-            /* background solid */
-            /* [web:570] */
+            background: #949a8f;
         }
 
         .wish-inner {
+            max-width: 480px;
+            margin: 0 auto;
             padding: 22px 18px 18px;
             box-sizing: border-box;
-            min-height: 100vh;
 
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -932,19 +857,18 @@
         }
 
         .wish-sub {
+            margin-top: 6px;
             font-size: 13px;
             font-weight: 700;
             opacity: .95;
-            margin-top: 6px;
         }
 
         .wish-comments {
+            margin-top: 10px;
             font-size: 14px;
             font-weight: 900;
-            margin-top: 10px;
         }
 
-        /* stats */
         .wish-stats {
             width: 100%;
             max-width: 420px;
@@ -979,7 +903,7 @@
             opacity: .8;
         }
 
-        /* 50/50 area */
+        /* 50/50 */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
@@ -990,7 +914,7 @@
 
         /* form */
         .wish-form {
-            height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -1002,11 +926,15 @@
             width: 100%;
             box-sizing: border-box;
             border: none;
-            border-radius: 999px;
+            outline: none;
             padding: 12px 16px;
             background: rgba(255, 255, 255, .92);
             color: #2F2E2C;
-            outline: none;
+        }
+
+        .wish-form input,
+        .wish-form select {
+            border-radius: 999px;
         }
 
         .wish-form textarea {
@@ -1037,22 +965,27 @@
             color: #fff;
         }
 
-        /* kalau template JS kamu bikin .message-item seperti di paste.txt */
-        .wish-list .message-item {
-            background: transparent;
-            border: none;
+        /* khusus item wish (jangan pakai class message-item global lama) */
+        .wish-item {
             padding: 0;
-            box-shadow: none;
         }
 
-        .wish-list .message-item .meta {
-            color: #fff;
+        .wish-item .meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
             font-weight: 900;
         }
 
-        .wish-list .message-item .text {
-            color: #fff;
+        .wish-item .text {
+            margin-top: 4px;
             opacity: .95;
+        }
+
+        .wish-item .time {
+            margin-top: 8px;
+            font-size: 12px;
+            opacity: .75;
         }
 
         [data-aos].aos-animate {
@@ -1261,55 +1194,7 @@
             </div>
         </section>
 
-        <!-- RSVP (bless-bg as background) -->
-        {{-- <section id="rsvp" class="rsvp-section">
-            <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
-            <div class="rsvp-inner">
-                <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
-                    <form id="rsvpForm" class="rsvp-form">
-                        @csrf
-                        <div id="rsvpAlert"></div>
-
-                        <div class="form-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Konfirmasi Kehadiran</label>
-                            <select name="status" id="fm_status" required>
-                                <option value="">-- Pilih Status --</option>
-                                <option value="hadir">✓ Hadir</option>
-                                <option value="tidak hadir">✗ Tidak Hadir</option>
-                                <option value="tentatif">? Tentatif</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Ucapan & Doa</label>
-                            <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
-                    </form>
-                </div>
-            </div>
-        </section> --}}
-
-        <!-- Ucapan & Doa (gift-bg as background) -->
-        {{-- <section id="messages" class="messages-section">
-            <img src="{{ asset('images/img/gift-bg.webp') }}" alt="Gift Background">
-            <div class="messages-inner">
-                <div class="messages-card" data-aos="fade-up" data-aos-duration="1200">
-                    <h2 class="rsvp-title">Ucapan & Doa</h2>
-                    <div id="messagesList" class="messages-list">
-                        <!-- pesan di‑inject JS -->
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-
+        <!-- WEDDING WISH -->
         <section id="weddingWish" class="wish-section">
             <div class="wish-inner">
                 <div class="wish-head">
@@ -1329,37 +1214,32 @@
                     </div>
                 </div>
 
-                <!-- FORM (ID FORM HARUS rsvpForm) -->
                 <div class="wish-formPane">
                     <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
                         @csrf
                         <div id="rsvpAlert"></div>
 
-                        <!-- BALIKIN KE ID LAMA BIAR JS KAMU WORK -->
-                        <input type="text" name="name" id="fmname" value="{{ $guestName }}"
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
                             placeholder="Name" required>
+                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
 
-                        <textarea name="message" id="fmmessage" placeholder="Wish" required></textarea>
-
-                        <select name="status" id="fmstatus" required>
+                        <select name="status" id="fm_status" required>
                             <option value="">Attendance Confirmation</option>
                             <option value="hadir">✓ Present</option>
                             <option value="tidak hadir">✗ Absent</option>
                             <option value="tentatif">? Tentative</option>
                         </select>
 
-                        <button type="submit" class="wish-send">SEND</button>
+                        <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
                     </form>
                 </div>
 
-                <!-- LIST (ID HARUS messagesList) -->
                 <div class="wish-listPane">
-                    <div id="messagesList" class="wish-list">
-                        <!-- pesan di-inject JS -->
-                    </div>
+                    <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
         </section>
+
 
         <!-- THANK YOU -->
         <section class="thanks-section">
@@ -1499,10 +1379,32 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        /* ========== RSVP & MESSAGES ========== */
+        <
+        script >
+            /* ========== RSVP & MESSAGES (FIXED) ========== */
+            const messagesIndexUrl = "{{ route('rsvp.messages') }}";
+        const messagesStoreUrl = "{{ route('rsvp.store') }}";
+
+        function escapeHtml(s) {
+            return String(s || '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            } [c]));
+        }
+
+        function normalizeItems(data) {
+            if (Array.isArray(data)) return data;
+            if (data && Array.isArray(data.rows)) return data.rows;
+            if (data && Array.isArray(data.data)) return data.data;
+            return [];
+        }
+
         function renderMessageItem(msg) {
             const el = document.createElement('div');
-            el.className = 'message-item';
+            el.className = 'wish-item'; // biar ngikut CSS wish (bukan message-item lama)
 
             const messageText =
                 (msg.message && String(msg.message).trim() !== '') ?
@@ -1510,18 +1412,64 @@
                 '— Belum menulis ucapan —';
 
             el.innerHTML = `
-    <div class="meta">
-      <div>${escapeHtml(msg.name || 'Tamu')}</div>
-      <div style="opacity:.75;font-weight:600;font-size:.92rem">
-        ${escapeHtml(msg.status || '')}
+      <div class="meta">
+        <div>${escapeHtml(msg.name || 'Tamu')}</div>
+        <div style="opacity:.75;font-weight:700;font-size:.92rem">
+          ${escapeHtml(msg.status || '')}
+        </div>
       </div>
-    </div>
-    <div class="text">${messageText}</div>
-    <div style="margin-top:8px;font-size:0.8rem;color:#777">
-      ${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}
-    </div>
-  `;
+      <div class="text">${messageText}</div>
+      <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
+    `;
             return el;
+        }
+
+        function updateCounters(items) {
+            const all = (items || []).filter(Boolean);
+
+            const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
+            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak hadir').length;
+
+            const cmtEl = document.getElementById('wishCommentCount');
+            const pEl = document.getElementById('wishPresentCount');
+            const aEl = document.getElementById('wishAbsentCount');
+
+            if (cmtEl) cmtEl.textContent = String(all.length);
+            if (pEl) pEl.textContent = String(present);
+            if (aEl) aEl.textContent = String(absent);
+        }
+
+        async function fetchMessages() {
+            const list = document.getElementById('messagesList');
+            if (!list) return;
+
+            try {
+                const res = await fetch(messagesIndexUrl, {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+                const data = await res.json().catch(() => null);
+                if (!res.ok) throw new Error('Fetch failed');
+
+                let items = normalizeItems(data).filter(Boolean);
+                items.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+                updateCounters(items);
+
+                list.innerHTML = '';
+                const top = items.slice(0, 5);
+
+                if (!top.length) {
+                    list.innerHTML = '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
+                    return;
+                }
+
+                top.forEach(msg => list.appendChild(renderMessageItem(msg)));
+            } catch (e) {
+                console.error('fetchMessages error', e);
+                list.innerHTML = '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1535,27 +1483,41 @@
             form.addEventListener('submit', async (ev) => {
                 ev.preventDefault();
 
-                const name = document.getElementById('fm_name').value.trim();
-                const status = document.getElementById('fm_status').value;
-                const message = document.getElementById('fm_message').value.trim();
+                const nameEl = document.getElementById('fm_name');
+                const statusEl = document.getElementById('fm_status');
+                const messageEl = document.getElementById('fm_message');
+
                 const alertBox = document.getElementById('rsvpAlert');
                 const list = document.getElementById('messagesList');
 
-                alertBox.innerHTML = '';
+                if (alertBox) alertBox.innerHTML = '';
+
+                // kalau element null => HTML id belum sesuai
+                if (!nameEl || !statusEl || !messageEl) {
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu. Pastikan pakai fm_name/fm_status/fm_message.</div>';
+                    }
+                    return;
+                }
+
+                const name = nameEl.value.trim();
+                const status = statusEl.value;
+                const message = messageEl.value.trim();
 
                 if (!name || !status || !message) {
-                    alertBox.innerHTML =
-                        '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">Tolong isi semua field.</div>';
+                    }
                     return;
                 }
 
                 try {
                     btn && (btn.disabled = true);
 
-                    const token = document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-
+                    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute(
+                        'content') || '';
                     const res = await fetch(messagesStoreUrl, {
                         method: 'POST',
                         headers: {
@@ -1573,31 +1535,44 @@
                     const saved = await res.json().catch(() => ({}));
                     if (!res.ok) throw new Error(saved?.message || 'Request failed');
 
-                    // 1) langsung tampil (tanpa fetch ulang)
+                    // langsung tampil (tanpa fetch ulang)
                     if (list) {
-                        const item = renderMessageItem({
+                        list.prepend(renderMessageItem({
                             name,
                             status,
                             message,
                             created_at: saved.created_at || new Date().toISOString()
-                        });
-                        list.prepend(item);
+                        }));
                     }
 
-                    // 2) reset form
+                    // update angka simple (tanpa hit server)
+                    const cmtEl = document.getElementById('wishCommentCount');
+                    if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
+                        0) + 1);
+
+                    if (String(status).toLowerCase() === 'hadir') {
+                        const pEl = document.getElementById('wishPresentCount');
+                        if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
+                            1);
+                    }
+                    if (String(status).toLowerCase() === 'tidak hadir') {
+                        const aEl = document.getElementById('wishAbsentCount');
+                        if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
+                            1);
+                    }
+
                     form.reset();
 
-                    // 3) alert sukses
-                    alertBox.innerHTML =
-                        '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
-
-                    // optional: sinkronisasi pelan-pelan (kalau mau data pasti sama server)
-                    // setTimeout(fetchMessages, 800);
-
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
+                    }
                 } catch (err) {
                     console.error('submit error', err);
-                    alertBox.innerHTML =
-                        '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                    }
                 } finally {
                     btn && (btn.disabled = false);
                 }
