@@ -798,7 +798,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 18px;
 
             padding: 12% 16px;
             box-sizing: border-box;
@@ -855,7 +854,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
         }
 
         /* header */
@@ -985,7 +983,6 @@
 
             display: flex;
             flex-direction: column;
-            gap: 14px;
 
             color: #fff;
 
@@ -1006,7 +1003,6 @@
         .wish-item .meta {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
             font-weight: 900;
         }
 
