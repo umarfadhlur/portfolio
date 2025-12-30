@@ -1606,7 +1606,7 @@
             gap: 10px;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.05) 100%);
             color: #fff;
         }
 
@@ -1633,7 +1633,7 @@
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
         }
 
         @media (max-width: 520px) {
@@ -1642,10 +1642,25 @@
                 border-radius: 12px;
                 width: 100%;
             }
-            .popup-img { border-radius: 12px; }
-            .popup-content { padding: 10px 12px; bottom: 50px; }
-            .popup-name { font-size: 1.05rem; }
-            .popup-btn { width: calc(100% - 20px); padding: 8px 12px; font-size: 0.9rem; }
+
+            .popup-img {
+                border-radius: 12px;
+            }
+
+            .popup-content {
+                padding: 10px 12px;
+                bottom: 50px;
+            }
+
+            .popup-name {
+                font-size: 1.05rem;
+            }
+
+            .popup-btn {
+                width: calc(100% - 20px);
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
         }
 
         /* PRELOADER */
@@ -1679,7 +1694,7 @@
             margin-top: 18px;
         }
 
-        .preloader-bar > i {
+        .preloader-bar>i {
             display: block;
             height: 100%;
             width: 0%;
@@ -1703,7 +1718,6 @@
                 min-width: 160px;
             }
         }
-
     </style>
 </head>
 
@@ -1769,7 +1783,8 @@
         <!-- Countdown wrapper: gambar + overlay digit boxes -->
         <div class="countdown-wrapper" data-aos="zoom-in" data-aos-delay="120">
             <!-- Background image (countdown.webp) -->
-            <img src="{{ asset('images/flower/countdown.webp') }}" alt="Countdown background" class="countdown-img" loading="lazy" />
+            <img src="{{ asset('images/flower/countdown.webp') }}" alt="Countdown background" class="countdown-img"
+                loading="lazy" />
 
             <!-- Overlay: digit boxes positioned on top of image (menutupi countdown statis di gambar) -->
             <div class="countdown-overlay">
@@ -2329,14 +2344,14 @@
         });
 
         // Improved auto-pause / auto-resume on tab visibility change (best-effort — browsers may block resume)
-        (function(){
+        (function() {
             const bgMusic = document.getElementById('bgMusic');
             const musicToggle = document.getElementById('musicToggle');
             if (!bgMusic || !musicToggle) return;
 
             let wasPlayingBeforeHide = false; // remember if music was playing when tab hidden
 
-            function updateToggleUI(isPlaying){
+            function updateToggleUI(isPlaying) {
                 musicToggle.classList.toggle('is-playing', !!isPlaying);
                 musicToggle.title = isPlaying ? 'Pause Musik' : 'Putar Musik';
             }
@@ -2361,7 +2376,10 @@
                 if (document.hidden) {
                     wasPlayingBeforeHide = !bgMusic.paused;
                     if (!bgMusic.paused) {
-                        try { bgMusic.pause(); } catch(e) { /*ignore*/ }
+                        try {
+                            bgMusic.pause();
+                        } catch (e) {
+                            /*ignore*/ }
                         updateToggleUI(false);
                     }
                 } else {
@@ -2382,7 +2400,9 @@
             // also pause on pagehide/unload
             window.addEventListener('pagehide', () => {
                 if (!bgMusic.paused) {
-                    try { bgMusic.pause(); } catch(e) {}
+                    try {
+                        bgMusic.pause();
+                    } catch (e) {}
                     updateToggleUI(false);
                 }
             });

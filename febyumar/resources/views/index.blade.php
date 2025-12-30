@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan {{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
@@ -31,7 +34,12 @@
             background-color: #fafbf9;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Tenor Sans', sans-serif;
             color: var(--dark-sage);
         }
@@ -57,7 +65,7 @@
             position: relative;
             height: 100vh;
             background: linear-gradient(135deg, rgba(199, 211, 192, 0.4) 0%, rgba(198, 163, 79, 0.1) 100%),
-                        url('{{ asset("storage/" . $setting->hero_image) }}') center/cover;
+                url('{{ asset('storage/' . $setting->hero_image) }}') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -459,9 +467,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 10px 30px rgba(198, 163, 79, 0.3);
             }
+
             50% {
                 box-shadow: 0 10px 50px rgba(198, 163, 79, 0.6);
             }
@@ -530,6 +541,7 @@
                 transform: translateX(400px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -548,15 +560,21 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Audio Element -->
     <audio id="backgroundMusic" loop>
-        @if($setting->music_file)
+        @if ($setting->music_file)
             <source src="{{ asset('storage/' . $setting->music_file) }}" type="audio/mpeg">
         @endif
     </audio>
@@ -576,7 +594,8 @@
     </section>
 
     <!-- Guest Name Display -->
-    <div style="text-align: center; padding: 20px; background: var(--sage); color: var(--dark-sage); font-size: 1.1rem;">
+    <div
+        style="text-align: center; padding: 20px; background: var(--sage); color: var(--dark-sage); font-size: 1.1rem;">
         <span>Kepada: <strong>{{ $guestName }}</strong></span>
     </div>
 
@@ -612,7 +631,7 @@
                 <p>{{ $setting->event_time }}</p>
                 <p>{{ $setting->ceremony_location }}</p>
                 <p style="font-size: 0.95rem; color: #888;">{{ $setting->ceremony_address }}</p>
-                @if($setting->map_link)
+                @if ($setting->map_link)
                     <a href="{{ $setting->map_link }}" target="_blank">
                         <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
                     </a>
@@ -624,7 +643,7 @@
                 <p>{{ $setting->event_time }}</p>
                 <p>{{ $setting->reception_location }}</p>
                 <p style="font-size: 0.95rem; color: #888;">{{ $setting->reception_address }}</p>
-                @if($setting->map_link)
+                @if ($setting->map_link)
                     <a href="{{ $setting->map_link }}" target="_blank">
                         <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
                     </a>
@@ -634,21 +653,21 @@
     </section>
 
     <!-- Gallery Section -->
-    @if($setting->hero_image)
-    <section class="gallery-section" data-aos="fade-up">
-        <h2>Galeri Foto</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
+    @if ($setting->hero_image)
+        <section class="gallery-section" data-aos="fade-up">
+            <h2>Galeri Foto</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
+                </div>
             </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
-            </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                <img src="{{ asset('storage/' . $setting->hero_image) }}" alt="Foto Prewedding">
-            </div>
-        </div>
-    </section>
+        </section>
     @endif
 
     <!-- RSVP Section -->
@@ -701,7 +720,8 @@
 
                 <div class="form-group">
                     <label for="dietary_restriction">Pantangan Makanan (Opsional)</label>
-                    <input type="text" id="dietary_restriction" name="dietary_restriction" placeholder="Contoh: Vegetarian, Alergi seafood">
+                    <input type="text" id="dietary_restriction" name="dietary_restriction"
+                        placeholder="Contoh: Vegetarian, Alergi seafood">
                 </div>
 
                 <button type="submit" class="submit-btn">
@@ -717,28 +737,30 @@
         <div class="gift-container">
             <h2>Hadiah & Amplop</h2>
             <div class="gift-content">
-                @if($setting->qris_image)
-                <div class="gift-option">
-                    <h4>QRIS</h4>
-                    <img src="{{ asset('storage/' . $setting->qris_image) }}" alt="QRIS Code" class="qris-image">
-                </div>
+                @if ($setting->qris_image)
+                    <div class="gift-option">
+                        <h4>QRIS</h4>
+                        <img src="{{ asset('storage/' . $setting->qris_image) }}" alt="QRIS Code"
+                            class="qris-image">
+                    </div>
                 @endif
 
-                @if($setting->bank_account && $setting->bank_name)
-                <div class="gift-option">
-                    <h4>{{ $setting->bank_name }}</h4>
-                    <div class="bank-details">
-                        <p>Atas Nama:</p>
-                        <p class="bank-account-number">{{ $setting->bank_account }}</p>
-                        @if($setting->bank_details)
-                            <p style="margin-top: 15px; font-size: 0.95rem;">{{ $setting->bank_details }}</p>
-                        @endif
+                @if ($setting->bank_account && $setting->bank_name)
+                    <div class="gift-option">
+                        <h4>{{ $setting->bank_name }}</h4>
+                        <div class="bank-details">
+                            <p>Atas Nama:</p>
+                            <p class="bank-account-number">{{ $setting->bank_account }}</p>
+                            @if ($setting->bank_details)
+                                <p style="margin-top: 15px; font-size: 0.95rem;">{{ $setting->bank_details }}</p>
+                            @endif
+                        </div>
                     </div>
-                </div>
                 @endif
 
                 <p style="margin-top: 30px; font-size: 0.95rem; color: #888;">
-                    <em>Mohon maaf tidak bisa menerima hadiah fisik, ucapan dan doa dari Anda sudah cukup membahagiakan hati kami.</em>
+                    <em>Mohon maaf tidak bisa menerima hadiah fisik, ucapan dan doa dari Anda sudah cukup membahagiakan
+                        hati kami.</em>
                 </p>
             </div>
         </div>
@@ -748,7 +770,8 @@
     <footer class="footer" data-aos="fade-up">
         <p>{{ $setting->bride_name }} & {{ $setting->groom_name }}</p>
         <p>{{ \Carbon\Carbon::parse($setting->event_date)->translatedFormat('d F Y') }}</p>
-        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.8;">Terima kasih telah menjadi bagian dari kebahagiaan kami</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.8;">Terima kasih telah menjadi bagian dari
+            kebahagiaan kami</p>
     </footer>
 
     <!-- Scripts -->
@@ -763,7 +786,7 @@
 
         // Countdown Timer
         function updateCountdown() {
-            const eventDate = new Date('{{ $setting->event_date->format("Y-m-d") }}').getTime();
+            const eventDate = new Date('{{ $setting->event_date->format('Y-m-d') }}').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
@@ -778,7 +801,8 @@
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
             if (distance < 0) {
-                document.getElementById('countdown').innerHTML = '<p style="font-size: 2rem; color: var(--gold);">Terima kasih telah hadir!</p>';
+                document.getElementById('countdown').innerHTML =
+                    '<p style="font-size: 2rem; color: var(--gold);">Terima kasih telah hadir!</p>';
             }
         }
 
@@ -812,7 +836,7 @@
             loading.style.display = 'inline-block';
 
             try {
-                const response = await fetch('{{ route("rsvp.store") }}', {
+                const response = await fetch('{{ route('rsvp.store') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -856,7 +880,10 @@
                 musicBtn.classList.add('playing');
                 isPlaying = true;
             }
-        }, { once: true });
+        }, {
+            once: true
+        });
     </script>
 </body>
+
 </html>
