@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <title>The Wedding of {{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
     <!-- AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
@@ -1020,6 +1021,12 @@
             opacity: .75;
         }
 
+        html,
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+        }
+
+
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -1057,100 +1064,90 @@
     <div class="page-wrapper">
 
         <!-- VERSE -->
-        <section class="verse-section">
-            <!-- Base background hijau (TANPA animasi) -->
+        <section class="verse-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse-base" alt="">
 
-            <!-- Frame bunga kiri-kanan + burung (animasi) -->
+            <!-- frame -->
             <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-frame" alt="" data-aos="fade"
-                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+                data-aos-duration="1400" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
-            <!-- Layer isi -->
             <div class="verse-content">
-                <!-- Cincin -->
                 <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" alt="" data-aos="zoom-in"
-                    data-aos-duration="1400" data-aos-delay="400" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="900" data-aos-delay="250" data-aos-easing="ease-out-cubic">
 
-                <!-- Angsa -->
                 <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" alt="" data-aos="zoom-in"
-                    data-aos-duration="1400" data-aos-delay="750" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="900" data-aos-delay="400" data-aos-easing="ease-out-cubic">
 
-                <!-- Blink -->
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-easing="ease-out-cubic">
-
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="550" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1250" data-aos-easing="ease-out-cubic">
-
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="650" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
-                <!-- Verse (PALING TERAKHIR) -->
                 <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
-                    data-aos-duration="1600" data-aos-delay="1800" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1100" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
+
         <!-- BRIDE -->
-        <section class="bride-section">
-            <!-- Base background -->
+        <section class="bride-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
 
-            <!-- Bunga kiri & kanan (nanti terlihat seperti terpotong) -->
             <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
             <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
-            <!-- Konten existing (tetap) -->
-            <div class="bride-content">
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
-                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
-                    data-aos-duration="2000" data-aos-delay="900" data-aos-easing="ease-out-cubic">
+            <div class="bride-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
+                data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt=""
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350"
+                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1200" data-aos-delay="500" data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
         <!-- GROOM -->
-        <section class="groom-section">
-            <!-- Base background -->
+        <section class="groom-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
 
-            <!-- Bunga kiri & kanan -->
             <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
-            <!-- Konten existing (tetap konsep overlay) -->
-            <div class="groom-content">
-                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-up"
-                    data-aos-duration="2000" data-aos-delay="700" data-aos-easing="ease-out-cubic">
+            <div class="groom-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1200" data-aos-delay="450" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
+
         <!-- DATE -->
-        <section class="date-section">
-            <!-- Base background -->
+        <section class="date-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
-            <!-- Bunga kiri & kanan -->
             <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
             <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay -->
-            <div class="date-content">
+            <div class="date-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1100" data-aos-delay="420" data-aos-easing="ease-out-cubic">
 
-                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="900"
+                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="560"
                     data-aos-easing="ease-out-cubic">
                     <div class="countdown-tiles">
                         <div class="ctile">
@@ -1174,70 +1171,74 @@
             </div>
         </section>
 
+
         <!-- DIRECTION -->
-        <section class="direction-section">
-            <!-- Base background -->
+        <section class="direction-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
-            <!-- Ornamennya seperti date -->
             <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay (punyamu, sama) -->
-            <div class="direction-content">
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1700" data-aos-delay="450"
+                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="350"
                     data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
-                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1800"
-                    data-aos-delay="750" data-aos-easing="ease-out-cubic">
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="900"
+                    data-aos-delay="520" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
-                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1800"
-                    data-aos-delay="1050" data-aos-easing="ease-out-cubic">
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1100"
+                    data-aos-delay="650" data-aos-easing="ease-out-cubic">
 
                 <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
-                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1350"
+                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="780"
                     data-aos-easing="ease-out-cubic">
                     <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
                     <span>Open Maps Location</span>
                 </a>
-
             </div>
         </section>
 
+
         <!-- VERSE 2 -->
-        <section class="verse2-section">
-            <!-- Base background (tanpa animasi) -->
+        <section class="verse2-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
-            <!-- Ornament kanan -->
             <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
                 data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay -->
-            <div class="verse2-content">
+            <div class="verse2-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="700"
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="450"
                     data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
+
         <!-- WEDDING WISH -->
-        <section id="weddingWish" class="wish-section">
+        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <div class="wish-inner">
                 <div class="wish-head">
-                    <!-- Header image (pengganti title+sub) -->
                     <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
-                        data-aos="fade-down" data-aos-duration="1400" data-aos-delay="200"
+                        data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
                         data-aos-easing="ease-out-cubic" />
-                    <div class="wish-comments"><span id="wishCommentCount">0</span> Comments</div>
+
+                    <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
+                        data-aos-easing="ease-out-cubic">
+                        <span id="wishCommentCount">0</span> Comments
+                    </div>
                 </div>
 
-                <div class="wish-stats">
+                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="520"
+                    data-aos-easing="ease-out-cubic">
                     <div class="wish-stat present">
                         <div class="num" id="wishPresentCount">0</div>
                         <div class="lbl">Present</div>
@@ -1248,8 +1249,9 @@
                     </div>
                 </div>
 
-                <div class="wish-formPane">
-                    <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
+                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="620"
+                    data-aos-easing="ease-out-cubic">
+                    <form id="rsvpForm" class="wish-form">
                         @csrf
                         <div id="rsvpAlert"></div>
 
@@ -1268,40 +1270,36 @@
                     </form>
                 </div>
 
-                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="650"
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="720"
                     data-aos-easing="ease-out-cubic">
                     <div id="messagesList" class="wish-list"></div>
                 </div>
-
             </div>
         </section>
 
 
         <!-- THANK YOU -->
-        <section class="thanks-section">
-            <!-- base -->
+        <section class="thanks-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- ornament (animasi) -->
+            <!-- background besar: fade (lebih smooth daripada zoom) -->
             <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt=""
-                data-aos="zoom-in" data-aos-duration="1800" data-aos-easing="ease-out-cubic">
+                data-aos="fade" data-aos-duration="1600" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
-            <!-- content -->
             <div class="thanks-content">
                 <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="200"
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="350"
                     data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="500"
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="520"
                     data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="800"
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="690"
                     data-aos-easing="ease-out-cubic">
             </div>
         </section>
-
 
     </div>
 
@@ -1359,10 +1357,12 @@
             setTimeout(() => {
                 AOS.init({
                     once: true,
-                    mirror: true,
-                    duration: 1200,
-                    easing: 'ease-out-quart',
-                    offset: 80
+                    mirror: false, // biar gak animate-out pas scroll balik
+                    duration: 1100,
+                    easing: 'ease-out-cubic',
+                    offset: 80,
+                    debounceDelay: 50,
+                    throttleDelay: 99
                 });
                 AOS.refreshHard();
             }, 300);
