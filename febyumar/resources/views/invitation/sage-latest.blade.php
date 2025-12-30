@@ -876,6 +876,20 @@
             z-index: 1;
         }
 
+        .wish-foot-bg {
+            position: absolute;
+            top: 4%;
+            right: 50%;
+            transform: translateX(50%);
+            width: 120%;
+            max-width: 860px;
+            height: auto;
+            display: block;
+            opacity: .12;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         /* header */
         .wish-head {
             text-align: center;
@@ -1297,6 +1311,8 @@
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
+            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
+                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
         </section>
 
 
