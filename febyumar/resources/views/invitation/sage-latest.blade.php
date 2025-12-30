@@ -834,15 +834,16 @@
         .wish-inner {
             max-width: 480px;
             margin: 0 auto;
-            padding: 22px 18px 18px;
+            padding: 22px 18px 110px;
+            /* extra bawah biar gak ketiban music button */
             box-sizing: border-box;
 
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
         }
+
 
         .wish-head {
             text-align: center;
@@ -963,6 +964,13 @@
             flex-direction: column;
             gap: 14px;
             color: #fff;
+            max-height: clamp(240px, 45rem, 520px);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .wish-list::-webkit-scrollbar {
+            display: none;
         }
 
         /* khusus item wish (jangan pakai class message-item global lama) */
@@ -1402,7 +1410,7 @@
 
         function renderMessageItem(msg) {
             const el = document.createElement('div');
-            el.className = 'wish-item'; // biar ngikut CSS wish (bukan message-item lama)
+            el.className = 'wish-item';
 
             const messageText =
                 (msg.message && String(msg.message).trim() !== '') ?
