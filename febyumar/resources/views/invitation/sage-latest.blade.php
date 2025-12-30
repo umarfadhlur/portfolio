@@ -878,7 +878,7 @@
 
         .wish-foot-bg {
             position: absolute;
-            top: 4%;
+            bottom: 4%;
             right: 50%;
             transform: translateX(50%);
             width: 120%;
