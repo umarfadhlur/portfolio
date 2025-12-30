@@ -115,8 +115,8 @@
         }
 
         .popup-btn {
-            background: #fff;
-            color: #2F2E2C;
+            background: #727d6c;
+            color: #fff;
             padding: 10px 14px;
             border-radius: 999px;
             border: none;
@@ -813,17 +813,19 @@
         }
 
         .thanks-1 {
-            /* transform: translateX(-10%); */
+            transform: translateY(-18px);
             width: 60%;
             max-width: 320px;
         }
 
         .thanks-2 {
+            transform: translateY(-12px);
             width: 55%;
             max-width: 280px;
         }
 
         .thanks-3 {
+            transform: translateY(-10px);
             width: 40%;
             max-width: 240px;
         }
