@@ -798,8 +798,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 18px;
 
-            padding: 12% 16px;
+            padding: 6% 16px;
             box-sizing: border-box;
             pointer-events: none;
         }
@@ -847,13 +848,14 @@
         .wish-inner {
             max-width: 480px;
             margin: 0 auto;
-            padding: 22px 18px 140px;
+            padding: 22px 18px 72px;
             /* ruang aman bawah (ornament + music btn) */
             box-sizing: border-box;
 
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 12px;
         }
 
         /* header */
@@ -947,6 +949,7 @@
             padding: 12px 16px;
             background: rgba(255, 255, 255, .92);
             color: #2F2E2C;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         .wish-form input,
@@ -965,10 +968,11 @@
             border: none;
             border-radius: 999px;
             padding: 12px 16px;
-            background: #e2ad78;
-            color: #2F2E2C;
+            background: #727d6c;
+            color: #fff;
             font-weight: 900;
             cursor: pointer;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* list: scrollnya di sini, bukan di parent */
@@ -983,6 +987,7 @@
 
             display: flex;
             flex-direction: column;
+            gap: 14px;
 
             color: #fff;
 
@@ -1003,6 +1008,7 @@
         .wish-item .meta {
             display: flex;
             justify-content: space-between;
+            gap: 10px;
             font-weight: 900;
         }
 
