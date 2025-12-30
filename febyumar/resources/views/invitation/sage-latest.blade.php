@@ -1379,10 +1379,8 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        <
-        script >
-            /* ========== RSVP & MESSAGES (FIXED) ========== */
-            const messagesIndexUrl = "{{ route('rsvp.messages') }}";
+        /* ========== RSVP & MESSAGES (FIXED) ========== */
+        const messagesIndexUrl = "{{ route('rsvp.messages') }}";
         const messagesStoreUrl = "{{ route('rsvp.store') }}";
 
         function escapeHtml(s) {
