@@ -865,8 +865,8 @@
         .wish-head-bg {
             position: absolute;
             top: 4%;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 50%;
+            transform: translateX(50%);
             width: 120%;
             max-width: 860px;
             height: auto;
@@ -879,8 +879,8 @@
         .wish-foot-bg {
             position: absolute;
             bottom: 4%;
-            right: 50%;
-            transform: translateX(50%);
+            left: 50%;
+            transform: translateX(-50%);
             width: 120%;
             max-width: 860px;
             height: auto;
