@@ -527,20 +527,21 @@
         }
 
         .direction-content {
-            left: 5%;
             position: absolute;
-            inset: 0;
+            top: 0;
+            bottom: 0;
+            left: 5%;
+            right: 0;
+
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 5%;
 
+            padding-top: 5%;
             padding-left: 18px;
-            /* ruang aman */
             padding-right: 18px;
-            /* ruang aman */
             box-sizing: border-box;
         }
 
@@ -765,26 +766,21 @@
             background: #949a8f;
         }
 
-        /* balikin base supaya section punya tinggi “default” */
         .thanks-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* BUNGA: cover + zoom-out dikit */
         .thanks-ornament {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-
             object-fit: cover;
             object-position: center;
-
             transform: scale(1.20);
             transform-origin: center;
-
             pointer-events: none;
             z-index: 1;
         }
@@ -799,12 +795,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 18px;
 
+            gap: 18px;
             padding: 8% 16px 6%;
-            /* top kanan-kiri bottom */
             box-sizing: border-box;
             pointer-events: none;
+        }
+
+        /* ini yang benar-benar “naikin grup” tanpa transform */
+        .thanks-content {
+            padding-top: calc(8%);
         }
 
         .thanks-item {
@@ -814,20 +814,18 @@
             display: block;
         }
 
+        /* HAPUS transform translateY di item biar gak konflik sama AOS */
         .thanks-1 {
-            transform: translateY(-18px);
             width: 60%;
             max-width: 320px;
         }
 
         .thanks-2 {
-            transform: translateY(-12px);
             width: 55%;
             max-width: 280px;
         }
 
         .thanks-3 {
-            transform: translateY(-10px);
             width: 40%;
             max-width: 240px;
         }
