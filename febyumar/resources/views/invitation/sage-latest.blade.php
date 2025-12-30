@@ -848,6 +848,8 @@
         }
 
         .wish-inner {
+            position: relative;
+            z-index: 2;
             max-width: 480px;
             margin: 0 auto;
             padding: 22px 18px 72px;
@@ -858,6 +860,20 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
+        }
+
+        .wish-head-bg {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            max-width: 860px;
+            height: auto;
+            display: block;
+            opacity: .12;
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* header */
@@ -1229,6 +1245,8 @@
         <!-- WEDDING WISH -->
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-head-bg" alt=""
+                data-aos="fade" data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
             <div class="wish-inner">
                 <div class="wish-head">
                     <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
