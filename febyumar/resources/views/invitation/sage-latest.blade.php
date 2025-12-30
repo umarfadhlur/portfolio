@@ -1582,7 +1582,14 @@
                     });
 
                     const saved = await res.json().catch(() => ({}));
-                    if (!res.ok) throw new Error(saved?.message || 'Request failed');
+                    if (!res.ok) {
+                        console.error('submit error payload', saved);
+                        let errMsg = saved?.message || 'Request failed';
+                        if (saved?.errors) {
+                            errMsg = Object.values(saved.errors).flat().join(' ');
+                        }
+                        throw new Error(errMsg);
+                    }
 
                     // langsung tampil (tanpa fetch ulang)
                     if (list) {
@@ -1619,8 +1626,10 @@
                 } catch (err) {
                     console.error('submit error', err);
                     if (alertBox) {
+                        const msg = err?.message || 'Terjadi kesalahan. Coba lagi.';
                         alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">' + escapeHtml(
+                                msg) + '</div>';
                     }
                 } finally {
                     btn && (btn.disabled = false);
