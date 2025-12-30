@@ -524,8 +524,8 @@
             left: -22%;
         }
 
-        /* overlay content */
         .direction-content {
+            transform: translateX(5%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -533,7 +533,13 @@
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 12%;
+            padding-top: 5%;
+
+            padding-left: 18px;
+            /* ruang aman */
+            padding-right: 18px;
+            /* ruang aman */
+            box-sizing: border-box;
         }
 
         /* sizing konten */
@@ -554,6 +560,33 @@
             width: 80%;
             max-width: 360px;
             height: auto;
+        }
+
+
+        .direction-maps-btn {
+            margin-top: 14px;
+            pointer-events: auto;
+            /* penting: biar bisa diklik (karena parent pointer-events:none) */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: #727d6c;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+            max-width: 100%;
+        }
+
+        .direction-maps-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            display: block;
         }
 
         /* VERSE 2 */
@@ -801,6 +834,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
+            /* kunci: biar ornament kepotong dan gak overlap keluar */
         }
 
         .thanks-base {
@@ -809,104 +843,217 @@
             display: block;
         }
 
-        /* container bg kiri/kanan */
-        .thanks-bg {
+        /* ornament 1 gambar */
+        .thanks-ornament {
             position: absolute;
             top: 0;
             bottom: 0;
             height: 100%;
-            width: 85%;
-            max-width: 520px;
+
+            width: 110%;
+            /* dibesarin dikit biar bisa “kepotong” */
+            left: -5%;
+            /* geser keluar dikit -> kepotong kiri/kanan */
+            right: -5%;
+
+            object-fit: contain;
+            /* gak crop atas/bawah */
+            object-position: center;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* posisi “kepotong” kayak date */
-        .thanks-bg-left {
-            left: -45%;
-        }
-
-        .thanks-bg-right {
-            right: -45%;
-            transform: scale(1.4);
-        }
-
-        .thanks-bg-bottom {
+        /* konten column */
+        .thanks-content {
             position: absolute;
-            left: 12%;
-            bottom: -16%;
-            top: auto;
-            transform: translateX(-50%);
+            inset: 0;
+            z-index: 5;
 
-            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding-top: 14%;
+            pointer-events: none;
+        }
+
+        .thanks-item {
+            width: 78%;
             max-width: 420px;
-            height: auto;
-
-            pointer-events: none;
-            z-index: 2;
-            /* di atas bg kiri/kanan */
-        }
-
-        /* pastikan konten tetap paling atas */
-        .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-        }
-
-        /* layer di dalam bg */
-        .thanks-bg-layer {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* biar tidak kepotong atas/bawah */
-            object-position: center;
-        }
-
-        .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        /* semua konten center by bounding box */
-        .thanks-img {
-            position: absolute;
-            left: 0;
-            right: 0;
-            /* bikin area selebar container */
-            margin: 0 auto;
-            /* center element */
             height: auto;
             display: block;
         }
 
-        /* Title */
-        .thanks-img-1 {
-            top: 8%;
-            width: 280px;
-            /* fixed biar stabil */
-            max-width: 60%;
-            transform: translateX(-7%);
+        /* only thanks-1 geser kiri 10% */
+        .thanks-1 {
+            transform: translateX(-10%);
         }
 
-        /* Paragraph */
-        .thanks-img-2 {
-            top: 20%;
-            width: 420px;
-            max-width: 58%;
+        .thanks-2 {
+            width: 55%;
+            max-width: 280px;
         }
 
-        /* With love */
-        .thanks-img-3 {
-            bottom: 12%;
-            width: 220px;
-            max-width: 60%;
+        .thanks-3 {
+            width: 40%;
+            max-width: 240px;
         }
 
+        .wish-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: #949a8f;
+            /* background solid */
+            /* [web:570] */
+        }
+
+        .wish-inner {
+            padding: 22px 18px 18px;
+            box-sizing: border-box;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wish-head {
+            text-align: center;
+            color: #fff;
+        }
+
+        .wish-title {
+            font-size: 34px;
+            font-weight: 900;
+            color: #e2ad78;
+            line-height: 1.05;
+        }
+
+        .wish-sub {
+            font-size: 13px;
+            font-weight: 700;
+            opacity: .95;
+            margin-top: 6px;
+        }
+
+        .wish-comments {
+            font-size: 14px;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        /* stats */
+        .wish-stats {
+            width: 100%;
+            max-width: 420px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .wish-stat {
+            border-radius: 12px;
+            padding: 14px 10px;
+            text-align: center;
+            color: #222;
+        }
+
+        .wish-stat.present {
+            background: rgba(198, 255, 205, .9);
+        }
+
+        .wish-stat.absent {
+            background: rgba(255, 170, 170, .9);
+        }
+
+        .wish-stat .num {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .wish-stat .lbl {
+            font-size: 12px;
+            font-weight: 800;
+            opacity: .8;
+        }
+
+        /* 50/50 area */
+        .wish-formPane,
+        .wish-listPane {
+            width: 100%;
+            max-width: 420px;
+            flex: 1 1 0;
+            min-height: 0;
+        }
+
+        /* form */
+        .wish-form {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wish-form input,
+        .wish-form textarea,
+        .wish-form select {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, .92);
+            color: #2F2E2C;
+            outline: none;
+        }
+
+        .wish-form textarea {
+            border-radius: 16px;
+            min-height: 92px;
+            resize: none;
+        }
+
+        .wish-send {
+            width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 16px;
+            background: #e2ad78;
+            color: #2F2E2C;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        /* list */
+        .wish-list {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            color: #fff;
+        }
+
+        /* kalau template JS kamu bikin .message-item seperti di paste.txt */
+        .wish-list .message-item {
+            background: transparent;
+            border: none;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .wish-list .message-item .meta {
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .wish-list .message-item .text {
+            color: #fff;
+            opacity: .95;
+        }
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -985,13 +1132,11 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
 
             <!-- Bunga kiri & kanan (nanti terlihat seperti terpotong) -->
-            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Konten existing (tetap) -->
             <div class="bride-content">
@@ -1008,9 +1153,8 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
 
             <!-- Bunga kiri & kanan -->
-            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Konten existing (tetap konsep overlay) -->
             <div class="groom-content">
@@ -1025,13 +1169,11 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
             <!-- Bunga kiri & kanan -->
-            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay -->
             <div class="date-content">
@@ -1068,15 +1210,13 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
             <!-- Ornamennya seperti date -->
-            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay (punyamu, sama) -->
             <div class="direction-content">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1700" data-aos-delay="450"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-down" data-aos-duration="1700" data-aos-delay="450" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
                     alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1800"
@@ -1085,6 +1225,14 @@
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
                     alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1800"
                     data-aos-delay="1050" data-aos-easing="ease-out-cubic">
+
+                <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
+                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1350"
+                    data-aos-easing="ease-out-cubic">
+                    <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
+                    <span>Open Maps Location</span>
+                </a>
+
             </div>
         </section>
 
@@ -1094,21 +1242,18 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
             <!-- Ornament kanan -->
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
 
             <!-- Content overlay -->
             <div class="verse2-content">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="700"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1700" data-aos-delay="700" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-
         <!-- RSVP (bless-bg as background) -->
-        <section id="rsvp" class="rsvp-section">
+        {{-- <section id="rsvp" class="rsvp-section">
             <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
             <div class="rsvp-inner">
                 <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
@@ -1118,8 +1263,7 @@
 
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                                required>
+                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
                         </div>
 
                         <div class="form-group">
@@ -1134,17 +1278,18 @@
 
                         <div class="form-group">
                             <label>Ucapan & Doa</label>
-                            <textarea name="message" id="fm_message" placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
+                            <textarea name="message" id="fm_message"
+                                placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
                     </form>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <!-- Ucapan & Doa (gift-bg as background) -->
-        <section id="messages" class="messages-section">
+        {{-- <section id="messages" class="messages-section">
             <img src="{{ asset('images/img/gift-bg.webp') }}" alt="Gift Background">
             <div class="messages-inner">
                 <div class="messages-card" data-aos="fade-up" data-aos-duration="1200">
@@ -1154,41 +1299,80 @@
                     </div>
                 </div>
             </div>
+        </section> --}}
+
+        <section id="weddingWish" class="wish-section">
+            <div class="wish-inner">
+                <div class="wish-head">
+                    <div class="wish-title">Wedding Wish</div>
+                    <div class="wish-sub">Sending Wedding Wish</div>
+                    <div class="wish-comments"><span id="wishCommentCount">0</span> Comments</div>
+                </div>
+
+                <div class="wish-stats">
+                    <div class="wish-stat present">
+                        <div class="num" id="wishPresentCount">0</div>
+                        <div class="lbl">Present</div>
+                    </div>
+                    <div class="wish-stat absent">
+                        <div class="num" id="wishAbsentCount">0</div>
+                        <div class="lbl">Absent</div>
+                    </div>
+                </div>
+
+                <!-- FORM (ID FORM HARUS rsvpForm) -->
+                <div class="wish-formPane">
+                    <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
+                        @csrf
+                        <div id="rsvpAlert"></div>
+
+                        <!-- BALIKIN KE ID LAMA BIAR JS KAMU WORK -->
+                        <input type="text" name="name" id="fmname" value="{{ $guestName }}" placeholder="Name" required>
+
+                        <textarea name="message" id="fmmessage" placeholder="Wish" required></textarea>
+
+                        <select name="status" id="fmstatus" required>
+                            <option value="">Attendance Confirmation</option>
+                            <option value="hadir">✓ Present</option>
+                            <option value="tidak hadir">✗ Absent</option>
+                            <option value="tentatif">? Tentative</option>
+                        </select>
+
+                        <button type="submit" class="wish-send">SEND</button>
+                    </form>
+                </div>
+
+                <!-- LIST (ID HARUS messagesList) -->
+                <div class="wish-listPane">
+                    <div id="messagesList" class="wish-list">
+                        <!-- pesan di-inject JS -->
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- THANK YOU -->
         <section class="thanks-section">
-            <!-- Base background -->
+            <!-- base -->
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- BG kiri -->
-            <img src="{{ asset('images/img/thanks-bg-left.webp') }}" class="thanks-bg thanks-bg-left" alt=""
-                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <!-- ornament (animasi) -->
+            <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt="" data-aos="zoom-in"
+                data-aos-duration="1800" data-aos-easing="ease-out-cubic">
 
-            <!-- BG kanan -->
-            <img src="{{ asset('images/img/thanks-bg-right.webp') }}" class="thanks-bg thanks-bg-right"
-                alt="" data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0"
-                data-aos-easing="ease-out-cubic">
-
-            <!-- BG bawah -->
-            <img src="{{ asset('images/img/thanks-bg-bottom.webp') }}" class="thanks-bg-bottom" alt=""
-                data-aos="fade-up" data-aos-duration="2000" data-aos-delay="150" data-aos-easing="ease-out-cubic">
-
-            <!-- Content overlay -->
+            <!-- content -->
             <div class="thanks-content">
-                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-img thanks-img-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="500"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="200" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-img thanks-img-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="850"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="500" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-img thanks-img-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1700" data-aos-delay="1200"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="800" data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
     </div>
 
@@ -1228,10 +1412,10 @@
 
         [...imgs].forEach(img =>
             img.complete ?
-            updateLoader() :
-            img.addEventListener("load", updateLoader, {
-                once: true
-            })
+                updateLoader() :
+                img.addEventListener("load", updateLoader, {
+                    once: true
+                })
         );
 
         /* ========== OPEN INVITATION ========== */
@@ -1240,7 +1424,7 @@
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
 
-            bgmusic.play().catch(() => {});
+            bgmusic.play().catch(() => { });
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
@@ -1271,7 +1455,7 @@
             if (document.hidden) {
                 bgmusic.pause();
             } else {
-                bgmusic.play().catch(() => {});
+                bgmusic.play().catch(() => { });
             }
         });
 
@@ -1313,7 +1497,7 @@
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#39;'
-            } [c]));
+            }[c]));
         }
 
         async function fetchMessages() {
@@ -1353,8 +1537,8 @@
                     el.className = 'message-item';
                     const messageText =
                         (msg.message && String(msg.message).trim() !== '') ?
-                        escapeHtml(msg.message) :
-                        '— Belum menulis ucapan —';
+                            escapeHtml(msg.message) :
+                            '— Belum menulis ucapan —';
                     el.innerHTML = `
                         <div class="meta">
                             <div>${escapeHtml(msg.name || 'Tamu')}</div>
@@ -1434,12 +1618,12 @@
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
-        document.addEventListener('contextmenu', function(e) {
+        document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
             return false;
         }, false);
 
-        document.addEventListener('touchmove', function(e) {
+        document.addEventListener('touchmove', function (e) {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }

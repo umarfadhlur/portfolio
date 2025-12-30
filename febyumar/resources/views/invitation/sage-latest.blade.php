@@ -1262,7 +1262,7 @@
         </section>
 
         <!-- RSVP (bless-bg as background) -->
-        <section id="rsvp" class="rsvp-section">
+        {{-- <section id="rsvp" class="rsvp-section">
             <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
             <div class="rsvp-inner">
                 <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
@@ -1295,10 +1295,10 @@
                     </form>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <!-- Ucapan & Doa (gift-bg as background) -->
-        <section id="messages" class="messages-section">
+        {{-- <section id="messages" class="messages-section">
             <img src="{{ asset('images/img/gift-bg.webp') }}" alt="Gift Background">
             <div class="messages-inner">
                 <div class="messages-card" data-aos="fade-up" data-aos-duration="1200">
@@ -1308,7 +1308,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <section id="weddingWish" class="wish-section">
             <div class="wish-inner">
@@ -1500,134 +1500,108 @@
         updateTimer();
 
         /* ========== RSVP & MESSAGES ========== */
-        const messagesIndexUrl = "{{ route('rsvp.messages') }}";
-        const messagesStoreUrl = "{{ route('rsvp.store') }}";
+        function renderMessageItem(msg) {
+            const el = document.createElement('div');
+            el.className = 'message-item';
 
-        function escapeHtml(s) {
-            return String(s || '').replace(/[&<>"']/g, c => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;'
-            } [c]));
-        }
+            const messageText =
+                (msg.message && String(msg.message).trim() !== '') ?
+                escapeHtml(msg.message) :
+                '— Belum menulis ucapan —';
 
-        async function fetchMessages() {
-            try {
-                const res = await fetch(messagesIndexUrl, {
-                    headers: {
-                        Accept: 'application/json'
-                    }
-                });
-
-                const data = await res.json().catch(() => null);
-                if (!res.ok) throw new Error('Fetch failed');
-
-                let items = [];
-                if (Array.isArray(data)) items = data;
-                else if (data && Array.isArray(data.rows)) items = data.rows;
-                else if (data && Array.isArray(data.data)) items = data.data;
-
-                // sort terbaru dulu lalu ambil 5 terakhir
-                items = items.filter(m => m);
-                items.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-                items = items.slice(0, 5);
-
-                const container = document.getElementById('messagesList');
-                if (!container) return;
-
-                container.innerHTML = '';
-
-                if (!items.length) {
-                    container.innerHTML =
-                        '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
-                    return;
-                }
-
-                items.forEach(msg => {
-                    const el = document.createElement('div');
-                    el.className = 'message-item';
-                    const messageText =
-                        (msg.message && String(msg.message).trim() !== '') ?
-                        escapeHtml(msg.message) :
-                        '— Belum menulis ucapan —';
-                    el.innerHTML = `
-                        <div class="meta">
-                            <div>${escapeHtml(msg.name || 'Tamu')}</div>
-                            <div style="opacity:.75;font-weight:600;font-size:.92rem">
-                                ${escapeHtml(msg.status || '')}
-                            </div>
-                        </div>
-                        <div class="text">${messageText}</div>
-                        <div style="margin-top:8px;font-size:0.8rem;color:#777">
-                            ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
-                        </div>
-                    `;
-                    container.appendChild(el);
-                });
-            } catch (e) {
-                console.error('fetchMessages error', e);
-                const container = document.getElementById('messagesList');
-                if (container) {
-                    container.innerHTML =
-                        '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
-                }
-            }
+            el.innerHTML = `
+    <div class="meta">
+      <div>${escapeHtml(msg.name || 'Tamu')}</div>
+      <div style="opacity:.75;font-weight:600;font-size:.92rem">
+        ${escapeHtml(msg.status || '')}
+      </div>
+    </div>
+    <div class="text">${messageText}</div>
+    <div style="margin-top:8px;font-size:0.8rem;color:#777">
+      ${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}
+    </div>
+  `;
+            return el;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchMessages();
 
             const form = document.getElementById('rsvpForm');
-            if (form) {
-                form.addEventListener('submit', async (ev) => {
-                    ev.preventDefault();
-                    const name = document.getElementById('fm_name').value.trim();
-                    const status = document.getElementById('fm_status').value;
-                    const message = document.getElementById('fm_message').value.trim();
-                    const alertBox = document.getElementById('rsvpAlert');
-                    alertBox.innerHTML = '';
+            const btn = document.getElementById('wishSendBtn');
 
-                    if (!name || !status || !message) {
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
-                        return;
-                    }
+            if (!form) return;
 
-                    try {
-                        const token = document
-                            .querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content');
+            form.addEventListener('submit', async (ev) => {
+                ev.preventDefault();
 
-                        const res = await fetch(messagesStoreUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': token,
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                name,
-                                status,
-                                message
-                            })
+                const name = document.getElementById('fm_name').value.trim();
+                const status = document.getElementById('fm_status').value;
+                const message = document.getElementById('fm_message').value.trim();
+                const alertBox = document.getElementById('rsvpAlert');
+                const list = document.getElementById('messagesList');
+
+                alertBox.innerHTML = '';
+
+                if (!name || !status || !message) {
+                    alertBox.innerHTML =
+                        '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
+                    return;
+                }
+
+                try {
+                    btn && (btn.disabled = true);
+
+                    const token = document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
+
+                    const res = await fetch(messagesStoreUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            status,
+                            message
+                        })
+                    });
+
+                    const saved = await res.json().catch(() => ({}));
+                    if (!res.ok) throw new Error(saved?.message || 'Request failed');
+
+                    // 1) langsung tampil (tanpa fetch ulang)
+                    if (list) {
+                        const item = renderMessageItem({
+                            name,
+                            status,
+                            message,
+                            created_at: saved.created_at || new Date().toISOString()
                         });
-
-                        if (!res.ok) throw new Error('Request failed');
-
-                        await res.json();
-                        form.reset();
-                        alertBox.innerHTML =
-                            '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
-                        fetchMessages();
-                    } catch (err) {
-                        console.error('submit error', err);
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                        list.prepend(item);
                     }
-                });
-            }
+
+                    // 2) reset form
+                    form.reset();
+
+                    // 3) alert sukses
+                    alertBox.innerHTML =
+                        '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
+
+                    // optional: sinkronisasi pelan-pelan (kalau mau data pasti sama server)
+                    // setTimeout(fetchMessages, 800);
+
+                } catch (err) {
+                    console.error('submit error', err);
+                    alertBox.innerHTML =
+                        '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                } finally {
+                    btn && (btn.disabled = false);
+                }
+            });
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
