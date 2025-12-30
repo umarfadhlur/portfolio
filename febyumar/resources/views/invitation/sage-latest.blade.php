@@ -125,6 +125,7 @@
             max-width: 260px;
             margin-top: 10px;
             cursor: pointer;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* ===================== MUSIC BUTTON ===================== */
@@ -526,7 +527,7 @@
         }
 
         .direction-content {
-            transform: translateX(5%);
+            transform: translateX(8%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -791,6 +792,7 @@
         /* konten di atas bunga */
         .thanks-content {
             position: absolute;
+            padding-top: 8%;
             inset: 0;
             z-index: 5;
 
