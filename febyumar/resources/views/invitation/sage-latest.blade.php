@@ -813,8 +813,8 @@
 
         .thanks-1 {
             /* transform: translateX(-10%); */
-            width: 55%;
-            max-width: 300px;
+            width: 60%;
+            max-width: 320px;
         }
 
         .thanks-2 {
@@ -828,6 +828,14 @@
         }
 
         /* ========== WEDDING WISH ========== */
+        .wish-head-img {
+            width: 88%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+            margin: 4px auto 4px;
+        }
+
         .wish-section {
             width: 100%;
             background: #949a8f;
@@ -1222,8 +1230,10 @@
         <section id="weddingWish" class="wish-section">
             <div class="wish-inner">
                 <div class="wish-head">
-                    <div class="wish-title">Wedding Wish</div>
-                    <div class="wish-sub">Sending Wedding Wish</div>
+                    <!-- Header image (pengganti title+sub) -->
+                    <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
+                        data-aos="fade-down" data-aos-duration="1400" data-aos-delay="200"
+                        data-aos-easing="ease-out-cubic" />
                     <div class="wish-comments"><span id="wishCommentCount">0</span> Comments</div>
                 </div>
 
@@ -1258,9 +1268,11 @@
                     </form>
                 </div>
 
-                <div class="wish-listPane">
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="650"
+                    data-aos-easing="ease-out-cubic">
                     <div id="messagesList" class="wish-list"></div>
                 </div>
+
             </div>
         </section>
 
