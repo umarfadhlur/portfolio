@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\RsvpResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class RsvpController extends Controller
 {
@@ -13,26 +12,13 @@ class RsvpController extends Controller
      */
     public function store(Request $request)
     {
-        // Accept both underscore labels (frontend) and space labels (existing DB) and normalize
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
-            'status' => ['required', Rule::in(['hadir', 'tidak hadir', 'tentatif'])],
+            'status' => 'required|in:hadir,tidak hadir,tentatif',
             'number_of_guests' => 'nullable|integer|min:1|max:50',
             'message' => 'nullable|string|max:500',
         ]);
-
-        // map incoming values to the canonical DB enum values
-        $map = [
-            'hadir' => 'hadir',
-            'tidak_hadir' => 'tidak hadir',
-            'tidak hadir' => 'tidak hadir',
-            'ragu' => 'tentatif',
-            'tentatif' => 'tentatif',
-        ];
-
-        $rawStatus = strtolower($validated['status']);
-        $validated['status'] = $map[$rawStatus] ?? $validated['status'];
 
         $rsvp = RsvpResponse::create($validated);
 

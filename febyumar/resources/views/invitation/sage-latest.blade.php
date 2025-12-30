@@ -1260,8 +1260,8 @@
                         <select name="status" id="fm_status" required>
                             <option value="">Attendance Confirmation</option>
                             <option value="hadir">✓ Present</option>
-                            <option value="tidak_hadir">✗ Absent</option>
-                            <option value="ragu">? Tentative</option>
+                            <option value="tidak hadir">✗ Absent</option>
+                            <option value="tentatif">? Tentative</option>
                         </select>
 
                         <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
@@ -1440,8 +1440,8 @@
             const s = String(statusRaw || '').toLowerCase().trim();
 
             if (s === 'hadir') return "{{ asset('images/img/present.webp') }}";
-            if (s === 'tidak hadir' || s === 'tidak_hadir') return "{{ asset('images/img/absent.webp') }}";
-            if (s === 'tentatif' || s === 'ragu') return "{{ asset('images/img/tentative.webp') }}";
+            if (s === 'tidak hadir' || s === 'tidak hadir') return "{{ asset('images/img/absent.webp') }}";
+            if (s === 'tentatif' || s === 'tentatif') return "{{ asset('images/img/tentative.webp') }}";
 
             return ""; // fallback: kosong
         }
@@ -1477,10 +1477,10 @@
             const all = (items || []).filter(Boolean);
 
             const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
-            const absent = all.filter(x => {
-                const s = (x.status || '').toLowerCase();
-                return s === 'tidak_hadir' || s === 'tidak hadir';
-            }).length;
+            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak hadir').length;
+
+            const cmtEl = document.getElementById('wishCommentCount');
+            const pEl = document.getElementById('wishPresentCount');
             const aEl = document.getElementById('wishAbsentCount');
 
             if (cmtEl) cmtEl.textContent = String(all.length);
@@ -1582,14 +1582,7 @@
                     });
 
                     const saved = await res.json().catch(() => ({}));
-                    if (!res.ok) {
-                        console.error('submit error payload', saved);
-                        let errMsg = saved?.message || 'Request failed';
-                        if (saved?.errors) {
-                            errMsg = Object.values(saved.errors).flat().join(' ');
-                        }
-                        throw new Error(errMsg);
-                    }
+                    if (!res.ok) throw new Error(saved?.message || 'Request failed');
 
                     // langsung tampil (tanpa fetch ulang)
                     if (list) {
@@ -1606,13 +1599,12 @@
                     if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
                         0) + 1);
 
-                    const sLower = String(status).toLowerCase();
-                    if (sLower === 'hadir') {
+                    if (String(status).toLowerCase() === 'hadir') {
                         const pEl = document.getElementById('wishPresentCount');
                         if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
                             1);
                     }
-                    if (sLower === 'tidak_hadir' || sLower === 'tidak hadir') {
+                    if (String(status).toLowerCase() === 'tidak hadir') {
                         const aEl = document.getElementById('wishAbsentCount');
                         if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
                             1);
@@ -1627,10 +1619,8 @@
                 } catch (err) {
                     console.error('submit error', err);
                     if (alertBox) {
-                        const msg = err?.message || 'Terjadi kesalahan. Coba lagi.';
                         alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">' + escapeHtml(
-                                msg) + '</div>';
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
                     }
                 } finally {
                     btn && (btn.disabled = false);
