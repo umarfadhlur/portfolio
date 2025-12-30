@@ -1260,8 +1260,8 @@
                         <select name="status" id="fm_status" required>
                             <option value="">Attendance Confirmation</option>
                             <option value="hadir">✓ Present</option>
-                            <option value="tidak hadir">✗ Absent</option>
-                            <option value="tentatif">? Tentative</option>
+                            <option value="tidak_hadir">✗ Absent</option>
+                            <option value="ragu">? Tentative</option>
                         </select>
 
                         <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
@@ -1436,6 +1436,16 @@
             return [];
         }
 
+        function getStatusIcon(statusRaw) {
+            const s = String(statusRaw || '').toLowerCase().trim();
+
+            if (s === 'hadir') return "{{ asset('images/img/present.webp') }}";
+            if (s === 'tidak hadir' || s === 'tidak_hadir') return "{{ asset('images/img/absent.webp') }}";
+            if (s === 'tentatif' || s === 'ragu') return "{{ asset('images/img/tentative.webp') }}";
+
+            return ""; // fallback: kosong
+        }
+
         function renderMessageItem(msg) {
             const el = document.createElement('div');
             el.className = 'wish-item';
@@ -1445,24 +1455,29 @@
                 escapeHtml(msg.message) :
                 '— Belum menulis ucapan —';
 
+            const icon = getStatusIcon(msg.status);
+
             el.innerHTML = `
-      <div class="meta">
-        <div>${escapeHtml(msg.name || 'Tamu')}</div>
-        <div style="opacity:.75;font-weight:700;font-size:.92rem">
-          ${escapeHtml(msg.status || '')}
-        </div>
+    <div class="meta">
+      <div>${escapeHtml(msg.name || 'Tamu')}</div>
+
+      <div style="display:flex;align-items:center;gap:8px;opacity:.85;font-weight:700;font-size:.92rem">
+        ${icon ? `<img src="${icon}" alt="" style="width:18px;height:18px;object-fit:contain">` : ''}
       </div>
-      <div class="text">${messageText}</div>
-      <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
-    `;
+    </div>
+
+    <div class="text">${messageText}</div>
+    <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
+  `;
             return el;
         }
+
 
         function updateCounters(items) {
             const all = (items || []).filter(Boolean);
 
             const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
-            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak hadir').length;
+            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak_hadir').length;
 
             const cmtEl = document.getElementById('wishCommentCount');
             const pEl = document.getElementById('wishPresentCount');
@@ -1589,7 +1604,7 @@
                         if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
                             1);
                     }
-                    if (String(status).toLowerCase() === 'tidak hadir') {
+                    if (String(status).toLowerCase() === 'tidak_hadir') {
                         const aEl = document.getElementById('wishAbsentCount');
                         if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
                             1);
