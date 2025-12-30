@@ -1477,10 +1477,10 @@
             const all = (items || []).filter(Boolean);
 
             const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
-            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak_hadir').length;
-
-            const cmtEl = document.getElementById('wishCommentCount');
-            const pEl = document.getElementById('wishPresentCount');
+            const absent = all.filter(x => {
+                const s = (x.status || '').toLowerCase();
+                return s === 'tidak_hadir' || s === 'tidak hadir';
+            }).length;
             const aEl = document.getElementById('wishAbsentCount');
 
             if (cmtEl) cmtEl.textContent = String(all.length);
@@ -1606,12 +1606,13 @@
                     if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
                         0) + 1);
 
-                    if (String(status).toLowerCase() === 'hadir') {
+                    const sLower = String(status).toLowerCase();
+                    if (sLower === 'hadir') {
                         const pEl = document.getElementById('wishPresentCount');
                         if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
                             1);
                     }
-                    if (String(status).toLowerCase() === 'tidak_hadir') {
+                    if (sLower === 'tidak_hadir' || sLower === 'tidak hadir') {
                         const aEl = document.getElementById('wishAbsentCount');
                         if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
                             1);
