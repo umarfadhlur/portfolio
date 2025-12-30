@@ -762,38 +762,41 @@
             overflow: hidden;
             background: #949a8f;
 
+            /* tetap stabil & portrait */
             aspect-ratio: 9 / 16;
-            /* kunci: tinggi section jadi konsisten */
         }
 
         .thanks-base {
             display: none;
         }
 
-        /* base kosong gak dibutuhin lagi */
-
+        /* BUNGA: dibuat melebar (fill), jadi akan kepotong kiri/kanan */
         .thanks-ornament {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            /* bunga utuh */
+
+            object-fit: cover;
+            /* ini kuncinya */
             object-position: center;
-            z-index: 1;
+            /* titik fokus crop */
             pointer-events: none;
+            z-index: 1;
         }
 
-        /* kalau kamu masih overlay teks */
+        /* konten overlay tetap di atas */
         .thanks-content {
             position: absolute;
             inset: 0;
             z-index: 5;
+
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 18px;
+
             padding: 12% 16px;
             box-sizing: border-box;
             pointer-events: none;
