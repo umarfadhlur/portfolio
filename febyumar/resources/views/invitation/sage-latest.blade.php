@@ -799,7 +799,6 @@
             pointer-events: none;
         }
 
-
         .thanks-item {
             width: 78%;
             max-width: 420px;
