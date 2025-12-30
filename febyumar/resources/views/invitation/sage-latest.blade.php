@@ -761,47 +761,44 @@
             width: 100%;
             overflow: hidden;
             background: #949a8f;
+
+            aspect-ratio: 9 / 16;
+            /* kunci: tinggi section jadi konsisten */
         }
 
-        /* base biarin jadi “tinggi section” */
         .thanks-base {
-            width: 100%;
-            height: auto;
-            display: block;
+            display: none;
         }
 
-        /* frame bunga: FIT, jangan crop */
+        /* base kosong gak dibutuhin lagi */
+
         .thanks-ornament {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-
             object-fit: contain;
-            /* frame utuh */
+            /* bunga utuh */
             object-position: center;
-            pointer-events: none;
             z-index: 1;
+            pointer-events: none;
         }
 
-        /* konten di atas frame */
+        /* kalau kamu masih overlay teks */
         .thanks-content {
             position: absolute;
             inset: 0;
             z-index: 5;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* penting biar gak naik-turun aneh */
             gap: 18px;
-
             padding: 12% 16px;
-            /* kiri kanan aman */
             box-sizing: border-box;
             pointer-events: none;
         }
+
 
         .thanks-item {
             width: 78%;
