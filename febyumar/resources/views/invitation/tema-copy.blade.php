@@ -16,11 +16,11 @@
         body {
             background: #E8E6E1;
             color: #2A2A2A;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             overflow-x: hidden;
         }
 
-        .title-hand { font-family: 'Patrick Hand', cursive; letter-spacing: 1px; }
+        .title-hand { font-family: 'Tenor Sans', sans-serif; letter-spacing: 1px; }
         .center { text-align: center; }
 
         .full-screen {
@@ -57,7 +57,7 @@
         @media (max-width: 600px) { .split-two img { width:100%; margin-bottom:18px; } }
 
         .quote-text { max-width:480px; margin:25px auto 0 auto; line-height:1.7; }
-        .ref { display:block; margin-top:10px; font-family:'Patrick Hand', cursive; color:#8A1C1A; }
+        .ref { display:block; margin-top:10px; font-family:'Tenor Sans', sans-serif; color:#8A1C1A; }
 
         .btn {
             margin-top:40px; padding:12px 40px;

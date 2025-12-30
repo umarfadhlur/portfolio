@@ -26,13 +26,13 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             color: var(--dark-sage);
             background-color: #fafbf9;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Tenor Sans', sans-serif;
             color: var(--dark-sage);
         }
 
@@ -149,7 +149,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--gold);
-            font-family: 'Playfair Display', serif;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         .countdown-item .label {
@@ -297,7 +297,7 @@
             padding: 12px;
             border: 2px solid var(--sage);
             border-radius: 8px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
             background-color: white;
@@ -425,7 +425,7 @@
             font-weight: 700;
             font-size: 1.2rem;
             color: var(--gold);
-            font-family: 'Courier New', monospace;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* Music Button */

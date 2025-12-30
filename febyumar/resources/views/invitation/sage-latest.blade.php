@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             background: #949a8f;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             overflow-x: hidden;
         }
 
@@ -712,7 +712,7 @@
             padding: 10px 12px;
             border: 1.5px solid #e0e0e0;
             border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             font-size: 0.9rem;
             background: #fafafa;
             transition: all 0.2s.ease;
@@ -1283,7 +1283,7 @@
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
             <!-- background besar: fade (lebih smooth daripada zoom) -->
-            <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt=""
+            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt=""
                 data-aos="fade" data-aos-duration="1600" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
             <div class="thanks-content">
@@ -1355,6 +1355,23 @@
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
+                (function tuneAosTimings() {
+                    const DUR_MULT = 1.8;
+                    const DEL_MULT = 1.5;
+
+                    document.querySelectorAll('[data-aos-duration]').forEach(el => {
+                        const v = parseInt(el.getAttribute('data-aos-duration') || '0', 10);
+                        if (v) el.setAttribute('data-aos-duration', String(Math.round(v *
+                            DUR_MULT)));
+                    });
+
+                    document.querySelectorAll('[data-aos-delay]').forEach(el => {
+                        const v = parseInt(el.getAttribute('data-aos-delay') || '0', 10);
+                        if (v) el.setAttribute('data-aos-delay', String(Math.round(v *
+                            DEL_MULT)));
+                    });
+                })();
+
                 AOS.init({
                     once: true,
                     mirror: false,

@@ -36,7 +36,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             color: var(--dark);
             background: var(--light);
             overflow-x: hidden;
@@ -45,7 +45,7 @@
         h1,
         h2,
         h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* ANIMATIONS (custom, tidak niban AOS) */
