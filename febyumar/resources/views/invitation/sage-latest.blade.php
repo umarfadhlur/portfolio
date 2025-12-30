@@ -780,7 +780,7 @@
             object-fit: cover;
             object-position: center;
 
-            transform: scale(0.90);
+            transform: scale(1.20);
             transform-origin: center;
 
             pointer-events: none;
@@ -813,8 +813,8 @@
 
         .thanks-1 {
             /* transform: translateX(-10%); */
-            width: 40%;
-            max-width: 240px;
+            width: 55%;
+            max-width: 300px;
         }
 
         .thanks-2 {
