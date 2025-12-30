@@ -760,7 +760,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            /* kunci: biar ornament kepotong dan gak overlap keluar */
+            background: #949a8f;
         }
 
         .thanks-base {
@@ -769,38 +769,23 @@
             display: block;
         }
 
-        /* ornament 1 gambar */
+        /* full artwork: jangan dibesarin/geser */
         .thanks-ornament {
             position: absolute;
-            top: 0;
-            bottom: 0;
+            inset: 0;
+            width: 100%;
             height: 100%;
 
-            width: 110%;
-            /* dibesarin dikit biar bisa “kepotong” */
-            left: -5%;
-            /* geser keluar dikit -> kepotong kiri/kanan */
-            right: -5%;
-
             object-fit: contain;
-            /* gak crop atas/bawah */
+            /* FIT: gak kepotong */
             object-position: center;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* konten column */
+        /* karena artwork sudah ada teksnya, hide overlay lama */
         .thanks-content {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-            padding-top: 14%;
-            pointer-events: none;
+            display: none;
         }
 
         .thanks-item {
