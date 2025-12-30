@@ -829,13 +829,16 @@
         .wish-section {
             width: 100%;
             background: #949a8f;
+            position: relative;
+            overflow: hidden;
+            /* kalau ada ornament absolut, biar gak keluar */
         }
 
         .wish-inner {
             max-width: 480px;
             margin: 0 auto;
-            padding: 22px 18px 110px;
-            /* extra bawah biar gak ketiban music button */
+            padding: 22px 18px 140px;
+            /* ruang aman bawah (ornament + music btn) */
             box-sizing: border-box;
 
             display: flex;
@@ -844,7 +847,7 @@
             gap: 12px;
         }
 
-
+        /* header */
         .wish-head {
             text-align: center;
             color: #fff;
@@ -870,6 +873,7 @@
             font-weight: 900;
         }
 
+        /* stats */
         .wish-stats {
             width: 100%;
             max-width: 420px;
@@ -904,13 +908,16 @@
             opacity: .8;
         }
 
-        /* 50/50 */
+        /* pane */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
             max-width: 420px;
-            flex: 1 1 0;
-            min-height: 0;
+            margin: 0 auto;
+            flex: none;
+            /* penting: jangan flex-grow kalau parent gak fixed height */
+            min-height: auto;
+            /* hapus konsep 50/50 yang bikin numpuk */
         }
 
         /* form */
@@ -955,16 +962,23 @@
             cursor: pointer;
         }
 
-        /* list */
+        /* list: scrollnya di sini, bukan di parent */
         .wish-list {
-            height: 100%;
+            width: 100%;
+            margin-top: 8px;
+
+            max-height: 360px;
+            /* stabil di mobile; adjust 320-420 sesuai selera */
             overflow-y: auto;
-            padding-right: 4px;
+            overflow-x: hidden;
+
             display: flex;
             flex-direction: column;
             gap: 14px;
+
             color: #fff;
-            max-height: clamp(240px, 45rem, 520px);
+
+            /* hide scrollbar but keep scroll */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -973,7 +987,7 @@
             display: none;
         }
 
-        /* khusus item wish (jangan pakai class message-item global lama) */
+        /* item */
         .wish-item {
             padding: 0;
         }
