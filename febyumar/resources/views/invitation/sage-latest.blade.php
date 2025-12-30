@@ -1357,14 +1357,16 @@
             setTimeout(() => {
                 AOS.init({
                     once: true,
-                    mirror: false, // biar gak animate-out pas scroll balik
-                    duration: 1100,
-                    easing: 'ease-out-cubic',
-                    offset: 80,
+                    mirror: false,
+                    offset: 120,
+                    duration: 2000, // lebih slow
+                    easing: 'ease-in-out', // lebih lembut dari ease-out-quart/cubic
+                    delay: 0,
                     debounceDelay: 50,
                     throttleDelay: 99
                 });
                 AOS.refreshHard();
+
             }, 300);
         });
 
