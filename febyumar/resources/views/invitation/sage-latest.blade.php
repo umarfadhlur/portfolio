@@ -527,7 +527,7 @@
         }
 
         .direction-content {
-            transform: translateX(8%);
+            left: 5%;
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -792,7 +792,6 @@
         /* konten di atas bunga */
         .thanks-content {
             position: absolute;
-            padding-top: 8%;
             inset: 0;
             z-index: 5;
 
@@ -802,7 +801,8 @@
             justify-content: center;
             gap: 18px;
 
-            padding: 6% 16px;
+            padding: 8% 16px 6%;
+            /* top kanan-kiri bottom */
             box-sizing: border-box;
             pointer-events: none;
         }
