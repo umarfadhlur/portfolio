@@ -829,56 +829,6 @@
             white-space: pre-wrap;
         }
 
-        /* WEDDING WISH */
-        .wish-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .wish-bg {
-            width: 100%;
-            height: auto;
-            display: block;
-            /* tinggi section ngikut gambar */
-        }
-
-        .wish-inner {
-            position: absolute;
-            inset: 0;
-            padding: 22px 18px 18px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* container yang dibagi 50/50 */
-        .wish-split {
-            flex: 1 1 auto;
-            /* ambil sisa tinggi setelah header+stats */
-            min-height: 0;
-            /* penting */
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .wish-formPane,
-        .wish-listPane {
-            flex: 1 1 0;
-            /* 50/50 */
-            min-height: 0;
-            /* penting biar child bisa scroll */
-        }
-
-        /* list scroll */
-        .wish-list {
-            height: 100%;
-            overflow-y: auto;
-            min-height: 0;
-        }
-
         /* THANK YOU SECTION */
         .thanks-section {
             position: relative;
@@ -947,6 +897,181 @@
         .thanks-3 {
             width: 40%;
             max-width: 240px;
+        }
+
+        /* section solid color */
+        .wish-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: #949a8f;
+            /* set background warna solid */
+            /* [web:570] */
+        }
+
+        /* layout overlay */
+        .wish-inner {
+            padding: 22px 18px 18px;
+            box-sizing: border-box;
+
+            /* bikin bagian list bisa scroll: perlu flex column + min-height:0 */
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* header */
+        .wish-head {
+            text-align: center;
+            color: #fff;
+        }
+
+        .wish-title {
+            font-size: 34px;
+            font-weight: 900;
+            color: #e2ad78;
+            line-height: 1.05;
+        }
+
+        .wish-sub {
+            font-size: 13px;
+            font-weight: 700;
+            opacity: .95;
+            margin-top: 6px;
+        }
+
+        .wish-comments {
+            font-size: 14px;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        /* stats */
+        .wish-stats {
+            width: 100%;
+            max-width: 420px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .wish-stat {
+            border-radius: 12px;
+            padding: 14px 10px;
+            text-align: center;
+            color: #222;
+        }
+
+        .wish-stat.present {
+            background: rgba(198, 255, 205, .9);
+        }
+
+        .wish-stat.absent {
+            background: rgba(255, 170, 170, .9);
+        }
+
+        .wish-stat .num {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .wish-stat .lbl {
+            font-size: 12px;
+            font-weight: 800;
+            opacity: .8;
+        }
+
+        /* 50/50: form dan list sama-sama flex:1 */
+        .wish-formPane,
+        .wish-listPane {
+            width: 100%;
+            max-width: 420px;
+            flex: 1 1 0;
+            min-height: 0;
+            /* penting biar overflow scroll jalan di child */
+            /* [web:577] */
+        }
+
+        /* form */
+        .wish-form {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wish-form input,
+        .wish-form textarea,
+        .wish-form select {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, .92);
+            color: #2F2E2C;
+            outline: none;
+        }
+
+        .wish-form textarea {
+            border-radius: 16px;
+            min-height: 92px;
+            resize: none;
+        }
+
+        .wish-send {
+            width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 16px;
+            background: #e2ad78;
+            color: #2F2E2C;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        /* list */
+        .wish-list {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            color: #fff;
+        }
+
+        /* contoh style item (biar mirip screenshot: teks putih, tanpa card putih) */
+        .wish-list .message-item {
+            background: transparent;
+            border: none;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .wish-list .message-item .meta {
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .wish-list .message-item .text {
+            color: #fff;
+            opacity: .95;
+        }
+
+        .wish-list .message-item .time {
+            color: rgba(255, 255, 255, .75);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .wish-list .message-item .reply {
+            color: rgba(255, 255, 255, .85);
+            font-size: 12px;
+            font-weight: 900;
         }
 
         [data-aos].aos-animate {
@@ -1155,7 +1280,6 @@
             </div>
         </section>
 
-
         <!-- RSVP (bless-bg as background) -->
         <section id="rsvp" class="rsvp-section">
             <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
@@ -1205,8 +1329,8 @@
             </div>
         </section>
 
-        <section id="weddingWish" class="wish-shell">
-            <div class="wish-card">
+        <section id="weddingWish" class="wish-section">
+            <div class="wish-inner">
                 <div class="wish-head">
                     <div class="wish-title">Wedding Wish</div>
                     <div class="wish-sub">Sending Wedding Wish</div>
@@ -1214,37 +1338,43 @@
                 </div>
 
                 <div class="wish-stats">
-                    <div class="wish-stat wish-present">
-                        <div class="wish-num" id="wishPresentCount">0</div>
-                        <div class="wish-label">Present</div>
+                    <div class="wish-stat present">
+                        <div class="num" id="wishPresentCount">0</div>
+                        <div class="lbl">Present</div>
                     </div>
-                    <div class="wish-stat wish-absent">
-                        <div class="wish-num" id="wishAbsentCount">0</div>
-                        <div class="wish-label">Absent</div>
+                    <div class="wish-stat absent">
+                        <div class="num" id="wishAbsentCount">0</div>
+                        <div class="lbl">Absent</div>
                     </div>
                 </div>
 
-                <!-- 50% FORM -->
-                <div class="wish-pane wish-formPane">
-                    <form id="rsvpForm" class="wish-form">
+                <!-- form -->
+                <div class="wish-formPane">
+                    <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
                         @csrf
-                        <input type="text" id="fmname" name="name" placeholder="Name"
-                            value="{{ $guestName ?? '' }}" required>
-                        <textarea id="fmmessage" name="message" placeholder="Wish" required></textarea>
-                        <select id="fmstatus" name="status" required>
+                        <div id="rsvpAlert"></div>
+
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
+                            placeholder="Name" required>
+
+                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
+
+                        <select name="status" id="fm_status" required>
                             <option value="">Attendance Confirmation</option>
                             <option value="hadir">Present</option>
                             <option value="tidak hadir">Absent</option>
                             <option value="tentatif">Tentative</option>
                         </select>
+
                         <button type="submit" class="wish-send">SEND</button>
-                        <div id="rsvpAlert"></div>
                     </form>
                 </div>
 
-                <!-- 50% LIST (scroll) -->
-                <div class="wish-pane wish-listPane">
-                    <div id="messagesList" class="wish-list"></div>
+                <!-- list -->
+                <div class="wish-listPane">
+                    <div id="messagesList" class="wish-list">
+                        <!-- pesan di-inject JS -->
+                    </div>
                 </div>
             </div>
         </section>
