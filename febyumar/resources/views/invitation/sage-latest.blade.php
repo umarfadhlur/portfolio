@@ -830,7 +830,66 @@
             max-width: 240px;
         }
 
-        /* ========== WEDDING WISH (HERO OVERLAY) ========== */
+        /* ===== HERO (bless + share-bless) ===== */
+        .wish-hero-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #949a8f;
+        }
+
+        .wish-hero-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .wish-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* area title + overlay gelap */
+        .wish-hero-content {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+        }
+
+        /* overlay gelap tipis (biar teks kebaca) */
+        .wish-hero-overlay {
+            position: absolute;
+            width: min(520px, 92%);
+            height: 220px;
+            /* adjust kalau mau lebih tinggi */
+            background: rgba(0, 0, 0, .18);
+            filter: blur(8px);
+            border-radius: 22px;
+        }
+
+        /* share-bless.webp */
+        .wish-hero-title {
+            position: relative;
+            z-index: 2;
+            width: 88%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== WEDDING WISH (form only) ===== */
         .wish-section {
             position: relative;
             width: 100%;
@@ -843,112 +902,38 @@
             width: 100%;
             height: auto;
             display: block;
-            visibility: hidden;
         }
 
-        /* background utama */
-        .wish-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* nyatu & penuh (boleh sedikit crop) */
-            object-position: top center;
-            pointer-events: none;
-            z-index: 1;
-            display: block;
-        }
-
-        /* HERO: posisi share-bless di area atas (seperti gambar kamu) */
-        .wish-hero {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 14%;
-            /* atur ini kalau mau naik/turun */
-            z-index: 4;
-
-            display: flex;
-            justify-content: center;
-
-            pointer-events: none;
-        }
-
-        /* overlay gelap tipis di belakang share-bless (biar kebaca) */
-        .wish-hero::before {
-            content: "";
-            position: absolute;
-            inset: -10px 12px;
-            /* area gelap lebih lebar dari gambar */
-            background: rgba(0, 0, 0, .16);
-            filter: blur(6px);
-            border-radius: 18px;
-        }
-
-        /* gambar share-bless */
-        .wish-head-img {
-            width: 88%;
-            max-width: 420px;
-            height: auto;
-            display: block;
-            position: relative;
-            /* supaya berada di atas overlay ::before */
-            z-index: 1;
-            margin: 0;
-        }
-
-        /* dekor bawah */
-        .wish-foot-bg {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: auto;
-            pointer-events: none;
-            z-index: 3;
-            display: block;
-        }
-
-        /* konten: diturunin sedikit biar tidak nabrak area hero */
         .wish-inner {
             position: absolute;
             inset: 0;
-            z-index: 5;
+            z-index: 2;
+
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 22px 18px 72px;
+            /* ruang aman bawah */
+            box-sizing: border-box;
 
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
-
-            padding: 40% 18px 18%;
-            /* start konten setelah hero */
-            box-sizing: border-box;
-        }
-
-        /* comments */
-        .wish-head {
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            color: #fff;
         }
 
         .wish-comments {
-            margin-top: 0;
+            text-align: center;
+            color: #fff;
             font-size: 14px;
             font-weight: 900;
         }
 
-        /* stats */
         .wish-stats {
             width: 100%;
             max-width: 420px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin: 0 auto;
         }
 
         .wish-stat {
@@ -977,7 +962,6 @@
             opacity: .8;
         }
 
-        /* panes */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
@@ -1048,6 +1032,28 @@
 
         .wish-list::-webkit-scrollbar {
             display: none;
+        }
+
+        .wish-item {
+            padding: 0;
+        }
+
+        .wish-item .meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-weight: 900;
+        }
+
+        .wish-item .text {
+            margin-top: 4px;
+            opacity: .95;
+        }
+
+        .wish-item .time {
+            margin-top: 8px;
+            font-size: 12px;
+            opacity: .75;
         }
 
         html,
@@ -1250,34 +1256,33 @@
             </div>
         </section>
 
+        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
 
+            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
+            <div class="wish-hero-content">
+                <div class="wish-hero-overlay"></div>
+
+                <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-hero-title"
+                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
+                    data-aos-easing="ease-out-cubic" />
+            </div>
+        </section>
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
 
-            <!-- base 9/16 -->
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-            <!-- background utama -->
-            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-bg" alt="" data-aos="fade"
-                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
-
-            <!-- OVERLAY HEADER (share-bless) -->
-            <div class="wish-hero">
-                <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
-                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
-                    data-aos-easing="ease-out-cubic" />
-            </div>
-
-            <!-- konten -->
             <div class="wish-inner">
-                <div class="wish-head">
-                    <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
-                        data-aos-easing="ease-out-cubic">
-                        <span id="wishCommentCount">0</span> Comments
-                    </div>
+                <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="220"
+                    data-aos-easing="ease-out-cubic">
+                    <span id="wishCommentCount">0</span> Comments
                 </div>
 
-                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="520"
+                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="320"
                     data-aos-easing="ease-out-cubic">
                     <div class="wish-stat present">
                         <div class="num" id="wishPresentCount">0</div>
@@ -1289,7 +1294,7 @@
                     </div>
                 </div>
 
-                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="620"
+                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="420"
                     data-aos-easing="ease-out-cubic">
                     <form id="rsvpForm" class="wish-form">
                         @csrf
@@ -1310,15 +1315,11 @@
                     </form>
                 </div>
 
-                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="720"
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="520"
                     data-aos-easing="ease-out-cubic">
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
-
-            <!-- optional dekor bawah -->
-            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
-                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
         </section>
 
         <!-- THANK YOU -->
