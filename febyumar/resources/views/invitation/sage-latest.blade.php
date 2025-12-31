@@ -835,41 +835,36 @@
             position: relative;
             width: 100%;
             overflow: visible;
+            /* biar konten gak kepotong */
             background: #949a8f;
             /* fallback */
         }
 
-        /* base 9/16 */
+        /* base 9/16 (cuma buat baseline tinggi awal, tapi jangan bikin gap visual) */
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
+            visibility: hidden;
+            /* tetap ngasih tinggi, tapi tidak keliatan */
         }
 
-        /* background utama: penuh mengikuti tinggi section, tanpa crop */
+        /* background utama (bless-bg.webp) ikut tinggi section */
         .wish-bg {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* biar utuh, tidak kepotong */
-            object-position: center;
+            /* utuh, tidak crop */
+            object-position: top;
+            /* biar “nempel atas”, gak kelihatan turun */
             pointer-events: none;
             z-index: 1;
             display: block;
         }
 
-        /* konten di atas background */
-        .wish-inner {
-            position: relative;
-            inset: 0;
-            z-index: 5;
-            padding: 8% 16px 8%;
-            box-sizing: border-box;
-        }
-
-        /* dekor bawah tetap ada untuk area list/comment */
+        /* dekor bawah (share-bless-bg.webp) tetap nempel di bawah */
         .wish-foot-bg {
             position: absolute;
             left: 0;
@@ -878,15 +873,31 @@
 
             width: 100%;
             height: auto;
-            pointer-events: none;
 
+            pointer-events: none;
             z-index: 3;
-            /* di atas wish-bg, di bawah konten */
             display: block;
+        }
+
+        /* konten: biar ikut tinggi konten (ga kepotong), tapi tetap berada "di atas" bg */
+        .wish-inner {
+            position: relative;
+            /* penting: JANGAN inset di relative */
+            z-index: 5;
+            padding: 10% 16px 18%;
+            /* bottom lebih besar biar aman dari foot-bg */
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
         }
 
         /* header */
         .wish-head {
+            width: 100%;
+            max-width: 420px;
             text-align: center;
             color: #fff;
         }
@@ -911,13 +922,14 @@
             font-weight: 900;
         }
 
-        /* stats */
+        /* stats: center & simetris */
         .wish-stats {
             width: 100%;
             max-width: 420px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+            margin: 0 auto;
         }
 
         .wish-stat {
@@ -952,10 +964,6 @@
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
-            flex: none;
-            /* penting: jangan flex-grow kalau parent gak fixed height */
-            min-height: auto;
-            /* hapus konsep 50/50 yang bikin numpuk */
         }
 
         /* form */
@@ -1002,13 +1010,12 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* list: scrollnya di sini, bukan di parent */
+        /* list */
         .wish-list {
             width: 100%;
             margin-top: 8px;
 
             max-height: 360px;
-            /* stabil di mobile; adjust 320-420 sesuai selera */
             overflow-y: auto;
             overflow-x: hidden;
 
@@ -1018,7 +1025,6 @@
 
             color: #fff;
 
-            /* hide scrollbar but keep scroll */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
