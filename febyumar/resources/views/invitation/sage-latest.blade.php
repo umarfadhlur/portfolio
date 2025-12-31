@@ -847,6 +847,12 @@
             /* kalau ada ornament absolut, biar gak keluar */
         }
 
+        .wish-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .wish-inner {
             position: relative;
             z-index: 2;
@@ -864,17 +870,21 @@
 
         .wish-head-bg {
             position: absolute;
-            top: 4%;
-            right: 50%;
-            transform: translateX(50%);
-            width: 120%;
-            max-width: 860px;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+
+            width: 100%;
             height: auto;
-            display: block;
-            opacity: .12;
+            object-fit: contain;
+            /* tampil utuh, tidak crop */
+            object-position: top;
+            /* nempel atas */
             pointer-events: none;
-            z-index: 1;
+            display: block;
         }
+
 
         .wish-foot-bg {
             position: absolute;
@@ -1256,11 +1266,16 @@
         </section>
 
 
-        <!-- WEDDING WISH -->
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
-            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-head-bg" alt=""
-                data-aos="fade" data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
+            <!-- base 9/16: penentu tinggi section -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
+
+            <!-- dekor atas & bawah tetap image layer -->
+            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-head-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
             <div class="wish-inner">
                 <div class="wish-head">
                     <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
@@ -1311,10 +1326,10 @@
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
+
             <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
                 data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
         </section>
-
 
         <!-- THANK YOU -->
         <section class="thanks-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
