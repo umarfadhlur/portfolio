@@ -830,45 +830,56 @@
             max-width: 240px;
         }
 
-        /* ========== WEDDING WISH (FINAL) ========== */
+        /* ========== WEDDING WISH (FINAL FIX) ========== */
         .wish-section {
             position: relative;
             width: 100%;
-            overflow: visible;
+            overflow: hidden;
+            /* aman karena konten overlay & tinggi dikontrol base */
             background: #949a8f;
-            /* fallback */
         }
 
-        /* base 9/16: hanya untuk “min height” awal, tidak terlihat */
+        /* base 9/16: ngunci tinggi awal tanpa kelihatan */
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
             visibility: hidden;
-            /* tetap ngasih tinggi, tapi ga bikin gap visual */
         }
 
-        /* background utama (bless-bg.webp) -> harus nyatu di belakang konten */
+        /* background utama */
         .wish-bg {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-            /* penting: biar penuh & nyatu */
+            /* nyatu, penuh */
             object-position: top center;
-            /* bunga nempel atas */
             pointer-events: none;
             z-index: 1;
             display: block;
         }
 
-        /* konten di atas background */
+        /* dekor bawah (opsional) */
+        .wish-foot-bg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            z-index: 3;
+            display: block;
+        }
+
+        /* konten overlay */
         .wish-inner {
             position: absolute;
-            /* overlay di atas background */
             inset: 0;
+            top: -18px;
+            /* INI yang “beneran” naikin. coba -12px s/d -28px */
             z-index: 5;
 
             display: flex;
@@ -876,25 +887,8 @@
             align-items: center;
             gap: 14px;
 
-            padding: 0% 16px 18%;
-            /* top lebih kecil biar header “ketemu” bunga */
+            padding: 0 16px 18%;
             box-sizing: border-box;
-        }
-
-        /* kalau kamu masih pakai foot, ini tetap aman */
-        .wish-foot-bg {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            width: 100%;
-            height: auto;
-
-            pointer-events: none;
-            z-index: 3;
-            /* di atas bg, di bawah konten */
-            display: block;
         }
 
         /* header */
@@ -905,13 +899,21 @@
             color: #fff;
         }
 
+        /* buang kemungkinan margin bawaan gambar */
+        .wish-head-img {
+            display: block;
+            margin: 0 auto;
+            height: auto;
+            max-width: 100%;
+        }
+
         .wish-comments {
             margin-top: 10px;
             font-size: 14px;
             font-weight: 900;
         }
 
-        /* stats: center & simetris */
+        /* stats */
         .wish-stats {
             width: 100%;
             max-width: 420px;
@@ -1003,7 +1005,6 @@
         .wish-list {
             width: 100%;
             margin-top: 8px;
-
             max-height: 360px;
             overflow-y: auto;
             overflow-x: hidden;
@@ -1013,7 +1014,6 @@
             gap: 14px;
 
             color: #fff;
-
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -1249,12 +1249,16 @@
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
 
-            <!-- base 9/16: penentu tinggi section -->
+            <!-- base 9/16 (penentu tinggi awal) -->
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-            <!-- background utama full section -->
+            <!-- background utama -->
             <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-bg" alt="" data-aos="fade"
                 data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
+            <!-- optional dekor bawah (kalau dipakai) -->
+            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
+                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
 
             <!-- konten -->
             <div class="wish-inner">
