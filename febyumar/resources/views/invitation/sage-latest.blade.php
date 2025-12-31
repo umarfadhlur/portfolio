@@ -876,7 +876,7 @@
             align-items: center;
             gap: 14px;
 
-            padding: 6% 16px 18%;
+            padding: 0% 16px 18%;
             /* top lebih kecil biar header “ketemu” bunga */
             box-sizing: border-box;
         }
