@@ -834,7 +834,7 @@
         .wish-section {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow: visible;
             background: #949a8f;
             /* fallback */
         }
@@ -862,7 +862,7 @@
 
         /* konten di atas background */
         .wish-inner {
-            position: absolute;
+            position: relative;
             inset: 0;
             z-index: 5;
             padding: 8% 16px 8%;
