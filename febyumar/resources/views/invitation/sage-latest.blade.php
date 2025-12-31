@@ -830,41 +830,58 @@
             max-width: 240px;
         }
 
-        /* ========== WEDDING WISH ========== */
+        /* ========== WEDDING WISH (FINAL) ========== */
         .wish-section {
             position: relative;
             width: 100%;
             overflow: visible;
-            /* biar konten gak kepotong */
             background: #949a8f;
             /* fallback */
         }
 
-        /* base 9/16 (cuma buat baseline tinggi awal, tapi jangan bikin gap visual) */
+        /* base 9/16: hanya untuk “min height” awal, tidak terlihat */
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
             visibility: hidden;
-            /* tetap ngasih tinggi, tapi tidak keliatan */
+            /* tetap ngasih tinggi, tapi ga bikin gap visual */
         }
 
-        /* background utama (bless-bg.webp) ikut tinggi section */
+        /* background utama (bless-bg.webp) -> harus nyatu di belakang konten */
         .wish-bg {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            /* utuh, tidak crop */
-            object-position: top;
-            /* biar “nempel atas”, gak kelihatan turun */
+
+            object-fit: cover;
+            /* penting: biar penuh & nyatu */
+            object-position: top center;
+            /* bunga nempel atas */
             pointer-events: none;
             z-index: 1;
             display: block;
         }
 
-        /* dekor bawah (share-bless-bg.webp) tetap nempel di bawah */
+        /* konten di atas background */
+        .wish-inner {
+            position: absolute;
+            /* overlay di atas background */
+            inset: 0;
+            z-index: 5;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+
+            padding: 6% 16px 18%;
+            /* top lebih kecil biar header “ketemu” bunga */
+            box-sizing: border-box;
+        }
+
+        /* kalau kamu masih pakai foot, ini tetap aman */
         .wish-foot-bg {
             position: absolute;
             left: 0;
@@ -876,22 +893,8 @@
 
             pointer-events: none;
             z-index: 3;
+            /* di atas bg, di bawah konten */
             display: block;
-        }
-
-        /* konten: biar ikut tinggi konten (ga kepotong), tapi tetap berada "di atas" bg */
-        .wish-inner {
-            position: relative;
-            /* penting: JANGAN inset di relative */
-            z-index: 5;
-            padding: 10% 16px 18%;
-            /* bottom lebih besar biar aman dari foot-bg */
-            box-sizing: border-box;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
         }
 
         /* header */
@@ -900,20 +903,6 @@
             max-width: 420px;
             text-align: center;
             color: #fff;
-        }
-
-        .wish-title {
-            font-size: 34px;
-            font-weight: 900;
-            color: #e2ad78;
-            line-height: 1.05;
-        }
-
-        .wish-sub {
-            margin-top: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            opacity: .95;
         }
 
         .wish-comments {
