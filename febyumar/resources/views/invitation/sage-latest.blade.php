@@ -804,7 +804,7 @@
 
         /* ini yang benar-benar “naikin grup” tanpa transform */
         .thanks-content {
-            padding-top: calc(10% + 24px);
+            padding-top: calc(18%);
         }
 
         .thanks-item {
@@ -830,81 +830,79 @@
             max-width: 240px;
         }
 
-        /* ========== WEDDING WISH (FINAL FIX) ========== */
+        /* ========== WEDDING WISH ========== */
         .wish-section {
             position: relative;
             width: 100%;
             overflow: hidden;
-            /* aman karena konten overlay & tinggi dikontrol base */
             background: #949a8f;
+            /* fallback */
         }
 
-        /* base 9/16: ngunci tinggi awal tanpa kelihatan */
+        /* base 9/16 */
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
-            visibility: hidden;
         }
 
-        /* background utama */
+        /* background utama: penuh mengikuti tinggi section, tanpa crop */
         .wish-bg {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            /* nyatu, penuh */
-            object-position: top center;
+            object-fit: contain;
+            /* biar utuh, tidak kepotong */
+            object-position: center;
             pointer-events: none;
             z-index: 1;
             display: block;
         }
 
-        /* dekor bawah (opsional) */
+        /* konten di atas background */
+        .wish-inner {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            padding: 8% 16px 8%;
+            box-sizing: border-box;
+        }
+
+        /* dekor bawah tetap ada untuk area list/comment */
         .wish-foot-bg {
             position: absolute;
             left: 0;
             right: 0;
             bottom: 0;
+
             width: 100%;
             height: auto;
             pointer-events: none;
+
             z-index: 3;
+            /* di atas wish-bg, di bawah konten */
             display: block;
-        }
-
-        /* konten overlay */
-        .wish-inner {
-            position: absolute;
-            inset: 0;
-            top: -18px;
-            /* INI yang “beneran” naikin. coba -12px s/d -28px */
-            z-index: 5;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-
-            padding: 0 16px 18%;
-            box-sizing: border-box;
         }
 
         /* header */
         .wish-head {
-            width: 100%;
-            max-width: 420px;
             text-align: center;
             color: #fff;
         }
 
-        /* buang kemungkinan margin bawaan gambar */
-        .wish-head-img {
-            display: block;
-            margin: 0 auto;
-            height: auto;
-            max-width: 100%;
+        .wish-title {
+            font-size: 34px;
+            font-weight: 900;
+            color: #e2ad78;
+            line-height: 1.05;
+        }
+
+        .wish-sub {
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            opacity: .95;
         }
 
         .wish-comments {
@@ -920,7 +918,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin: 0 auto;
         }
 
         .wish-stat {
@@ -955,6 +952,10 @@
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
+            flex: none;
+            /* penting: jangan flex-grow kalau parent gak fixed height */
+            min-height: auto;
+            /* hapus konsep 50/50 yang bikin numpuk */
         }
 
         /* form */
@@ -1001,11 +1002,13 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* list */
+        /* list: scrollnya di sini, bukan di parent */
         .wish-list {
             width: 100%;
             margin-top: 8px;
+
             max-height: 360px;
+            /* stabil di mobile; adjust 320-420 sesuai selera */
             overflow-y: auto;
             overflow-x: hidden;
 
@@ -1014,6 +1017,8 @@
             gap: 14px;
 
             color: #fff;
+
+            /* hide scrollbar but keep scroll */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -1249,16 +1254,12 @@
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
 
-            <!-- base 9/16 (penentu tinggi awal) -->
+            <!-- base 9/16: penentu tinggi section -->
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-            <!-- background utama -->
+            <!-- background utama full section -->
             <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-bg" alt="" data-aos="fade"
                 data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
-
-            <!-- optional dekor bawah (kalau dipakai) -->
-            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
-                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
 
             <!-- konten -->
             <div class="wish-inner">
