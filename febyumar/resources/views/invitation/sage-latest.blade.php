@@ -804,7 +804,7 @@
 
         /* ini yang benar-benar “naikin grup” tanpa transform */
         .thanks-content {
-            padding-top: calc(18%);
+            padding-top: calc(8%);
         }
 
         .thanks-item {
@@ -831,58 +831,69 @@
         }
 
         /* ========== WEDDING WISH ========== */
-        .wish-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: #949a8f;
-            /* fallback */
+        .wish-head-img {
+            width: 88%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+            margin: 4px auto 4px;
         }
 
-        /* base 9/16 */
+        .wish-section {
+            width: 100%;
+            background: #949a8f;
+            position: relative;
+            overflow: hidden;
+            /* kalau ada ornament absolut, biar gak keluar */
+        }
+
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* background utama: penuh mengikuti tinggi section, tanpa crop */
-        .wish-bg {
+        .wish-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 22px 18px 72px;
+            /* ruang aman bawah (ornament + music btn) */
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wish-head-bg {
             position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* biar utuh, tidak kepotong */
-            object-position: center;
+            top: 4%;
+            right: 50%;
+            transform: translateX(50%);
+            width: 120%;
+            max-width: 860px;
+            height: auto;
+            display: block;
+            opacity: .12;
             pointer-events: none;
             z-index: 1;
-            display: block;
         }
 
-        /* konten di atas background */
-        .wish-inner {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-            padding: 8% 16px 8%;
-            box-sizing: border-box;
-        }
-
-        /* dekor bawah tetap ada untuk area list/comment */
         .wish-foot-bg {
             position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            width: 100%;
+            bottom: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            max-width: 860px;
             height: auto;
-            pointer-events: none;
-
-            z-index: 3;
-            /* di atas wish-bg, di bawah konten */
             display: block;
+            opacity: .12;
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* header */
@@ -1257,11 +1268,10 @@
             <!-- base 9/16: penentu tinggi section -->
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-            <!-- background utama full section -->
-            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-bg" alt="" data-aos="fade"
+            <!-- dekor atas & bawah tetap image layer -->
+            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-head-bg" alt="" data-aos="fade"
                 data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
 
-            <!-- konten -->
             <div class="wish-inner">
                 <div class="wish-head">
                     <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
@@ -1312,6 +1322,9 @@
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
+
+            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
+                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
         </section>
 
         <!-- THANK YOU -->
