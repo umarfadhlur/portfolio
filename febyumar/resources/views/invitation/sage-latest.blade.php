@@ -830,98 +830,113 @@
             max-width: 240px;
         }
 
-        /* ========== WEDDING WISH ========== */
+        /* ========== WEDDING WISH (HERO OVERLAY) ========== */
+        .wish-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #949a8f;
+        }
+
+        /* base 9/16 */
+        .wish-base {
+            width: 100%;
+            height: auto;
+            display: block;
+            visibility: hidden;
+        }
+
+        /* background utama */
+        .wish-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* nyatu & penuh (boleh sedikit crop) */
+            object-position: top center;
+            pointer-events: none;
+            z-index: 1;
+            display: block;
+        }
+
+        /* HERO: posisi share-bless di area atas (seperti gambar kamu) */
+        .wish-hero {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 14%;
+            /* atur ini kalau mau naik/turun */
+            z-index: 4;
+
+            display: flex;
+            justify-content: center;
+
+            pointer-events: none;
+        }
+
+        /* overlay gelap tipis di belakang share-bless (biar kebaca) */
+        .wish-hero::before {
+            content: "";
+            position: absolute;
+            inset: -10px 12px;
+            /* area gelap lebih lebar dari gambar */
+            background: rgba(0, 0, 0, .16);
+            filter: blur(6px);
+            border-radius: 18px;
+        }
+
+        /* gambar share-bless */
         .wish-head-img {
             width: 88%;
             max-width: 420px;
             height: auto;
             display: block;
-            margin: 4px auto 4px;
-        }
-
-        .wish-section {
-            width: 100%;
-            background: #949a8f;
             position: relative;
-            overflow: hidden;
-            /* kalau ada ornament absolut, biar gak keluar */
+            /* supaya berada di atas overlay ::before */
+            z-index: 1;
+            margin: 0;
         }
 
-        .wish-base {
+        /* dekor bawah */
+        .wish-foot-bg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
             width: 100%;
             height: auto;
+            pointer-events: none;
+            z-index: 3;
             display: block;
         }
 
+        /* konten: diturunin sedikit biar tidak nabrak area hero */
         .wish-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 22px 18px 72px;
-            /* ruang aman bawah (ornament + music btn) */
-            box-sizing: border-box;
+            position: absolute;
+            inset: 0;
+            z-index: 5;
 
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
+
+            padding: 40% 18px 18%;
+            /* start konten setelah hero */
+            box-sizing: border-box;
         }
 
-        .wish-head-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            /* tampil utuh, tidak crop */
-            object-position: top;
-            /* nempel atas */
-            pointer-events: none;
-            display: block;
-        }
-
-
-        .wish-foot-bg {
-            position: absolute;
-            bottom: 4%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            max-width: 860px;
-            height: auto;
-            display: block;
-            opacity: .12;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* header */
+        /* comments */
         .wish-head {
+            width: 100%;
+            max-width: 420px;
             text-align: center;
             color: #fff;
         }
 
-        .wish-title {
-            font-size: 34px;
-            font-weight: 900;
-            color: #e2ad78;
-            line-height: 1.05;
-        }
-
-        .wish-sub {
-            margin-top: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            opacity: .95;
-        }
-
         .wish-comments {
-            margin-top: 10px;
+            margin-top: 0;
             font-size: 14px;
             font-weight: 900;
         }
@@ -933,6 +948,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+            margin: 0 auto;
         }
 
         .wish-stat {
@@ -961,16 +977,12 @@
             opacity: .8;
         }
 
-        /* pane */
+        /* panes */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
-            flex: none;
-            /* penting: jangan flex-grow kalau parent gak fixed height */
-            min-height: auto;
-            /* hapus konsep 50/50 yang bikin numpuk */
         }
 
         /* form */
@@ -1017,13 +1029,11 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* list: scrollnya di sini, bukan di parent */
+        /* list */
         .wish-list {
             width: 100%;
             margin-top: 8px;
-
             max-height: 360px;
-            /* stabil di mobile; adjust 320-420 sesuai selera */
             overflow-y: auto;
             overflow-x: hidden;
 
@@ -1032,37 +1042,12 @@
             gap: 14px;
 
             color: #fff;
-
-            /* hide scrollbar but keep scroll */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
 
         .wish-list::-webkit-scrollbar {
             display: none;
-        }
-
-        /* item */
-        .wish-item {
-            padding: 0;
-        }
-
-        .wish-item .meta {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            font-weight: 900;
-        }
-
-        .wish-item .text {
-            margin-top: 4px;
-            opacity: .95;
-        }
-
-        .wish-item .time {
-            margin-top: 8px;
-            font-size: 12px;
-            opacity: .75;
         }
 
         html,
@@ -1269,20 +1254,23 @@
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
 
-            <!-- base 9/16: penentu tinggi section -->
+            <!-- base 9/16 -->
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-            <!-- background utama full section -->
+            <!-- background utama -->
             <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-bg" alt="" data-aos="fade"
                 data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
+            <!-- OVERLAY HEADER (share-bless) -->
+            <div class="wish-hero">
+                <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
+                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
+                    data-aos-easing="ease-out-cubic" />
+            </div>
 
             <!-- konten -->
             <div class="wish-inner">
                 <div class="wish-head">
-                    <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-head-img" alt="Wedding Wish"
-                        data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
-                        data-aos-easing="ease-out-cubic" />
-
                     <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
                         data-aos-easing="ease-out-cubic">
                         <span id="wishCommentCount">0</span> Comments
@@ -1327,8 +1315,11 @@
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
-        </section>
 
+            <!-- optional dekor bawah -->
+            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
+                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
+        </section>
 
         <!-- THANK YOU -->
         <section class="thanks-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
