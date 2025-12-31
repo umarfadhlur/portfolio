@@ -1312,10 +1312,6 @@
                     <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
-
-            <!-- dekor bawah buat area komen -->
-            <img src="{{ asset('images/img/share-bless-bg.webp') }}" class="wish-foot-bg" alt=""
-                data-aos="fade" data-aos-duration="1200" data-aos-delay="760" data-aos-easing="ease-out-cubic" />
         </section>
 
         <!-- THANK YOU -->
