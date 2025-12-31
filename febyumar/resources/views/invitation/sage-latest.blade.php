@@ -804,7 +804,7 @@
 
         /* ini yang benar-benar “naikin grup” tanpa transform */
         .thanks-content {
-            padding-top: calc(8%);
+            padding-top: calc(10% + 24px);
         }
 
         .thanks-item {
