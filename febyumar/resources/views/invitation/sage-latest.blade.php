@@ -830,7 +830,7 @@
             max-width: 240px;
         }
 
-        /* ===== WEDDING GIFTS ===== */
+        /* ===== WEDDING GIFTS (CLEAN) ===== */
         .gift-section {
             position: relative;
             width: 100%;
@@ -845,7 +845,7 @@
             display: block;
         }
 
-        /* ornamen atas (tidak full background) */
+        /* ornamen atas */
         .gift-bg {
             position: absolute;
             top: 0;
@@ -859,7 +859,7 @@
             pointer-events: none;
         }
 
-        /* konten overlay */
+        /* overlay content */
         .gift-inner {
             position: absolute;
             inset: 0;
@@ -867,25 +867,26 @@
 
             max-width: 520px;
             margin: 0 auto;
-
-            padding: 14% 18px 10%;
             box-sizing: border-box;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
-            padding-top: 60%;
-            padding-bottom: 25%;
+
+            /* pakai 1 sumber padding saja (jangan dobel) */
+            padding: 56% 18px 18%;
+            /* TOP / LR / BOTTOM */
+            gap: 14px;
         }
 
-        /* gift.webp isinya tulisan: cukup tampilkan ini */
+        /* gift.webp (gambar teks) */
         .gift-text {
             width: 88%;
             max-width: 420px;
             height: auto;
             display: block;
-            margin-top: 18px;
+            margin: 0;
+            /* jangan pake margin-top lagi */
         }
 
         /* accordion */
@@ -895,11 +896,12 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-height: 42%;
-            overflow: auto;
-            padding-bottom: 8px;
+
+            overflow: visible;
+            /* jangan dibatesin dulu */
         }
 
+        /* item */
         .gift-item {
             border-radius: 16px;
             background: rgba(255, 255, 255, .14);
@@ -907,7 +909,6 @@
             overflow: hidden;
         }
 
-        /* summary: pill */
         .gift-summary {
             list-style: none;
             cursor: pointer;
@@ -925,7 +926,7 @@
             display: none;
         }
 
-        /* icon kanan (circle + chevron) */
+        /* icon kanan */
         .gift-icon {
             width: 26px;
             height: 26px;
@@ -951,7 +952,7 @@
             transform: rotate(90deg) translateX(1px);
         }
 
-        /* panel (saat open) */
+        /* panel */
         .gift-panel {
             padding: 12px 14px 14px;
             background: rgba(0, 0, 0, .08);
@@ -989,10 +990,10 @@
         }
 
         .gift-mono {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* copy buttons */
+        /* copy */
         .gift-copy {
             pointer-events: auto;
             border: none;
