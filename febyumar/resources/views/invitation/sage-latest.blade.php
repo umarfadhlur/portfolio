@@ -868,8 +868,8 @@
         }
 
         .wish-hero-title {
-            width: 88%;
-            max-width: 420px;
+            width: 65%;
+            max-width: 320px;
             height: auto;
             display: block;
         }
