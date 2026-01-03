@@ -876,6 +876,7 @@
             align-items: center;
             gap: 16px;
             padding-top: 60%;
+            padding-bottom: 25%;
         }
 
         /* gift.webp isinya tulisan: cukup tampilkan ini */
@@ -894,6 +895,9 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            max-height: 42%;
+            overflow: auto;
+            padding-bottom: 8px;
         }
 
         .gift-item {
@@ -1459,36 +1463,39 @@
 
                             <div class="gift-line">
                                 <div class="gift-k">No. Rek</div>
-                                <div class="gift-v gift-mono" id="giftAcc1">1234567890</div>
-                                <button type="button" class="gift-copy" data-copy="1234567890">Copy</button>
+                                <div class="gift-v gift-mono">2120347678</div>
+                                <button type="button" class="gift-copy" data-copy="2120347678">Copy</button>
                             </div>
 
                             <div class="gift-line">
                                 <div class="gift-k">A/N</div>
-                                <div class="gift-v">Feby & Umar</div>
+                                <div class="gift-v">Feby Janiar Husein</div>
                             </div>
                         </div>
                     </details>
 
-                    <!-- ALAMAT -->
                     <details class="gift-item" name="giftAccordion">
                         <summary class="gift-summary">
-                            <span>Send a Gift</span>
+                            <span>E-Wallet</span>
                             <span class="gift-icon"></span>
                         </summary>
 
                         <div class="gift-panel">
-                            <div class="gift-line gift-line-top">
-                                <div class="gift-k">Alamat</div>
-                                <div class="gift-v" id="giftAddr">
-                                    Jl. Contoh No. 123, RT 01/RW 02, Kel. Contoh, Kec. Contoh, Jakarta, 12345
-                                </div>
+                            <div class="gift-line">
+                                <div class="gift-k">Provider</div>
+                                <div class="gift-v">Shopeepay</div>
                             </div>
 
-                            <button type="button" class="gift-copy gift-copy-wide"
-                                data-copy="Jl. Contoh No. 123, RT 01/RW 02, Kel. Contoh, Kec. Contoh, Jakarta, 12345">
-                                Copy Alamat
-                            </button>
+                            <div class="gift-line">
+                                <div class="gift-k">No.</div>
+                                <div class="gift-v gift-mono">08112699912</div>
+                                <button type="button" class="gift-copy" data-copy="08112699912">Copy</button>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">A/N</div>
+                                <div class="gift-v">Umar Fadhlurrachman</div>
+                            </div>
                         </div>
                     </details>
                 </div>
