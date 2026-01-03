@@ -876,7 +876,7 @@
             gap: 14px;
 
             /* ini yang ngatur jarak dari ornamen atas */
-            padding: 32% 18px 40px;
+            padding: 12% 18px 40px;
             /* TOP / LR / BOTTOM */
         }
 
