@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <title>The Wedding of {{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
     <!-- AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
@@ -17,7 +18,7 @@
             margin: 0;
             padding: 0;
             background: #949a8f;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             overflow-x: hidden;
         }
 
@@ -114,8 +115,8 @@
         }
 
         .popup-btn {
-            background: #fff;
-            color: #2F2E2C;
+            background: #727d6c;
+            color: #fff;
             padding: 10px 14px;
             border-radius: 999px;
             border: none;
@@ -124,6 +125,7 @@
             max-width: 260px;
             margin-top: 10px;
             cursor: pointer;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* ===================== MUSIC BUTTON ===================== */
@@ -525,20 +527,21 @@
         }
 
         .direction-content {
-            transform: translateX(5%);
             position: absolute;
-            inset: 0;
+            top: 0;
+            bottom: 0;
+            left: 5%;
+            right: 0;
+
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            padding-top: 5%;
 
+            padding-top: 5%;
             padding-left: 18px;
-            /* ruang aman */
             padding-right: 18px;
-            /* ruang aman */
             box-sizing: border-box;
         }
 
@@ -711,7 +714,7 @@
             padding: 10px 12px;
             border: 1.5px solid #e0e0e0;
             border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             font-size: 0.9rem;
             background: #fafafa;
             transition: all 0.2s.ease;
@@ -755,86 +758,12 @@
             color: #155724;
         }
 
-        /* Messages section (background gift-bg, cards overlay) */
-        .messages-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .messages-section>img {
-            width: 100%;
-            display: block;
-        }
-
-        .messages-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 24px 16px 40px;
-            pointer-events: none;
-        }
-
-        .messages-card {
-            max-width: 420px;
-            width: 100%;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 18px;
-            padding: 16px 14px 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            pointer-events: auto;
-
-            /* batasi tinggi card ucapan */
-            max-height: 360px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .messages-list {
-            margin-top: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            /* area ucapan scroll di dalam card */
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .message-item {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 14px;
-            padding: 8px 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            font-size: 0.88rem;
-        }
-
-        .message-item .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4px;
-            font-weight: 600;
-            color: #2F2E2C;
-        }
-
-        .message-item .text {
-            color: #444;
-            line-height: 1.4;
-            white-space: pre-wrap;
-        }
-
         /* THANK YOU SECTION */
         .thanks-section {
             position: relative;
             width: 100%;
             overflow: hidden;
-            /* kunci: biar ornament kepotong dan gak overlap keluar */
+            background: #949a8f;
         }
 
         .thanks-base {
@@ -843,27 +772,20 @@
             display: block;
         }
 
-        /* ornament 1 gambar */
         .thanks-ornament {
             position: absolute;
-            top: 0;
-            bottom: 0;
+            inset: 0;
+            width: 100%;
             height: 100%;
-
-            width: 110%;
-            /* dibesarin dikit biar bisa “kepotong” */
-            left: -5%;
-            /* geser keluar dikit -> kepotong kiri/kanan */
-            right: -5%;
-
-            object-fit: contain;
-            /* gak crop atas/bawah */
+            object-fit: cover;
             object-position: center;
+            transform: scale(1.20);
+            transform-origin: center;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* konten column */
+        /* konten di atas bunga */
         .thanks-content {
             position: absolute;
             inset: 0;
@@ -872,9 +794,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+
             gap: 18px;
-            padding-top: 14%;
+            padding: 8% 16px 6%;
+            box-sizing: border-box;
             pointer-events: none;
+        }
+
+        /* ini yang benar-benar “naikin grup” tanpa transform */
+        .thanks-content {
+            padding-top: calc(8%);
         }
 
         .thanks-item {
@@ -884,9 +814,10 @@
             display: block;
         }
 
-        /* only thanks-1 geser kiri 10% */
+        /* HAPUS transform translateY di item biar gak konflik sama AOS */
         .thanks-1 {
-            transform: translateX(-10%);
+            width: 60%;
+            max-width: 320px;
         }
 
         .thanks-2 {
@@ -899,19 +830,90 @@
             max-width: 240px;
         }
 
+        /* ===== HERO (bless + share-bless) ===== */
+        .wish-hero-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #949a8f;
+        }
+
+        .wish-hero-base {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .wish-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* area title + overlay gelap */
+        .wish-hero-content {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+        }
+
+        /* overlay gelap tipis (biar teks kebaca) */
+        .wish-hero-overlay {
+            position: absolute;
+            width: min(520px, 92%);
+            height: 220px;
+            /* adjust kalau mau lebih tinggi */
+            background: rgba(0, 0, 0, .18);
+            filter: blur(8px);
+            border-radius: 22px;
+        }
+
+        /* share-bless.webp */
+        .wish-hero-title {
+            position: relative;
+            z-index: 2;
+            width: 88%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== WEDDING WISH (form only) ===== */
         .wish-section {
             position: relative;
             width: 100%;
             overflow: hidden;
-            background-color: #949a8f;
-            /* background solid */
-            /* [web:570] */
+            background: #949a8f;
+        }
+
+        /* base 9/16 */
+        .wish-base {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .wish-inner {
-            padding: 22px 18px 18px;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 22px 18px 72px;
+            /* ruang aman bawah */
             box-sizing: border-box;
-            min-height: 100vh;
 
             display: flex;
             flex-direction: column;
@@ -919,32 +921,13 @@
             gap: 12px;
         }
 
-        .wish-head {
+        .wish-comments {
             text-align: center;
             color: #fff;
-        }
-
-        .wish-title {
-            font-size: 34px;
-            font-weight: 900;
-            color: #e2ad78;
-            line-height: 1.05;
-        }
-
-        .wish-sub {
-            font-size: 13px;
-            font-weight: 700;
-            opacity: .95;
-            margin-top: 6px;
-        }
-
-        .wish-comments {
             font-size: 14px;
             font-weight: 900;
-            margin-top: 10px;
         }
 
-        /* stats */
         .wish-stats {
             width: 100%;
             max-width: 420px;
@@ -979,18 +962,16 @@
             opacity: .8;
         }
 
-        /* 50/50 area */
         .wish-formPane,
         .wish-listPane {
             width: 100%;
             max-width: 420px;
-            flex: 1 1 0;
-            min-height: 0;
+            margin: 0 auto;
         }
 
         /* form */
         .wish-form {
-            height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -1002,11 +983,16 @@
             width: 100%;
             box-sizing: border-box;
             border: none;
-            border-radius: 999px;
+            outline: none;
             padding: 12px 16px;
             background: rgba(255, 255, 255, .92);
             color: #2F2E2C;
-            outline: none;
+            font-family: 'Tenor Sans', sans-serif;
+        }
+
+        .wish-form input,
+        .wish-form select {
+            border-radius: 999px;
         }
 
         .wish-form textarea {
@@ -1020,40 +1006,61 @@
             border: none;
             border-radius: 999px;
             padding: 12px 16px;
-            background: #e2ad78;
-            color: #2F2E2C;
+            background: #727d6c;
+            color: #fff;
             font-weight: 900;
             cursor: pointer;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* list */
         .wish-list {
-            height: 100%;
+            width: 100%;
+            margin-top: 8px;
+            max-height: 360px;
             overflow-y: auto;
-            padding-right: 4px;
+            overflow-x: hidden;
+
             display: flex;
             flex-direction: column;
             gap: 14px;
+
             color: #fff;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        /* kalau template JS kamu bikin .message-item seperti di paste.txt */
-        .wish-list .message-item {
-            background: transparent;
-            border: none;
+        .wish-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .wish-item {
             padding: 0;
-            box-shadow: none;
         }
 
-        .wish-list .message-item .meta {
-            color: #fff;
+        .wish-item .meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
             font-weight: 900;
         }
 
-        .wish-list .message-item .text {
-            color: #fff;
+        .wish-item .text {
+            margin-top: 4px;
             opacity: .95;
         }
+
+        .wish-item .time {
+            margin-top: 8px;
+            font-size: 12px;
+            opacity: .75;
+        }
+
+        html,
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+        }
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -1092,95 +1099,90 @@
     <div class="page-wrapper">
 
         <!-- VERSE -->
-        <section class="verse-section">
-            <!-- Base background hijau (TANPA animasi) -->
+        <section class="verse-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse-base" alt="">
 
-            <!-- Frame bunga kiri-kanan + burung (animasi) -->
+            <!-- frame -->
             <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-frame" alt="" data-aos="fade"
-                data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+                data-aos-duration="1400" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
-            <!-- Layer isi -->
             <div class="verse-content">
-                <!-- Cincin -->
                 <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" alt="" data-aos="zoom-in"
-                    data-aos-duration="1400" data-aos-delay="400" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="900" data-aos-delay="250" data-aos-easing="ease-out-cubic">
 
-                <!-- Angsa -->
                 <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" alt="" data-aos="zoom-in"
-                    data-aos-duration="1400" data-aos-delay="750" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="900" data-aos-delay="400" data-aos-easing="ease-out-cubic">
 
-                <!-- Blink -->
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-easing="ease-out-cubic">
-
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="550" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1250" data-aos-easing="ease-out-cubic">
-
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="650" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
-                <!-- Verse (PALING TERAKHIR) -->
                 <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
-                    data-aos-duration="1600" data-aos-delay="1800" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1100" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
         <!-- BRIDE -->
-        <section class="bride-section">
-            <!-- Base background -->
+        <section class="bride-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
 
-            <!-- Bunga kiri & kanan (nanti terlihat seperti terpotong) -->
-            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left" alt=""
-                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right" alt=""
-                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <!-- Konten existing (tetap) -->
-            <div class="bride-content">
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" data-aos="fade-up"
-                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" data-aos="fade-up"
-                    data-aos-duration="2000" data-aos-delay="900" data-aos-easing="ease-out-cubic">
+            <div class="bride-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
+                data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt=""
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350"
+                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1200" data-aos-delay="500" data-aos-easing="ease-out-cubic">
             </div>
         </section>
+
 
         <!-- GROOM -->
-        <section class="groom-section">
-            <!-- Base background -->
+        <section class="groom-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
 
-            <!-- Bunga kiri & kanan -->
-            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right" alt=""
-                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <!-- Konten existing (tetap konsep overlay) -->
-            <div class="groom-content">
-                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" data-aos="fade-up"
-                    data-aos-duration="2000" data-aos-delay="700" data-aos-easing="ease-out-cubic">
+            <div class="groom-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1200" data-aos-delay="450" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
+
         <!-- DATE -->
-        <section class="date-section">
-            <!-- Base background -->
+        <section class="date-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
-            <!-- Bunga kiri & kanan -->
-            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left" alt=""
-                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right" alt=""
-                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay -->
-            <div class="date-content">
+            <div class="date-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1700" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1100" data-aos-delay="420" data-aos-easing="ease-out-cubic">
 
-                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="900"
+                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="560"
                     data-aos-easing="ease-out-cubic">
                     <div class="countdown-tiles">
                         <div class="ctile">
@@ -1204,112 +1206,84 @@
             </div>
         </section>
 
+
         <!-- DIRECTION -->
-        <section class="direction-section">
-            <!-- Base background -->
+        <section class="direction-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
-            <!-- Ornamennya seperti date -->
-            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left" alt=""
-                data-aos="fade-right" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
+                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay (punyamu, sama) -->
-            <div class="direction-content">
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1700" data-aos-delay="450" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="350"
+                    data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
-                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1800"
-                    data-aos-delay="750" data-aos-easing="ease-out-cubic">
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="900"
+                    data-aos-delay="520" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
-                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1800"
-                    data-aos-delay="1050" data-aos-easing="ease-out-cubic">
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1100"
+                    data-aos-delay="650" data-aos-easing="ease-out-cubic">
 
                 <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
-                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1350"
+                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="780"
                     data-aos-easing="ease-out-cubic">
                     <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
                     <span>Open Maps Location</span>
                 </a>
-
             </div>
         </section>
+
 
         <!-- VERSE 2 -->
-        <section class="verse2-section">
-            <!-- Base background (tanpa animasi) -->
+        <section class="verse2-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
-            <!-- Ornament kanan -->
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right" alt=""
-                data-aos="fade-left" data-aos-duration="1800" data-aos-delay="0" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
+                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
+                data-aos-easing="ease-out-cubic">
 
-            <!-- Content overlay -->
-            <div class="verse2-content">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1700" data-aos-delay="700" data-aos-easing="ease-out-cubic">
+            <div class="verse2-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+                data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="450"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-        <!-- RSVP (bless-bg as background) -->
-        {{-- <section id="rsvp" class="rsvp-section">
-            <img src="{{ asset('images/img/bless-bg.webp') }}" alt="Bless Background">
-            <div class="rsvp-inner">
-                <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1200">
-                    <form id="rsvpForm" class="rsvp-form">
-                        @csrf
-                        <div id="rsvpAlert"></div>
+        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
 
-                        <div class="form-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" name="name" id="fm_name" value="{{ $guestName }}" required>
-                        </div>
+            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
 
-                        <div class="form-group">
-                            <label>Konfirmasi Kehadiran</label>
-                            <select name="status" id="fm_status" required>
-                                <option value="">-- Pilih Status --</option>
-                                <option value="hadir">✓ Hadir</option>
-                                <option value="tidak hadir">✗ Tidak Hadir</option>
-                                <option value="tentatif">? Tentatif</option>
-                            </select>
-                        </div>
+            <div class="wish-hero-content">
+                <div class="wish-hero-overlay"></div>
 
-                        <div class="form-group">
-                            <label>Ucapan & Doa</label>
-                            <textarea name="message" id="fm_message"
-                                placeholder="Tulis doa dan ucapan untuk pengantin..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
-                    </form>
-                </div>
+                <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-hero-title"
+                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
+                    data-aos-easing="ease-out-cubic" />
             </div>
-        </section> --}}
+        </section>
+        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
 
-        <!-- Ucapan & Doa (gift-bg as background) -->
-        {{-- <section id="messages" class="messages-section">
-            <img src="{{ asset('images/img/gift-bg.webp') }}" alt="Gift Background">
-            <div class="messages-inner">
-                <div class="messages-card" data-aos="fade-up" data-aos-duration="1200">
-                    <h2 class="rsvp-title">Ucapan & Doa</h2>
-                    <div id="messagesList" class="messages-list">
-                        <!-- pesan di‑inject JS -->
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
-        <section id="weddingWish" class="wish-section">
             <div class="wish-inner">
-                <div class="wish-head">
-                    <div class="wish-title">Wedding Wish</div>
-                    <div class="wish-sub">Sending Wedding Wish</div>
-                    <div class="wish-comments"><span id="wishCommentCount">0</span> Comments</div>
+                <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="220"
+                    data-aos-easing="ease-out-cubic">
+                    <span id="wishCommentCount">0</span> Comments
                 </div>
 
-                <div class="wish-stats">
+                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="320"
+                    data-aos-easing="ease-out-cubic">
                     <div class="wish-stat present">
                         <div class="num" id="wishPresentCount">0</div>
                         <div class="lbl">Present</div>
@@ -1320,59 +1294,56 @@
                     </div>
                 </div>
 
-                <!-- FORM (ID FORM HARUS rsvpForm) -->
-                <div class="wish-formPane">
-                    <form id="rsvpForm" class="wish-form" data-aos="fade-up" data-aos-duration="1200">
+                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="420"
+                    data-aos-easing="ease-out-cubic">
+                    <form id="rsvpForm" class="wish-form">
                         @csrf
                         <div id="rsvpAlert"></div>
 
-                        <!-- BALIKIN KE ID LAMA BIAR JS KAMU WORK -->
-                        <input type="text" name="name" id="fmname" value="{{ $guestName }}" placeholder="Name" required>
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
+                            placeholder="Name" required>
+                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
 
-                        <textarea name="message" id="fmmessage" placeholder="Wish" required></textarea>
-
-                        <select name="status" id="fmstatus" required>
+                        <select name="status" id="fm_status" required>
                             <option value="">Attendance Confirmation</option>
                             <option value="hadir">✓ Present</option>
                             <option value="tidak hadir">✗ Absent</option>
                             <option value="tentatif">? Tentative</option>
                         </select>
 
-                        <button type="submit" class="wish-send">SEND</button>
+                        <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
                     </form>
                 </div>
 
-                <!-- LIST (ID HARUS messagesList) -->
-                <div class="wish-listPane">
-                    <div id="messagesList" class="wish-list">
-                        <!-- pesan di-inject JS -->
-                    </div>
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="520"
+                    data-aos-easing="ease-out-cubic">
+                    <div id="messagesList" class="wish-list"></div>
                 </div>
             </div>
         </section>
 
         <!-- THANK YOU -->
-        <section class="thanks-section">
-            <!-- base -->
+        <section class="thanks-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- ornament (animasi) -->
-            <img src="{{ asset('images/img/thanks-bg.webp') }}" class="thanks-ornament" alt="" data-aos="zoom-in"
-                data-aos-duration="1800" data-aos-easing="ease-out-cubic">
+            <!-- background besar: fade (lebih smooth daripada zoom) -->
+            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt=""
+                data-aos="fade" data-aos-duration="1600" data-aos-delay="150" data-aos-easing="ease-out-cubic">
 
-            <!-- content -->
             <div class="thanks-content">
                 <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="200" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="350"
+                    data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="520"
+                    data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="800" data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="690"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
-
 
     </div>
 
@@ -1412,10 +1383,10 @@
 
         [...imgs].forEach(img =>
             img.complete ?
-                updateLoader() :
-                img.addEventListener("load", updateLoader, {
-                    once: true
-                })
+            updateLoader() :
+            img.addEventListener("load", updateLoader, {
+                once: true
+            })
         );
 
         /* ========== OPEN INVITATION ========== */
@@ -1424,18 +1395,39 @@
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
 
-            bgmusic.play().catch(() => { });
+            bgmusic.play().catch(() => {});
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
+                (function tuneAosTimings() {
+                    const DUR_MULT = 1.8;
+                    const DEL_MULT = 1.5;
+
+                    document.querySelectorAll('[data-aos-duration]').forEach(el => {
+                        const v = parseInt(el.getAttribute('data-aos-duration') || '0', 10);
+                        if (v) el.setAttribute('data-aos-duration', String(Math.round(v *
+                            DUR_MULT)));
+                    });
+
+                    document.querySelectorAll('[data-aos-delay]').forEach(el => {
+                        const v = parseInt(el.getAttribute('data-aos-delay') || '0', 10);
+                        if (v) el.setAttribute('data-aos-delay', String(Math.round(v *
+                            DEL_MULT)));
+                    });
+                })();
+
                 AOS.init({
                     once: true,
-                    mirror: true,
-                    duration: 1200,
-                    easing: 'ease-out-quart',
-                    offset: 80
+                    mirror: false,
+                    offset: 120,
+                    duration: 2000,
+                    easing: 'ease-in-out',
+                    delay: 0,
+                    debounceDelay: 50,
+                    throttleDelay: 99
                 });
                 AOS.refreshHard();
+
             }, 300);
         });
 
@@ -1455,7 +1447,7 @@
             if (document.hidden) {
                 bgmusic.pause();
             } else {
-                bgmusic.play().catch(() => { });
+                bgmusic.play().catch(() => {});
             }
         });
 
@@ -1486,7 +1478,7 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        /* ========== RSVP & MESSAGES ========== */
+        /* ========== RSVP & MESSAGES (FIXED) ========== */
         const messagesIndexUrl = "{{ route('rsvp.messages') }}";
         const messagesStoreUrl = "{{ route('rsvp.store') }}";
 
@@ -1497,69 +1489,98 @@
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#39;'
-            }[c]));
+            } [c]));
+        }
+
+        function normalizeItems(data) {
+            if (Array.isArray(data)) return data;
+            if (data && Array.isArray(data.rows)) return data.rows;
+            if (data && Array.isArray(data.data)) return data.data;
+            return [];
+        }
+
+        function getStatusIcon(statusRaw) {
+            const s = String(statusRaw || '').toLowerCase().trim();
+
+            if (s === 'hadir') return "{{ asset('images/img/present.webp') }}";
+            if (s === 'tidak hadir' || s === 'tidak hadir') return "{{ asset('images/img/absent.webp') }}";
+            if (s === 'tentatif' || s === 'tentatif') return "{{ asset('images/img/tentative.webp') }}";
+
+            return ""; // fallback: kosong
+        }
+
+        function renderMessageItem(msg) {
+            const el = document.createElement('div');
+            el.className = 'wish-item';
+
+            const messageText =
+                (msg.message && String(msg.message).trim() !== '') ?
+                escapeHtml(msg.message) :
+                '— Belum menulis ucapan —';
+
+            const icon = getStatusIcon(msg.status);
+
+            el.innerHTML = `
+    <div class="meta">
+      <div>${escapeHtml(msg.name || 'Tamu')}</div>
+
+      <div style="display:flex;align-items:center;gap:8px;opacity:.85;font-weight:700;font-size:.92rem">
+        ${icon ? `<img src="${icon}" alt="" style="width:18px;height:18px;object-fit:contain">` : ''}
+      </div>
+    </div>
+
+    <div class="text">${messageText}</div>
+    <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
+  `;
+            return el;
+        }
+
+
+        function updateCounters(items) {
+            const all = (items || []).filter(Boolean);
+
+            const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
+            const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak hadir').length;
+
+            const cmtEl = document.getElementById('wishCommentCount');
+            const pEl = document.getElementById('wishPresentCount');
+            const aEl = document.getElementById('wishAbsentCount');
+
+            if (cmtEl) cmtEl.textContent = String(all.length);
+            if (pEl) pEl.textContent = String(present);
+            if (aEl) aEl.textContent = String(absent);
         }
 
         async function fetchMessages() {
+            const list = document.getElementById('messagesList');
+            if (!list) return;
+
             try {
                 const res = await fetch(messagesIndexUrl, {
                     headers: {
                         Accept: 'application/json'
                     }
                 });
-
                 const data = await res.json().catch(() => null);
                 if (!res.ok) throw new Error('Fetch failed');
 
-                let items = [];
-                if (Array.isArray(data)) items = data;
-                else if (data && Array.isArray(data.rows)) items = data.rows;
-                else if (data && Array.isArray(data.data)) items = data.data;
-
-                // sort terbaru dulu lalu ambil 5 terakhir
-                items = items.filter(m => m);
+                let items = normalizeItems(data).filter(Boolean);
                 items.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-                items = items.slice(0, 5);
 
-                const container = document.getElementById('messagesList');
-                if (!container) return;
+                updateCounters(items);
 
-                container.innerHTML = '';
+                list.innerHTML = '';
+                const top = items.slice(0, 5);
 
-                if (!items.length) {
-                    container.innerHTML =
-                        '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
+                if (!top.length) {
+                    list.innerHTML = '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
                     return;
                 }
 
-                items.forEach(msg => {
-                    const el = document.createElement('div');
-                    el.className = 'message-item';
-                    const messageText =
-                        (msg.message && String(msg.message).trim() !== '') ?
-                            escapeHtml(msg.message) :
-                            '— Belum menulis ucapan —';
-                    el.innerHTML = `
-                        <div class="meta">
-                            <div>${escapeHtml(msg.name || 'Tamu')}</div>
-                            <div style="opacity:.75;font-weight:600;font-size:.92rem">
-                                ${escapeHtml(msg.status || '')}
-                            </div>
-                        </div>
-                        <div class="text">${messageText}</div>
-                        <div style="margin-top:8px;font-size:0.8rem;color:#777">
-                            ${msg.created_at ? new Date(msg.created_at).toLocaleString() : ''}
-                        </div>
-                    `;
-                    container.appendChild(el);
-                });
+                top.forEach(msg => list.appendChild(renderMessageItem(msg)));
             } catch (e) {
                 console.error('fetchMessages error', e);
-                const container = document.getElementById('messagesList');
-                if (container) {
-                    container.innerHTML =
-                        '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
-                }
+                list.innerHTML = '<p style="opacity:.7">Gagal memuat ucapan. Coba refresh lagi.</p>';
             }
         }
 
@@ -1567,63 +1588,125 @@
             fetchMessages();
 
             const form = document.getElementById('rsvpForm');
-            if (form) {
-                form.addEventListener('submit', async (ev) => {
-                    ev.preventDefault();
-                    const name = document.getElementById('fm_name').value.trim();
-                    const status = document.getElementById('fm_status').value;
-                    const message = document.getElementById('fm_message').value.trim();
-                    const alertBox = document.getElementById('rsvpAlert');
-                    alertBox.innerHTML = '';
+            const btn = document.getElementById('wishSendBtn');
 
-                    if (!name || !status || !message) {
+            if (!form) return;
+
+            form.addEventListener('submit', async (ev) => {
+                ev.preventDefault();
+
+                const nameEl = document.getElementById('fm_name');
+                const statusEl = document.getElementById('fm_status');
+                const messageEl = document.getElementById('fm_message');
+
+                const alertBox = document.getElementById('rsvpAlert');
+                const list = document.getElementById('messagesList');
+
+                if (alertBox) alertBox.innerHTML = '';
+
+                // kalau element null => HTML id belum sesuai
+                if (!nameEl || !statusEl || !messageEl) {
+                    if (alertBox) {
                         alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Tolong isi semua field.</div>';
-                        return;
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu. Pastikan pakai fm_name/fm_status/fm_message.</div>';
                     }
+                    return;
+                }
 
-                    try {
-                        const token = document
-                            .querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content');
+                const name = nameEl.value.trim();
+                const status = statusEl.value;
+                const message = messageEl.value.trim();
 
-                        const res = await fetch(messagesStoreUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': token,
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                name,
-                                status,
-                                message
-                            })
+                if (!name || !status || !message) {
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">Tolong isi semua field.</div>';
+                    }
+                    return;
+                }
+
+                try {
+                    btn && (btn.disabled = true);
+
+                    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute(
+                        'content') || '';
+                    const res = await fetch(messagesStoreUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            status,
+                            message
+                        })
+                    });
+
+                    const saved = await res.json().catch(() => ({}));
+                    if (!res.ok) throw new Error(saved?.message || 'Request failed');
+
+                    // langsung tampil (tanpa fetch ulang)
+                    if (list) {
+                        // hapus placeholder atau error placeholder jika ada (lebih robust)
+                        Array.from(list.querySelectorAll('p')).forEach(p => {
+                            const txt = (p.textContent || '').trim();
+                            if (txt.includes('Belum ada ucapan') || txt.includes(
+                                    'Gagal memuat ucapan')) {
+                                p.remove();
+                            }
                         });
 
-                        if (!res.ok) throw new Error('Request failed');
+                        list.prepend(renderMessageItem({
+                            name,
+                            status,
+                            message,
+                            created_at: saved.created_at || new Date().toISOString()
+                        }));
+                    }
 
-                        await res.json();
-                        form.reset();
+                    // update angka simple (tanpa hit server)
+                    const cmtEl = document.getElementById('wishCommentCount');
+                    if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
+                        0) + 1);
+
+                    if (String(status).toLowerCase() === 'hadir') {
+                        const pEl = document.getElementById('wishPresentCount');
+                        if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
+                            1);
+                    }
+                    if (String(status).toLowerCase() === 'tidak hadir') {
+                        const aEl = document.getElementById('wishAbsentCount');
+                        if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
+                            1);
+                    }
+
+                    form.reset();
+
+                    if (alertBox) {
                         alertBox.innerHTML =
                             '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
-                        fetchMessages();
-                    } catch (err) {
-                        console.error('submit error', err);
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;border-color:#f5c6cb;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
                     }
-                });
-            }
+                } catch (err) {
+                    console.error('submit error', err);
+                    if (alertBox) {
+                        alertBox.innerHTML =
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                    }
+                } finally {
+                    btn && (btn.disabled = false);
+                }
+            });
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
-        document.addEventListener('contextmenu', function (e) {
+        document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         }, false);
 
-        document.addEventListener('touchmove', function (e) {
+        document.addEventListener('touchmove', function(e) {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }

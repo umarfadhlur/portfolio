@@ -830,7 +830,7 @@
             max-width: 240px;
         }
 
-        /* ===== HERO (bless + share-bless) ===== */
+        /* ===== HERO (bless + share-bless-green) ===== */
         .wish-hero-section {
             position: relative;
             width: 100%;
@@ -855,34 +855,19 @@
             z-index: 1;
         }
 
-        /* area title + overlay gelap */
         .wish-hero-content {
             position: absolute;
             inset: 0;
             z-index: 3;
 
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
 
             pointer-events: none;
         }
 
-        /* overlay gelap tipis (biar teks kebaca) */
-        .wish-hero-overlay {
-            position: absolute;
-            width: min(520px, 92%);
-            height: 220px;
-            /* adjust kalau mau lebih tinggi */
-            background: rgba(0, 0, 0, .18);
-            filter: blur(8px);
-            border-radius: 22px;
-        }
-
-        /* share-bless.webp */
         .wish-hero-title {
-            position: relative;
-            z-index: 2;
             width: 88%;
             max-width: 420px;
             height: auto;
@@ -1264,13 +1249,12 @@
                 data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
 
             <div class="wish-hero-content">
-                <div class="wish-hero-overlay"></div>
-
-                <img src="{{ asset('images/img/share-bless.webp') }}" class="wish-hero-title"
+                <img src="{{ asset('images/img/share-bless-green.webp') }}" class="wish-hero-title"
                     alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
                     data-aos-easing="ease-out-cubic" />
             </div>
         </section>
+
         <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
 
