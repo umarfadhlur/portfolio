@@ -830,9 +830,7 @@
             max-width: 240px;
         }
 
-        /* =======================
-   WEDDING GIFTS
-======================= */
+        /* ===== WEDDING GIFTS (FINAL - RAPAT + NO CUT OFF) ===== */
         .gift-section {
             position: relative;
             width: 100%;
@@ -841,7 +839,7 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16: hanya untuk min-height */
+        /* base 9/16: ngunci tinggi minimal */
         .gift-base {
             width: 100%;
             height: auto;
@@ -849,18 +847,23 @@
             visibility: hidden;
         }
 
-        /* ornamen atas ikut flow */
+        /* ornamen atas: IKUT FLOW biar kasih tinggi nyata (ini kunci biar gak jauh) */
         .gift-bg {
             position: relative;
+            /* sebelumnya absolute */
             width: 100%;
             height: auto;
             display: block;
+
             object-fit: contain;
             object-position: top center;
+
+            margin-top: 0;
             z-index: 1;
             pointer-events: none;
         }
 
+        /* konten ikut flow => bisa memanjang saat accordion open */
         .gift-inner {
             position: relative;
             z-index: 5;
@@ -874,10 +877,11 @@
             align-items: center;
             gap: 12px;
 
-            padding: 10px 18px 16px;
-            /* bottom diperkecil biar rapet ke next section */
+            /* sekarang kecil aja karena ornament sudah ngasih “ruang atas” */
+            padding: 10px 18px 40px;
         }
 
+        /* gift.webp (gambar teks) */
         .gift-text {
             width: 88%;
             max-width: 420px;
@@ -886,6 +890,7 @@
             margin: 0;
         }
 
+        /* accordion */
         .gift-accordion {
             width: 88%;
             max-width: 420px;
@@ -895,6 +900,7 @@
             overflow: visible;
         }
 
+        /* item */
         .gift-item {
             border-radius: 16px;
             background: rgba(255, 255, 255, .14);
@@ -905,9 +911,11 @@
         .gift-summary {
             list-style: none;
             cursor: pointer;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 14px 14px;
             font-weight: 900;
             color: #fff;
@@ -918,6 +926,7 @@
             display: none;
         }
 
+        /* icon kanan */
         .gift-icon {
             width: 26px;
             height: 26px;
@@ -943,6 +952,7 @@
             transform: rotate(90deg) translateX(1px);
         }
 
+        /* panel */
         .gift-panel {
             padding: 12px 14px 14px;
             background: rgba(0, 0, 0, .08);
@@ -985,6 +995,7 @@
             letter-spacing: .2px;
         }
 
+        /* copy */
         .gift-copy {
             font-family: 'Tenor Sans', sans-serif;
             pointer-events: auto;
@@ -1003,6 +1014,7 @@
             margin-top: 6px;
         }
 
+        /* toast */
         .gift-toast {
             min-height: 18px;
             font-size: 12px;
@@ -1012,9 +1024,7 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* =======================
-   HERO (bless + share-bless-green)
-======================= */
+        /* ===== HERO (bless + share-bless-green) ===== */
         .wish-hero-section {
             position: relative;
             width: 100%;
@@ -1043,9 +1053,11 @@
             position: absolute;
             inset: 0;
             z-index: 3;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             pointer-events: none;
         }
 
@@ -1056,39 +1068,30 @@
             display: block;
         }
 
-        /* =======================
-   WEDDING WISH (FIX GAP)
-======================= */
+        /* ===== WEDDING WISH (form only) ===== */
         .wish-section {
             position: relative;
             width: 100%;
-            overflow: visible;
-            /* supaya gak kepotong kalau konten lebih tinggi */
+            overflow: hidden;
             background: #949a8f;
-            font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16: biarin jadi min-height aja */
+        /* base 9/16 */
         .wish-base {
             width: 100%;
             height: auto;
             display: block;
-            visibility: hidden;
-            /* ini kunci: hilangin efek "ruang kosong terlihat" */
         }
 
-        /* ubah dari absolute -> relative supaya tinggi section ngikut konten */
         .wish-inner {
-            position: relative;
-            /* sebelumnya absolute */
-            inset: auto;
+            position: absolute;
+            inset: 0;
             z-index: 2;
 
             max-width: 480px;
             margin: 0 auto;
-
-            padding: 22px 18px 24px;
-            /* bottom diperkecil biar rapet ke next section */
+            padding: 22px 18px 72px;
+            /* ruang aman bawah */
             box-sizing: border-box;
 
             display: flex;
@@ -1145,6 +1148,7 @@
             margin: 0 auto;
         }
 
+        /* form */
         .wish-form {
             width: 100%;
             display: flex;
@@ -1188,6 +1192,7 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
+        /* list */
         .wish-list {
             width: 100%;
             margin-top: 8px;
