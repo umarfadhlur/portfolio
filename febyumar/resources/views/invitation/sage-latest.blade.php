@@ -883,6 +883,7 @@
             max-width: 420px;
             height: auto;
             display: block;
+            margin-top: 18px;
         }
 
         /* accordion */
@@ -895,7 +896,7 @@
         }
 
         .gift-item {
-            border-radius: 999px;
+            border-radius: 16px;
             background: rgba(255, 255, 255, .14);
             border: 1px solid rgba(255, 255, 255, .18);
             overflow: hidden;
@@ -910,7 +911,7 @@
             align-items: center;
             justify-content: space-between;
 
-            padding: 12px 14px;
+            padding: 14px 14px;
             font-weight: 900;
             color: #fff;
         }
@@ -950,7 +951,7 @@
             padding: 12px 14px 14px;
             background: rgba(0, 0, 0, .08);
             border-top: 1px solid rgba(255, 255, 255, .16);
-            border-radius: 0 0 18px 18px;
+            border-radius: 0 0 16px 16px;
             color: #fff;
         }
 
