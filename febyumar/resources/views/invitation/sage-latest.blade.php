@@ -831,7 +831,29 @@
         }
 
         /* =======================
-   WEDDING GIFTS
+   GLOBAL SAFETY
+======================= */
+        #weddingWish,
+        #weddingGifts {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HAPUS TOTAL BASE 9/16 (BIAR GAK ADA RUANG KOSONG) */
+        .wish-base,
+        .gift-base,
+        .wish-hero-base {
+            display: none !important;
+            /* display:none menghapus elemen dari layout */
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        /* [web:438][web:466] */
+
+
+        /* =======================
+   WEDDING GIFTS (NO 9/16)
 ======================= */
         .gift-section {
             position: relative;
@@ -841,15 +863,7 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16: hanya untuk min-height */
-        .gift-base {
-            width: 100%;
-            height: auto;
-            display: block;
-            visibility: hidden;
-        }
-
-        /* ornamen atas ikut flow */
+        /* ornamen atas ikut flow => memberi tinggi nyata (rapet) */
         .gift-bg {
             position: relative;
             width: 100%;
@@ -857,6 +871,7 @@
             display: block;
             object-fit: contain;
             object-position: top center;
+            margin: 0;
             z-index: 1;
             pointer-events: none;
         }
@@ -875,7 +890,7 @@
             gap: 12px;
 
             padding: 10px 18px 16px;
-            /* bottom diperkecil biar rapet ke next section */
+            /* rapet */
         }
 
         .gift-text {
@@ -905,9 +920,11 @@
         .gift-summary {
             list-style: none;
             cursor: pointer;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 14px 14px;
             font-weight: 900;
             color: #fff;
@@ -1012,22 +1029,24 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
+
         /* =======================
-   HERO (bless + share-bless-green)
+   HERO (tetap boleh 9/16? -> sekarang ikut konten)
+   NOTE: Karena base dihapus, hero harus punya tinggi sendiri.
 ======================= */
         .wish-hero-section {
             position: relative;
             width: 100%;
             overflow: hidden;
             background: #949a8f;
+
+            /* kasih tinggi pengganti base (pilih salah satu):
+     - min-height: 340px (simple)
+     - atau aspect-ratio: 9/16 (kalau mau hero aja yang ngunci) */
+            min-height: 340px;
         }
 
-        .wish-hero-base {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        /* background cover */
         .wish-hero-bg {
             position: absolute;
             inset: 0;
@@ -1043,9 +1062,11 @@
             position: absolute;
             inset: 0;
             z-index: 3;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             pointer-events: none;
         }
 
@@ -1056,46 +1077,29 @@
             display: block;
         }
 
-        #weddingWish,
-        #weddingGifts {
-            margin: 0;
-        }
 
         /* =======================
-   WEDDING WISH (FIX GAP)
+   WEDDING WISH (NO 9/16)
 ======================= */
         .wish-section {
             position: relative;
             width: 100%;
             overflow: visible;
-            /* supaya gak kepotong kalau konten lebih tinggi */
+            /* accordion/list gak kepotong */
             background: #949a8f;
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16: biarin jadi min-height aja */
-        .wish-base {
-            width: 100%;
-            height: auto;
-            display: block;
-            visibility: hidden;
-            /* ini kunci: hilangin efek "ruang kosong terlihat" */
-        }
-
-        /* ubah dari absolute -> relative supaya tinggi section ngikut konten */
         .wish-inner {
             position: relative;
-            /* sebelumnya absolute */
-            inset: auto;
+            /* ikut flow */
             z-index: 2;
 
             max-width: 480px;
             margin: 0 auto;
-
-            padding: 22px 18px 24px;
-            /* bottom diperkecil biar rapet ke next section */
             box-sizing: border-box;
 
+            padding: 22px 18px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1234,6 +1238,7 @@
             font-size: 12px;
             opacity: .75;
         }
+
 
         html,
         body {
