@@ -1056,6 +1056,11 @@
             display: block;
         }
 
+        #weddingWish,
+        #weddingGifts {
+            margin: 0;
+        }
+
         /* =======================
    WEDDING WISH (FIX GAP)
 ======================= */
