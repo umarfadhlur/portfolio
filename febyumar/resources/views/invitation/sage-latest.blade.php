@@ -1031,8 +1031,7 @@
 
 
         /* =======================
-   HERO (tetap boleh 9/16? -> sekarang ikut konten)
-   NOTE: Karena base dihapus, hero harus punya tinggi sendiri.
+   HERO (UTUH, NO CROP)
 ======================= */
         .wish-hero-section {
             position: relative;
@@ -1040,23 +1039,30 @@
             overflow: hidden;
             background: #949a8f;
 
-            /* kasih tinggi pengganti base (pilih salah satu):
-     - min-height: 340px (simple)
-     - atau aspect-ratio: 9/16 (kalau mau hero aja yang ngunci) */
-            min-height: 340px;
+            /* karena base 9/16 sudah dihapus, hero butuh tinggi sendiri */
+            aspect-ratio: 9 / 16;
+            /* hero tetap “screen-like” tapi tanpa spacer image */
+            min-height: 420px;
+            /* jaga-jaga layar tinggi kecil */
         }
 
-        /* background cover */
+        /* [web:455] */
+
         .wish-hero-bg {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+
+            object-fit: contain;
+            /* ini kunci: gambar utuh, gak kepotong */
             object-position: top center;
+
             pointer-events: none;
             z-index: 1;
         }
+
+        /* [web:478][web:485] */
 
         .wish-hero-content {
             position: absolute;
@@ -1076,7 +1082,6 @@
             height: auto;
             display: block;
         }
-
 
         /* =======================
    WEDDING WISH (NO 9/16)
