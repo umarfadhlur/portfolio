@@ -830,7 +830,7 @@
             max-width: 240px;
         }
 
-        /* ===== WEDDING GIFTS (FINAL - NO CUT OFF + PAS) ===== */
+        /* ===== WEDDING GIFTS (FINAL - RAPAT + NO CUT OFF) ===== */
         .gift-section {
             position: relative;
             width: 100%;
@@ -847,16 +847,18 @@
             visibility: hidden;
         }
 
-        /* ornamen atas */
+        /* ornamen atas: IKUT FLOW biar kasih tinggi nyata (ini kunci biar gak jauh) */
         .gift-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
+            /* sebelumnya absolute */
             width: 100%;
             height: auto;
+            display: block;
+
             object-fit: contain;
             object-position: top center;
+
+            margin-top: 0;
             z-index: 1;
             pointer-events: none;
         }
@@ -873,11 +875,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
 
-            /* ini yang ngatur jarak dari ornamen atas */
-            padding: 12% 18px 40px;
-            /* TOP / LR / BOTTOM */
+            /* sekarang kecil aja karena ornament sudah ngasih “ruang atas” */
+            padding: 10px 18px 40px;
         }
 
         /* gift.webp (gambar teks) */
@@ -989,7 +990,6 @@
             font-weight: 700;
         }
 
-        /* kalau mau nomor agak beda style, tapi tetap Tenor Sans */
         .gift-mono {
             font-family: 'Tenor Sans', sans-serif;
             letter-spacing: .2px;
