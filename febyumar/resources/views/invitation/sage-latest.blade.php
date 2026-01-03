@@ -830,6 +830,166 @@
             max-width: 240px;
         }
 
+        /* ===== WEDDING GIFTS ===== */
+        .gift-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #949a8f;
+        }
+
+        .gift-base {
+            width: 100%;
+            height: auto;
+            display: block;
+            visibility: hidden;
+        }
+
+        .gift-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .gift-inner {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 22px 18px 72px;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+
+            color: #fff;
+            text-align: center;
+        }
+
+        .gift-title-img {
+            width: 68%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+        }
+
+        .gift-desc {
+            margin: 0;
+            width: 92%;
+            max-width: 420px;
+            font-size: 13px;
+            line-height: 1.45;
+            opacity: .95;
+        }
+
+        /* accordion container */
+        .gift-accordion {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        /* details */
+        .gift-item {
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .14);
+            border: 1px solid rgba(255, 255, 255, .18);
+            overflow: hidden;
+        }
+
+        /* summary */
+        .gift-summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 14px 14px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .gift-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* panel */
+        .gift-panel {
+            padding: 12px 14px 14px;
+            border-top: 1px solid rgba(255, 255, 255, .18);
+        }
+
+        .gift-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .gift-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .gift-row-top {
+            align-items: flex-start;
+        }
+
+        .gift-meta {
+            flex: 1;
+        }
+
+        .gift-label {
+            font-size: 11px;
+            opacity: .8;
+            margin-bottom: 2px;
+        }
+
+        .gift-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .gift-mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        /* copy button */
+        .gift-copy {
+            pointer-events: auto;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, .9);
+            color: #2F2E2C;
+            font-weight: 900;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .gift-copy-wide {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* toast */
+        .gift-toast {
+            min-height: 18px;
+            font-size: 12px;
+            font-weight: 800;
+            opacity: .9;
+        }
+
         /* ===== HERO (bless + share-bless-green) ===== */
         .wish-hero-section {
             position: relative;
@@ -1238,6 +1398,81 @@
                 <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
                     data-aos="fade-up" data-aos-duration="1100" data-aos-delay="450"
                     data-aos-easing="ease-out-cubic">
+            </div>
+        </section>
+
+        <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/empty.webp') }}" class="gift-base" alt="">
+
+            <img src="{{ asset('images/img/gift-bg.webp') }}" class="gift-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="180" data-aos-easing="ease-out-cubic" />
+
+            <div class="gift-inner">
+                <img src="{{ asset('images/img/gift.webp') }}" class="gift-title-img" alt="Wedding Gift"
+                    data-aos="fade-down" data-aos-duration="1000" data-aos-delay="220"
+                    data-aos-easing="ease-out-cubic" />
+
+                <div class="gift-accordion" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
+                    data-aos-easing="ease-out-cubic">
+
+                    <!-- BANK -->
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">Bank Transfer</summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-row">
+                                <div class="gift-meta">
+                                    <div class="gift-label">Bank</div>
+                                    <div class="gift-value">BCA</div>
+                                </div>
+
+                                <button type="button" class="gift-copy" data-copy="1234567890"
+                                    aria-label="Copy account number">
+                                    Copy No. Rek
+                                </button>
+                            </div>
+
+                            <div class="gift-row">
+                                <div class="gift-meta">
+                                    <div class="gift-label">No. Rek</div>
+                                    <div class="gift-value gift-mono">1234567890</div>
+                                </div>
+                            </div>
+
+                            <div class="gift-row">
+                                <div class="gift-meta">
+                                    <div class="gift-label">A/N</div>
+                                    <div class="gift-value">Feby & Umar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- ALAMAT -->
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">Send a Gift</summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-row gift-row-top">
+                                <div class="gift-meta">
+                                    <div class="gift-label">Alamat</div>
+                                    <div class="gift-value">
+                                        Jl. Contoh No. 123, RT 01/RW 02, Kel. Contoh, Kec. Contoh, Jakarta, 12345
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="gift-copy gift-copy-wide"
+                                data-copy="Jl. Contoh No. 123, RT 01/RW 02, Kel. Contoh, Kec. Contoh, Jakarta, 12345">
+                                Copy Alamat
+                            </button>
+                        </div>
+                    </details>
+
+                </div>
+
+                <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
             </div>
         </section>
 
