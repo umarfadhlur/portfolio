@@ -842,7 +842,6 @@
             width: 100%;
             height: auto;
             display: block;
-            visibility: hidden;
         }
 
         .gift-bg {
@@ -852,68 +851,76 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            pointer-events: none;
             z-index: 1;
+            pointer-events: none;
         }
 
+        /* overlay */
         .gift-inner {
             position: absolute;
             inset: 0;
             z-index: 5;
 
-            max-width: 480px;
+            max-width: 520px;
             margin: 0 auto;
-            padding: 22px 18px 72px;
+
+            padding: 12% 18px 10%;
             box-sizing: border-box;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            text-align: center;
 
             color: #fff;
-            text-align: center;
         }
 
         .gift-title-img {
-            width: 68%;
-            max-width: 320px;
+            width: 62%;
+            max-width: 300px;
             height: auto;
             display: block;
+            margin-bottom: 6px;
         }
 
         .gift-desc {
-            margin: 0;
-            width: 92%;
+            width: 86%;
             max-width: 420px;
+            margin: 0;
             font-size: 13px;
-            line-height: 1.45;
+            line-height: 1.5;
             opacity: .95;
         }
 
-        /* accordion container */
-        .gift-accordion {
-            width: 100%;
-            max-width: 420px;
+        /* tempat tombol accordion (posisi seperti gambar 2) */
+        .gift-accordionWrap {
+            width: 86%;
+            max-width: 360px;
+            margin-top: 18px;
+
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            text-align: left;
+            gap: 12px;
         }
 
-        /* details */
+        /* style pill */
         .gift-item {
-            border-radius: 14px;
-            background: rgba(255, 255, 255, .14);
-            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .20);
             overflow: hidden;
         }
 
-        /* summary */
+        /* summary pill */
         .gift-summary {
             list-style: none;
             cursor: pointer;
-            padding: 14px 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 14px;
             font-weight: 900;
             color: #fff;
         }
@@ -922,16 +929,29 @@
             display: none;
         }
 
-        /* panel */
+        .gift-chevron {
+            font-size: 18px;
+            opacity: .9;
+            transform: translateY(-1px);
+        }
+
+        .gift-item[open] .gift-chevron {
+            transform: rotate(90deg);
+        }
+
+        /* panel saat open */
         .gift-panel {
             padding: 12px 14px 14px;
             border-top: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 0 0 18px 18px;
+
+            background: rgba(0, 0, 0, .10);
         }
 
         .gift-row {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             gap: 12px;
             margin-bottom: 10px;
         }
@@ -946,6 +966,7 @@
 
         .gift-meta {
             flex: 1;
+            text-align: left;
         }
 
         .gift-label {
@@ -957,33 +978,32 @@
         .gift-value {
             font-size: 13px;
             font-weight: 700;
-            color: #fff;
         }
 
         .gift-mono {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
 
-        /* copy button */
+        /* button copy */
         .gift-copy {
             pointer-events: auto;
             border: none;
             border-radius: 999px;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, .9);
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, .92);
             color: #2F2E2C;
             font-weight: 900;
             cursor: pointer;
             white-space: nowrap;
         }
 
-        .gift-copy-wide {
+        .gift-copyWide {
             width: 100%;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
-        /* toast */
         .gift-toast {
+            margin-top: 10px;
             min-height: 18px;
             font-size: 12px;
             font-weight: 800;
@@ -1413,12 +1433,13 @@
                     data-aos="fade-down" data-aos-duration="1000" data-aos-delay="220"
                     data-aos-easing="ease-out-cubic" />
 
-                <div class="gift-accordion" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
+                <div class="gift-accordionWrap" data-aos="fade-up" data-aos-duration="900" data-aos-delay="420"
                     data-aos-easing="ease-out-cubic">
-
-                    <!-- BANK -->
                     <details class="gift-item" name="giftAccordion">
-                        <summary class="gift-summary">Bank Transfer</summary>
+                        <summary class="gift-summary">
+                            <span>Bank Transfer</span>
+                            <span class="gift-chevron">›</span>
+                        </summary>
 
                         <div class="gift-panel">
                             <div class="gift-row">
@@ -1426,18 +1447,15 @@
                                     <div class="gift-label">Bank</div>
                                     <div class="gift-value">BCA</div>
                                 </div>
-
-                                <button type="button" class="gift-copy" data-copy="1234567890"
-                                    aria-label="Copy account number">
-                                    Copy No. Rek
-                                </button>
                             </div>
 
-                            <div class="gift-row">
+                            <div class="gift-row gift-copyRow">
                                 <div class="gift-meta">
                                     <div class="gift-label">No. Rek</div>
                                     <div class="gift-value gift-mono">1234567890</div>
                                 </div>
+
+                                <button type="button" class="gift-copy" data-copy="1234567890">Copy</button>
                             </div>
 
                             <div class="gift-row">
@@ -1449,9 +1467,11 @@
                         </div>
                     </details>
 
-                    <!-- ALAMAT -->
                     <details class="gift-item" name="giftAccordion">
-                        <summary class="gift-summary">Send a Gift</summary>
+                        <summary class="gift-summary">
+                            <span>Send A Gift</span>
+                            <span class="gift-chevron">›</span>
+                        </summary>
 
                         <div class="gift-panel">
                             <div class="gift-row gift-row-top">
@@ -1463,13 +1483,12 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="gift-copy gift-copy-wide"
+                            <button type="button" class="gift-copy gift-copyWide"
                                 data-copy="Jl. Contoh No. 123, RT 01/RW 02, Kel. Contoh, Kec. Contoh, Jakarta, 12345">
                                 Copy Alamat
                             </button>
                         </div>
                     </details>
-
                 </div>
 
                 <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
@@ -1932,6 +1951,32 @@
         }, {
             passive: false
         });
+
+        (function() {
+            const toast = document.getElementById('giftToast');
+
+            function showToast(msg) {
+                if (!toast) return;
+                toast.textContent = msg;
+                clearTimeout(window.__giftToastT);
+                window.__giftToastT = setTimeout(() => toast.textContent = '', 1400);
+            }
+
+            document.addEventListener('click', async (e) => {
+                const btn = e.target.closest('.gift-copy');
+                if (!btn) return;
+
+                const text = btn.getAttribute('data-copy') || '';
+                if (!text) return;
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    showToast('Copied!');
+                } catch (err) {
+                    showToast('Copy failed.');
+                }
+            });
+        })();
     </script>
 
 </body>
