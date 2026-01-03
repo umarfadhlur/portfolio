@@ -1430,6 +1430,71 @@
             </div>
         </section>
 
+        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
+
+            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+
+            <div class="wish-hero-content">
+                <img src="{{ asset('images/img/share-bless-green.webp') }}" class="wish-hero-title"
+                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
+                    data-aos-easing="ease-out-cubic" />
+            </div>
+        </section>
+
+        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+
+            <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
+
+            <div class="wish-inner">
+                <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="220"
+                    data-aos-easing="ease-out-cubic">
+                    <span id="wishCommentCount">0</span> Comments
+                </div>
+
+                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="320"
+                    data-aos-easing="ease-out-cubic">
+                    <div class="wish-stat present">
+                        <div class="num" id="wishPresentCount">0</div>
+                        <div class="lbl">Present</div>
+                    </div>
+                    <div class="wish-stat absent">
+                        <div class="num" id="wishAbsentCount">0</div>
+                        <div class="lbl">Absent</div>
+                    </div>
+                </div>
+
+                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="420"
+                    data-aos-easing="ease-out-cubic">
+                    <form id="rsvpForm" class="wish-form">
+                        @csrf
+                        <div id="rsvpAlert"></div>
+
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
+                            placeholder="Name" required>
+                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
+
+                        <select name="status" id="fm_status" required>
+                            <option value="">Attendance Confirmation</option>
+                            <option value="hadir">✓ Present</option>
+                            <option value="tidak hadir">✗ Absent</option>
+                            <option value="tentatif">? Tentative</option>
+                        </select>
+
+                        <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
+                    </form>
+                </div>
+
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="520"
+                    data-aos-easing="ease-out-cubic">
+                    <div id="messagesList" class="wish-list"></div>
+                </div>
+            </div>
+        </section>
+
         <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
             <!-- base 9/16 -->
@@ -1501,71 +1566,6 @@
                 </div>
 
                 <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
-            </div>
-        </section>
-
-        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
-            <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
-
-            <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
-                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
-
-            <div class="wish-hero-content">
-                <img src="{{ asset('images/img/share-bless-green.webp') }}" class="wish-hero-title"
-                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
-                    data-aos-easing="ease-out-cubic" />
-            </div>
-        </section>
-
-        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
-
-            <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
-
-            <div class="wish-inner">
-                <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="220"
-                    data-aos-easing="ease-out-cubic">
-                    <span id="wishCommentCount">0</span> Comments
-                </div>
-
-                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="320"
-                    data-aos-easing="ease-out-cubic">
-                    <div class="wish-stat present">
-                        <div class="num" id="wishPresentCount">0</div>
-                        <div class="lbl">Present</div>
-                    </div>
-                    <div class="wish-stat absent">
-                        <div class="num" id="wishAbsentCount">0</div>
-                        <div class="lbl">Absent</div>
-                    </div>
-                </div>
-
-                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="420"
-                    data-aos-easing="ease-out-cubic">
-                    <form id="rsvpForm" class="wish-form">
-                        @csrf
-                        <div id="rsvpAlert"></div>
-
-                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                            placeholder="Name" required>
-                        <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
-
-                        <select name="status" id="fm_status" required>
-                            <option value="">Attendance Confirmation</option>
-                            <option value="hadir">✓ Present</option>
-                            <option value="tidak hadir">✗ Absent</option>
-                            <option value="tentatif">? Tentative</option>
-                        </select>
-
-                        <button type="submit" class="wish-send" id="wishSendBtn">SEND</button>
-                    </form>
-                </div>
-
-                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="520"
-                    data-aos-easing="ease-out-cubic">
-                    <div id="messagesList" class="wish-list"></div>
-                </div>
             </div>
         </section>
 
