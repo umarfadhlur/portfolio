@@ -830,19 +830,23 @@
             max-width: 240px;
         }
 
-        /* ===== WEDDING GIFTS (CLEAN) ===== */
+        /* ===== WEDDING GIFTS (FINAL - NO CUT OFF) ===== */
         .gift-section {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow: visible;
+            /* penting: biar konten open gak kepotong */
             background: #949a8f;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16 */
+        /* base 9/16: tetap dipakai buat ngunci tinggi MINIMAL */
         .gift-base {
             width: 100%;
             height: auto;
             display: block;
+            visibility: hidden;
+            /* base tetep ngunci tinggi tapi gak keliatan */
         }
 
         /* ornamen atas */
@@ -859,24 +863,25 @@
             pointer-events: none;
         }
 
-        /* overlay content */
+        /* konten ikut flow (bukan absolute) => bisa memanjang saat accordion open */
         .gift-inner {
-            position: absolute;
-            inset: 0;
+            position: relative;
+            /* sebelumnya absolute */
             z-index: 5;
 
             max-width: 520px;
+            /* ini yang jaga tampilan tetap rapi */
             margin: 0 auto;
             box-sizing: border-box;
 
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            /* pakai 1 sumber padding saja (jangan dobel) */
-            padding: 56% 18px 18%;
-            /* TOP / LR / BOTTOM */
             gap: 14px;
+
+            /* Top spacing buat turun dari bunga + bottom space biar gak nabrak */
+            padding: 56% 18px 40px;
+            /* TOP / LR / BOTTOM */
         }
 
         /* gift.webp (gambar teks) */
@@ -886,7 +891,6 @@
             height: auto;
             display: block;
             margin: 0;
-            /* jangan pake margin-top lagi */
         }
 
         /* accordion */
@@ -896,9 +900,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-
             overflow: visible;
-            /* jangan dibatesin dulu */
         }
 
         /* item */
@@ -989,12 +991,14 @@
             font-weight: 700;
         }
 
+        /* mono khusus nomor (kalau kamu mau tetap Tenor Sans, boleh hapus ini) */
         .gift-mono {
             font-family: 'Tenor Sans', sans-serif;
         }
 
         /* copy */
         .gift-copy {
+            font-family: 'Tenor Sans', sans-serif;
             pointer-events: auto;
             border: none;
             border-radius: 999px;
