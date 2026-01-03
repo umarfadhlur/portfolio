@@ -830,23 +830,21 @@
             max-width: 240px;
         }
 
-        /* ===== WEDDING GIFTS (FINAL - NO CUT OFF) ===== */
+        /* ===== WEDDING GIFTS (FINAL - NO CUT OFF + PAS) ===== */
         .gift-section {
             position: relative;
             width: 100%;
             overflow: visible;
-            /* penting: biar konten open gak kepotong */
             background: #949a8f;
             font-family: 'Tenor Sans', sans-serif;
         }
 
-        /* base 9/16: tetap dipakai buat ngunci tinggi MINIMAL */
+        /* base 9/16: ngunci tinggi minimal */
         .gift-base {
             width: 100%;
             height: auto;
             display: block;
             visibility: hidden;
-            /* base tetep ngunci tinggi tapi gak keliatan */
         }
 
         /* ornamen atas */
@@ -863,14 +861,12 @@
             pointer-events: none;
         }
 
-        /* konten ikut flow (bukan absolute) => bisa memanjang saat accordion open */
+        /* konten ikut flow => bisa memanjang saat accordion open */
         .gift-inner {
             position: relative;
-            /* sebelumnya absolute */
             z-index: 5;
 
             max-width: 520px;
-            /* ini yang jaga tampilan tetap rapi */
             margin: 0 auto;
             box-sizing: border-box;
 
@@ -879,8 +875,8 @@
             align-items: center;
             gap: 14px;
 
-            /* Top spacing buat turun dari bunga + bottom space biar gak nabrak */
-            padding: 56% 18px 40px;
+            /* ini yang ngatur jarak dari ornamen atas */
+            padding: 32% 18px 40px;
             /* TOP / LR / BOTTOM */
         }
 
@@ -922,6 +918,7 @@
             padding: 14px 14px;
             font-weight: 900;
             color: #fff;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         .gift-summary::-webkit-details-marker {
@@ -961,6 +958,7 @@
             border-top: 1px solid rgba(255, 255, 255, .16);
             border-radius: 0 0 16px 16px;
             color: #fff;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         .gift-line {
@@ -991,9 +989,10 @@
             font-weight: 700;
         }
 
-        /* mono khusus nomor (kalau kamu mau tetap Tenor Sans, boleh hapus ini) */
+        /* kalau mau nomor agak beda style, tapi tetap Tenor Sans */
         .gift-mono {
             font-family: 'Tenor Sans', sans-serif;
+            letter-spacing: .2px;
         }
 
         /* copy */
@@ -1022,6 +1021,7 @@
             font-weight: 800;
             color: #fff;
             opacity: .95;
+            font-family: 'Tenor Sans', sans-serif;
         }
 
         /* ===== HERO (bless + share-bless-green) ===== */
