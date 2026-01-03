@@ -875,6 +875,7 @@
             flex-direction: column;
             align-items: center;
             gap: 16px;
+            padding-top: 22%;
         }
 
         /* gift.webp isinya tulisan: cukup tampilkan ini */
