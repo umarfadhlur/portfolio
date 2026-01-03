@@ -758,7 +758,9 @@
             color: #155724;
         }
 
-        /* THANK YOU SECTION */
+        /* =======================
+   THANK YOU SECTION
+======================= */
         .thanks-section {
             position: relative;
             width: 100%;
@@ -766,12 +768,14 @@
             background: #949a8f;
         }
 
+        /* kalau kamu masih pakai base (empty.webp) untuk tinggi section */
         .thanks-base {
             width: 100%;
             height: auto;
             display: block;
         }
 
+        /* ornament background */
         .thanks-ornament {
             position: absolute;
             inset: 0;
@@ -794,17 +798,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+
+            /* biar grup agak naik, jangan center mentok */
+            justify-content: flex-start;
 
             gap: 18px;
-            padding: 8% 16px 6%;
+            padding: 10% 16px 6%;
+            /* ini yang ngontrol "naik turun" grup */
             box-sizing: border-box;
             pointer-events: none;
-        }
-
-        /* ini yang benar-benar “naikin grup” tanpa transform */
-        .thanks-content {
-            padding-top: calc(8%);
         }
 
         .thanks-item {
@@ -814,11 +816,18 @@
             display: block;
         }
 
-        /* HAPUS transform translateY di item biar gak konflik sama AOS */
+        /* ===== ukuran tiap item ===== */
         .thanks-1 {
             width: 60%;
             max-width: 320px;
+
+            /* NAIKIN thanks-1 DENGAN BENAR (tanpa transform) */
+            position: relative;
+            top: -18px;
+            /* adjust: -10px s/d -40px */
         }
+
+        /* top works on positioned elements [web:530] */
 
         .thanks-2 {
             width: 55%;
@@ -894,8 +903,8 @@
         }
 
         .gift-text {
-            width: 88%;
-            max-width: 420px;
+            width: 70%;
+            max-width: 380px;
             height: auto;
             display: block;
             margin: 0;
@@ -1585,28 +1594,28 @@
         </section>
 
         <!-- THANK YOU -->
-        <section class="thanks-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="thanks-section" data-aos="fade" data-aos-duration="2200" data-aos-easing="ease-out-cubic">
+
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
-            <!-- background besar: fade (lebih smooth daripada zoom) -->
+            <!-- background besar: fade lebih lama -->
             <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt=""
-                data-aos="fade" data-aos-duration="1600" data-aos-delay="150" data-aos-easing="ease-out-cubic">
+                data-aos="fade" data-aos-duration="2600" data-aos-delay="300" data-aos-easing="ease-out-cubic">
 
             <div class="thanks-content">
                 <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="350"
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="700"
                     data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="520"
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1050"
                     data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="690"
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1400"
                     data-aos-easing="ease-out-cubic">
             </div>
         </section>
-
     </div>
 
     <!-- AOS -->
