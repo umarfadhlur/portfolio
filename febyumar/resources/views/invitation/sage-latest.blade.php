@@ -839,6 +839,7 @@
             max-width: 240px;
         }
 
+
         /* =======================
    GLOBAL SAFETY
 ======================= */
@@ -865,6 +866,8 @@
    WEDDING GIFTS (NO 9/16)
 ======================= */
         .gift-section {
+            padding-top: 10%;
+            padding-bottom: 10%;
             position: relative;
             width: 100%;
             overflow: visible;
