@@ -1262,6 +1262,15 @@
             font-family: 'Tenor Sans', sans-serif;
         }
 
+        .spacer-10 {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+
 
         [data-aos].aos-animate {
             opacity: 1 !important;
@@ -1522,6 +1531,8 @@
             </div>
         </section>
 
+        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
+
         <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
             <!-- base 9/16 -->
@@ -1595,6 +1606,8 @@
                 <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
             </div>
         </section>
+
+        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- THANK YOU -->
         <section class="thanks-section" data-aos="fade" data-aos-duration="2200" data-aos-easing="ease-out-cubic">
