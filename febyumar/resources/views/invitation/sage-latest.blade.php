@@ -1531,7 +1531,7 @@
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
+        {{-- <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="1200"
             data-aos-easing="ease-out-cubic">
@@ -1607,7 +1607,7 @@
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
+        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt=""> --}}
 
         <!-- THANK YOU -->
         <section class="thanks-section" data-aos="fade" data-aos-duration="2200" data-aos-easing="ease-out-cubic">
