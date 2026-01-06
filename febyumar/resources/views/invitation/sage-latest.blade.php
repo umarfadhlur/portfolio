@@ -5,13 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>The Wedding of {{ $setting->bride_name }} & {{ $setting->groom_name }}</title>
+    <!-- HTML Meta Tags -->
+    <title>The Wedding of Feby & Umar</title>
+    <meta name="description" content="We would love to have you celebrate our wedding day with us.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:url" content="https://febyumar.world">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Wedding of Feby & Umar">
+    <meta property="og:description" content="We would love to have you celebrate our wedding day with us.">
+    <meta property="og:image" content="{{ asset('images/img/web-cover-new.webp') }}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="febyumar.world">
+    <meta property="twitter:url" content="https://febyumar.world">
+    <meta name="twitter:title" content="The Wedding of Feby & Umar">
+    <meta name="twitter:description" content="We would love to have you celebrate our wedding day with us.">
+    <meta name="twitter:image" content="{{ asset('images/img/web-cover-new.webp') }}">
+
+    <!-- Meta Tags Generated via https://opengraph.dev -->
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
     <!-- AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
     <style>
+        /* ===================== FORCE LIGHT + FORCE BACKGROUND ===================== */
+        :root {
+            color-scheme: only light;
+            /* paksa browser pakai light UI (scrollbar, form control) */
+        }
+
+        /* [web:626] */
+
+        /* Paksa kanvas halaman selalu hijau */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #949a8f !important;
+            color: #ffffff;
+            font-family: 'Tenor Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* [web:632] */
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+            background-color: #949a8f !important;
+        }
+
+        /* [web:632] */
+
+        /* Paksa semua section tetap hijau (biar gak ada yang auto putih/gelap) */
+        section,
+        .verse-section,
+        .bride-section,
+        .groom-section,
+        .date-section,
+        .direction-section,
+        .verse2-section,
+        .rsvp-section,
+        .wish-hero-section,
+        .wish-section,
+        .gift-section,
+        .thanks-section {
+            background-color: #949a8f !important;
+        }
+
+        /
         /* ===================== GLOBAL ===================== */
         html,
         body {
@@ -1270,8 +1338,6 @@
             padding: 0;
         }
 
-
-
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
@@ -1330,8 +1396,9 @@
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
                     data-aos="fade-up" data-aos-duration="800" data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
-                    data-aos-duration="1100" data-aos-delay="900" data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt=""
+                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="900"
+                    data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
