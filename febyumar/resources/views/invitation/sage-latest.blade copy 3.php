@@ -1341,211 +1341,6 @@
         [data-aos].aos-animate {
             opacity: 1 !important;
         }
-
-        /* AOS Custom Duration & Delay Support (4x multiplier) */
-
-        /* Custom Durations */
-        [data-aos][data-aos][data-aos-duration='3200'] {
-            transition-duration: 3200ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='3600'] {
-            transition-duration: 3600ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='4000'] {
-            transition-duration: 4000ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='4200'] {
-            transition-duration: 4200ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='4400'] {
-            transition-duration: 4400ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='4800'] {
-            transition-duration: 4800ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='5200'] {
-            transition-duration: 5200ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='5600'] {
-            transition-duration: 5600ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='7200'] {
-            transition-duration: 7200ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='8400'] {
-            transition-duration: 8400ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='8800'] {
-            transition-duration: 8800ms;
-        }
-
-        [data-aos][data-aos][data-aos-duration='10400'] {
-            transition-duration: 10400ms;
-        }
-
-        /* Custom Delays */
-        [data-aos][data-aos][data-aos-delay='3600'] {
-            transition-delay: 3600ms;
-        }
-
-        [data-aos][data-aos][data-aos-delay='4200'] {
-            transition-delay: 4200ms;
-        }
-
-        [data-aos][data-aos][data-aos-delay='5600'] {
-            transition-delay: 5600ms;
-        }
-
-        /* Theme hint modal styles */
-        /* Theme hint modal - FIXED VERSION */
-        #themeHintPopup {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000001;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        #themeHintPopup.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #themeHintPopup .popup-box {
-            width: 90%;
-            max-width: 400px;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 36px 28px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            /* PENTING: bukan absolute */
-        }
-
-        #themeHintPopup .popup-content {
-            /* JANGAN pakai position: absolute! */
-            position: relative;
-            width: 100%;
-            text-align: center;
-        }
-
-        #themeHintPopup .popup-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin: 0 0 16px 0;
-            line-height: 1.3;
-        }
-
-        #themeHintPopup .popup-desc {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.6;
-            margin: 0 0 28px 0;
-        }
-
-        #themeHintPopup .popup-desc strong {
-            color: #2c3e50;
-            font-weight: 700;
-        }
-
-        #themeHintPopup .popup-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-        }
-
-        #themeHintPopup .theme-btn {
-            width: 100%;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            font-family: inherit;
-        }
-
-        #themeHintPopup .theme-btn.primary {
-            background: #727d6c;
-            color: #ffffff;
-            box-shadow: #949a8f;
-        }
-
-        #themeHintPopup .theme-btn.primary:hover {
-            background: #727d6c;
-            transform: translateY(-2px);
-            box-shadow: #949a8f;
-        }
-
-        #themeHintPopup .theme-btn.secondary {
-            background: #f3f4f6;
-            color: #6b7280;
-            border: 2px solid #e5e7eb;
-        }
-
-        #themeHintPopup .theme-btn.secondary:hover {
-            background: #e5e7eb;
-            color: #4b5563;
-        }
-
-        .theme-btn {
-            padding: 10px 12px;
-            border-radius: 999px;
-            font-weight: 800;
-            cursor: pointer;
-            border: none;
-            font-family: 'Tenor Sans', sans-serif;
-        }
-
-        .theme-btn.primary {
-            background: #727d6c;
-            color: #fff;
-            min-width: 200px;
-        }
-
-        .theme-btn.dark {
-            background: #222;
-            color: #fff;
-        }
-
-        .theme-btn.secondary {
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            min-width: 140px;
-        }
-
-        #themeHintPopup .popup-box img {
-            width: 100%;
-            display: block;
-            border-radius: 18px;
-        }
-
-        .theme-btn.ghost {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.85);
-            border: none;
-            font-size: .95rem;
-        }
     </style>
 </head>
 
@@ -1570,24 +1365,6 @@
         </div>
     </div>
 
-    <!-- THEME HINT POPUP (shown after opening) -->
-    <div id="themeHintPopup" aria-hidden="true" role="dialog" aria-modal="true">
-        <div class="popup-box">
-            <div class="popup-content">
-                <p class="popup-title">Please use Light Mode</p>
-                <p class="popup-desc">
-                    This page is designed for <strong>Light Mode</strong>.
-                    For the best experience, please switch to Light Mode.
-                </p>
-
-                <div class="popup-actions">
-                    <button id="themeUseLightBtn" class="theme-btn primary">Switch to Light Mode</button>
-                    <button id="themeSkipBtn" class="theme-btn secondary">Continue anyway</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- MUSIC -->
     <audio id="bgmusic" loop>
         <source src="{{ asset('audio/manual-song.mp3') }}" type="audio/mpeg">
@@ -1598,97 +1375,84 @@
     <div class="page-wrapper">
 
         <!-- VERSE -->
-        <section class="verse-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="verse-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse-base" alt="">
 
             <!-- frame -->
             <img src="{{ asset('images/img/flowerbird.webp') }}" class="verse-frame" alt="" data-aos="fade"
-                data-aos-duration="1400" data-aos-delay="150" data-aos-easing="ease-out-cubic">
+                data-aos-duration="2800" data-aos-delay="300" data-aos-easing="ease-out-cubic">
 
             <div class="verse-content">
                 <img src="{{ asset('images/img/ring.webp') }}" class="verse-ring" alt="" data-aos="zoom-in"
-                    data-aos-duration="900" data-aos-delay="250" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1800" data-aos-delay="500" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/swan.webp') }}" class="verse-swan" alt="" data-aos="zoom-in"
-                    data-aos-duration="900" data-aos-delay="400" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="1800" data-aos-delay="800" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="550"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1100" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="650"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1300" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="750"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1600" data-aos-delay="1500" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="900"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
+                    data-aos-duration="2200" data-aos-delay="1800" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- BRIDE -->
-        <section class="bride-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="bride-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
 
-            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <div class="bride-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
+            <div class="bride-content" data-aos="fade-up" data-aos-duration="2400" data-aos-delay="600"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt="" data-aos="fade-up"
+                    data-aos-duration="2000" data-aos-delay="700" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1200" data-aos-delay="500" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="2400" data-aos-delay="1000" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- GROOM -->
-        <section class="groom-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="groom-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
 
-            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <div class="groom-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+            <div class="groom-content" data-aos="fade-up" data-aos-duration="2400" data-aos-delay="640"
                 data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/groom.webp') }}" class="groom-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1200" data-aos-delay="450" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="2400" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- DATE -->
-        <section class="date-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="date-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
-            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <div class="date-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+            <div class="date-content" data-aos="fade-up" data-aos-duration="2400" data-aos-delay="640"
                 data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/date.webp') }}" class="date-img" alt="" data-aos="fade-up"
-                    data-aos-duration="1100" data-aos-delay="420" data-aos-easing="ease-out-cubic">
+                    data-aos-duration="2200" data-aos-delay="840" data-aos-easing="ease-out-cubic">
 
-                <div class="countdown-card" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="560"
+                <div class="countdown-card" data-aos="fade-up" data-aos-duration="2200" data-aos-delay="1120"
                     data-aos-easing="ease-out-cubic">
                     <div class="countdown-tiles">
                         <div class="ctile">
@@ -1712,33 +1476,29 @@
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- DIRECTION -->
-        <section class="direction-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
+        <section class="direction-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
-            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <div class="direction-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+            <div class="direction-content" data-aos="fade-up" data-aos-duration="2400" data-aos-delay="640"
                 data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="350"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-down" data-aos-duration="2200" data-aos-delay="700" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
-                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="900"
-                    data-aos-delay="520" data-aos-easing="ease-out-cubic">
+                    alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="1800"
+                    data-aos-delay="1040" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-ads.webp') }}" class="direction-address"
-                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="1100"
-                    data-aos-delay="650" data-aos-easing="ease-out-cubic">
+                    alt="Alamat Multimedia Nusantara University" data-aos="fade-up" data-aos-duration="2200"
+                    data-aos-delay="1300" data-aos-easing="ease-out-cubic">
 
                 <a href="https://maps.app.goo.gl/2obsLsNPhKbUhJNZ7" class="direction-maps-btn" target="_blank"
-                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="780"
+                    rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="2200" data-aos-delay="1560"
                     data-aos-easing="ease-out-cubic">
                     <img src="{{ asset('images/img/location.webp') }}" class="direction-maps-icon" alt="">
                     <span>Open Maps Location</span>
@@ -1746,52 +1506,46 @@
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- VERSE 2 -->
-        <section class="verse2-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
+        <section class="verse2-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="2600" data-aos-delay="240" data-aos-easing="ease-out-cubic">
 
-            <div class="verse2-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
+            <div class="verse2-content" data-aos="fade-up" data-aos-duration="2400" data-aos-delay="640"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="450"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt="" data-aos="fade-up"
+                    data-aos-duration="2200" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
-        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
-
-        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
+        <section class="wish-hero-section" data-aos="fade" data-aos-duration="2400" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
 
             <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
-                data-aos-duration="1200" data-aos-delay="220" data-aos-easing="ease-out-cubic" />
+                data-aos-duration="2400" data-aos-delay="440" data-aos-easing="ease-out-cubic" />
 
             <div class="wish-hero-content">
                 <img src="{{ asset('images/img/share-bless-green.webp') }}" class="wish-hero-title"
-                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="1100" data-aos-delay="250"
+                    alt="Share your blessing" data-aos="fade-down" data-aos-duration="2200" data-aos-delay="500"
                     data-aos-easing="ease-out-cubic" />
             </div>
         </section>
 
-        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="1200"
+        <section id="weddingWish" class="wish-section" data-aos="fade" data-aos-duration="2400"
             data-aos-easing="ease-out-cubic">
 
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-base" alt="">
 
             <div class="wish-inner">
-                <div class="wish-comments" data-aos="fade-up" data-aos-duration="900" data-aos-delay="220"
+                <div class="wish-comments" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="440"
                     data-aos-easing="ease-out-cubic">
                     <span id="wishCommentCount">0</span> Comments
                 </div>
 
-                <div class="wish-stats" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="320"
+                <div class="wish-stats" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="640"
                     data-aos-easing="ease-out-cubic">
                     <div class="wish-stat present">
                         <div class="num" id="wishPresentCount">0</div>
@@ -1803,14 +1557,14 @@
                     </div>
                 </div>
 
-                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="420"
+                <div class="wish-formPane" data-aos="fade-up" data-aos-duration="2100" data-aos-delay="840"
                     data-aos-easing="ease-out-cubic">
                     <form id="rsvpForm" class="wish-form">
                         @csrf
                         <div id="rsvpAlert"></div>
 
-                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                            placeholder="Name" required>
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}" placeholder="Name"
+                            required>
                         <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
 
                         <select name="status" id="fm_status" required>
@@ -1824,7 +1578,7 @@
                     </form>
                 </div>
 
-                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="520"
+                <div class="wish-listPane" data-aos="fade-up" data-aos-duration="2100" data-aos-delay="1040"
                     data-aos-easing="ease-out-cubic">
                     <div id="messagesList" class="wish-list"></div>
                 </div>
@@ -1833,30 +1587,103 @@
 
         <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
+        <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="2400"
+            data-aos-easing="ease-out-cubic">
+            <!-- base 9/16 -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="gift-base" alt="">
+
+            <!-- ornamen atas -->
+            <img src="{{ asset('images/img/gift-bg.webp') }}" class="gift-bg" alt="" data-aos="fade"
+                data-aos-duration="2400" data-aos-delay="360" data-aos-easing="ease-out-cubic" />
+
+            <!-- konten -->
+            <div class="gift-inner">
+                <!-- gambar teks (jangan didobel lagi) -->
+                <img src="{{ asset('images/img/gift.webp') }}" class="gift-text" alt="Wedding Gift" data-aos="fade-up"
+                    data-aos-duration="2000" data-aos-delay="480" data-aos-easing="ease-out-cubic" />
+
+                <div class="gift-accordion" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="720"
+                    data-aos-easing="ease-out-cubic">
+                    <!-- BANK -->
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">
+                            <span>Bank Transfer</span>
+                            <span class="gift-icon"></span>
+                        </summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-line">
+                                <div class="gift-k">Bank</div>
+                                <div class="gift-v">BCA</div>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">No. Rek</div>
+                                <div class="gift-v gift-mono">2120347678</div>
+                                <button type="button" class="gift-copy" data-copy="2120347678">Copy</button>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">A/N</div>
+                                <div class="gift-v">Feby Janiar Husein</div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">
+                            <span>E-Wallet</span>
+                            <span class="gift-icon"></span>
+                        </summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-line">
+                                <div class="gift-k">Provider</div>
+                                <div class="gift-v">Shopeepay</div>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">No.</div>
+                                <div class="gift-v gift-mono">08112699912</div>
+                                <button type="button" class="gift-copy" data-copy="08112699912">Copy</button>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">A/N</div>
+                                <div class="gift-v">Umar Fadhlurrachman</div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
+            </div>
+        </section>
+
+        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
+
         <!-- THANK YOU -->
-        <section class="thanks-section" data-aos="fade" data-aos-duration="2200" data-aos-easing="ease-out-cubic">
+        <section class="thanks-section" data-aos="fade" data-aos-duration="4400" data-aos-easing="ease-out-cubic">
 
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
             <!-- background besar: fade lebih lama -->
-            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt=""
-                data-aos="fade" data-aos-duration="2600" data-aos-delay="300" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt="" data-aos="fade"
+                data-aos-duration="5200" data-aos-delay="600" data-aos-easing="ease-out-cubic">
 
             <div class="thanks-content">
                 <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="700"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="3600" data-aos-delay="1400" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1050"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="3600" data-aos-delay="2100" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1400"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="3600" data-aos-delay="2800" data-aos-easing="ease-out-cubic">
             </div>
         </section>
     </div>
+
 
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -1873,90 +1700,6 @@
         const bgmusic = document.getElementById("bgmusic");
         const openBtn = document.getElementById("openInvitationBtn");
 
-        /* Theme hint helpers */
-        function isDarkPreferred() {
-            try {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
-                if (document.documentElement.classList.contains('dark')) return true;
-                const bg = getComputedStyle(document.documentElement).backgroundColor || '';
-                const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-                if (m) {
-                    const r = +m[1],
-                        g = +m[2],
-                        b = +m[3];
-                    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-                    return lum < 128;
-                }
-            } catch (e) {
-                // ignore
-            }
-            return false;
-        }
-
-        function showThemeHint() {
-            const hint = document.getElementById('themeHintPopup');
-            if (!hint) return;
-            hint.classList.add('active');
-            hint.setAttribute('aria-hidden', 'false');
-            const btn = hint.querySelector('#themeUseLightBtn');
-            if (btn) setTimeout(() => btn.focus(), 60);
-        }
-
-        function hideThemeHint() {
-            const hint = document.getElementById('themeHintPopup');
-            if (!hint) return;
-            hint.classList.remove('active');
-            hint.setAttribute('aria-hidden', 'true');
-        }
-
-        function showOpeningPopup() {
-            if (popup && !popup.classList.contains('active')) {
-                popup.classList.add('active');
-            }
-        }
-
-        function applyLightTheme() {
-            try {
-                localStorage.setItem('theme', 'light');
-                document.documentElement.classList.remove('dark');
-                document.documentElement.style.colorScheme = 'light';
-                if (window.Alpine && window.Alpine.store) window.Alpine.store('theme', 'light');
-                window.dispatchEvent(new Event('theme-changed'));
-            } catch (e) {
-                /* ignore */
-            }
-            hideThemeHint();
-        }
-
-        function applyDarkTheme() {
-            try {
-                localStorage.setItem('theme', 'dark');
-                document.documentElement.classList.add('dark');
-                document.documentElement.style.colorScheme = 'dark';
-                if (window.Alpine && window.Alpine.store) window.Alpine.store('theme', 'dark');
-                window.dispatchEvent(new Event('theme-changed'));
-            } catch (e) {
-                /* ignore */
-            }
-            hideThemeHint();
-        }
-
-        /* Wire up modal buttons */
-        document.addEventListener('click', (e) => {
-            const useLight = e.target.closest && e.target.closest('#themeUseLightBtn');
-            const skipBtn = e.target.closest && e.target.closest('#themeSkipBtn');
-            const dismissBtn = e.target.closest && e.target.closest('#themeDismissBtn');
-
-            if (useLight) {
-                applyLightTheme();
-                showOpeningPopup();
-            }
-            if (skipBtn || dismissBtn) {
-                hideThemeHint();
-                showOpeningPopup();
-            }
-        });
-
         let loaded = 0;
         const imgs = document.images;
         const total = imgs.length;
@@ -1971,19 +1714,17 @@
                 setTimeout(() => {
                     preloader.style.opacity = "0";
                     preloader.style.visibility = "hidden";
-
-                    // SELALU TAMPILKAN THEME HINT - TIDAK CEK LOCALSTORAGE
-                    showThemeHint();
+                    popup.classList.add("active");
                 }, 600);
             }
         }
 
         [...imgs].forEach(img =>
             img.complete ?
-            updateLoader() :
-            img.addEventListener("load", updateLoader, {
-                once: true
-            })
+                updateLoader() :
+                img.addEventListener("load", updateLoader, {
+                    once: true
+                })
         );
 
         /* ========== OPEN INVITATION ========== */
@@ -1992,31 +1733,25 @@
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
 
-            bgmusic.play().catch(() => {});
+            bgmusic.play().catch(() => { });
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
-                const DUR_MULT = 4.0;
-                const DEL_MULT = 4.0;
+                // Jalankan multiplier dulu
+                const DUR_MULT = 2.5;
+                const DEL_MULT = 2.5;
 
                 document.querySelectorAll('[data-aos-duration]').forEach(el => {
                     const v = parseInt(el.getAttribute('data-aos-duration') || '0', 10);
-                    if (v) {
-                        const newVal = Math.round(v * DUR_MULT);
-                        el.setAttribute('data-aos-duration', String(newVal));
-                        console.log(`Duration: ${v}ms → ${newVal}ms`);
-                    }
+                    if (v) el.setAttribute('data-aos-duration', String(Math.round(v * DUR_MULT)));
                 });
 
                 document.querySelectorAll('[data-aos-delay]').forEach(el => {
                     const v = parseInt(el.getAttribute('data-aos-delay') || '0', 10);
-                    if (v) {
-                        const newVal = Math.round(v * DEL_MULT);
-                        el.setAttribute('data-aos-delay', String(newVal));
-                        console.log(`Delay: ${v}ms → ${newVal}ms`);
-                    }
+                    if (v) el.setAttribute('data-aos-delay', String(Math.round(v * DEL_MULT)));
                 });
 
+                // BARU init AOS setelah attribute berubah
                 setTimeout(() => {
                     AOS.init({
                         once: true,
@@ -2026,8 +1761,8 @@
                         debounceDelay: 50,
                         throttleDelay: 99
                     });
-                    console.log('AOS initialized with 4x multiplier');
-                }, 100);
+                }, 100);  // kasih jeda supaya attribute kebaca dulu
+
             }, 300);
         });
 
@@ -2047,7 +1782,7 @@
             if (document.hidden) {
                 bgmusic.pause();
             } else {
-                bgmusic.play().catch(() => {});
+                bgmusic.play().catch(() => { });
             }
         });
 
@@ -2089,7 +1824,7 @@
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#39;'
-            } [c]));
+            }[c]));
         }
 
         function normalizeItems(data) {
@@ -2101,36 +1836,44 @@
 
         function getStatusIcon(statusRaw) {
             const s = String(statusRaw || '').toLowerCase().trim();
+
             if (s === 'hadir') return "{{ asset('images/img/present.webp') }}";
-            if (s === 'tidak hadir') return "{{ asset('images/img/absent.webp') }}";
-            if (s === 'tentatif') return "{{ asset('images/img/tentative.webp') }}";
-            return "";
+            if (s === 'tidak hadir' || s === 'tidak hadir') return "{{ asset('images/img/absent.webp') }}";
+            if (s === 'tentatif' || s === 'tentatif') return "{{ asset('images/img/tentative.webp') }}";
+
+            return ""; // fallback: kosong
         }
 
         function renderMessageItem(msg) {
             const el = document.createElement('div');
             el.className = 'wish-item';
 
-            const messageText = (msg.message && String(msg.message).trim() !== '') ?
-                escapeHtml(msg.message) : '— Belum menulis ucapan —';
+            const messageText =
+                (msg.message && String(msg.message).trim() !== '') ?
+                    escapeHtml(msg.message) :
+                    '— Belum menulis ucapan —';
 
             const icon = getStatusIcon(msg.status);
 
             el.innerHTML = `
-        <div class="meta">
-            <div>${escapeHtml(msg.name || 'Tamu')}</div>
-            <div style="display:flex;align-items:center;gap:8px;opacity:.85;font-weight:700;font-size:.92rem">
-                ${icon ? `<img src="${icon}" alt="" style="width:18px;height:18px;object-fit:contain">` : ''}
-            </div>
-        </div>
-        <div class="text">${messageText}</div>
-        <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
-    `;
+    <div class="meta">
+      <div>${escapeHtml(msg.name || 'Tamu')}</div>
+
+      <div style="display:flex;align-items:center;gap:8px;opacity:.85;font-weight:700;font-size:.92rem">
+        ${icon ? `<img src="${icon}" alt="" style="width:18px;height:18px;object-fit:contain">` : ''}
+      </div>
+    </div>
+
+    <div class="text">${messageText}</div>
+    <div class="time">${msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Baru saja'}</div>
+  `;
             return el;
         }
 
+
         function updateCounters(items) {
             const all = (items || []).filter(Boolean);
+
             const present = all.filter(x => (x.status || '').toLowerCase() === 'hadir').length;
             const absent = all.filter(x => (x.status || '').toLowerCase() === 'tidak hadir').length;
 
@@ -2162,7 +1905,7 @@
                 updateCounters(items);
 
                 list.innerHTML = '';
-                const top = items;
+                const top = items.slice(0, 5);
 
                 if (!top.length) {
                     list.innerHTML = '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
@@ -2190,15 +1933,17 @@
                 const nameEl = document.getElementById('fm_name');
                 const statusEl = document.getElementById('fm_status');
                 const messageEl = document.getElementById('fm_message');
+
                 const alertBox = document.getElementById('rsvpAlert');
                 const list = document.getElementById('messagesList');
 
                 if (alertBox) alertBox.innerHTML = '';
 
+                // kalau element null => HTML id belum sesuai
                 if (!nameEl || !statusEl || !messageEl) {
                     if (alertBox) {
                         alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu.</div>';
+                            '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu. Pastikan pakai fm_name/fm_status/fm_message.</div>';
                     }
                     return;
                 }
@@ -2237,11 +1982,13 @@
                     const saved = await res.json().catch(() => ({}));
                     if (!res.ok) throw new Error(saved?.message || 'Request failed');
 
+                    // langsung tampil (tanpa fetch ulang)
                     if (list) {
+                        // hapus placeholder atau error placeholder jika ada (lebih robust)
                         Array.from(list.querySelectorAll('p')).forEach(p => {
                             const txt = (p.textContent || '').trim();
                             if (txt.includes('Belum ada ucapan') || txt.includes(
-                                    'Gagal memuat ucapan')) {
+                                'Gagal memuat ucapan')) {
                                 p.remove();
                             }
                         });
@@ -2254,6 +2001,7 @@
                         }));
                     }
 
+                    // update angka simple (tanpa hit server)
                     const cmtEl = document.getElementById('wishCommentCount');
                     if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
                         0) + 1);
@@ -2288,12 +2036,12 @@
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
-        document.addEventListener('contextmenu', function(e) {
+        document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
             return false;
         }, false);
 
-        document.addEventListener('touchmove', function(e) {
+        document.addEventListener('touchmove', function (e) {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }
@@ -2301,8 +2049,7 @@
             passive: false
         });
 
-        // Copy to clipboard
-        (function() {
+        (function () {
             const toast = document.getElementById('giftToast');
 
             function showToast(msg) {

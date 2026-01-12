@@ -43,7 +43,7 @@ class RsvpController extends Controller
 
         $total = RsvpResponse::count();
         $withMessage = RsvpResponse::whereNotNull('message')->where('message', '<>', '')->count();
-        $rows = RsvpResponse::orderBy('created_at', 'desc')->take(20)
+        $rows = RsvpResponse::orderBy('created_at', 'desc')
             ->get(['id', 'name', 'status', 'message', 'created_at']);
 
         return response()->json([

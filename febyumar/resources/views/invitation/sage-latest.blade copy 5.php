@@ -1613,18 +1613,14 @@
                     data-aos-duration="900" data-aos-delay="400" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-1" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="550"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="550" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-2" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="650"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="650" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/blink.webp') }}" class="verse-blink verse-blink-3" alt=""
-                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="750"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="750" data-aos-easing="ease-out-cubic">
 
-                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="900"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse.webp') }}" class="verse-text" alt="" data-aos="fade-up"
+                    data-aos-duration="1100" data-aos-delay="900" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
@@ -1634,19 +1630,16 @@
         <section class="bride-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="bride-base" alt="">
 
-            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-left.webp') }}" class="bride-flower bride-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/bride-bg-right.webp') }}" class="bride-flower bride-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
             <div class="bride-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1000" data-aos-delay="350"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/bismillah.webp') }}" class="bismillah-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1000" data-aos-delay="350" data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/bride.webp') }}" class="bride-img" alt="" data-aos="fade-up"
                     data-aos-duration="1200" data-aos-delay="500" data-aos-easing="ease-out-cubic">
             </div>
@@ -1658,9 +1651,8 @@
         <section class="groom-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="groom-base" alt="">
 
-            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/groom-bg-right.webp') }}" class="groom-flower groom-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
             <div class="groom-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
                 data-aos-easing="ease-out-cubic">
@@ -1675,13 +1667,11 @@
         <section class="date-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="date-base" alt="">
 
-            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-left.webp') }}" class="date-flower date-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
-            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/date-bg-right.webp') }}" class="date-flower date-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
             <div class="date-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
                 data-aos-easing="ease-out-cubic">
@@ -1715,19 +1705,16 @@
         <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
         <!-- DIRECTION -->
-        <section class="direction-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
+        <section class="direction-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="direction-base" alt="">
 
-            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left"
-                alt="" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/direction-bg.webp') }}" class="direction-flower direction-flower-left" alt=""
+                data-aos="fade-right" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
             <div class="direction-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
                 data-aos-easing="ease-out-cubic">
                 <img src="{{ asset('images/img/direction.webp') }}" class="direction-title" alt="Direction to Venue"
-                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="350"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-down" data-aos-duration="1100" data-aos-delay="350" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/umn-bdg.webp') }}" class="direction-building"
                     alt="Multimedia Nusantara University" data-aos="zoom-in" data-aos-duration="900"
@@ -1752,22 +1739,19 @@
         <section class="verse2-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="verse2-base" alt="">
 
-            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right"
-                alt="" data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120"
-                data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/verse-2-bg.webp') }}" class="verse2-flower verse2-flower-right" alt=""
+                data-aos="fade-left" data-aos-duration="1300" data-aos-delay="120" data-aos-easing="ease-out-cubic">
 
             <div class="verse2-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="320"
                 data-aos-easing="ease-out-cubic">
-                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt=""
-                    data-aos="fade-up" data-aos-duration="1100" data-aos-delay="450"
-                    data-aos-easing="ease-out-cubic">
+                <img src="{{ asset('images/img/verse-2.webp') }}" class="verse2-img" alt="" data-aos="fade-up"
+                    data-aos-duration="1100" data-aos-delay="450" data-aos-easing="ease-out-cubic">
             </div>
         </section>
 
         <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
-        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200"
-            data-aos-easing="ease-out-cubic">
+        <section class="wish-hero-section" data-aos="fade" data-aos-duration="1200" data-aos-easing="ease-out-cubic">
             <img src="{{ asset('images/img/empty.webp') }}" class="wish-hero-base" alt="">
 
             <img src="{{ asset('images/img/bless-bg.webp') }}" class="wish-hero-bg" alt="" data-aos="fade"
@@ -1809,8 +1793,8 @@
                         @csrf
                         <div id="rsvpAlert"></div>
 
-                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}"
-                            placeholder="Name" required>
+                        <input type="text" name="name" id="fm_name" value="{{ $guestName }}" placeholder="Name"
+                            required>
                         <textarea name="message" id="fm_message" placeholder="Wish" required></textarea>
 
                         <select name="status" id="fm_status" required>
@@ -1833,27 +1817,99 @@
 
         <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
 
+        <section id="weddingGifts" class="gift-section" data-aos="fade" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <!-- base 9/16 -->
+            <img src="{{ asset('images/img/empty.webp') }}" class="gift-base" alt="">
+
+            <!-- ornamen atas -->
+            <img src="{{ asset('images/img/gift-bg.webp') }}" class="gift-bg" alt="" data-aos="fade"
+                data-aos-duration="1200" data-aos-delay="180" data-aos-easing="ease-out-cubic" />
+
+            <!-- konten -->
+            <div class="gift-inner">
+                <!-- gambar teks (jangan didobel lagi) -->
+                <img src="{{ asset('images/img/gift.webp') }}" class="gift-text" alt="Wedding Gift" data-aos="fade-up"
+                    data-aos-duration="1000" data-aos-delay="240" data-aos-easing="ease-out-cubic" />
+
+                <div class="gift-accordion" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="360"
+                    data-aos-easing="ease-out-cubic">
+                    <!-- BANK -->
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">
+                            <span>Bank Transfer</span>
+                            <span class="gift-icon"></span>
+                        </summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-line">
+                                <div class="gift-k">Bank</div>
+                                <div class="gift-v">BCA</div>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">No. Rek</div>
+                                <div class="gift-v gift-mono">2120347678</div>
+                                <button type="button" class="gift-copy" data-copy="2120347678">Copy</button>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">A/N</div>
+                                <div class="gift-v">Feby Janiar Husein</div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="gift-item" name="giftAccordion">
+                        <summary class="gift-summary">
+                            <span>E-Wallet</span>
+                            <span class="gift-icon"></span>
+                        </summary>
+
+                        <div class="gift-panel">
+                            <div class="gift-line">
+                                <div class="gift-k">Provider</div>
+                                <div class="gift-v">Shopeepay</div>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">No.</div>
+                                <div class="gift-v gift-mono">08112699912</div>
+                                <button type="button" class="gift-copy" data-copy="08112699912">Copy</button>
+                            </div>
+
+                            <div class="gift-line">
+                                <div class="gift-k">A/N</div>
+                                <div class="gift-v">Umar Fadhlurrachman</div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="gift-toast" id="giftToast" aria-live="polite" aria-atomic="true"></div>
+            </div>
+        </section>
+
+        <img src="{{ asset('images/img/empty-10.webp') }}" class="spacer-10" alt="">
+
         <!-- THANK YOU -->
         <section class="thanks-section" data-aos="fade" data-aos-duration="2200" data-aos-easing="ease-out-cubic">
 
             <img src="{{ asset('images/img/empty.webp') }}" class="thanks-base" alt="">
 
             <!-- background besar: fade lebih lama -->
-            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt=""
-                data-aos="fade" data-aos-duration="2600" data-aos-delay="300" data-aos-easing="ease-out-cubic">
+            <img src="{{ asset('images/img/thanks-bg-new.webp') }}" class="thanks-ornament" alt="" data-aos="fade"
+                data-aos-duration="2600" data-aos-delay="300" data-aos-easing="ease-out-cubic">
 
             <div class="thanks-content">
                 <img src="{{ asset('images/img/thanks-1.webp') }}" class="thanks-item thanks-1" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="700"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="700" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-2.webp') }}" class="thanks-item thanks-2" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1050"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1050" data-aos-easing="ease-out-cubic">
 
                 <img src="{{ asset('images/img/thanks-3.webp') }}" class="thanks-item thanks-3" alt=""
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1400"
-                    data-aos-easing="ease-out-cubic">
+                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="1400" data-aos-easing="ease-out-cubic">
             </div>
         </section>
     </div>
@@ -1881,9 +1937,7 @@
                 const bg = getComputedStyle(document.documentElement).backgroundColor || '';
                 const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
                 if (m) {
-                    const r = +m[1],
-                        g = +m[2],
-                        b = +m[3];
+                    const r = +m[1], g = +m[2], b = +m[3];
                     const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
                     return lum < 128;
                 }
@@ -1922,9 +1976,7 @@
                 document.documentElement.style.colorScheme = 'light';
                 if (window.Alpine && window.Alpine.store) window.Alpine.store('theme', 'light');
                 window.dispatchEvent(new Event('theme-changed'));
-            } catch (e) {
-                /* ignore */
-            }
+            } catch (e) { /* ignore */ }
             hideThemeHint();
         }
 
@@ -1935,9 +1987,7 @@
                 document.documentElement.style.colorScheme = 'dark';
                 if (window.Alpine && window.Alpine.store) window.Alpine.store('theme', 'dark');
                 window.dispatchEvent(new Event('theme-changed'));
-            } catch (e) {
-                /* ignore */
-            }
+            } catch (e) { /* ignore */ }
             hideThemeHint();
         }
 
@@ -1980,10 +2030,10 @@
 
         [...imgs].forEach(img =>
             img.complete ?
-            updateLoader() :
-            img.addEventListener("load", updateLoader, {
-                once: true
-            })
+                updateLoader() :
+                img.addEventListener("load", updateLoader, {
+                    once: true
+                })
         );
 
         /* ========== OPEN INVITATION ========== */
@@ -1992,7 +2042,7 @@
             musicBtn.style.display = "block";
             document.body.style.overflow = "auto";
 
-            bgmusic.play().catch(() => {});
+            bgmusic.play().catch(() => { });
 
             // AOS INIT setelah popup ditutup
             setTimeout(() => {
@@ -2047,7 +2097,7 @@
             if (document.hidden) {
                 bgmusic.pause();
             } else {
-                bgmusic.play().catch(() => {});
+                bgmusic.play().catch(() => { });
             }
         });
 
@@ -2089,7 +2139,7 @@
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#39;'
-            } [c]));
+            }[c]));
         }
 
         function normalizeItems(data) {
@@ -2149,9 +2199,7 @@
 
             try {
                 const res = await fetch(messagesIndexUrl, {
-                    headers: {
-                        Accept: 'application/json'
-                    }
+                    headers: { Accept: 'application/json' }
                 });
                 const data = await res.json().catch(() => null);
                 if (!res.ok) throw new Error('Fetch failed');
@@ -2162,7 +2210,7 @@
                 updateCounters(items);
 
                 list.innerHTML = '';
-                const top = items;
+                const top = items; // tampilkan semua komentar
 
                 if (!top.length) {
                     list.innerHTML = '<p style="opacity:.7">Belum ada ucapan. Jadilah yang pertama ✨</p>';
@@ -2197,8 +2245,7 @@
 
                 if (!nameEl || !statusEl || !messageEl) {
                     if (alertBox) {
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu.</div>';
+                        alertBox.innerHTML = '<div class="alert" style="background:#f8d7da;color:#721c24">ID input tidak ketemu.</div>';
                     }
                     return;
                 }
@@ -2209,8 +2256,7 @@
 
                 if (!name || !status || !message) {
                     if (alertBox) {
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">Tolong isi semua field.</div>';
+                        alertBox.innerHTML = '<div class="alert" style="background:#f8d7da;color:#721c24">Tolong isi semua field.</div>';
                     }
                     return;
                 }
@@ -2218,8 +2264,7 @@
                 try {
                     btn && (btn.disabled = true);
 
-                    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute(
-                        'content') || '';
+                    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
                     const res = await fetch(messagesStoreUrl, {
                         method: 'POST',
                         headers: {
@@ -2227,11 +2272,7 @@
                             'X-CSRF-TOKEN': token,
                             'Accept': 'application/json'
                         },
-                        body: JSON.stringify({
-                            name,
-                            status,
-                            message
-                        })
+                        body: JSON.stringify({ name, status, message })
                     });
 
                     const saved = await res.json().catch(() => ({}));
@@ -2240,8 +2281,7 @@
                     if (list) {
                         Array.from(list.querySelectorAll('p')).forEach(p => {
                             const txt = (p.textContent || '').trim();
-                            if (txt.includes('Belum ada ucapan') || txt.includes(
-                                    'Gagal memuat ucapan')) {
+                            if (txt.includes('Belum ada ucapan') || txt.includes('Gagal memuat ucapan')) {
                                 p.remove();
                             }
                         });
@@ -2255,31 +2295,26 @@
                     }
 
                     const cmtEl = document.getElementById('wishCommentCount');
-                    if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) ||
-                        0) + 1);
+                    if (cmtEl) cmtEl.textContent = String((parseInt(cmtEl.textContent || '0', 10) || 0) + 1);
 
                     if (String(status).toLowerCase() === 'hadir') {
                         const pEl = document.getElementById('wishPresentCount');
-                        if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) +
-                            1);
+                        if (pEl) pEl.textContent = String((parseInt(pEl.textContent || '0', 10) || 0) + 1);
                     }
                     if (String(status).toLowerCase() === 'tidak hadir') {
                         const aEl = document.getElementById('wishAbsentCount');
-                        if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) +
-                            1);
+                        if (aEl) aEl.textContent = String((parseInt(aEl.textContent || '0', 10) || 0) + 1);
                     }
 
                     form.reset();
 
                     if (alertBox) {
-                        alertBox.innerHTML =
-                            '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
+                        alertBox.innerHTML = '<div class="alert alert-success">✔ Ucapan berhasil dikirim.</div>';
                     }
                 } catch (err) {
                     console.error('submit error', err);
                     if (alertBox) {
-                        alertBox.innerHTML =
-                            '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
+                        alertBox.innerHTML = '<div class="alert" style="background:#f8d7da;color:#721c24">Terjadi kesalahan. Coba lagi.</div>';
                     }
                 } finally {
                     btn && (btn.disabled = false);
@@ -2288,21 +2323,19 @@
         });
 
         // DISABLE RIGHT CLICK & multi-touch zoom
-        document.addEventListener('contextmenu', function(e) {
+        document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
             return false;
         }, false);
 
-        document.addEventListener('touchmove', function(e) {
+        document.addEventListener('touchmove', function (e) {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }
-        }, {
-            passive: false
-        });
+        }, { passive: false });
 
         // Copy to clipboard
-        (function() {
+        (function () {
             const toast = document.getElementById('giftToast');
 
             function showToast(msg) {
