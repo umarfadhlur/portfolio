@@ -1,5 +1,20 @@
-<IfModule mod_rewrite.c>
+<!-- <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_URI} !^/storage
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule> -->
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jangan redirect kalau sudah di folder public/
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Jangan redirect storage
+    RewriteCond %{REQUEST_URI} !^/storage
+
+    # Jangan redirect file/folder yang memang ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
