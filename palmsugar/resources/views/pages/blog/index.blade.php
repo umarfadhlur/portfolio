@@ -1,69 +1,125 @@
 @extends('layouts.app')
 
-@section('content')
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade"
-        style="background-image: url('{{ asset('assets/img/page-title-bg.jpg') }}');">
-        <div class="container position-relative">
-            <h1>Blog</h1>
-            <p>Berita dan informasi terbaru seputar dunia pertanian dan ekspor.</p>
-            <nav class="breadcrumbs">
-                <ol>
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li class="current">Blog</li>
-                </ol>
-            </nav>
-        </div>
-    </div><!-- End Page Title -->
+@section('title', 'Blog')
+@section('meta_description', 'Read the latest news, insights, and stories about Indonesian specialty coffee, farming
+    practices, and export updates from CV. Banyumas Bonanza Indonesia.')
+@section('og_title', 'Blog')
+@section('og_description', 'Read the latest news, insights, and stories about Indonesian specialty coffee, farming
+    practices, and export updates from CV. Banyumas Bonanza Indonesia.')
+@section('og_image', asset('assets/img/coffee/coffee.jpeg'))
+@section('og_url', route('blog.index'))
+@section('og_type', 'website')
 
-    <!-- Blog Posts Section (Recent Posts Style) -->
-    <section id="blog-posts" class="recent-posts section">
-        
+@section('content')
+    <section id="blog" class="blog-snippet py-5 light-background">
         <div class="container">
-            <div class="row gy-5">
+
+            {{-- Header --}}
+            <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-md-between mb-5 gap-3"
+                data-aos="fade-up">
+                <div>
+                    <span class="blog-snippet-tag">
+                        @translate('Our Stories', 'blog', 'blog.tag')
+                    </span>
+                    <h2 class="blog-snippet-title mt-3 mb-0">
+                        @translate('Coffee Insights &', 'blog', 'blog.title')
+                        <em>@translate('Field Notes', 'blog', 'blog.title_em')</em>
+                    </h2>
+                    <p class="blog-snippet-subtitle mt-2 mb-0" style="max-width:52ch; color:#7a6e62; line-height:1.8;">
+                        @translate('Stories, tips, and updates from our farms and export journey in Central Java.', 'blog', 'blog.subtitle')
+                    </p>
+                </div>
+            </div>
+
+            {{-- Grid --}}
+            <div class="row g-4">
                 @forelse ($posts as $post)
-                    <div class="col-xl-4 col-md-6">
-                        <div class="post-item position-relative h-100" data-aos="fade-up"
-                            data-aos-delay="{{ 100 + $loop->index * 100 }}">
-                            <div class="post-img position-relative overflow-hidden">
-                                <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/img/blog/blog-1.jpg') }}"
-                                    class="img-fluid" alt="{{ $post->title }}">
-                                <span class="post-date">{{ $post->published_at->format('F d') }}</span>
-                            </div>
-                            <div class="post-content d-flex flex-column">
-                                <h3 class="post-title">{{ $post->title }}</h3>
-                                <div class="meta d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                        <article class="blog-card">
+
+                            {{-- Thumbnail --}}
+                            <a href="{{ url('blog/' . $post->slug) }}" class="blog-card-img-wrap" tabindex="-1"
+                                aria-hidden="true">
+                                <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/img/blog/blog-placeholder.jpg') }}"
+                                    alt="{{ $post->title }}" class="blog-card-img" loading="lazy" decoding="async">
+
+                                {{-- Date badge --}}
+                                @if ($post->published_at)
+                                    <div class="blog-card-date">
+                                        <span class="blog-card-date-day">{{ $post->published_at->format('d') }}</span>
+                                        <span class="blog-card-date-month">{{ $post->published_at->format('M') }}</span>
+                                    </div>
+                                @endif
+                            </a>
+
+                            {{-- Body --}}
+                            <div class="blog-card-body">
+
+                                {{-- Meta --}}
+                                <div class="blog-card-meta">
+                                    <span>
                                         <i class="bi bi-person"></i>
-                                        <span class="ps-2">{{ $post->user->name ?? 'Admin' }}</span>
-                                    </div>
-                                    <span class="px-3 text-black-50">/</span>
-                                    <div class="d-flex align-items-center">
+                                        {{ $post->user->name ?? 'Admin' }}
+                                    </span>
+                                    <span class="blog-card-meta-divider">·</span>
+                                    <span>
                                         <i class="bi bi-folder2"></i>
-                                        <span class="ps-2">{{ $post->category ?? 'News' }}</span>
-                                    </div>
+                                        {{ $post->category->name ?? 'News' }}
+                                    </span>
                                 </div>
-                                <hr>
-                                <a href="{{ route('blog.show', $post->slug) }}" class="readmore stretched-link">
-                                    <span>Read More</span><i class="bi bi-arrow-right"></i>
+
+                                {{-- Title --}}
+                                <h3 class="blog-card-title">
+                                    <a href="{{ url('blog/' . $post->slug) }}">{{ $post->title }}</a>
+                                </h3>
+
+                                {{-- Excerpt --}}
+                                @if ($post->excerpt ?? ($post->short_description ?? null))
+                                    <p class="blog-card-excerpt">
+                                        {{ Str::limit($post->excerpt ?? $post->short_description, 90) }}
+                                    </p>
+                                @endif
+
+                                {{-- Read More --}}
+                                <a href="{{ url('blog/' . $post->slug) }}" class="blog-card-readmore">
+                                    @translate('Read More', 'home', 'blog.read_more')
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
                                 </a>
+
                             </div>
-                        </div>
-                    </div><!-- End post item -->
+                        </article>
+                    </div>
                 @empty
-                    <div class="col-12">
-                        <p class="text-center">Belum ada post. <a href="{{ route('filament.admin.posts.create') }}">Buat
-                                sekarang!</a></p>
+                    <div class="col-12 text-center text-muted py-5">
+                        @translate('No posts available yet.', 'home', 'blog.empty')
                     </div>
                 @endforelse
             </div>
-        </div>
 
-        <!-- Pagination -->
-        @if ($posts->hasPages())
-            <div class="container mt-4">
-                {{ $posts->links('pagination::bootstrap-5') }}
+        </div>
+    </section>
+    <div class="footer-cta">
+        <div class="container">
+            <div class="footer-cta-inner" data-aos="fade-up">
+                <div>
+                    <h3 class="footer-cta-title">
+                        @translate('Want to Know More About Our Coffee?', 'blog', 'cta.title')
+                    </h3>
+                    <p class="footer-cta-desc">
+                        @translate('Get in touch and we\'ll answer all your questions about sourcing Indonesian specialty coffee.', 'blog', 'cta.desc')
+                    </p>
+                </div>
+                <a href="{{ url('/contact') }}" class="btn-footer-cta">
+                    @translate('Talk to Us', 'blog', 'cta.btn')
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
             </div>
-        @endif
-    </section><!-- /Blog Posts Section -->
+        </div>
+    </div>
 @endsection

@@ -1,235 +1,253 @@
 @extends('layouts.app')
 
+@section('title', $post->title)
+@section('meta_description', $post->excerpt ?? Str::limit(strip_tags($post->body), 160))
+@section('og_title', $post->title)
+@section('og_description', $post->excerpt ?? Str::limit(strip_tags($post->body), 160))
+@section('og_image', $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/img/coffee/coffee.jpeg'))
+@section('og_url', route('blog.show', $post->slug))
+@section('og_type', 'article')
+
 @section('content')
-    <div class="container">
-        <div class="row">
+    <section class="blog-detail-page py-5 light-background">
+        <div class="container">
+            <div class="row g-5">
 
-            <div class="col-lg-8">
+                {{-- MAIN CONTENT --}}
+                <div class="col-lg-8">
 
-                <!-- Blog Details Section -->
-                <section id="blog-details" class="blog-details section">
-                    <div class="container">
-
-                        <article class="article">
-
-                            <div class="post-img">
-                                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
-                                    class="img-fluid">
+                    {{-- Article --}}
+                    <article>
+                        {{-- Hero Image --}}
+                        @if ($post->thumbnail)
+                            <div class="blog-post-hero">
+                                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}" loading="eager"
+                                    decoding="async">
                             </div>
+                        @endif
 
-                            <h2 class="title">{{ $post->title }}</h2>
+                        {{-- Title --}}
+                        <h1 class="blog-post-title">{{ $post->title }}</h1>
 
-                            <div class="meta-top">
-                                <ul>
-                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                            href="#">{{ $post->user->name ?? 'Admin' }}</a></li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                            href="#"><time
-                                                datetime="{{ $post->published_at }}">{{ $post->published_at->format('M d, Y') }}</time></a>
-                                    </li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                            href="#">{{ $post->comments()->where('is_approved', true)->count() }}
-                                            Comments</a></li>
-                                </ul>
-                            </div><!-- End meta top -->
+                        {{-- Meta --}}
+                        <div class="blog-post-meta">
+                            <span>
+                                <i class="bi bi-person"></i>
+                                {{ $post->user->name ?? 'Admin' }}
+                            </span>
+                            <span class="blog-post-meta-divider">·</span>
+                            <span>
+                                <i class="bi bi-calendar3"></i>
+                                <time datetime="{{ $post->published_at }}">
+                                    {{ $post->published_at->format('M d, Y') }}
+                                </time>
+                            </span>
+                            <span class="blog-post-meta-divider">·</span>
+                            <span>
+                                <i class="bi bi-folder2"></i>
+                                {{ $post->category->name ?? 'News' }}
+                            </span>
+                            <span class="blog-post-meta-divider">·</span>
+                            <span>
+                                <i class="bi bi-chat-dots"></i>
+                                {{ $post->comments()->where('is_approved', true)->count() }} Comments
+                            </span>
+                        </div>
 
-                            <div class="content">
-                                {!! $post->content !!} <!-- Render HTML dari Rich Editor -->
-                            </div><!-- End post content -->
+                        {{-- Content --}}
+                        <div class="blog-post-content">
+                            {!! $post->content !!}
+                        </div>
+                    </article>
 
-                        </article>
+                    {{-- Comments --}}
+                    <div class="blog-comments-section">
+                        <h2 class="blog-comments-title">
+                            {{ $post->comments()->where('is_approved', true)->count() }} Comments
+                        </h2>
 
-                    </div>
-                </section><!-- /Blog Details Section -->
-
-                <!-- Blog Comments Section -->
-                <section id="blog-comments" class="blog-comments section">
-                    <div class="container">
-
-                        <h4 class="comments-count">{{ $post->comments()->where('is_approved', true)->count() }} Comments
-                        </h4>
-
-                        @foreach ($post->comments as $comment)
-                            <div id="comment-{{ $comment->id }}" class="comment">
-                                <div class="d-flex">
-                                    <div class="comment-img">
-                                        <!-- Avatar (Bisa pakai Gravatar atau placeholder template) -->
-                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->name) }}&background=random"
-                                            alt="{{ $comment->name }}">
-                                    </div>
-                                    <div>
-                                        <h5>
-                                            <a href="#">{{ $comment->name }}</a>
-                                            <!-- Tombol Reply (Nanti bisa dikembangkan pakai JS) -->
-                                            {{-- <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a> --}}
-                                        </h5>
-                                        <time
-                                            datetime="{{ $comment->created_at }}">{{ $comment->created_at->format('d M, Y') }}</time>
-                                        <p>{{ $comment->content }}</p>
-                                    </div>
+                        @forelse ($post->comments()->where('is_approved', true)->get() as $comment)
+                            <div id="comment-{{ $comment->id }}" class="comment-item">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->name) }}&background=e4d7c8&color=5c3b1e&size=48"
+                                    alt="{{ $comment->name }}" class="comment-avatar">
+                                <div class="flex-grow-1">
+                                    <div class="comment-author">{{ $comment->name }}</div>
+                                    <time class="comment-date" datetime="{{ $comment->created_at }}">
+                                        {{ $comment->created_at->format('d M, Y') }}
+                                    </time>
+                                    <p class="comment-text">{{ $comment->content }}</p>
                                 </div>
-                            </div><!-- End comment #{{ $comment->id }} -->
-                        @endforeach
-
+                            </div>
+                        @empty
+                            <p style="color:#a08060; font-size:0.9rem;">
+                                No comments yet. Be the first to share your thoughts!
+                            </p>
+                        @endforelse
                     </div>
-                </section>
-                <!-- /Blog Comments Section -->
 
-                <!-- Comment Form Section -->
-                <section id="comment-form" class="comment-form section">
-                    <div class="container">
-                        <form id="commentForm" action="{{ route('blog.comment.store', $post->slug) }}" method="POST"
-                            class="comment-form-inner">
+                    {{-- Comment Form --}}
+                    <div class="comment-form-section">
+                        <h2 class="comment-form-title">Leave a Comment</h2>
+                        <p class="comment-form-note">
+                            Your email address will not be published. Required fields are marked *
+                        </p>
+
+                        <div id="commentAlert" style="display:none; margin-bottom:1rem;"></div>
+
+                        <form id="commentForm" action="{{ route('blog.comment.store', $post->slug) }}" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
-                            <h4>Post Comment</h4>
-                            <p>Your email address will not be published. Required fields are marked *</p>
 
-                            <!-- Alert Messages -->
-                            <div id="formAlert" class="alert" style="display: none;"></div>
-
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input name="name" type="text" class="form-control" placeholder="Your Name*"
-                                        required>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <input type="text" name="name" class="comment-form-input"
+                                        placeholder="Your Name *" required maxlength="100">
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <input name="email" type="email" class="form-control" placeholder="Your Email*"
-                                        required>
+                                <div class="col-sm-6">
+                                    <input type="email" name="email" class="comment-form-input"
+                                        placeholder="Your Email *" required maxlength="100">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="content" class="form-control" rows="5" placeholder="Your Comment*" required></textarea>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" id="submitBtn" class="btn btn-primary">Post Comment</button>
+                                <div class="col-12">
+                                    <textarea name="content" class="comment-form-input comment-form-textarea" placeholder="Write your comment here... *"
+                                        required maxlength="1000" rows="5"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-comment-submit" id="commentSubmitBtn">
+                                        <span id="btnText">
+                                            <i class="bi bi-send"></i>
+                                            Post Comment
+                                        </span>
+                                        <span id="btnLoad" style="display:none;">
+                                            <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                            Posting...
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                </section>
-                <!-- /Comment Form Section -->
-
-            </div>
-
-            <!-- Sidebar (Optional) -->
-            <div class="col-lg-4 sidebar">
-                <div class="widgets-container">
-
-                    <!-- Search Widget -->
-                    <div class="search-widget widget-item">
-                        <h3 class="widget-title">Search</h3>
-                        <form action="">
-                            <input type="text" name="search">
-                            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                        </form>
-                    </div><!--/Search Widget -->
-
-                    <!-- Recent Posts Widget -->
-                    <div class="recent-posts-widget widget-item">
-                        <h3 class="widget-title">Recent Posts</h3>
-                        @foreach (\App\Models\Post::latest()->limit(5)->get() as $recent)
-                            <div class="post-item">
-                                <img src="{{ asset('storage/' . $recent->thumbnail) }}" alt=""
-                                    class="flex-shrink-0">
-                                <div>
-                                    <h4><a href="{{ route('blog.show', $recent->slug) }}">{{ $recent->title }}</a></h4>
-                                    <time
-                                        datetime="{{ $recent->published_at }}">{{ $recent->published_at->format('M d, Y') }}</time>
-                                </div>
-                            </div><!-- End recent post item-->
-                        @endforeach
-                    </div><!--/Recent Posts Widget -->
 
                 </div>
-            </div>
 
+                {{-- SIDEBAR --}}
+                <div class="col-lg-4">
+                    <aside class="blog-sidebar">
+
+                        {{-- Search --}}
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Search</h3>
+                            <form action="{{ url('blog') }}" method="GET">
+                                <div class="sidebar-search">
+                                    <input type="text" name="search" class="sidebar-search-input"
+                                        placeholder="Search posts..." value="{{ request('search') }}">
+                                    <button type="submit" class="sidebar-search-btn" aria-label="Search">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{-- Recent Posts --}}
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Recent Posts</h3>
+                            @foreach (\App\Models\Post::published()->latest()->limit(5)->get() as $recent)
+                                <div class="sidebar-recent-item">
+                                    <img src="{{ $recent->thumbnail ? asset('storage/' . $recent->thumbnail) : asset('assets/img/blog/blog-placeholder.jpg') }}"
+                                        alt="{{ $recent->title }}" class="sidebar-recent-img" loading="lazy">
+                                    <div>
+                                        <a href="{{ route('blog.show', $recent->slug) }}" class="sidebar-recent-title">
+                                            {{ Str::limit($recent->title, 55) }}
+                                        </a>
+                                        <time class="sidebar-recent-date" datetime="{{ $recent->published_at }}">
+                                            {{ $recent->published_at->format('M d, Y') }}
+                                        </time>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </aside>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- CTA Strip --}}
+    <div class="footer-cta">
+        <div class="container">
+            <div class="footer-cta-inner" data-aos="fade-up">
+                <div>
+                    <h3 class="footer-cta-title">
+                        @translate('Want to Know More About Our Coffee?', 'blog', 'cta.title')
+                    </h3>
+                    <p class="footer-cta-desc">
+                        @translate('Get in touch and we\'ll answer all your questions about sourcing Indonesian specialty coffee.', 'blog', 'cta.desc')
+                    </p>
+                </div>
+                <a href="{{ url('/contact') }}" class="btn-footer-cta">
+                    @translate('Talk to Us', 'blog', 'cta.btn')
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('commentForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const formAlert = document.getElementById('formAlert');
-            const commentsSection = document.querySelector('#blog-comments .container');
+            const submitBtn = document.getElementById('commentSubmitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoad = document.getElementById('btnLoad');
+            const alertEl = document.getElementById('commentAlert');
 
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                const formData = new FormData(form);
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Posting...';
+                btnText.style.display = 'none';
+                btnLoad.style.display = 'inline-flex';
+                alertEl.style.display = 'none';
+
+                const formData = new FormData(form);
 
                 try {
-                    console.log('Submitting to:', form.action); // Debug
-
-                    const response = await fetch(form.action, {
+                    const res = await fetch(form.action, {
                         method: 'POST',
-                        body: formData // FormData auto include @csrf field
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        },
+                        body: formData,
                     });
 
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-
-                    const data = await response.json();
+                    const data = await res.json();
 
                     if (data.success) {
                         form.reset();
-                        showAlert('Comment submitted for approval!', 'success');
-                        // appendNewComment(data.comment);
-                        // updateCommentCount(data.comment_count);
+                        showAlert(
+                            'Your comment has been submitted and is awaiting approval. Thank you!',
+                            'success');
                     } else {
-                        showAlert(data.message || 'Error occurred', 'error');
+                        showAlert(data.message || 'Something went wrong. Please try again.', 'error');
                     }
-                } catch (error) {
-                    console.error('AJAX Error:', error);
-                    showAlert('Network error. Please try again.', 'error');
+                } catch (err) {
+                    showAlert('Network error. Please check your connection and try again.', 'error');
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Post Comment';
+                    btnText.style.display = 'inline-flex';
+                    btnLoad.style.display = 'none';
                 }
             });
 
             function showAlert(message, type) {
-                formAlert.className = `alert alert-${type === 'success' ? 'success' : 'danger'}`;
-                formAlert.textContent = message;
-                formAlert.style.display = 'block';
-                setTimeout(() => formAlert.style.display = 'none', 5000);
-            }
-
-            function appendNewComment(comment) {
-                const commentHTML = `
-            <div id="comment-${comment.id}" class="comment">
-                <div class="d-flex">
-                    <div class="comment-img">
-                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(comment.name)}&background=random&size=48" alt="${comment.name}" class="rounded-circle">
-                    </div>
-                    <div>
-                        <h5><a href="#" class="text-decoration-none">${comment.name}</a> <small class="text-muted">(Awaiting approval)</small></h5>
-                        <time datetime="${comment.created_at}">${new Date(comment.created_at).toLocaleDateString('id-ID', {
-                            day: 'numeric', month: 'short', year: 'numeric'
-                        })}</time>
-                        <p>${comment.content}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-
-                const firstComment = commentsSection.querySelector('.comment');
-                if (firstComment) {
-                    firstComment.insertAdjacentHTML('beforebegin', commentHTML);
-                } else {
-                    const h4 = commentsSection.querySelector('h4');
-                    h4.insertAdjacentHTML('afterend', commentHTML);
-                }
-            }
-
-            function updateCommentCount(count) {
-                const countElements = document.querySelectorAll('.comments-count, .meta-top li:last-child a');
-                countElements.forEach(el => {
-                    el.textContent = `${count} Comment${count !== 1 ? 's' : ''}`;
-                });
+                alertEl.textContent = message;
+                alertEl.className = type === 'success' ? 'contact-alert success' : 'contact-alert error';
+                alertEl.style.display = 'block';
+                setTimeout(() => alertEl.style.display = 'none', 6000);
             }
         });
     </script>

@@ -5,9 +5,26 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>@yield('title', 'Home') - CV. Banyumas Bonanza Indonesia</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="@yield('meta_description', 'Premium Indonesian green coffee beans — Arabica and Robusta from Central Java. Specialty-grade, traceable origin, export-ready.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'indonesian coffee, arabica, robusta, green beans, central java, export')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- ── Open Graph ── --}}
+    <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('og_title', 'Home') - CV. Banyumas Bonanza Indonesia">
+    <meta property="og:description" content="@yield('og_description', 'Premium Indonesian green coffee beans — Arabica and Robusta from Central Java. Specialty-grade, traceable origin, export-ready.')">
+    <meta property="og:image" content="@yield('og_image', asset('assets/img/coffee/coffee.jpeg'))">
+    <meta property="og:image:width" content="@yield('og_image_width', '1600')">
+    <meta property="og:image:height" content="@yield('og_image_height', '1066')">
+
+    {{-- ── Twitter Card ── --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="banyumasbonanza.com">
+    <meta property="twitter:url" content="@yield('og_url', url()->current())">
+    <meta name="twitter:title" content="@yield('og_title', 'Home') - CV. Banyumas Bonanza Indonesia">
+    <meta name="twitter:description" content="@yield('og_description', 'Premium Indonesian green coffee beans — Arabica and Robusta from Central Java. Specialty-grade, traceable origin, export-ready.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('assets/img/coffee/coffee.jpeg'))">
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
@@ -29,6 +46,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main-coffee-theme.css') }}" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -55,6 +73,8 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    {{-- Stack untuk script tambahan dari views --}}
+    @stack('scripts')
 
 </body>
 

@@ -3,7 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Comment;
-use App\Models\Inquiry;
+use App\Models\Message;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -19,12 +19,12 @@ class AdminStats extends BaseWidget
                 ->descriptionIcon('heroicon-m-chat-bubble-bottom-center-text')
                 ->color('warning'),
 
-            Stat::make('New Inquiries', Inquiry::where('status', 'new')->count())
+            Stat::make('New Messages', Message::where('status', 'unread')->count())
                 ->description('Unread contact messages')
                 ->descriptionIcon('heroicon-m-inbox-arrow-down')
                 ->color('danger'),
 
-            Stat::make('Total Inquiries', Inquiry::count())
+            Stat::make('Total Messages', Message::count())
                 ->description('All time')
                 ->descriptionIcon('heroicon-m-envelope')
                 ->color('success'),
