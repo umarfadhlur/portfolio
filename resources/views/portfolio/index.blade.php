@@ -1,165 +1,115 @@
 @extends('layouts.app')
 
-@section('title', 'Portfolio')
+@section('title', 'Projects')
+@section('meta_description', 'Selected Flutter, Laravel, payment, warehouse, and enterprise integration projects by Umar Fadhlurrachman.')
 @section('body-class', 'portfolio-page')
 
 @section('content')
-    <main class="main">
+    <section class="page-hero compact-page-hero">
+        <div class="shell page-hero-grid">
+            <div class="reveal">
+                <p class="eyebrow">Project archive</p>
+                <h1>Work built around real users, data, and operations.</h1>
+            </div>
+            <p class="page-hero-copy reveal reveal-delay-1">
+                A selection of mobile, web, payment, and enterprise systems I have designed, implemented, integrated, or improved.
+            </p>
+        </div>
+    </section>
 
-        <section id="portfolio" class="portfolio section">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfolio</h2>
-                <p>My selected portfolios showcasing my skills in Flutter, PHP, and ERP integrations.</p>
+    <section class="portfolio-archive section-space-small">
+        <div class="shell">
+            <div class="filter-bar reveal" data-project-filters>
+                <button type="button" class="active" data-filter="all">All work</button>
+                <button type="button" data-filter="mobile">Mobile</button>
+                <button type="button" data-filter="backend">Backend</button>
+                <button type="button" data-filter="enterprise">Enterprise</button>
             </div>
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="archive-grid" data-project-grid>
+                @forelse ($portfolios as $project)
+                    @php
+                        $photo = $project->photos?->first();
+                        $image = $photo ? Storage::url($photo->image_path) : null;
 
-                    <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-flutter">Flutter</li>
-                        <li data-filter=".filter-php">PHP</li>
-                    </ul>
+                        $rawTechs = $project->tech_stack ?? [];
+                        if (is_string($rawTechs)) {
+                            $decoded = json_decode($rawTechs, true);
+                            $rawTechs = is_array($decoded) ? $decoded : explode(',', $rawTechs);
+                        }
+                        $techs = collect(is_array($rawTechs) ? $rawTechs : [])->map(fn ($item) => trim((string) $item))->filter();
+                        $searchableTech = strtolower($techs->implode(' ') . ' ' . ($project->portfolio_name ?? '') . ' ' . ($project->description ?? ''));
 
-                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-                        @forelse ($portfolios as $p)
-                            @php
-                                $photo = $p->photos->first();
-                                $image = $photo ? Storage::url($photo->image_path) : null;
+                        $categories = ['all'];
+                        if (str_contains($searchableTech, 'flutter') || str_contains($searchableTech, 'android') || str_contains($searchableTech, 'mobile')) {
+                            $categories[] = 'mobile';
+                        }
+                        if (str_contains($searchableTech, 'laravel') || str_contains($searchableTech, 'php') || str_contains($searchableTech, 'api') || str_contains($searchableTech, 'backend')) {
+                            $categories[] = 'backend';
+                        }
+                        if (str_contains($searchableTech, 'jde') || str_contains($searchableTech, 'oracle') || str_contains($searchableTech, 'idempiere') || str_contains($searchableTech, 'erp') || str_contains($searchableTech, 'warehouse')) {
+                            $categories[] = 'enterprise';
+                        }
+                    @endphp
 
-                                // Normalize tech stack to array of trimmed strings
-                                $techs = $p->tech_stack;
-                                if (is_string($techs)) {
-                                    $decoded = json_decode($techs, true);
-                                    $techs =
-                                        json_last_error() === JSON_ERROR_NONE && is_array($decoded)
-                                            ? array_map('trim', $decoded)
-                                            : array_map('trim', explode(',', $techs));
-                                } elseif (is_array($techs)) {
-                                    $techs = array_map('trim', $techs);
-                                } else {
-                                    $techs = [];
-                                }
-
-                                // match partial + case-insensitive (e.g., "PHP 8" matches "php")
-                                $isFlutter = false;
-                                $isPHP = false;
-                                foreach ($techs as $t) {
-                                    if (!$isFlutter && stripos($t, 'flutter') !== false) {
-                                        $isFlutter = true;
-                                    }
-                                    if (!$isPHP && stripos($t, 'php') !== false) {
-                                        $isPHP = true;
-                                    }
-                                    if ($isFlutter && $isPHP) {
-                                        break;
-                                    }
-                                }
-                            @endphp
-
-                            <div
-                                class="col-lg-4 col-md-6 portfolio-item isotope-item
-              {{ $isFlutter ? 'filter-flutter' : '' }}
-              {{ $isPHP ? 'filter-php' : '' }}">
-                                <div class="portfolio-card">
-                                    <div class="portfolio-img">
-                                        @if ($image)
-                                            <img src="{{ $image }}" alt="{{ $p->portfolio_name }}" class="img-fluid">
-                                        @else
-                                            <div
-                                                style="
-                                            height: 200px;
-                                            width: 100%;
-                                            background: #2a2d30;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-                                            color: #777;
-                                            font-size: 2.2rem;">
-                                                <i class="bi bi-image"></i>
-                                            </div>
-                                        @endif
-
-                                        {{-- <div class="portfolio-overlay">
-                                            @if ($image)
-                                                <a href="{{ $image }}" class="glightbox portfolio-lightbox"
-                                                    data-gallery="portfolio-gallery">
-                                                    <i class="bi bi-plus"></i>
-                                                </a>
-                                            @endif
-
-                                            <a href="{{ route('portfolio.show', $p->slug) }}"
-                                                class="portfolio-details-link">
-                                                <i class="bi bi-link"></i>
-                                            </a>
-                                        </div> --}}
-                                    </div>
-
-                                    <div class="portfolio-info">
-                                        <h4><a href="{{ route('portfolio.show', $p->slug) }}"
-                                                class="text-white text-decoration-none">{{ $p->portfolio_name }}</a></h4>
-                                        <p>{{ Str::limit($p->description, 60) }}</p>
-
-                                        <div class="portfolio-tags">
-                                            @foreach ($techs as $tech)
-                                                @if (!empty($tech))
-                                                    <span>{{ $tech }}</span>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
+                    <article class="archive-card reveal" data-project-card data-categories="{{ implode(' ', array_unique($categories)) }}">
+                        <a href="{{ route('portfolio.show', $project->slug) }}" class="archive-media">
+                            @if ($image)
+                                <img src="{{ $image }}" alt="{{ $project->portfolio_name }}" loading="lazy">
+                            @else
+                                <div class="archive-placeholder">
+                                    <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                    <small>PROJECT PREVIEW</small>
                                 </div>
-                            </div>
-                        @empty
-                            <div class="col-12 text-center">
-                                <p class="text-muted">No portfolios available at the moment.</p>
-                            </div>
-                        @endforelse
-                    </div>
+                            @endif
+                            <span class="project-open">↗</span>
+                        </a>
 
+                        <div class="archive-card-body">
+                            <div class="archive-card-meta">
+                                <span class="mono-label">PROJECT {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                @if (!empty($project->client))
+                                    <span>{{ $project->client }}</span>
+                                @endif
+                            </div>
+
+                            <h2><a href="{{ route('portfolio.show', $project->slug) }}">{{ $project->portfolio_name }}</a></h2>
+                            <p>{{ Str::limit($project->description, 155) }}</p>
+
+                            <div class="tag-row">
+                                @foreach ($techs->take(5) as $tech)
+                                    <span>{{ $tech }}</span>
+                                @endforeach
+                            </div>
+                        </div>
+                    </article>
+                @empty
+                    <div class="empty-state">
+                        <span class="mono-label">NO PROJECTS YET</span>
+                        <h2>The project archive is being prepared.</h2>
+                        <p>Please check back soon or contact me for a private walkthrough of relevant work.</p>
+                    </div>
+                @endforelse
+            </div>
+
+            @if (is_object($portfolios) && method_exists($portfolios, 'links'))
+                <div class="pagination-wrap">{{ $portfolios->links() }}</div>
+            @endif
+        </div>
+    </section>
+
+    <section class="section-space-small">
+        <div class="shell">
+            <div class="cta-panel reveal">
+                <div>
+                    <p class="eyebrow">Looking for a specific capability?</p>
+                    <h2>Let’s discuss the workflow, not just the framework.</h2>
+                </div>
+                <div>
+                    <p>I can walk through architecture decisions, integration challenges, and my exact contribution privately.</p>
+                    <a href="{{ route('contact') }}" class="button button-light">Contact me <span>↗</span></a>
                 </div>
             </div>
-        </section>
-
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // init glightbox kalau vendor-nya ada
-            if (window.GLightbox) {
-                window.GLightbox({
-                    selector: '.glightbox'
-                });
-            }
-
-            // relayout isotope after images loaded (masonry)
-            if (window.Isotope) {
-                const grid = document.querySelector('.isotope-container');
-                if (!grid) return;
-
-                const iso = window.Isotope.data ? window.Isotope.data(grid) : null;
-                const imgs = grid.querySelectorAll('img');
-                let loaded = 0;
-
-                if (imgs.length === 0) {
-                    iso && iso.layout();
-                    return;
-                }
-
-                imgs.forEach(img => {
-                    const done = () => {
-                        loaded++;
-                        if (loaded === imgs.length) iso && iso.layout();
-                    };
-
-                    if (img.complete) done();
-                    else {
-                        img.addEventListener('load', done);
-                        img.addEventListener('error', done);
-                    }
-                });
-            }
-        });
-    </script>
+        </div>
+    </section>
 @endsection

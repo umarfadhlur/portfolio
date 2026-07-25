@@ -6,29 +6,37 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('products', function (Blueprint $table) {
-        $table->id();
-        $table->string('name'); // Nama produk (Palm Sugar)
-        $table->string('slug')->unique(); // URL ramah SEO
-        $table->string('thumbnail')->nullable(); // Gambar kecil untuk list
-        $table->text('short_description')->nullable(); // Deskripsi singkat di card
-        $table->longText('description')->nullable(); // Deskripsi lengkap (Halaman detail)
-        $table->json('specifications')->nullable(); // Spesifikasi teknis (JSON: Moisture, Ash, etc)
-        $table->string('brochure_file')->nullable(); // File PDF brosur (opsional)
-        $table->boolean('is_featured')->default(false); // Tampilkan di homepage?
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description');
+            $table->string('image')->nullable();
+            $table->string('category')->nullable();
+            $table->string('certifications')->nullable();
 
+            // Nutrition Facts
+            $table->string('serving_size')->nullable();
+            $table->integer('serving_per_container')->nullable();
+            $table->integer('calories')->nullable();
+            $table->integer('calories_from_fat')->nullable();
+            $table->decimal('total_fat', 5, 2)->nullable();
+            $table->decimal('saturated_fat', 5, 2)->nullable();
+            $table->decimal('trans_fat', 5, 2)->nullable();
+            $table->integer('cholesterol')->nullable();
+            $table->integer('sodium')->nullable();
+            $table->decimal('total_carbohydrate', 5, 2)->nullable();
+            $table->decimal('dietary_fiber', 5, 2)->nullable();
+            $table->decimal('sugars', 5, 2)->nullable();
+            $table->decimal('protein', 5, 2)->nullable();
 
-    /**
-     * Reverse the migrations.
-     */
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+    }
+
     public function down(): void
     {
         Schema::dropIfExists('products');

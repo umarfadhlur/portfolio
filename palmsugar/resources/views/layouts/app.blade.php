@@ -46,7 +46,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/main-coffee-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main-coco-theme.css') }}" rel="stylesheet">
 </head>
 
 <body class="index-page">

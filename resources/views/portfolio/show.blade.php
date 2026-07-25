@@ -1,217 +1,169 @@
 @extends('layouts.app')
 
 @section('title', $portfolio->portfolio_name)
-@section('body-class', 'portfolio-details-page')
+@section('meta_description', Str::limit(strip_tags($portfolio->description), 150))
+@section('body-class', 'project-detail-page')
 
 @section('content')
-    <main class="main">
+    @php
+        $toArray = static function ($value): array {
+            if (is_array($value)) {
+                return $value;
+            }
 
-        <section id="portfolio-details" class="portfolio-details section">
+            if (is_string($value)) {
+                $decoded = json_decode($value, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                    return $decoded;
+                }
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                return array_filter(array_map('trim', preg_split('/[\r\n,]+/', $value) ?: []));
+            }
 
-                @php
-                    // helpers
-                    function safeArray($value)
-                    {
-                        if (is_array($value)) {
-                            return $value;
-                        }
+            return [];
+        };
 
-                        if (is_string($value)) {
-                            $decoded = json_decode($value, true);
-                            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
-                                return $decoded;
-                            }
-                            return array_filter(array_map('trim', explode(',', $value)));
-                        }
+        $techs = collect($toArray($portfolio->tech_stack ?? []))->map(fn ($item) => trim((string) $item))->filter()->values();
+        $roles = collect($toArray($portfolio->roles ?? []))->map(fn ($item) => trim((string) $item))->filter()->values();
+        $contributions = collect($toArray($portfolio->contributions ?? []))->map(fn ($item) => trim((string) $item))->filter()->values();
+        $photos = collect($portfolio->photos ?? []);
+        $primaryPhoto = $photos->first();
+    @endphp
 
-                        return [];
-                    }
+    <section class="project-hero">
+        <div class="shell">
+            <a href="{{ route('portfolio') }}" class="back-link reveal"><span>←</span> Back to all projects</a>
 
-                    $techs = safeArray($portfolio->tech_stack);
-
-                    // roles -> project badges
-                    $roles = safeArray($portfolio->roles);
-                    $roles = array_values(array_filter(array_map('trim', $roles)));
-
-                    // contributions -> key features
-                    $contributions = safeArray($portfolio->contributions);
-                    $contributions = array_values(array_filter(array_map('trim', $contributions)));
-
-                    $projectDate = $portfolio->created_at ? $portfolio->created_at->format('F Y') : null;
-
-                    $photos = $portfolio->photos ?? collect();
-                    $hasPhotos = $photos->count() > 0;
-                @endphp
-
-                <div class="row gy-4">
-                    <!-- Left: Media -->
-                    <div class="col-lg-6" data-aos="fade-right">
-                        <div class="portfolio-details-media">
-
-                            <div class="main-image">
-                                <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
-                                    <script type="application/json" class="swiper-config">
-                                        {
-                                          "loop": true,
-                                          "speed": 1000,
-                                          "autoplay": { "delay": 6000 },
-                                          "effect": "creative",
-                                          "creativeEffect": {
-                                            "prev": { "shadow": true, "translate": [0,0,-400] },
-                                            "next": { "translate": ["100%",0,0] }
-                                          },
-                                          "slidesPerView": 1,
-                                          "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }
-                                        }
-                                    </script>
-
-                                    <div class="swiper-wrapper">
-                                        @if ($hasPhotos)
-                                            @foreach ($photos as $photo)
-                                                <div class="swiper-slide">
-                                                    <img src="{{ Storage::url($photo->image_path) }}"
-                                                        alt="{{ $portfolio->portfolio_name }}" class="img-fluid">
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="swiper-slide">
-                                                <img src="{{ asset('assets/img/placeholder.webp') }}"
-                                                    alt="{{ $portfolio->portfolio_name }}" class="img-fluid">
-                                            </div>
-                                        @endif
-                                    </div>
-
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
-                                </div>
-                            </div>
-
-                            <!-- Thumbnails -->
-                            @if ($hasPhotos)
-                                <div class="thumbnail-grid" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="row g-2 mt-3">
-                                        @foreach ($photos->take(8) as $photo)
-                                            <div class="col-3">
-                                                <a href="{{ Storage::url($photo->image_path) }}" class="glightbox"
-                                                    data-gallery="portfolio-gallery">
-                                                    <img src="{{ Storage::url($photo->image_path) }}" alt="Gallery Image"
-                                                        class="img-fluid">
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-
-                            <!-- Tech stack badges -->
-                            @if (count($techs))
-                                <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
-                                    @foreach ($techs as $t)
-                                        @if (!empty(trim($t)))
-                                            <span>{{ $t }}</span>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            @endif
-
-                        </div>
+            <div class="project-hero-grid">
+                <div class="reveal">
+                    <div class="tag-row project-role-row">
+                        @forelse ($roles as $role)
+                            <span>{{ $role }}</span>
+                        @empty
+                            <span>Software Engineering</span>
+                        @endforelse
                     </div>
 
-                    <!-- Right: Content -->
-                    <div class="col-lg-6" data-aos="fade-left">
-                        <div class="portfolio-details-content">
-
-                            <div class="project-meta">
-                                <div class="badge-wrapper">
-                                    @if (count($roles))
-                                        @foreach ($roles as $r)
-                                            <span class="project-badge">{{ $r }}</span>
-                                        @endforeach
-                                    @else
-                                        <span class="project-badge">Project</span>
-                                    @endif
-                                </div>
-
-                                <div class="date-client">
-                                    @if ($projectDate)
-                                        <div class="meta-item">
-                                            <i class="bi bi-calendar-check"></i>
-                                            <span>{{ $projectDate }}</span>
-                                        </div>
-                                    @endif
-
-                                    @if (!empty($portfolio->client))
-                                        <div class="meta-item">
-                                            <i class="bi bi-buildings"></i>
-                                            <span>{{ $portfolio->client }}</span>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <h2 class="project-title">{{ $portfolio->portfolio_name }}</h2>
-
-                            @if (!empty($portfolio->website))
-                                <div class="project-website">
-                                    <i class="bi bi-link-45deg"></i>
-                                    <a href="{{ $portfolio->website }}" target="_blank" rel="noopener noreferrer">
-                                        {{ $portfolio->website }}
-                                    </a>
-                                </div>
-                            @endif
-
-                            <div class="project-overview">
-                                <p class="lead">{{ $portfolio->description }}</p>
-                            </div>
-
-                            <!-- Key Features (1 kolom ke bawah) -->
-                            <div class="project-features" data-aos="fade-up" data-aos-delay="300">
-                                <h3><i class="bi bi-stars"></i> Contributions</h3>
-
-                                @if (count($contributions))
-                                    <ul class="feature-list">
-                                        @foreach ($contributions as $c)
-                                            <li><i class="bi bi-check2-circle"></i> {{ $c }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <ul class="feature-list">
-                                        <li><i class="bi bi-check2-circle"></i> Contribution details not provided.</li>
-                                    </ul>
-                                @endif
-                            </div>
-
-                            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
-                                @if (!empty($portfolio->website))
-                                    <a href="{{ $portfolio->website }}" class="btn-view-project" target="_blank"
-                                        rel="noopener noreferrer">
-                                        View Live Project
-                                    </a>
-                                @endif
-
-                                <a href="{{ route('portfolio') }}" class="btn-next-project">Back to Portfolio <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-
-                        </div>
-                    </div>
+                    <h1>{{ $portfolio->portfolio_name }}</h1>
+                    <p class="project-lead">{{ $portfolio->description }}</p>
                 </div>
 
+                <dl class="project-facts reveal reveal-delay-1">
+                    @if (!empty($portfolio->client))
+                        <div><dt>Client / Company</dt><dd>{{ $portfolio->client }}</dd></div>
+                    @endif
+                    <div><dt>Published</dt><dd>{{ optional($portfolio->created_at)->format('F Y') ?? 'Portfolio project' }}</dd></div>
+                    @if ($techs->isNotEmpty())
+                        <div><dt>Primary stack</dt><dd>{{ $techs->take(3)->implode(' · ') }}</dd></div>
+                    @endif
+                    @if (!empty($portfolio->website))
+                        <div><dt>Project link</dt><dd><a href="{{ $portfolio->website }}" target="_blank" rel="noopener noreferrer">Visit website ↗</a></dd></div>
+                    @endif
+                </dl>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section class="project-gallery-section">
+        <div class="shell">
+            <div class="project-gallery reveal" data-project-gallery>
+                <div class="project-gallery-main">
+                    @if ($primaryPhoto)
+                        <img src="{{ Storage::url($primaryPhoto->image_path) }}" alt="{{ $portfolio->portfolio_name }} main preview" data-gallery-main>
+                    @else
+                        <div class="detail-placeholder">
+                            <span class="mono-label">PROJECT CASE STUDY</span>
+                            <strong>{{ $portfolio->portfolio_name }}</strong>
+                        </div>
+                    @endif
+                </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // init glightbox (template pakai glightbox) [file:2]
-            if (window.GLightbox) {
-                window.GLightbox({
-                    selector: '.glightbox'
-                });
-            }
-        });
-    </script>
+                @if ($photos->count() > 1)
+                    <div class="project-thumbnails" aria-label="Project screenshots">
+                        @foreach ($photos as $photo)
+                            <button type="button" class="{{ $loop->first ? 'active' : '' }}" data-gallery-thumb data-image="{{ Storage::url($photo->image_path) }}" aria-label="Show screenshot {{ $loop->iteration }}">
+                                <img src="{{ Storage::url($photo->image_path) }}" alt="" loading="lazy">
+                            </button>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content-section section-space">
+        <div class="shell project-content-grid">
+            <aside class="project-sidebar reveal">
+                <span class="mono-label">TECHNOLOGY</span>
+                <div class="stack-cloud">
+                    @forelse ($techs as $tech)
+                        <span>{{ $tech }}</span>
+                    @empty
+                        <span>Technology details available on request</span>
+                    @endforelse
+                </div>
+
+                @if (!empty($portfolio->website))
+                    <a href="{{ $portfolio->website }}" target="_blank" rel="noopener noreferrer" class="button button-secondary project-site-button">
+                        View live project <span>↗</span>
+                    </a>
+                @endif
+            </aside>
+
+            <div class="project-story">
+                <article class="story-block reveal">
+                    <span class="mono-label">01 / OVERVIEW</span>
+                    <h2>What this project involved</h2>
+                    <p>{{ $portfolio->description }}</p>
+                </article>
+
+                <article class="story-block reveal">
+                    <span class="mono-label">02 / MY CONTRIBUTION</span>
+                    <h2>Responsibilities and implementation</h2>
+                    @if ($contributions->isNotEmpty())
+                        <ul class="contribution-list">
+                            @foreach ($contributions as $contribution)
+                                <li><span>✓</span><p>{{ $contribution }}</p></li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Detailed contribution notes are not yet published. Contact me for a walkthrough of my responsibilities, architecture decisions, and implementation challenges.</p>
+                    @endif
+                </article>
+
+                <article class="story-block reveal">
+                    <span class="mono-label">03 / ENGINEERING APPROACH</span>
+                    <h2>Built around workflow clarity and maintainability</h2>
+                    <div class="approach-grid">
+                        <div>
+                            <strong>Business flow first</strong>
+                            <p>Understand actors, states, validations, and operational exceptions before translating them into screens.</p>
+                        </div>
+                        <div>
+                            <strong>Clear integration boundaries</strong>
+                            <p>Keep mobile, backend, database, and external-system responsibilities explicit and testable.</p>
+                        </div>
+                        <div>
+                            <strong>Production-minded delivery</strong>
+                            <p>Design for loading, failure, retries, edge cases, and maintainability—not only the happy path.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space-small next-project-section">
+        <div class="shell">
+            <div class="next-project-card reveal">
+                <span class="mono-label">NEXT STEP</span>
+                <h2>Want to discuss the architecture behind this work?</h2>
+                <p>I can explain the system context, technical decisions, and exact scope of my contribution in an interview.</p>
+                <div class="hero-actions">
+                    <a href="{{ route('contact') }}" class="button button-primary">Start a conversation <span>↗</span></a>
+                    <a href="{{ route('portfolio') }}" class="button button-secondary">Browse more work <span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

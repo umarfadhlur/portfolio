@@ -25,8 +25,8 @@
 
                         {{-- Thumbnail --}}
                         <div class="product-card-img-wrap">
-                            @if ($product->thumbnail)
-                                <img src="{{ asset($product->thumbnail) }}" alt="{{ $product->name }}"
+                            @if ($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                     class="product-card-img" loading="lazy" decoding="async">
                             @else
                                 <div class="product-card-img-placeholder">
@@ -37,23 +37,39 @@
 
                         {{-- Body --}}
                         <div class="product-card-body">
-                            <h3 class="product-card-name">{{ $product->name }}</h3>
 
-                            @if ($product->short_description)
-                                <p class="product-card-desc">{{ Str::limit($product->short_description, 80) }}</p>
+                            {{-- Category badge --}}
+                            @if ($product->category)
+                                <span class="product-card-category">{{ $product->category }}</span>
                             @endif
 
-                            {{-- Specs preview (max 2 items) --}}
-                            @if ($product->specifications)
-                                @php $specs = collect($product->specifications)->take(2); @endphp
-                                <ul class="product-card-specs">
-                                    @foreach ($specs as $key => $value)
-                                        <li>
-                                            <span class="spec-key">{{ $key }}</span>
-                                            <span class="spec-val">{{ $value }}</span>
-                                        </li>
+                            <h3 class="product-card-name">{{ $product->name }}</h3>
+
+                            {{-- Nutrition highlights (max 2 items) --}}
+                            <ul class="product-card-specs">
+                                @if ($product->calories)
+                                    <li>
+                                        <span class="spec-key">Calories</span>
+                                        <span class="spec-val">{{ $product->calories }} kcal</span>
+                                    </li>
+                                @endif
+                                @if ($product->protein)
+                                    <li>
+                                        <span class="spec-key">Protein</span>
+                                        <span class="spec-val">{{ $product->protein }}g</span>
+                                    </li>
+                                @endif
+                            </ul>
+
+                            {{-- Certifications --}}
+                            @if ($product->certifications)
+                                <div class="product-card-certs">
+                                    @foreach (array_slice((array) $product->certifications, 0, 2) as $cert)
+                                        <span class="product-cert-tag">
+                                            <i class="bi bi-patch-check-fill me-1"></i>{{ $cert }}
+                                        </span>
                                     @endforeach
-                                </ul>
+                                </div>
                             @endif
 
                             <div class="product-card-cta">
@@ -63,8 +79,8 @@
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg>
                             </div>
-                        </div>
 
+                        </div>
                     </a>
                 </div>
             @empty

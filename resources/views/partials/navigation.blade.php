@@ -1,12 +1,8 @@
-<nav id="navmenu" class="navmenu">
-    <ul>
-        <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-        <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a></li>
-        <li><a href="{{ route('resume') }}" class="{{ request()->routeIs('resume') ? 'active' : '' }}">Resume</a></li>
-        {{-- <li><a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">Services</a> --}}
-        <li><a href="{{ route('portfolio') }}" class="{{ request()->is('portfolio*') ? 'active' : '' }}">Portfolio</a>
-        <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
-        </li>
-    </ul>
-    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+<nav class="site-nav" aria-label="Main navigation" data-site-nav>
+    <a href="{{ route('home') }}#work" class="{{ request()->routeIs('home') ? 'active' : '' }}">Work</a>
+    <a href="{{ route('home') }}#expertise">Expertise</a>
+    <a href="{{ route('resume') }}" class="{{ request()->routeIs('resume') ? 'active' : '' }}">Experience</a>
+    <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a>
+    <a href="{{ route('portfolio') }}" class="{{ request()->is('portfolio*') ? 'active' : '' }}">All projects</a>
+    <a href="{{ route('contact') }}" class="mobile-nav-contact {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
 </nav>

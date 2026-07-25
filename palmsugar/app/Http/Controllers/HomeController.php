@@ -22,7 +22,7 @@ class HomeController extends Controller
         $services = [];
         $testimonials = [];
         $posts = Post::latest()->limit(3)->get();
-        $featuredProducts = Product::where('is_featured', true)
+        $featuredProducts = Product::where('is_active', true)
         ->latest()
         ->take(3)
         ->get();

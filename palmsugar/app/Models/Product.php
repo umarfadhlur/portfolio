@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -12,57 +13,47 @@ class Product extends Model
     protected $fillable = [
         'name',
         'slug',
-        'thumbnail',
-        'short_description',
         'description',
-        'specifications',
-        'brochure_file',
-        'is_featured',
+        'image',
+        'category',
+        'certifications',
+        'serving_size',
+        'serving_per_container',
+        'calories',
+        'calories_from_fat',
+        'total_fat',
+        'saturated_fat',
+        'trans_fat',
+        'cholesterol',
+        'sodium',
+        'total_carbohydrate',
+        'dietary_fiber',
+        'sugars',
+        'protein',
+        'is_active',
     ];
 
     protected $casts = [
-        'specifications' => 'array',
-        'is_featured'    => 'boolean',
+        'is_active'          => 'boolean',
+        'total_fat'          => 'float',
+        'saturated_fat'      => 'float',
+        'trans_fat'          => 'float',
+        'total_carbohydrate' => 'float',
+        'dietary_fiber'      => 'float',
+        'sugars'             => 'float',
+        'protein'            => 'float',
     ];
 
-    // ── Scopes ──────────────────────────────────────────
-    public function scopeFeatured($query)
+    // Auto-generate slug dari name
+    protected static function booted(): void
     {
-        return $query->where('is_featured', true);
+        static::creating(function ($product) {
+            $product->slug = Str::slug($product->name);
+        });
     }
 
-    // ── Accessors ────────────────────────────────────────
-
-    /**
-     * Ambil flavor profile dari specifications JSON.
-     * Struktur: specifications.flavor_profile = ['Fragrance' => 8.0, ...]
-     */
-    public function getFlavorProfileAttribute(): array
+    public function variants()
     {
-        return $this->specifications['flavor_profile'] ?? [];
-    }
-
-    /**
-     * Cupping score total (key: cupping_score di dalam specifications).
-     */
-    public function getCuppingScoreAttribute(): ?float
-    {
-        return $this->specifications['cupping_score'] ?? null;
-    }
-
-    /**
-     * Kategori produk (Arabica / Robusta / dst).
-     */
-    public function getCategoryAttribute(): ?string
-    {
-        return $this->specifications['category'] ?? null;
-    }
-
-    /**
-     * Route model binding via slug.
-     */
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
+        return $this->hasMany(ProductVariant::class);
     }
 }

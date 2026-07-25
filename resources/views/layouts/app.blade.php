@@ -1,68 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080b12">
 
-    <title>@yield('title', 'FolioOne')</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>@yield('title', 'Umar Fadhlurrachman') · Mobile Engineer</title>
+    <meta name="description" content="@yield('meta_description', 'Portfolio of Umar Fadhlurrachman, a Mobile Engineer building production-ready Flutter, Laravel, ERP, warehouse, and payment integration solutions.')">
+    <meta name="keywords" content="Flutter Developer, Mobile Engineer, Laravel Developer, ERP Integration, JD Edwards, iDempiere, Indonesia">
+    <meta name="author" content="Umar Fadhlurrachman">
 
-    <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.jpg') }}" rel="icon">
-    <link href="{{ asset('assets/img/favicon.jpg') }}" rel="apple-touch-icon">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@yield('title', 'Umar Fadhlurrachman') · Mobile Engineer">
+    <meta property="og:description" content="@yield('meta_description', 'Mobile Engineer focused on Flutter, Laravel, and enterprise integration.')">
+    <meta property="og:image" content="{{ asset('assets/img/profile/umarf.png') }}">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/img/favicon.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/img/favicon.jpg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-
-    <!-- Main CSS File -->
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
-
-<body class="@yield('body-class', 'index-page')">
+<body class="site-body @yield('body-class')">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     @include('partials.header')
 
-    <main class="main">
+    <main id="main-content">
         @yield('content')
     </main>
 
     @include('partials.footer')
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
+    <button class="scroll-top" type="button" aria-label="Back to top" data-scroll-top>
+        <span aria-hidden="true">↑</span>
+    </button>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script> --}}
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/typed.js/typed.umd.js') }}"></script>
-    <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-    <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-
-    <!-- Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    @stack('scripts')
 </body>
-
 </html>

@@ -1,19 +1,22 @@
-<section id="skills" class="skills section">
-    <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-    </div>
+<section class="section-space-small skills-section">
+    <div class="shell">
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Technical toolkit</p>
+                <h2>Tools I use to ship reliable systems.</h2>
+            </div>
+            <p>Experience is shown through context and application—not arbitrary percentage bars.</p>
+        </div>
 
-    <div class="container mb-5">
-        <div class="row g-4">
-            @foreach ($skills as $index => $skill)
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ 120 + $index * 60 }}">
-                    <article class="timeline-item">
-                        <span class="dot"></span>
-                        <time>{{ $skill->start_year }}</time>
-                        <h4>{{ $skill->name }}</h4>
+        <div class="skill-grid">
+            @foreach ($skills as $skill)
+                <article class="skill-card reveal">
+                    <span class="mono-label">{{ $skill->start_year ? 'SINCE ' . $skill->start_year : 'TOOLKIT' }}</span>
+                    <h3>{{ $skill->name }}</h3>
+                    @if (!empty($skill->level))
                         <p>{{ $skill->level }}</p>
-                    </article>
-                </div>
+                    @endif
+                </article>
             @endforeach
         </div>
     </div>

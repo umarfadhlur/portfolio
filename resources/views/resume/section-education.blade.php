@@ -1,20 +1,18 @@
-<div class="resume-item" data-aos="fade-up">
-    <h3 class="resume-title">Education</h3>
+<section class="resume-side-card education-card reveal">
+    <span class="mono-label">EDUCATION</span>
 
-    <div class="resume-content">
-        @foreach ($education as $edu)
-            <article class="education-item mb-4" data-aos="slide-up" data-aos-delay="{{ 100 + $loop->index * 100 }}">
-                <h4>{{ $edu->name }}</h4>
-                <h5>
-                    {{ date('Y', strtotime($edu->start_date)) }}
-                    -
-                    {{ $edu->end_date ? date('Y', strtotime($edu->end_date)) : 'Present' }}
-                </h5>
-                <p class="institution">
-                    <em>{{ $edu->client }}{{ $edu->location ? ', ' . $edu->location : '' }}</em>
-                </p>
-                <p>{{ $edu->description }}</p>
+    <div class="education-list">
+        @forelse ($education as $edu)
+            <article>
+                <span>{{ $edu->start_date ? date('Y', strtotime($edu->start_date)) : '' }} — {{ $edu->end_date ? date('Y', strtotime($edu->end_date)) : 'Present' }}</span>
+                <h3>{{ $edu->name }}</h3>
+                <p>{{ $edu->client }}{{ $edu->location ? ' · ' . $edu->location : '' }}</p>
+                @if (!empty($edu->description))
+                    <small>{{ $edu->description }}</small>
+                @endif
             </article>
-        @endforeach
+        @empty
+            <p>Education details are being prepared.</p>
+        @endforelse
     </div>
-</div>
+</section>

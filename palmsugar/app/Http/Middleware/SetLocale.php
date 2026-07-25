@@ -16,6 +16,15 @@ class SetLocale
 
     public function handle(Request $request, Closure $next)
     {
+        // Skip session write untuk Livewire AJAX requests
+        if ($request->hasHeader('X-Livewire')) {
+            // Tetap set locale dari session yang sudah ada
+            $locale = Session::get('locale', 'en');
+            App::setLocale($locale);
+
+            return $next($request);
+        }
+
         // 1. Ambil locale dari: session → URL param → browser → default 'en'
         $locale = $this->resolveLocale($request);
 
